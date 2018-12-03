@@ -1,0 +1,84 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - libwebp (0.6.1):
+    - libwebp/core (= 0.6.1)
+    - libwebp/dec (= 0.6.1)
+    - libwebp/demux (= 0.6.1)
+    - libwebp/dsp (= 0.6.1)
+    - libwebp/enc (= 0.6.1)
+    - libwebp/mux (= 0.6.1)
+    - libwebp/utils (= 0.6.1)
+    - libwebp/webp (= 0.6.1)
+  - libwebp/core (0.6.1):
+    - libwebp/webp
+  - libwebp/dec (0.6.1):
+    - libwebp/core
+  - libwebp/demux (0.6.1):
+    - libwebp/core
+  - libwebp/dsp (0.6.1):
+    - libwebp/core
+  - libwebp/enc (0.6.1):
+    - libwebp/core
+  - libwebp/mux (0.6.1):
+    - libwebp/core
+  - libwebp/utils (0.6.1):
+    - libwebp/core
+  - libwebp/webp (0.6.1)
+  - MovieousBase (1.0.0)
+  - MovieousLive (1.0.0):
+    - MovieousBase (= 1.0.0)
+  - MovieousPlayer (1.0.0)
+  - MovieousShortVideo (1.0.1):
+    - MovieousBase (= 1.0.0)
+  - Nama (5.6.1)
+  - SDWebImage/Core (4.4.2)
+  - SDWebImage/WebP (4.4.2):
+    - libwebp (~> 0.5)
+    - SDWebImage/Core
+
+DEPENDENCIES:
+  - AFNetworking
+  - MovieousLive
+  - MovieousPlayer
+  - MovieousShortVideo
+  - Nama (= 5.6.1)
+  - SDWebImage/WebP
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - libwebp
+    - MovieousBase
+    - MovieousLive
+    - MovieousPlayer
+    - MovieousShortVideo
+    - Nama
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  libwebp: 0f01098c6c17175391af621b2f14150f3ca16e16
+  MovieousBase: 5d6ecb362b78d4785095af84ba9813cb51ed31c9
+  MovieousLive: 1296b9ba78edfbde4778162157b736ad0c3787ed
+  MovieousPlayer: 5a2c7e26edd6e18ad7c1103ad2bbc49caa52e2a7
+  MovieousShortVideo: e0f9d43a04f9db98fd165e2d3c822ea9c3602beb
+  Nama: 87ac5b70f48042ebc57c4cc7cdb2184c12f00b6e
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
+
+PODFILE CHECKSUM: 5c4718a7f9187ec5b6016337f87eebf6ab4563a4
+
+COCOAPODS: 1.5.3

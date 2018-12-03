@@ -1,0 +1,61 @@
+//
+//  MovieousDemo.pch
+//  MovieousDemo
+//
+//  Created by Chris Wang on 2018/10/7.
+//  Copyright © 2018 Movieous Team. All rights reserved.
+//
+
+#ifndef MovieousDemo_pch
+#define MovieousDemo_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define SHOW_ALERT_FOR(title,errorMessage,actionMessage,baseController) do{dispatch_async(dispatch_get_main_queue(), ^{UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:errorMessage preferredStyle:UIAlertControllerStyleAlert];[controller addAction:[UIAlertAction actionWithTitle:actionMessage style:UIAlertActionStyleDefault handler:nil]];[baseController presentViewController:controller animated:YES completion:nil];});}while(0);
+#define SHOW_ERROR_ALERT_FOR(baseController) SHOW_ALERT_FOR(@"error", error.localizedDescription, @"ok", baseController)
+#define SHOW_ALERT(title,errorMessage,actionMessage) SHOW_ALERT_FOR(title,errorMessage,actionMessage,self);
+#define SHOW_ERROR_ALERT SHOW_ALERT(@"error", error.localizedDescription, @"ok")
+
+//获取屏幕宽度
+#define SCREEN_WIDTH MIN([UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)
+//获取屏幕高度
+#define SCREEN_HEIGHT MAX([UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width)
+#define k1px (1 / [UIScreen mainScreen].scale)
+
+// 使用 iPhone X 的尺寸来进行设计的，所以以此为标准尺寸
+#define DESIGN_WIDTH 375
+#define DESIGN_HEIGHT 812
+#define kViewWidthRate      SCREEN_WIDTH/DESIGN_WIDTH
+#define kViewHeightRate      SCREEN_HEIGHT/DESIGN_HEIGHT
+
+#define RGBA_COLOR(redValue, greenValue, blueValue, alphaValue) [UIColor colorWithRed:redValue/255.0 green:greenValue/255.0 blue:blueValue/255.0 alpha:alphaValue/100.0]
+
+#define kFUSceneEffectCodes @[@"douyin_01", @"douyin_02", @"music_filter_1", @"music_filter_2", @"music_filter_3", @"music_filter_4", @"music_filter_5", @"music_filter_6", @"music_filter_7"]
+#define kFUSceneEffectColors @[[UIColor redColor], [UIColor blueColor], [UIColor cyanColor], [UIColor yellowColor], [UIColor magentaColor], [UIColor orangeColor], [UIColor purpleColor], [UIColor brownColor], [UIColor lightGrayColor]]
+#define kTuSDKSceneEffectCodes @[@"LiveShake01",@"LiveMegrim01",@"EdgeMagic01",@"LiveFancy01_1",@"LiveSoulOut01",@"LiveSignal01",@"LiveLightning01",@"LiveXRay01",@"LiveHeartbeat01", @"LiveMirrorImage01", @"LiveSlosh01", @"LiveOldTV01"]
+#define kTuSDKSceneEffectColors @[lsqRGBA(250, 118, 82, 0.7), lsqRGBA(244, 161, 26, 0.7), lsqRGBA(255, 253, 80, 0.7),lsqRGBA(91, 242, 84, 0.7), lsqRGBA(22, 206, 252, 0.7), lsqRGBA(110, 160, 242, 0.7), lsqRGBA(110, 160, 17, 0.7), lsqRGBA(255, 155, 224, 0.7), lsqRGBA(110, 17, 242, 0.7), lsqRGBA(153, 225, 17, 0.7), lsqRGBA(255, 239, 255, 0.7), lsqRGBA(110, 254, 238, 0.7)]
+
+// 粒子特效code
+#define kVideoParticleCodes @[[NSNull null], @"snow01", @"Love", @"Bubbles", @"Music", @"Star", @"Surprise", @"Flower", @"Magic", @"Money", @"Burning", @"Fireball"]
+// 粒子特效颜色
+#define kVideoPaticleColors @[lsqRGBA(0, 0, 0, 0), lsqRGBA(255, 255, 255, 0.7), lsqRGBA(254, 15, 15, 0.7), lsqRGBA(170, 170, 170, 0.7), lsqRGBA(54, 101, 255, 0.7), lsqRGBA(95, 250, 197, 0.7), lsqRGBA(148, 123, 255, 0.7), lsqRGBA(255, 155, 190, 0.7), lsqRGBA(100, 253, 253, 0.7), lsqRGBA(252, 231, 123, 0.7), lsqRGBA(255, 145, 91, 0.7), lsqRGBA(255, 203, 91, 0.7)]
+
+#define kMagicEffectSizeUpdatedNotification @"kMagicEffectSizeUpdatedNotification"
+#define kMagicEffectColorUpdatedNotification @"kMagicEffectColorUpdatedNotification"
+#define kMagicEffectBeginEditNotification @"kMagicEffectBeginEditNotification"
+#define kMagicEffectEndEditNotification @"kMagicEffectEndEditNotification"
+#define kMagicEffectBeginEditParamNotification @"kMagicEffectBeginEditParamNotification"
+#define kMagicEffectEndEditParamNotification @"kMagicEffectEndEditParamNotification"
+
+#define kPreviewTouchesBegan @"kPreviewTouchesBegan"
+#define kPreviewTouchesMoved @"kPreviewTouchesMoved"
+#define kPreviewTouchesEnded @"kPreviewTouchesEnded"
+#define kPreviewTouchesCancelled @"kPreviewTouchesCancelled"
+
+#define kShowHintNotification @"kShowHintNotification"
+
+#define kBeginEditingInBottomViewNotification @"kBeginEditingInBottomViewNotification"
+#define kEndEditingInBottomViewNotification @"kEndEditingInBottomViewNotification"
+
+#endif /* MovieousDemo_pch */
