@@ -299,13 +299,6 @@
 		8369D3AA21B50E8700F24AEF /* PhotoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D15A21B50E8700F24AEF /* PhotoButton.m */; };
 		8369D3AB21B50E8700F24AEF /* CircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D15B21B50E8700F24AEF /* CircleProgressView.m */; };
 		8369D3AC21B50E8700F24AEF /* FUManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D15D21B50E8700F24AEF /* FUManager.m */; };
-		8369D3AD21B50E8700F24AEF /* release_note.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16021B50E8700F24AEF /* release_note.txt */; };
-		8369D3AE21B50E8700F24AEF /* libnama.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D16121B50E8700F24AEF /* libnama.a */; };
-		8369D3AF21B50E8700F24AEF /* v3.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16321B50E8700F24AEF /* v3.bundle */; };
-		8369D3B021B50E8700F24AEF /* ardata_ex.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16421B50E8700F24AEF /* ardata_ex.bundle */; };
-		8369D3B121B50E8700F24AEF /* fxaa.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16521B50E8700F24AEF /* fxaa.bundle */; };
-		8369D3B221B50E8700F24AEF /* anim_model.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16621B50E8700F24AEF /* anim_model.bundle */; };
-		8369D3B321B50E8700F24AEF /* face_beautification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16721B50E8700F24AEF /* face_beautification.bundle */; };
 		8369D3B421B50E8700F24AEF /* TuSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16C21B50E8700F24AEF /* TuSDK.bundle */; };
 		8369D3B521B50E8700F24AEF /* style_default_btn_switch@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8369D16F21B50E8700F24AEF /* style_default_btn_switch@3x.png */; };
 		8369D3B621B50E8700F24AEF /* style_default_1.6.0_filter_btn_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8369D17021B50E8700F24AEF /* style_default_1.6.0_filter_btn_default@2x.png */; };
@@ -1015,15 +1008,6 @@
 		8369D15C21B50E8700F24AEF /* FUMusicPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUMusicPlayer.h; sourceTree = "<group>"; };
 		8369D15D21B50E8700F24AEF /* FUManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUManager.m; sourceTree = "<group>"; };
 		8369D15E21B50E8700F24AEF /* FUImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUImageHelper.h; sourceTree = "<group>"; };
-		8369D16021B50E8700F24AEF /* release_note.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_note.txt; sourceTree = "<group>"; };
-		8369D16121B50E8700F24AEF /* libnama.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libnama.a; sourceTree = "<group>"; };
-		8369D16321B50E8700F24AEF /* v3.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = v3.bundle; sourceTree = "<group>"; };
-		8369D16421B50E8700F24AEF /* ardata_ex.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = ardata_ex.bundle; sourceTree = "<group>"; };
-		8369D16521B50E8700F24AEF /* fxaa.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = fxaa.bundle; sourceTree = "<group>"; };
-		8369D16621B50E8700F24AEF /* anim_model.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = anim_model.bundle; sourceTree = "<group>"; };
-		8369D16721B50E8700F24AEF /* face_beautification.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; path = face_beautification.bundle; sourceTree = "<group>"; };
-		8369D16921B50E8700F24AEF /* funama.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = funama.h; sourceTree = "<group>"; };
-		8369D16A21B50E8700F24AEF /* FURenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FURenderer.h; sourceTree = "<group>"; };
 		8369D16C21B50E8700F24AEF /* TuSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TuSDK.bundle; sourceTree = "<group>"; };
 		8369D16D21B50E8700F24AEF /* TuSDKFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TuSDKFramework.h; sourceTree = "<group>"; };
 		8369D16F21B50E8700F24AEF /* style_default_btn_switch@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "style_default_btn_switch@3x.png"; sourceTree = "<group>"; };
@@ -1354,7 +1338,6 @@
 				8369D4D621B50E8700F24AEF /* TuSDKVideo.framework in Frameworks */,
 				8369D2D521B50E8700F24AEF /* libst_mobile_ios.a in Frameworks */,
 				8369D2D621B50E8700F24AEF /* libst_mobile_sim.a in Frameworks */,
-				8369D3AE21B50E8700F24AEF /* libnama.a in Frameworks */,
 				8369D4D921B50E8700F24AEF /* GPUImage.framework in Frameworks */,
 				713A7C04E2FD3AD393759E84 /* Pods_MovieousDemo.framework in Frameworks */,
 				8369D4D721B50E8700F24AEF /* TuSDKFace.framework in Frameworks */,
@@ -1731,7 +1714,6 @@
 				8369D06621B50E8600F24AEF /* View */,
 				8369D07A21B50E8600F24AEF /* items */,
 				8369D15421B50E8700F24AEF /* Tool */,
-				8369D15F21B50E8700F24AEF /* FaceUnity-SDK-iOS */,
 			);
 			path = Faceunity;
 			sourceTree = "<group>";
@@ -2134,38 +2116,6 @@
 				8369D15E21B50E8700F24AEF /* FUImageHelper.h */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		8369D15F21B50E8700F24AEF /* FaceUnity-SDK-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				8369D16021B50E8700F24AEF /* release_note.txt */,
-				8369D16121B50E8700F24AEF /* libnama.a */,
-				8369D16221B50E8700F24AEF /* Resources */,
-				8369D16821B50E8700F24AEF /* Headers */,
-			);
-			path = "FaceUnity-SDK-iOS";
-			sourceTree = "<group>";
-		};
-		8369D16221B50E8700F24AEF /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8369D16321B50E8700F24AEF /* v3.bundle */,
-				8369D16421B50E8700F24AEF /* ardata_ex.bundle */,
-				8369D16521B50E8700F24AEF /* fxaa.bundle */,
-				8369D16621B50E8700F24AEF /* anim_model.bundle */,
-				8369D16721B50E8700F24AEF /* face_beautification.bundle */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		8369D16821B50E8700F24AEF /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				8369D16921B50E8700F24AEF /* funama.h */,
-				8369D16A21B50E8700F24AEF /* FURenderer.h */,
-			);
-			path = Headers;
 			sourceTree = "<group>";
 		};
 		8369D16B21B50E8700F24AEF /* TuSDK */ = {
@@ -2925,7 +2875,6 @@
 				8369D37021B50E8700F24AEF /* future_warrior.png in Resources */,
 				8369D37121B50E8700F24AEF /* luhantongkuan_ztt_fu.png in Resources */,
 				8369D49921B50E8700F24AEF /* style_default_1.11_homepage_edit_icon@2x.png in Resources */,
-				8369D3B021B50E8700F24AEF /* ardata_ex.bundle in Resources */,
 				8369D4B421B50E8700F24AEF /* lsq_edit_text_style_icon_alignmentCenter_default@2x.png in Resources */,
 				8369D34021B50E8700F24AEF /* 美瞳08.bundle in Resources */,
 				8369D3E221B50E8700F24AEF /* style_default_1.8.0_homepage_tools_icon@3x.png in Resources */,
@@ -2993,7 +2942,6 @@
 				8369D35221B50E8700F24AEF /* 眼线06.bundle in Resources */,
 				8369D32F21B50E8700F24AEF /* mask_linzhiling.bundle in Resources */,
 				8369D40D21B50E8700F24AEF /* style_default_1.7.1_btn_clearFilter@2x.png in Resources */,
-				8369D3AD21B50E8700F24AEF /* release_note.txt in Resources */,
 				8369D3BF21B50E8700F24AEF /* tab_ic_text_normal@2x.png in Resources */,
 				8369D4E221B50E8700F24AEF /* fullScreenSticker.json in Resources */,
 				8369D38F21B50E8700F24AEF /* music_filter_6.png in Resources */,
@@ -3023,7 +2971,6 @@
 				8369D41B21B50E8700F24AEF /* lsq_filter_thumb_timber.jpg in Resources */,
 				8369D3EC21B50E8700F24AEF /* style_default_btn_finish_unselected@3x.png in Resources */,
 				8369D3F821B50E8700F24AEF /* lsq_edit_text_style_icon_leftToRight_selected@2x.png in Resources */,
-				8369D3AF21B50E8700F24AEF /* v3.bundle in Resources */,
 				8369D32321B50E8700F24AEF /* baozi.bundle in Resources */,
 				8369D44B21B50E8700F24AEF /* lsq_filter_thumb_Olympus_1.jpg in Resources */,
 				8369D4B821B50E8700F24AEF /* style_default_1.7.0_cancel@3x.png in Resources */,
@@ -3054,7 +3001,6 @@
 				8369D2F821B50E8700F24AEF /* kuloutou_Animoji.bundle in Resources */,
 				8369D45821B50E8700F24AEF /* style_default_1.7.1_btn_filter_selected@2x.png in Resources */,
 				8369D38421B50E8700F24AEF /* facewarp3.png in Resources */,
-				8369D3B321B50E8700F24AEF /* face_beautification.bundle in Resources */,
 				8369D3F121B50E8700F24AEF /* style_default_btn_finish_w@3x.png in Resources */,
 				8369D4E121B50E8700F24AEF /* squareSticker.json in Resources */,
 				8369D36821B50E8700F24AEF /* 腮红03.bundle in Resources */,
@@ -3132,13 +3078,11 @@
 				8369D4D221B50E8700F24AEF /* style_default_2.0_flash_closed@3x.png in Resources */,
 				8369D40E21B50E8700F24AEF /* video_style_default_btn_sticker@2x.png in Resources */,
 				8369D3CC21B50E8700F24AEF /* style_default_2.0_moviEditor_stopPreview@2x.png in Resources */,
-				8369D3B121B50E8700F24AEF /* fxaa.bundle in Resources */,
 				8369D34A21B50E8700F24AEF /* 眼影03.bundle in Resources */,
 				8369D36A21B50E8700F24AEF /* 口红05.bundle in Resources */,
 				8369D35921B50E8700F24AEF /* 眉毛01.bundle in Resources */,
 				8369D39021B50E8700F24AEF /* music_filter_2.bundle in Resources */,
 				8369D47321B50E8700F24AEF /* style_default_1.5.0_btn_mv_bg@3x.jpg in Resources */,
-				8369D3B221B50E8700F24AEF /* anim_model.bundle in Resources */,
 				8369D31321B50E8700F24AEF /* ssd_thread_six.png in Resources */,
 				8369D3E721B50E8700F24AEF /* style_default_1.6.0_save_btn_default@2x.png in Resources */,
 				8369D38721B50E8700F24AEF /* facewarp4.bundle in Resources */,
