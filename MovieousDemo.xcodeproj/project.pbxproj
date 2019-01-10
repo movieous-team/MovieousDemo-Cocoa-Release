@@ -603,6 +603,7 @@
 		8369D4E121B50E8700F24AEF /* squareSticker.json in Resources */ = {isa = PBXBuildFile; fileRef = 8369D2AD21B50E8700F24AEF /* squareSticker.json */; };
 		8369D4E221B50E8700F24AEF /* fullScreenSticker.json in Resources */ = {isa = PBXBuildFile; fileRef = 8369D2AE21B50E8700F24AEF /* fullScreenSticker.json */; };
 		8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D4ED21B514CA00F24AEF /* Accelerate.framework */; };
+		83B98F5E21E7437E00056C23 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 83B98F5D21E7437E00056C23 /* SENSEME.lic */; };
 		83BE362621B51D0B00CC2F52 /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D07321B50E8600F24AEF /* FUAPIDemoBar.framework */; };
 		83BE362721B51D0B00CC2F52 /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D07321B50E8600F24AEF /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -1326,6 +1327,7 @@
 		8369D4E721B50F4700F24AEF /* MovieousDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieousDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8369D4E821B50F8E00F24AEF /* MovieousDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieousDemo.pch; sourceTree = "<group>"; };
 		8369D4ED21B514CA00F24AEF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		83B98F5D21E7437E00056C23 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		B3A4A17845F25B6D03E151C9 /* Pods_MovieousDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieousDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1577,6 +1579,7 @@
 		8369D02221B50E8600F24AEF /* license */ = {
 			isa = PBXGroup;
 			children = (
+				83B98F5D21E7437E00056C23 /* SENSEME.lic */,
 			);
 			path = license;
 			sourceTree = "<group>";
@@ -2808,6 +2811,7 @@
 				8369D42621B50E8700F24AEF /* edit_checkbox_sel@2x.png in Resources */,
 				8369D34721B50E8700F24AEF /* 美瞳01.bundle in Resources */,
 				8369D31E21B50E8700F24AEF /* tiger_huang_180718.png in Resources */,
+				83B98F5E21E7437E00056C23 /* SENSEME.lic in Resources */,
 				8369D2BF21B50E8700F24AEF /* new_sticker.bundle in Resources */,
 				8369D39421B50E8700F24AEF /* douyin.mp3 in Resources */,
 				8369D36321B50E8700F24AEF /* 腮红02.bundle in Resources */,

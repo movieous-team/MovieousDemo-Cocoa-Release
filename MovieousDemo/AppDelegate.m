@@ -25,8 +25,7 @@
      *
      *  @param appkey 应用秘钥 (请前往 https://tutucloud.com 申请秘钥)
      */
-#error 请填写您从 TuSDK 获取到的 AppKey
-    [TuSDK initSdkWithAppKey:@""];
+    [TuSDK initSdkWithAppKey:@"69c0c4ac41e36fb9-03-yzh1s1"];
     [MovieousShortVideo registerWithLicense:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBpZCI6InZpZGVvLm1vdmllb3VzLk1vdmllb3VzRGVtbyJ9.r2JE2BO7UYllkOmAEjx6PyyyvE12OdgSFFkn6GtrD-k"];
     return YES;
 }
