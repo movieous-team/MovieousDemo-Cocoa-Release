@@ -53,9 +53,6 @@
 		8369D2B221B50E8700F24AEF /* UFileSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01E21B50E8600F24AEF /* UFileSDK.swift */; };
 		8369D2B321B50E8700F24AEF /* MultipartSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01F21B50E8600F24AEF /* MultipartSession.swift */; };
 		8369D2B521B50E8700F24AEF /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03121B50E8600F24AEF /* PortraitFilters.bundle */; };
-		8369D2B621B50E8700F24AEF /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03221B50E8600F24AEF /* SceneryFilters.bundle */; };
-		8369D2B721B50E8700F24AEF /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03321B50E8600F24AEF /* StillLifeFilters.bundle */; };
-		8369D2B821B50E8700F24AEF /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03421B50E8600F24AEF /* DeliciousFoodFilters.bundle */; };
 		8369D2B921B50E8700F24AEF /* 2d_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03621B50E8600F24AEF /* 2d_sticker.bundle */; };
 		8369D2BA21B50E8700F24AEF /* particle_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03721B50E8600F24AEF /* particle_sticker.bundle */; };
 		8369D2BB21B50E8700F24AEF /* hand_gesture_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03821B50E8600F24AEF /* hand_gesture_sticker.bundle */; };
@@ -737,9 +734,6 @@
 		8369D02D21B50E8600F24AEF /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
 		8369D02E21B50E8600F24AEF /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
 		8369D03121B50E8600F24AEF /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
-		8369D03221B50E8600F24AEF /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
-		8369D03321B50E8600F24AEF /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
-		8369D03421B50E8600F24AEF /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
 		8369D03621B50E8600F24AEF /* 2d_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = 2d_sticker.bundle; sourceTree = "<group>"; };
 		8369D03721B50E8600F24AEF /* particle_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = particle_sticker.bundle; sourceTree = "<group>"; };
 		8369D03821B50E8600F24AEF /* hand_gesture_sticker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = hand_gesture_sticker.bundle; sourceTree = "<group>"; };
@@ -1611,9 +1605,6 @@
 			isa = PBXGroup;
 			children = (
 				8369D03121B50E8600F24AEF /* PortraitFilters.bundle */,
-				8369D03221B50E8600F24AEF /* SceneryFilters.bundle */,
-				8369D03321B50E8600F24AEF /* StillLifeFilters.bundle */,
-				8369D03421B50E8600F24AEF /* DeliciousFoodFilters.bundle */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -2609,7 +2600,6 @@
 				8369D45221B50E8700F24AEF /* style_default_btn_flash_on@3x.png in Resources */,
 				8369D49721B50E8700F24AEF /* style_default_btn_back_unselected@3x.png in Resources */,
 				8369D38621B50E8700F24AEF /* facewarp2.bundle in Resources */,
-				8369D2B821B50E8700F24AEF /* DeliciousFoodFilters.bundle in Resources */,
 				8369D2E721B50E8700F24AEF /* touhua_ztt_fu.png in Resources */,
 				8369D46521B50E8700F24AEF /* style_default_1.6.0_homepage_btn_normal@2x.png in Resources */,
 				8369D4B121B50E8700F24AEF /* style_default_edit_icon_text_color@2x.png in Resources */,
@@ -2623,7 +2613,6 @@
 				8369D2EB21B50E8700F24AEF /* hudie_lm_fu.png in Resources */,
 				8369D30021B50E8700F24AEF /* chaiquan_Animoji.png in Resources */,
 				8369D34F21B50E8700F24AEF /* 眼线03.bundle in Resources */,
-				8369D2B721B50E8700F24AEF /* StillLifeFilters.bundle in Resources */,
 				8369D46221B50E8700F24AEF /* style_default_1.11_btn_edit_recordSound_select@3x.png in Resources */,
 				8369D4C921B50E8700F24AEF /* style_default_btn_back_unselected@2x.png in Resources */,
 				8369D31221B50E8700F24AEF /* ssd_thread_cute.png in Resources */,
@@ -2698,7 +2687,6 @@
 				8369D3D421B50E8700F24AEF /* lsq_filter_thumb_Bubbles.jpg in Resources */,
 				8369D35621B50E8700F24AEF /* 眉毛02.bundle in Resources */,
 				8369D31B21B50E8700F24AEF /* xiongmao.bundle in Resources */,
-				8369D2B621B50E8700F24AEF /* SceneryFilters.bundle in Resources */,
 				8369D32721B50E8700F24AEF /* armesh_ex.bundle in Resources */,
 				8369D33821B50E8700F24AEF /* mask_tongliya.png in Resources */,
 				8369D3EE21B50E8700F24AEF /* lsq_filter_thumb_Fireball.jpg in Resources */,
