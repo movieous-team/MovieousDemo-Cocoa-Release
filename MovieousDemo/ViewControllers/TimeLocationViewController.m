@@ -126,13 +126,13 @@ CLLocationManagerDelegate
     UIImage *labelImage = [_timeLocationALabel convertToImage];
     _timeLocationALabel.frame = previeousFrame;
     _timeLocationALabel.font = previeousFont;
-    MSVImagePasterEffect *effect = [[MSVImagePasterEffect alloc] initWithImage:labelImage];
+    MSVImageStickerEffect *effect = [[MSVImageStickerEffect alloc] initWithImage:labelImage];
     effect.ID = @"TimeLocation";
     effect.destRect = CGRectMake(20, _editor.draft.videoSize.height - height - 20, width, height);
     NSError *error;
     NSMutableArray *effects = [NSMutableArray array];
     for (id obj in _editor.draft.effects) {
-        if ([obj isKindOfClass:MSVImagePasterEffect.class] && [((MSVImagePasterEffect *)obj).ID isEqualToString:@"TimeLocation"]) {
+        if ([obj isKindOfClass:MSVImageStickerEffect.class] && [((MSVImageStickerEffect *)obj).ID isEqualToString:@"TimeLocation"]) {
             continue;
         }
         [effects addObject:obj];
@@ -153,13 +153,13 @@ CLLocationManagerDelegate
     UIImage *labelImage = [_timeLocationBLabel convertToImage];
     _timeLocationBLabel.frame = previeousFrame;
     _timeLocationBLabel.font = previeousFont;
-    MSVImagePasterEffect *effect = [[MSVImagePasterEffect alloc] initWithImage:labelImage];
+    MSVImageStickerEffect *effect = [[MSVImageStickerEffect alloc] initWithImage:labelImage];
     effect.ID = @"TimeLocation";
     effect.destRect = CGRectMake(20, _editor.draft.videoSize.height - height - 20, width, height);
     NSError *error;
     NSMutableArray *effects = [NSMutableArray array];
     for (id obj in _editor.draft.effects) {
-        if ([obj isKindOfClass:MSVImagePasterEffect.class] && [((MSVImagePasterEffect *)obj).ID isEqualToString:@"TimeLocation"]) {
+        if ([obj isKindOfClass:MSVImageStickerEffect.class] && [((MSVImageStickerEffect *)obj).ID isEqualToString:@"TimeLocation"]) {
             continue;
         }
         [effects addObject:obj];
