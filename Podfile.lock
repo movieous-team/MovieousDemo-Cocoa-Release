@@ -47,6 +47,7 @@ PODS:
   - SDWebImage/WebP (4.4.4):
     - libwebp (~> 0.5)
     - SDWebImage/Core
+  - UFileSDK (3.0.3)
 
 DEPENDENCIES:
   - AFNetworking
@@ -54,6 +55,7 @@ DEPENDENCIES:
   - MovieousShortVideo
   - Nama (= 5.6.1)
   - SDWebImage/WebP
+  - UFileSDK
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -64,6 +66,7 @@ SPEC REPOS:
     - MovieousShortVideo
     - Nama
     - SDWebImage
+    - UFileSDK
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -73,7 +76,8 @@ SPEC CHECKSUMS:
   MovieousShortVideo: 310c723c15159c056f62f202c4774309c2a5c2ee
   Nama: 87ac5b70f48042ebc57c4cc7cdb2184c12f00b6e
   SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
+  UFileSDK: b6163f73a60e0e8b53d07bfc7f645d5fdcefa2b9
 
-PODFILE CHECKSUM: 066be00918ca00f927f3b4c4fe87a4fc1d6e0923
+PODFILE CHECKSUM: eaa9056c1a63f8a76f16c89d43b56dbc0d444d92
 
 COCOAPODS: 1.5.3

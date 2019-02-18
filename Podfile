@@ -7,4 +7,5 @@ target 'MovieousDemo' do
     pod 'MovieousShortVideo'
     pod 'SDWebImage/WebP'
     pod 'AFNetworking'
+    pod 'UFileSDK'
 end

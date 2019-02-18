@@ -12,7 +12,7 @@ import MovieousShortVideo
 class UploaderViewController: UIViewController {
     @objc var draft: MSVDraft?
     var exporter: MSVVideoExporter?
-    let ufileSDK = UFileSDK(publicKey: "TOKEN_218481a2-1fb0-45d4-9905-fcbd999096de", privateKey: "b253bb25-3596-4372-9c19-c97d10bce448", bucket: "twsy")
+    let fileClient = UFFileClient.instanceFileClient(with: UFConfig.instanceConfig(withPrivateToken: "b253bb25-3596-4372-9c19-c97d10bce448", publicToken: "TOKEN_218481a2-1fb0-45d4-9905-fcbd999096de", bucket: "twsy", fileOperateEncryptServer: nil, fileAddressEncryptServer: nil, proxySuffix: "cn-bj.ufileos.com"))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,14 @@ class UploaderViewController: UIViewController {
         weak var wSelf = self
         exporter!.completionHandler = {(URL: URL) -> Void in
             if let strongSelf = wSelf {
-                strongSelf.ufileSDK.multipartUpload(URL: URL, contentType:"video/mpeg4", progressHandler: { (progress: Double) in
+                strongSelf.fileClient.upload(withKeyName: URL.lastPathComponent, filePath: URL.path, mimeType: "video/mpeg4", progress: { (progress: Progress) in
                     print(progress)
-                }, completionHandler: { (fileName: String) in
-                    strongSelf.showAlert(title: "上传完成", message: fileName, actionMessage: "好的")
-                }, failureHandler: { (error: Error) in
-                    strongSelf.showUcloudError(error: error)
+                }, uploadHandler: { (error: UFError?, response: UFUploadResponse?) in
+                    if let e = error {
+                        strongSelf.showUcloudError(error: e.error)
+                    } else {
+                        strongSelf.showAlert(title: "上传完成", message: URL.lastPathComponent, actionMessage: "好的")
+                    }
                 })
             }
         }

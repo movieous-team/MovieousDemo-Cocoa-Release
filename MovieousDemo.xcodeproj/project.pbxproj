@@ -47,11 +47,6 @@
 		8369D01121B50E2D00F24AEF /* MSVEditor+Extentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D00321B50E2D00F24AEF /* MSVEditor+Extentions.m */; };
 		8369D01221B50E2D00F24AEF /* ShortVideoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D00421B50E2D00F24AEF /* ShortVideoFilter.m */; };
 		8369D01421B50E3900F24AEF /* BackgroundMusics.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D01321B50E3900F24AEF /* BackgroundMusics.bundle */; };
-		8369D2AF21B50E8700F24AEF /* UFileAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01821B50E8600F24AEF /* UFileAPI.m */; };
-		8369D2B021B50E8700F24AEF /* UFileAPIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01A21B50E8600F24AEF /* UFileAPIUtils.m */; };
-		8369D2B121B50E8700F24AEF /* UFileHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01B21B50E8600F24AEF /* UFileHttpManager.m */; };
-		8369D2B221B50E8700F24AEF /* UFileSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01E21B50E8600F24AEF /* UFileSDK.swift */; };
-		8369D2B321B50E8700F24AEF /* MultipartSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8369D01F21B50E8600F24AEF /* MultipartSession.swift */; };
 		8369D2B521B50E8700F24AEF /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03121B50E8600F24AEF /* PortraitFilters.bundle */; };
 		8369D2B921B50E8700F24AEF /* 2d_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03621B50E8600F24AEF /* 2d_sticker.bundle */; };
 		8369D2BA21B50E8700F24AEF /* particle_sticker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8369D03721B50E8600F24AEF /* particle_sticker.bundle */; };
@@ -715,15 +710,6 @@
 		8369D00321B50E2D00F24AEF /* MSVEditor+Extentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MSVEditor+Extentions.m"; sourceTree = "<group>"; };
 		8369D00421B50E2D00F24AEF /* ShortVideoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShortVideoFilter.m; sourceTree = "<group>"; };
 		8369D01321B50E3900F24AEF /* BackgroundMusics.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BackgroundMusics.bundle; sourceTree = "<group>"; };
-		8369D01821B50E8600F24AEF /* UFileAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFileAPI.m; sourceTree = "<group>"; };
-		8369D01921B50E8600F24AEF /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		8369D01A21B50E8600F24AEF /* UFileAPIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFileAPIUtils.m; sourceTree = "<group>"; };
-		8369D01B21B50E8600F24AEF /* UFileHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UFileHttpManager.m; sourceTree = "<group>"; };
-		8369D01C21B50E8600F24AEF /* UFileAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFileAPI.h; sourceTree = "<group>"; };
-		8369D01D21B50E8600F24AEF /* UFileAPIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFileAPIUtils.h; sourceTree = "<group>"; };
-		8369D01E21B50E8600F24AEF /* UFileSDK.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFileSDK.swift; sourceTree = "<group>"; };
-		8369D01F21B50E8600F24AEF /* MultipartSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartSession.swift; sourceTree = "<group>"; };
-		8369D02021B50E8600F24AEF /* UFileHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UFileHttpManager.h; sourceTree = "<group>"; };
 		8369D02521B50E8600F24AEF /* st_mobile_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_common.h; sourceTree = "<group>"; };
 		8369D02621B50E8600F24AEF /* st_mobile_sticker_module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_module.h; sourceTree = "<group>"; };
 		8369D02721B50E8600F24AEF /* st_mobile_beautify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_beautify.h; sourceTree = "<group>"; };
@@ -1522,36 +1508,11 @@
 		8369D01521B50E8600F24AEF /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				8369D01621B50E8600F24AEF /* UCloud */,
 				8369D02121B50E8600F24AEF /* SenseTime */,
 				8369D06321B50E8600F24AEF /* Faceunity */,
 				8369D16B21B50E8700F24AEF /* TuSDK */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		8369D01621B50E8600F24AEF /* UCloud */ = {
-			isa = PBXGroup;
-			children = (
-				8369D01721B50E8600F24AEF /* ucloud-ufile-sdk */,
-			);
-			path = UCloud;
-			sourceTree = "<group>";
-		};
-		8369D01721B50E8600F24AEF /* ucloud-ufile-sdk */ = {
-			isa = PBXGroup;
-			children = (
-				8369D01821B50E8600F24AEF /* UFileAPI.m */,
-				8369D01921B50E8600F24AEF /* version.h */,
-				8369D01A21B50E8600F24AEF /* UFileAPIUtils.m */,
-				8369D01B21B50E8600F24AEF /* UFileHttpManager.m */,
-				8369D01C21B50E8600F24AEF /* UFileAPI.h */,
-				8369D01D21B50E8600F24AEF /* UFileAPIUtils.h */,
-				8369D01E21B50E8600F24AEF /* UFileSDK.swift */,
-				8369D01F21B50E8600F24AEF /* MultipartSession.swift */,
-				8369D02021B50E8600F24AEF /* UFileHttpManager.h */,
-			);
-			path = "ucloud-ufile-sdk";
 			sourceTree = "<group>";
 		};
 		8369D02121B50E8600F24AEF /* SenseTime */ = {
@@ -3165,6 +3126,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/UFileSDK/UFileSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/libwebp/libwebp.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -3173,6 +3135,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UFileSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libwebp.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3239,15 +3202,12 @@
 				8369CF7621B50C7000F24AEF /* AppDelegate.m in Sources */,
 				8369D4DF21B50E8700F24AEF /* FilterItemView.m in Sources */,
 				8369CFDF21B50E2100F24AEF /* ParticleEffectViewController.m in Sources */,
-				8369D2AF21B50E8700F24AEF /* UFileAPI.m in Sources */,
-				8369D2B221B50E8700F24AEF /* UFileSDK.swift in Sources */,
 				8369D00821B50E2D00F24AEF /* EditorPanel.m in Sources */,
 				8369D00B21B50E2D00F24AEF /* UINavigationController+Movieous.m in Sources */,
 				8369CFD821B50E2100F24AEF /* TrimViewController.m in Sources */,
 				8369D2C821B50E8700F24AEF /* STCommonObjectView.m in Sources */,
 				8369D2E121B50E8700F24AEF /* FUMakeupSlider.m in Sources */,
 				8369D01121B50E2D00F24AEF /* MSVEditor+Extentions.m in Sources */,
-				8369D2B121B50E8700F24AEF /* UFileHttpManager.m in Sources */,
 				8369CFD521B50E2100F24AEF /* UploaderViewController.swift in Sources */,
 				8369D2C321B50E8700F24AEF /* STTriggerView.m in Sources */,
 				8369D01021B50E2D00F24AEF /* ShortVideoMetadata.m in Sources */,
@@ -3260,7 +3220,6 @@
 				8369D2DA21B50E8700F24AEF /* FUHairView.m in Sources */,
 				8369D00521B50E2D00F24AEF /* GradientView.m in Sources */,
 				8369CFDD21B50E2100F24AEF /* LoginViewController.m in Sources */,
-				8369D2B321B50E8700F24AEF /* MultipartSession.swift in Sources */,
 				8369D3A921B50E8700F24AEF /* FUImageHelper.m in Sources */,
 				8369D00921B50E2D00F24AEF /* NSLayoutConstraint+Movieous.m in Sources */,
 				8369D2C221B50E8700F24AEF /* STCommonObjectContainerView.m in Sources */,
@@ -3282,7 +3241,6 @@
 				8369D00721B50E2D00F24AEF /* WordView.m in Sources */,
 				8369CFE121B50E2100F24AEF /* RecorderMusicViewController.m in Sources */,
 				8369CFDB21B50E2100F24AEF /* SplitCollectionViewController.m in Sources */,
-				8369D2B021B50E8700F24AEF /* UFileAPIUtils.m in Sources */,
 				8369CFE221B50E2100F24AEF /* SpecialEffectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
