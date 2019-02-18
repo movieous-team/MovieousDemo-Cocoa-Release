@@ -600,6 +600,7 @@
 		8369D4E121B50E8700F24AEF /* squareSticker.json in Resources */ = {isa = PBXBuildFile; fileRef = 8369D2AD21B50E8700F24AEF /* squareSticker.json */; };
 		8369D4E221B50E8700F24AEF /* fullScreenSticker.json in Resources */ = {isa = PBXBuildFile; fileRef = 8369D2AE21B50E8700F24AEF /* fullScreenSticker.json */; };
 		8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D4ED21B514CA00F24AEF /* Accelerate.framework */; };
+		837E2BBB221A569B00FCA86E /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 837E2BBA221A569B00FCA86E /* SENSEME.lic */; };
 		83BE362621B51D0B00CC2F52 /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D07321B50E8600F24AEF /* FUAPIDemoBar.framework */; };
 		83BE362721B51D0B00CC2F52 /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D07321B50E8600F24AEF /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -1320,6 +1321,7 @@
 		8369D4E721B50F4700F24AEF /* MovieousDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MovieousDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8369D4E821B50F8E00F24AEF /* MovieousDemo.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieousDemo.pch; sourceTree = "<group>"; };
 		8369D4ED21B514CA00F24AEF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		837E2BBA221A569B00FCA86E /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		B3A4A17845F25B6D03E151C9 /* Pods_MovieousDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieousDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1571,6 +1573,7 @@
 		8369D02221B50E8600F24AEF /* license */ = {
 			isa = PBXGroup;
 			children = (
+				837E2BBA221A569B00FCA86E /* SENSEME.lic */,
 			);
 			path = license;
 			sourceTree = "<group>";
@@ -2786,6 +2789,7 @@
 				8369D3EA21B50E8700F24AEF /* style_default_2.0_moviEditor_stopPreview@3x.png in Resources */,
 				8369D2E321B50E8700F24AEF /* touhua_ztt_fu.bundle in Resources */,
 				8369D2B521B50E8700F24AEF /* PortraitFilters.bundle in Resources */,
+				837E2BBB221A569B00FCA86E /* SENSEME.lic in Resources */,
 				8369D39E21B50E8700F24AEF /* gufeng_zh_fu.png in Resources */,
 				8369D44521B50E8700F24AEF /* video_style_default_btn_sticker@3x.png in Resources */,
 				8369D42B21B50E8700F24AEF /* style_default_btn_finish_selected@2x.png in Resources */,
