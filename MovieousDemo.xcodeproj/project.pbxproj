@@ -580,7 +580,6 @@
 		8369D4D221B50E8700F24AEF /* style_default_2.0_flash_closed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8369D28C21B50E8700F24AEF /* style_default_2.0_flash_closed@3x.png */; };
 		8369D4D321B50E8700F24AEF /* TuSDK.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8369D28E21B50E8700F24AEF /* TuSDK.strings */; };
 		8369D4D421B50E8700F24AEF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8369D29021B50E8700F24AEF /* Localizable.strings */; };
-		8369D4D521B50E8700F24AEF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8369D29221B50E8700F24AEF /* InfoPlist.strings */; };
 		8369D4D621B50E8700F24AEF /* TuSDKVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D29B21B50E8700F24AEF /* TuSDKVideo.framework */; };
 		8369D4D721B50E8700F24AEF /* TuSDKFace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D29C21B50E8700F24AEF /* TuSDKFace.framework */; };
 		8369D4D821B50E8700F24AEF /* libyuv.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D29D21B50E8700F24AEF /* libyuv.framework */; };
@@ -1279,13 +1278,10 @@
 		8369D28C21B50E8700F24AEF /* style_default_2.0_flash_closed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "style_default_2.0_flash_closed@3x.png"; sourceTree = "<group>"; };
 		8369D28F21B50E8700F24AEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TuSDK.strings; sourceTree = "<group>"; };
 		8369D29121B50E8700F24AEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8369D29321B50E8700F24AEF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8369D29421B50E8700F24AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/TuSDK.strings; sourceTree = "<group>"; };
 		8369D29521B50E8700F24AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8369D29621B50E8700F24AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8369D29721B50E8700F24AEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TuSDK.strings"; sourceTree = "<group>"; };
 		8369D29821B50E8700F24AEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		8369D29921B50E8700F24AEF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		8369D29B21B50E8700F24AEF /* TuSDKVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TuSDKVideo.framework; sourceTree = "<group>"; };
 		8369D29C21B50E8700F24AEF /* TuSDKFace.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TuSDKFace.framework; sourceTree = "<group>"; };
 		8369D29D21B50E8700F24AEF /* libyuv.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = libyuv.framework; sourceTree = "<group>"; };
@@ -2385,7 +2381,6 @@
 			children = (
 				8369D28E21B50E8700F24AEF /* TuSDK.strings */,
 				8369D29021B50E8700F24AEF /* Localizable.strings */,
-				8369D29221B50E8700F24AEF /* InfoPlist.strings */,
 			);
 			path = Localized;
 			sourceTree = "<group>";
@@ -2803,7 +2798,6 @@
 				8369D36921B50E8700F24AEF /* 腮红01.bundle in Resources */,
 				8369D37921B50E8700F24AEF /* luhantongkuan_ztt_fu.bundle in Resources */,
 				8369D42221B50E8700F24AEF /* style_default_1.6.0_homepage_bg@2x.png in Resources */,
-				8369D4D521B50E8700F24AEF /* InfoPlist.strings in Resources */,
 				8369D37821B50E8700F24AEF /* future_warrior.bundle in Resources */,
 				8369D2BC21B50E8700F24AEF /* avatar_sticker.bundle in Resources */,
 				8369D3E921B50E8700F24AEF /* style_default_2.0_edit_effect_back@3x.png in Resources */,
@@ -3311,16 +3305,6 @@
 				8369D29821B50E8700F24AEF /* zh-Hant */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		8369D29221B50E8700F24AEF /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8369D29321B50E8700F24AEF /* en */,
-				8369D29621B50E8700F24AEF /* Base */,
-				8369D29921B50E8700F24AEF /* zh-Hant */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

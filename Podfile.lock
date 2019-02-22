@@ -43,11 +43,11 @@ PODS:
   - MovieousShortVideo (1.0.4):
     - MovieousBase (= 1.0.0)
   - Nama (5.6.1)
-  - SDWebImage/Core (4.4.4)
-  - SDWebImage/WebP (4.4.4):
+  - SDWebImage/Core (4.4.5)
+  - SDWebImage/WebP (4.4.5):
     - libwebp (~> 0.5)
     - SDWebImage/Core
-  - UFileSDK (3.0.3)
+  - UFileSDK (3.0.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -75,8 +75,8 @@ SPEC CHECKSUMS:
   MovieousPlayer: 56867d833c7c0684a452a5459a49a45678093f4d
   MovieousShortVideo: 310c723c15159c056f62f202c4774309c2a5c2ee
   Nama: 87ac5b70f48042ebc57c4cc7cdb2184c12f00b6e
-  SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
-  UFileSDK: b6163f73a60e0e8b53d07bfc7f645d5fdcefa2b9
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  UFileSDK: 29f605c58e829e8da7f68055ff3d9f19099b1e60
 
 PODFILE CHECKSUM: eaa9056c1a63f8a76f16c89d43b56dbc0d444d92
 
