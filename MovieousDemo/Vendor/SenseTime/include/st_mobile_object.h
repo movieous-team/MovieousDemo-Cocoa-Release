@@ -1,4 +1,4 @@
-#ifndef INCLUDE_STMOBILE_ST_MOBILE_OBJECT_H_
+﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_OBJECT_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_OBJECT_H_
 
 #include "st_mobile_common.h"

@@ -880,7 +880,7 @@
         <!--Uploader View Controller-->
         <scene sceneID="Zcu-7m-9AC">
             <objects>
-                <viewController id="jpF-EJ-PFR" customClass="UploaderViewController" customModule="MovieousDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jpF-EJ-PFR" customClass="UploaderViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Cn-Hd-CwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -904,7 +904,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="uploadButtonPressed:" destination="jpF-EJ-PFR" eventType="touchUpInside" id="cIj-nr-99F"/>
+                                    <action selector="uploadButtonPressed:" destination="jpF-EJ-PFR" eventType="touchUpInside" id="O0U-dy-DMn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3162,7 +3162,7 @@
     </scenes>
     <resources>
         <image name="beauty" width="30" height="33"/>
-        <image name="close" width="18" height="18"/>
+        <image name="close" width="34" height="34"/>
         <image name="close_white" width="26" height="26"/>
         <image name="count_down" width="27" height="34"/>
         <image name="create" width="44" height="44"/>

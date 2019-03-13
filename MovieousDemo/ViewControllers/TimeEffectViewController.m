@@ -8,6 +8,7 @@
 
 #import "TimeEffectViewController.h"
 #import "MSVEditor+Extentions.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 #define SNAPSHOT_COUNT 10
 
@@ -269,9 +270,8 @@ UICollectionViewDelegate
     if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips[0].reverse == YES) {
         return;
     }
+    [SVProgressHUD showWithStatus:@"开始处理倒放"];
     [_editor pause];
-    UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [self addSubview:progressView];
     __weak typeof(self) wSelf = self;
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
         __strong typeof(wSelf) strongSelf = wSelf;
@@ -283,9 +283,7 @@ UICollectionViewDelegate
             MSVMainTrackClip *clip = strongSelf->_editor.draft.mainTrackClips[i];
             dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
             [clip setReverse:YES progressHandler:^(float progress) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [progressView setProgress:(i + progress) / clipCount animated:YES];
-                });
+                [SVProgressHUD showProgress:(i + progress) / clipCount status:@"正在处理倒放"];
             } completionHandler:^(NSError *reverseError) {
                 error = reverseError;
                 if (!error) {
@@ -296,6 +294,7 @@ UICollectionViewDelegate
                 dispatch_semaphore_signal(semaphore);
             }];
             dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            [SVProgressHUD dismiss];
             if (error) {
                 break;
             }

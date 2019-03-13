@@ -4,36 +4,55 @@
 #include "st_mobile_common.h"
 
 /// @brief 声音解压回调函数
+/// @param[in] handle 贴纸句柄
 /// @param[in] sound 声音内存数据
 /// @param[in] sound_name 声音文件名
 /// @param[in] length 声音数据长度
 typedef void(*st_mobile_sticker_load_sound_func) (void* handle, void* sound, const char* sound_name, int length);
 
 /// @brief 声音播放回调函数
+/// @param[in] handle 贴纸句柄
 /// @param[in] sound_name 声音文件名
 /// @param[in] loop 所需播放循环数, 0代表无限循环
 typedef void(*st_mobile_sticker_play_sound_func) (void* handle, const char* sound_name, int loop);
 
-/// @brief Sound pause callbac function.
+/// @brief 声音暂停播放回调函数.
+/// @param[in] handle 贴纸句柄
 /// @param[in] sound_name the name of the sound.
 typedef void(*st_mobile_sticker_pause_sound_func) (void* handle, const char* sound_name);
 
-/// @brief Sound resume callbac function.
-/// @param[in] sound_name the name of the sound.
-typedef void(*st_mobile_sticker_resume_sound_func) (void* handle, const char* sound_name);
-
 /// @brief 声音停止回调函数
+/// @param[in] handle 贴纸句柄
 /// @param[in] sound_name 声音文件名
 typedef void(*st_mobile_sticker_stop_sound_func) (void* handle, const char* sound_name);
 
 /// @brief 请求删除声音数据的回调函数
+/// @param[in] handle 贴纸句柄
 /// @param[in] sound_name 声音文件名
 typedef void(*st_mobile_sticker_unload_sound_func) (void* handle, const char* sound_name);
 
+/// @brief 贴纸part播放event回调
+/// @param[in] handle 贴纸句柄
+/// @param[in] module_name 贴纸part名字
+/// @param[in] module_id 贴纸part id
+/// @param[in] animation_event 贴纸part播放event, 见st_mobile_sticker_transition.h中的st_animation_state_type
+/// @param[in] current_frame 当前播放的帧数
+/// @param[in] position_id 贴纸对应的position id, 即st_mobile_human_action_t结果中不同类型结果中的id
+/// @param[in] position_type 贴纸对应的position种类, 见st_mobile_human_action_t中的动作类型
 typedef void(*st_animation_event_handle_func)(void* handle, const char* module_name, int module_id, int animation_event, int current_frame, int position_id, unsigned long long position_type);
 
+/// @brief 贴纸关键帧 event回调
+/// @param[in] handle 贴纸句柄
+/// @param[in] material_name 贴纸part名字
+/// @param[in] frame 触发的关键帧
 typedef void(*key_frame_event)(void* handle, const char* material_name, int frame);
 
+/// @brief 贴纸package播放event回调
+/// @param[in] handle 贴纸句柄
+/// @param[in] package_name 贴纸package名字
+/// @param[in] package_id 贴纸package id
+/// @param[in] event 贴纸package播放event, 见st_mobile_sticker_transition.h中的st_package_state_type
+/// @param[in] displayed_frame 当前package播放的帧数
 typedef void(*st_package_event_handle_func)(void* handle, const char* package_name, int packageID, int event, int displayed_frame);
 /// @brief 贴纸模块参数
 typedef enum {

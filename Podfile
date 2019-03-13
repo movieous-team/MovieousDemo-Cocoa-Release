@@ -8,4 +8,5 @@ target 'MovieousDemo' do
     pod 'SDWebImage/WebP'
     pod 'AFNetworking'
     pod 'UFileSDK'
+    pod 'SVProgressHUD'
 end

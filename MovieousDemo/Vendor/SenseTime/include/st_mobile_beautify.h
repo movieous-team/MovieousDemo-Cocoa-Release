@@ -29,8 +29,16 @@ typedef enum {
     ST_BEAUTIFY_SHRINK_FACE_RATIO = 6,      /// 瘦脸比例, [0,1.0], 默认值0.11, 0.0不做瘦脸效果
     ST_BEAUTIFY_SHRINK_JAW_RATIO = 7,       /// 小脸比例, [0,1.0], 默认值0.10, 0.0不做小脸效果
     ST_BEAUTIFY_CONTRAST_STRENGTH = 8,      /// 对比度强度, [0,1.0], 默认值0.05, 0.0不做对比度处理
-    ST_BEAUTIFY_SATURATION_STRENGTH = 9,    /// 饱和度强度, [0,1.0], 默认值0.50, 0.0不做饱和度处理
-	ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,        /// 去高光强度, [0,1.0], 默认值1, 0.0不做红润
+    ST_BEAUTIFY_SATURATION_STRENGTH = 9,    /// 饱和度强度, [0,1.0], 默认值0.10, 0.0不做饱和度处理
+    ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光
+
+    ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,     /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
+    ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,     /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
+    ST_BEAUTIFY_3D_CHIN_LENGTH_RATIO = 22,     /// 下巴长短比例，[-1, 1], 默认值为0.0，[-1, 0]为短下巴，[0, 1]为长下巴
+    ST_BEAUTIFY_3D_MOUTH_SIZE_RATIO = 23,      /// 嘴型比例，[-1, 1]，默认值为0.0，[-1, 0]为放大嘴巴，[0, 1]为缩小嘴巴
+    ST_BEAUTIFY_3D_PHILTRUM_LENGTH_RATIO = 24, /// 人中长短比例，[-1, 1], 默认值为0.0，[-1, 0]为长人中，[0, 1]为短人中
+    ST_BEAUTIFY_3D_HAIRLINE_HEIGHT_RATIO = 25, /// 发际线高低比例，[-1, 1], 默认值为0.0，[-1, 0]为低发际线，[0, 1]为高发际线
+    ST_BEAUTIFY_3D_THIN_FACE_SHAPE_RATIO = 26, /// 瘦脸型比例， [0,1.0], 默认值0.0, 0.0不做瘦脸型效果
 
     /// 以下美体系数默认为0.0，ST_BEAUTIFY_BODY_REF_HEAD模式
     /// 身体整体美化系数

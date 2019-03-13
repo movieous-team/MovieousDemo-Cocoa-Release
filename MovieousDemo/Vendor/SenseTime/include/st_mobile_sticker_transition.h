@@ -3,7 +3,7 @@
 
 #include "st_mobile_common.h"
 
-/// @brief 贴纸的播放状态类型
+/// @brief 贴纸part的播放状态类型
 typedef enum {
     ST_AS_PAUSED_FIRST_FRAME = 1,
     ST_AS_PLAYING = 2,
@@ -12,6 +12,7 @@ typedef enum {
     ST_AS_INVISIBLE = 5
 } st_animation_state_type;
 
+/// @brief 贴纸package的播放状态类型
 typedef enum {
 	ST_AS_BEGIN = 1,
 	ST_AS_END = 2

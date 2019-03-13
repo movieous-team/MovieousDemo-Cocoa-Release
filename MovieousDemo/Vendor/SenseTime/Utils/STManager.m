@@ -336,7 +336,7 @@ STEffectsMessageDelegate
     st_result_t iRet = ST_OK;
     
     //初始化检测模块句柄
-    NSString *strModelPath = [[NSBundle mainBundle] pathForResource:@"M_SenseME_Action_5.5.1_v2_origin" ofType:@"model"];
+    NSString *strModelPath = [[NSBundle mainBundle] pathForResource:@"M_SenseME_Action_5.5.1" ofType:@"model"];
     
     uint32_t config = ST_MOBILE_HUMAN_ACTION_DEFAULT_CONFIG_VIDEO;
     
@@ -352,8 +352,8 @@ STEffectsMessageDelegate
         [alert show];
     } else {
         
-        addSubModel(_hDetector, @"M_SenseME_Face_Extra_5.1.0");
-        addSubModel(_hDetector, @"M_SenseME_Iris_1.10.1");
+        addSubModel(_hDetector, @"M_SenseME_Face_Extra_5.6.0");
+        addSubModel(_hDetector, @"M_SenseME_Iris_1.11.1");
 #if TEST_BODY_BEAUTY
         addSubModel(_hDetector, @"M_SenseME_Body_Contour_73_1.2.0");
 #endif

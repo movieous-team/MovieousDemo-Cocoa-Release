@@ -43,6 +43,7 @@
 #define ST_MOBILE_BODY_ACTION5              0x1000000000    /// 动感超人 暂时不支持
 #define ST_MOBILE_DETECT_HAND_SKELETON_KEYPOINTS  0x20000000000    /// 检测单手关键点
 #define ST_MOBILE_DETECT_HAND_SKELETON_KEYPOINTS_3D  0x40000000000    /// 检测单手3d关键点
+#define ST_MOBILE_SEG_MULTI                 0x80000000000  ///< 检测多类分割
 
 #define ST_MOBILE_FACE_DETECT_FULL        0x0000003F  ///< 检测所有脸部动作
 #define ST_MOBILE_HAND_DETECT_FULL      0x010000FEFF00  ///< 检测所有手势
@@ -89,6 +90,8 @@ typedef struct st_mobile_human_action_t {
     float camera_motion_score;  ///< 摄像头运动状态置信度
     st_image_t * p_hair;        ///< 头发分割结果图片信息,前景为0,背景为255,边缘部分有模糊(0-255之间),输出图像大小可以调节
     float hair_score;           ///< 头发分割置信度
+    st_image_t *p_multi_segment;   ///< 多类分割结果图片信息,背景0，手1，头发2，眼镜3，躯干4，上臂5，下臂6，大腿7，小腿8，脚9，帽子10，随身物品11，脸12，上衣13，下装14，输出图像大小可以调节
+    float multi_segment_score;     ///< 多类分割置信度
 } st_mobile_human_action_t, *p_st_mobile_human_action_t;
 
 /// @defgroup st_mobile_human_action
@@ -114,6 +117,7 @@ typedef struct st_mobile_human_action_t {
 #define ST_MOBILE_ENABLE_TONGUE_DETECT          0x00010000  ///< 检测舌头关键点
 #define ST_MOBILE_ENABLE_HAND_SKELETON_KEYPOINTS   0X01000000  ///< 检测手势关节点
 #define ST_MOBILE_ENABLE_HAND_SKELETON_KEYPOINTS_3D    0X02000000  ///< 检测3d手势关节点
+#define ST_MOBILE_ENABLE_MULTI_SEGMENT         0x04000000  ///< 检测多类分割
 
 /// 检测模式
 #define ST_MOBILE_DETECT_MODE_VIDEO             0x00020000  ///< 视频检测
@@ -282,7 +286,11 @@ typedef enum {
 	ST_HUMAN_ACTION_PARAM_HAIR_PROCESS_INTERVAL = 19,
 	ST_HUMAN_ACTION_PARAM_CAM_FOVX = 20,  // 摄像头x方向上的视场角，单位为度，3d手势点需要
 	/// 设置是否根据肢体信息检测摄像头运动状态 (0: 不检测; 1: 检测. 默认检测肢体轮廓点时检测摄像头运动状态)
-	ST_HUMAN_ACTION_PARAM_DETECT_CAMERA_MOTION_WITH_BODY = 21
+	ST_HUMAN_ACTION_PARAM_DETECT_CAMERA_MOTION_WITH_BODY = 21,
+	/// 输出的multisegment结果中长边的长度.
+	ST_HUMAN_ACTION_PARAM_MULTI_SEGMENT_MAX_SIZE = 22,
+	/// 设置多类分割检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
+	ST_HUMAN_ACTION_PARAM_MULTI_SEGMENT_RESULT_ROTATE = 23
 } st_human_action_type;
 
 /// @brief 设置human_action参数

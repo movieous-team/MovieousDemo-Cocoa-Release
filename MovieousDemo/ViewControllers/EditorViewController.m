@@ -8,12 +8,12 @@
 
 #import "EditorViewController.h"
 #import <MovieousShortVideo/MovieousShortVideo.h>
-#import "MovieousDemo-Swift.h"
 #import "ShortVideoFilter.h"
 #import "MSVEditor+Extentions.h"
 #import "FUManager.h"
 #import "STManager.h"
 #import "MSVEditor+Extentions.h"
+#import "UploaderViewController.h"
 
 @interface PreviewContainerView : UIView
 

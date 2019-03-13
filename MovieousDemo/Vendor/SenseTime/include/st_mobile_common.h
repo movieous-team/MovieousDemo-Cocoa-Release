@@ -1,4 +1,4 @@
-#ifndef INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
+﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
 
 /// @defgroup st_common st common

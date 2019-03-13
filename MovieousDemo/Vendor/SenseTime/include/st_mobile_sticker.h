@@ -7,7 +7,7 @@
 
 /// 该文件中的API不保证线程安全.多线程调用时,需要确保安全调用.例如在 create handle 没有执行完就执行 process 可能造成crash;在 process 执行过程中调用 destroy 函数可能会造成crash.
 
-
+#define ST_STICKER_MODULE_NAME_MAX_LENGTH   127
 /// @defgroup st_mobile_sticker
 /// @brief sticker interfaces
 ///
@@ -109,29 +109,6 @@ st_mobile_sticker_add_package(
     const char* zip_path,
     int* package_id
 );
-
-
-/// @brief 预加载素材包 不支持
-/// @parma[in] handle 已初始化的贴纸句柄
-/// @param[in] zip_path 待添加的素材包文件/文件夹路径
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_sticker_preload_package(
-st_handle_t handle,
-const char* zip_path
-);
-/// @brief 预加载缓存中的素材包 不支持
-/// @parma[in] handle 已初始化的贴纸句柄
-/// @param[in] zip_buffer 待添加的素材包缓存起始地址
-/// @param[in] zip_buffer_size 素材包缓存大小
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-ST_SDK_API st_result_t
-st_mobile_sticker_preload_package_from_buffer(
-st_handle_t handle,
-const unsigned char* zip_buffer,
-int zip_buffer_size
-);
-
 
 /// @brief 添加缓存中的素材包
 /// @parma[in] handle 已初始化的贴纸句柄
@@ -275,15 +252,13 @@ st_mobile_sticker_process_and_output_texture(
     unsigned int textureid_dst,
     unsigned char* img_out, st_pixel_format fmt_out
 );
-
-#define ST_STICKER_MODULE_NAME_MAX_LENGTH   127
-
+/// @brief sticker module part定义
 typedef struct {
-	int id;
-	int package_id;
-	st_module_type type;
-	bool enabled;
-	char name[ST_STICKER_MODULE_NAME_MAX_LENGTH + 1];
+	int id;                                             ///< ID
+	int package_id;                                     ///< 所属package的对应ID
+	st_module_type type;                                ///< module种类
+	bool enabled;                                       ///< 目前是否被激活
+	char name[ST_STICKER_MODULE_NAME_MAX_LENGTH + 1];   ///< 名称
 } st_module_info;
 
 /// @brief 获取贴纸模块信息
@@ -600,17 +575,5 @@ st_mobile_sticker_get_param_array_size(
     int param_type,
     int* array_size
 );
-
-/// @brief 释放获取到的数组类型参数
-/// @parma[in] handle 已初始化的贴纸句柄
-/// @param[in] param_type 参数类型
-/// @param[in] array_data 数组地址
-/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
-//ST_SDK_API st_result_t
-//st_mobile_sticker_release_param_array(
-//    st_handle_t handle,
-//    int param_type,     // TODO: remove?
-//    void* array_data
-//);
 
 #endif  // INCLUDE_STMOBILE_ST_MOBILE_STICKER_H_
