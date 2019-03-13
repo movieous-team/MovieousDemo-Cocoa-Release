@@ -3117,7 +3117,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/UFileSDK/UFileSDK.framework",
@@ -3134,7 +3134,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BEC3772D7C649E0965B7A7FA /* [CP] Copy Pods Resources */ = {
@@ -3145,7 +3145,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-resources.sh",
 				"${PODS_ROOT}/Nama/FaceUnity-SDK-iOS/release_note.txt",
 				"${PODS_ROOT}/Nama/FaceUnity-SDK-iOS/Resources/anim_model.bundle",
 				"${PODS_ROOT}/Nama/FaceUnity-SDK-iOS/Resources/ardata_ex.bundle",
@@ -3166,7 +3166,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
