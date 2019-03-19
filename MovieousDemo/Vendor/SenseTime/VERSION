@@ -1,6 +1,6 @@
-core: 6.2.1
+core: 6.4.0
 platform: ios
-revision: dfa4a95b37f46dacd6349f829c15444d675e8361
+revision: 809d2b91e2cadddce1173082e389b23bffec49aa
 pkgtype: sticker_effects
 start_date: 
 end_date: 

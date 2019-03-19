@@ -38,10 +38,10 @@ PODS:
   - libwebp/utils (0.6.1):
     - libwebp/core
   - libwebp/webp (0.6.1)
-  - MovieousBase (1.0.0)
-  - MovieousPlayer (1.0.1)
-  - MovieousShortVideo (1.0.4):
-    - MovieousBase (= 1.0.0)
+  - MovieousBase (1.0.1)
+  - MovieousPlayer (1.0.2)
+  - MovieousShortVideo (2.0.0):
+    - MovieousBase (= 1.0.1)
   - Nama (5.6.1)
   - SDWebImage/Core (4.4.5)
   - SDWebImage/WebP (4.4.5):
@@ -51,13 +51,13 @@ PODS:
   - UFileSDK (3.0.4)
 
 DEPENDENCIES:
-  - AFNetworking
-  - MovieousPlayer
-  - MovieousShortVideo
+  - AFNetworking (= 3.2.1)
+  - MovieousPlayer (= 1.0.2)
+  - MovieousShortVideo (= 2.0.0)
   - Nama (= 5.6.1)
-  - SDWebImage/WebP
-  - SVProgressHUD
-  - UFileSDK
+  - SDWebImage/WebP (= 4.4.5)
+  - SVProgressHUD (= 2.2.5)
+  - UFileSDK (= 3.0.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -74,14 +74,14 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   libwebp: 0f01098c6c17175391af621b2f14150f3ca16e16
-  MovieousBase: 5d6ecb362b78d4785095af84ba9813cb51ed31c9
-  MovieousPlayer: 56867d833c7c0684a452a5459a49a45678093f4d
-  MovieousShortVideo: 310c723c15159c056f62f202c4774309c2a5c2ee
+  MovieousBase: 89794f000c136cc1429d96c9de58591f16999802
+  MovieousPlayer: ab5a1bd361e773632dec3e121f381e2cc3b03573
+  MovieousShortVideo: 25b11b0a2c3564281378da875bd9629cf3a0488d
   Nama: 87ac5b70f48042ebc57c4cc7cdb2184c12f00b6e
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UFileSDK: 29f605c58e829e8da7f68055ff3d9f19099b1e60
 
-PODFILE CHECKSUM: 0ffe29ed3969598418ace711119c650b05d53c55
+PODFILE CHECKSUM: 09ef69ef614ea750fa51c3c8c982c496cf7d6030
 
 COCOAPODS: 1.6.1

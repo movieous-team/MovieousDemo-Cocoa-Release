@@ -197,6 +197,11 @@ static FUManager *shareManager = NULL;
     return self;
 }
 
+- (void)initResources {
+    [self loadFilter];
+    [self setAsyncTrackFaceEnable:YES];
+}
+
 - (void)setAsyncTrackFaceEnable:(BOOL)enable{
     [FURenderer setAsyncTrackFaceEnable:enable];
 }
@@ -661,7 +666,7 @@ static FUManager *shareManager = NULL;
     [self setBeautyParams];
     
     /*Faceunity核心接口，将道具及美颜效果绘制到pixelBuffer中，执行完此函数后pixelBuffer即包含美颜及贴纸效果*/
-    CVPixelBufferRef buffer = [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int) flipx:YES];//flipx 参数设为YES可以使道具做水平方向的镜像翻转
+    CVPixelBufferRef buffer = [[FURenderer shareRenderer] renderToInternalPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int)];//flipx 参数设为YES可以使道具做水平方向的镜像翻转
     frameID += 1;
     [_renderLock unlock];
     return buffer;

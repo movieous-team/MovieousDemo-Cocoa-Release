@@ -25,12 +25,8 @@
                                     <constraint firstAttribute="width" constant="42" id="pN3-or-hjU"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVIEOUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-vE-LtS">
-                                <rect key="frame" x="158.66666666666666" y="160.33333333333334" width="168.99999999999997" height="38"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="169" id="nqQ-De-mZ5"/>
-                                    <constraint firstAttribute="height" constant="38" id="p4N-PW-v0r"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVIEOUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEn-vE-LtS">
+                                <rect key="frame" x="158.66666666666666" y="160.66666666666666" width="156.99999999999997" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,7 +35,7 @@
                                 <rect key="frame" x="133" y="778.33333333333337" width="148" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="GOW-EQ-jRO"/>
-                                    <constraint firstAttribute="width" constant="148" id="OK6-k0-t1L"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="148" id="OK6-k0-t1L"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.28630539774894714" green="0.29019007086753845" blue="0.29019632935523987" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -48,6 +44,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mEn-vE-LtS" secondAttribute="trailing" id="Cv0-br-Rgw"/>
                             <constraint firstItem="DZP-GT-oLL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="bottom" multiplier="0.2" id="EUF-In-hui"/>
                             <constraint firstItem="DZP-GT-oLL" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="centerX" constant="-111.5" id="I9j-MK-D9o"/>
                             <constraint firstItem="mEn-vE-LtS" firstAttribute="centerY" secondItem="DZP-GT-oLL" secondAttribute="centerY" id="PCT-KG-dO1"/>

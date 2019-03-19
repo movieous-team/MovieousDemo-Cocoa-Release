@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "FULiveModel.h"
 
-@class FULiveModel ;
 @interface FUManager : NSObject
 
 @property (nonatomic, assign)               BOOL enableGesture;         /**设置是否开启手势识别，默认未开启*/
@@ -61,6 +61,7 @@
 @property (nonatomic, strong) FULiveModel *currentModel ;
 
 + (FUManager *)shareManager;
+- (void)initResources;
 
 - (void)setAsyncTrackFaceEnable:(BOOL)enable;
 
