@@ -7,7 +7,7 @@
 //
 
 #import "MDImageStickerViewController.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 
 @interface MDStickerCell : UICollectionViewCell
 
@@ -55,15 +55,15 @@ UICollectionViewDataSource
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray *effects = [NSMutableArray arrayWithArray:MSVEditor.sharedInstance.draft.basicEffects];
+    NSMutableArray *effects = [NSMutableArray arrayWithArray:MDSharedCenter.sharedCenter.editor.draft.basicEffects];
     UIImage *image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", _bundlePath, _stickerNames[indexPath.row]]];
-    CGSize videoSize = MSVEditor.sharedInstance.draft.videoSize;
+    CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
     MSVImageStickerEffect *imageStickerEffect = [MSVImageStickerEffect imageStickerEffectWithImage:image];
     imageStickerEffect.ID = kImageStickerEffectID;
     imageStickerEffect.destRect = CGRectMake((videoSize.width - image.size.width) / 2, (videoSize.height - image.size.height) / 2, image.size.width, image.size.height);
     [effects addObject:imageStickerEffect];
     NSError *error;
-    [MSVEditor.sharedInstance.draft updateBasicEffects:effects error:&error];
+    [MDSharedCenter.sharedCenter.editor.draft updateBasicEffects:effects error:&error];
     if (error) {
         SHOW_ERROR_ALERT;
         return;

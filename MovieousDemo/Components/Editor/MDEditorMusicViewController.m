@@ -7,7 +7,7 @@
 //
 
 #import "MDEditorMusicViewController.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 
 @interface MDEditorMusicViewControllerCell : UICollectionViewCell
 
@@ -47,7 +47,7 @@ UICollectionViewDataSource
         NSLog(@"error: %@", error.localizedDescription);
         return;
     }
-    _editor = [MSVEditor sharedInstance];
+    _editor = MDSharedCenter.sharedCenter.editor;
     _pageControl.numberOfPages = [_collectionView numberOfItemsInSection:0] / 6 + 1;
     _selectedRow = 0;
     if (_editor.draft.audioClips.count > 0) {

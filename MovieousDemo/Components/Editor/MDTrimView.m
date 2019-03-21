@@ -7,7 +7,7 @@
 //
 
 #import "MDTrimView.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 
 #define SNAPSHOT_COUNT 10
 #define MIN_DURATION 3
@@ -71,7 +71,7 @@ UICollectionViewDelegate
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _editor = [MSVEditor sharedInstance];
+    _editor = MDSharedCenter.sharedCenter.editor;
     _duration = _editor.draft.duration;
     _snapshots = [NSMutableArray array];
     __weak typeof(self) wSelf = self;

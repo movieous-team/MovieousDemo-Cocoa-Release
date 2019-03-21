@@ -7,7 +7,7 @@
 //
 
 #import "MDParticleEffectViewController.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 #import "TuSDKManager.h"
 #import "FilterParamItemView.h"
 #import "TuSDKFramework.h"
@@ -256,7 +256,7 @@ UICollectionViewDataSource
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _editor = [MSVEditor sharedInstance];
+    _editor = MDSharedCenter.sharedCenter.editor;
     if (_editor.draft.timeRange.duration > 0) {
         _duration = _editor.draft.timeRange.duration;
     } else {

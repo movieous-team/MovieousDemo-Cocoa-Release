@@ -9,7 +9,7 @@
 #import "MDTimeLocationViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import "UIView+MDExtension.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 
 @interface MDTimeLocationViewController ()
 <
@@ -32,7 +32,7 @@ CLLocationManagerDelegate
     _locationManager.delegate = self;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;   //10米 精度
     _geoC = [CLGeocoder new];
-    _editor = [MSVEditor sharedInstance];
+    _editor = MDSharedCenter.sharedCenter.editor;
     [self startLocating];
 }
 

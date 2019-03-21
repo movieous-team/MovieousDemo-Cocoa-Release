@@ -7,7 +7,7 @@
 //
 
 #import "MDVolumeViewController.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 #include <mach/mach_time.h>
 
 @interface MDVolumeViewController ()
@@ -28,7 +28,7 @@
 }
 
 - (void)viewDidLoad {
-    _editor = MSVEditor.sharedInstance;
+    _editor = MDSharedCenter.sharedCenter.editor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

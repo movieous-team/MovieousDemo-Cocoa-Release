@@ -7,7 +7,7 @@
 //
 
 #import "MDTimeEffectViewController.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 #import <SVProgressHUD/SVProgressHUD.h>
 
 #define SNAPSHOT_COUNT 10
@@ -44,7 +44,7 @@ UICollectionViewDelegate
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _editor = [MSVEditor sharedInstance];
+    _editor = MDSharedCenter.sharedCenter.editor;
     if (_editor.draft.timeRange.duration > 0) {
         _duration = _editor.draft.timeRange.duration;
     } else {

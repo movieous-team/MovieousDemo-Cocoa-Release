@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		713A7C04E2FD3AD393759E84 /* Pods_MovieousDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A4A17845F25B6D03E151C9 /* Pods_MovieousDemo.framework */; };
+		83170568224337D100304FFD /* MDSharedCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83170567224337D000304FFD /* MDSharedCenter.m */; };
+		831705692243386600304FFD /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CF5FF62240DD59006D8D2B /* FUAPIDemoBar.framework */; };
+		8317056A2243386600304FFD /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83CF5FF62240DD59006D8D2B /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8317056D224338D300304FFD /* MDGraffitiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317056C224338D300304FFD /* MDGraffitiViewController.m */; };
 		8369CF8E21B50C7100F24AEF /* MovieousDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */; };
 		8369CF9921B50C7100F24AEF /* MovieousDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF9821B50C7100F24AEF /* MovieousDemoUITests.m */; };
 		8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D4ED21B514CA00F24AEF /* Accelerate.framework */; };
@@ -26,7 +30,6 @@
 		83CF627E2240DD5A006D8D2B /* MDEditorMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F482240DD58006D8D2B /* MDEditorMusicViewController.m */; };
 		83CF627F2240DD5A006D8D2B /* MDParticleEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F4A2240DD58006D8D2B /* MDParticleEffectViewController.m */; };
 		83CF62802240DD5A006D8D2B /* MDTrimView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F4C2240DD58006D8D2B /* MDTrimView.m */; };
-		83CF62812240DD5A006D8D2B /* MSVEditor+MDExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F4F2240DD58006D8D2B /* MSVEditor+MDExtentions.m */; };
 		83CF62822240DD5A006D8D2B /* MDSpecialEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F502240DD58006D8D2B /* MDSpecialEffectViewController.m */; };
 		83CF62832240DD5A006D8D2B /* MDVolumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F522240DD58006D8D2B /* MDVolumeViewController.m */; };
 		83CF62842240DD5A006D8D2B /* MDEditorPreviewContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F562240DD58006D8D2B /* MDEditorPreviewContainerView.m */; };
@@ -105,7 +108,6 @@
 		83CF62CE2240DD5A006D8D2B /* FUHairView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FF02240DD59006D8D2B /* FUHairView.m */; };
 		83CF62CF2240DD5A006D8D2B /* FULiveModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FF12240DD59006D8D2B /* FULiveModel.m */; };
 		83CF62D02240DD5A006D8D2B /* FULiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FF32240DD59006D8D2B /* FULiveCell.m */; };
-		83CF62D12240DD5A006D8D2B /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CF5FF62240DD59006D8D2B /* FUAPIDemoBar.framework */; };
 		83CF62D22240DD5A006D8D2B /* FUMakeUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FF72240DD59006D8D2B /* FUMakeUpView.m */; };
 		83CF62D32240DD5A006D8D2B /* FUItemsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FF92240DD59006D8D2B /* FUItemsViewCell.m */; };
 		83CF62D42240DD5A006D8D2B /* FULightingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5FFA2240DD59006D8D2B /* FULightingSlider.m */; };
@@ -685,6 +687,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8317056A2243386600304FFD /* FUAPIDemoBar.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -694,6 +697,10 @@
 /* Begin PBXFileReference section */
 		3774D06A5185747E2A9828FB /* Pods-MovieousDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieousDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		71ECB7F3EF66BDE3F65ADAA3 /* Pods-MovieousDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieousDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo.release.xcconfig"; sourceTree = "<group>"; };
+		83170566224337D000304FFD /* MDSharedCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSharedCenter.h; sourceTree = "<group>"; };
+		83170567224337D000304FFD /* MDSharedCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSharedCenter.m; sourceTree = "<group>"; };
+		8317056B224338D300304FFD /* MDGraffitiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGraffitiViewController.h; sourceTree = "<group>"; };
+		8317056C224338D300304FFD /* MDGraffitiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGraffitiViewController.m; sourceTree = "<group>"; };
 		8369CF7121B50C7000F24AEF /* MovieousDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieousDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8921B50C7100F24AEF /* MovieousDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieousDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieousDemoTests.m; sourceTree = "<group>"; };
@@ -734,7 +741,6 @@
 		83CF5F4C2240DD58006D8D2B /* MDTrimView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTrimView.m; sourceTree = "<group>"; };
 		83CF5F4D2240DD58006D8D2B /* MDEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditorViewController.h; sourceTree = "<group>"; };
 		83CF5F4E2240DD58006D8D2B /* MDTimeLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTimeLocationViewController.h; sourceTree = "<group>"; };
-		83CF5F4F2240DD58006D8D2B /* MSVEditor+MDExtentions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MSVEditor+MDExtentions.m"; sourceTree = "<group>"; };
 		83CF5F502240DD58006D8D2B /* MDSpecialEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSpecialEffectViewController.m; sourceTree = "<group>"; };
 		83CF5F512240DD58006D8D2B /* MDSubtitlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSubtitlesViewController.h; sourceTree = "<group>"; };
 		83CF5F522240DD58006D8D2B /* MDVolumeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDVolumeViewController.m; sourceTree = "<group>"; };
@@ -752,7 +758,6 @@
 		83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDShortVideoFilter.m; sourceTree = "<group>"; };
 		83CF5F5F2240DD58006D8D2B /* MDVolumeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVolumeViewController.h; sourceTree = "<group>"; };
 		83CF5F602240DD58006D8D2B /* MDSubtitlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSubtitlesViewController.m; sourceTree = "<group>"; };
-		83CF5F612240DD58006D8D2B /* MSVEditor+MDExtentions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSVEditor+MDExtentions.h"; sourceTree = "<group>"; };
 		83CF5F622240DD58006D8D2B /* MDSpecialEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectViewController.h; sourceTree = "<group>"; };
 		83CF5F632240DD58006D8D2B /* MDSceneEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSceneEffectViewController.h; sourceTree = "<group>"; };
 		83CF5F642240DD58006D8D2B /* MDEditorPreviewContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditorPreviewContainerView.h; sourceTree = "<group>"; };
@@ -1493,11 +1498,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				83CF64C42240DD5A006D8D2B /* TuSDKVideo.framework in Frameworks */,
-				83CF62D12240DD5A006D8D2B /* FUAPIDemoBar.framework in Frameworks */,
 				8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */,
 				713A7C04E2FD3AD393759E84 /* Pods_MovieousDemo.framework in Frameworks */,
 				83CF62C92240DD5A006D8D2B /* libst_mobile_sim.a in Frameworks */,
 				83CF64C72240DD5A006D8D2B /* GPUImage.framework in Frameworks */,
+				831705692243386600304FFD /* FUAPIDemoBar.framework in Frameworks */,
 				83CF62C82240DD5A006D8D2B /* libst_mobile_ios.a in Frameworks */,
 				83CF64C52240DD5A006D8D2B /* TuSDKFace.framework in Frameworks */,
 				83CF64C82240DD5A006D8D2B /* TuSDK.framework in Frameworks */,
@@ -1607,14 +1612,14 @@
 		83CF5F2F2240DD58006D8D2B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				83CF5F302240DD58006D8D2B /* MDFrameView.m */,
-				83CF5F312240DD58006D8D2B /* MDBeautifyFilterViewController.m */,
-				83CF5F322240DD58006D8D2B /* MDSTBeautyFilterPanel.m */,
 				83CF5F332240DD58006D8D2B /* MDAVPlayerView.h */,
-				83CF5F342240DD58006D8D2B /* MDFrameView.h */,
-				83CF5F352240DD58006D8D2B /* MDBeautifyFilterViewController.h */,
 				83CF5F362240DD58006D8D2B /* MDAVPlayerView.m */,
+				83CF5F352240DD58006D8D2B /* MDBeautifyFilterViewController.h */,
+				83CF5F312240DD58006D8D2B /* MDBeautifyFilterViewController.m */,
+				83CF5F342240DD58006D8D2B /* MDFrameView.h */,
+				83CF5F302240DD58006D8D2B /* MDFrameView.m */,
 				83CF5F372240DD58006D8D2B /* MDSTBeautyFilterPanel.h */,
+				83CF5F322240DD58006D8D2B /* MDSTBeautyFilterPanel.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1622,12 +1627,12 @@
 		83CF5F382240DD58006D8D2B /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				83CF5F392240DD58006D8D2B /* MDDynamicStickerView.m */,
-				83CF5F3A2240DD58006D8D2B /* MDRecorderViewController.m */,
-				83CF5F3B2240DD58006D8D2B /* MDProgressBar.m */,
 				83CF5F3C2240DD58006D8D2B /* MDDynamicStickerView.h */,
-				83CF5F3D2240DD58006D8D2B /* MDRecorderViewController.h */,
+				83CF5F392240DD58006D8D2B /* MDDynamicStickerView.m */,
 				83CF5F3E2240DD58006D8D2B /* MDProgressBar.h */,
+				83CF5F3B2240DD58006D8D2B /* MDProgressBar.m */,
+				83CF5F3D2240DD58006D8D2B /* MDRecorderViewController.h */,
+				83CF5F3A2240DD58006D8D2B /* MDRecorderViewController.m */,
 			);
 			path = Recorder;
 			sourceTree = "<group>";
@@ -1635,10 +1640,10 @@
 		83CF5F3F2240DD58006D8D2B /* Audience */ = {
 			isa = PBXGroup;
 			children = (
-				83CF5F402240DD58006D8D2B /* MDShortVideoMetadata.h */,
-				83CF5F412240DD58006D8D2B /* MDAudienceViewController.m */,
-				83CF5F422240DD58006D8D2B /* MDShortVideoMetadata.m */,
 				83CF5F432240DD58006D8D2B /* MDAudienceViewController.h */,
+				83CF5F412240DD58006D8D2B /* MDAudienceViewController.m */,
+				83CF5F402240DD58006D8D2B /* MDShortVideoMetadata.h */,
+				83CF5F422240DD58006D8D2B /* MDShortVideoMetadata.m */,
 			);
 			path = Audience;
 			sourceTree = "<group>";
@@ -1655,38 +1660,40 @@
 		83CF5F472240DD58006D8D2B /* Editor */ = {
 			isa = PBXGroup;
 			children = (
+				83CF5F5A2240DD58006D8D2B /* MDEditorMusicViewController.h */,
 				83CF5F482240DD58006D8D2B /* MDEditorMusicViewController.m */,
-				83CF5F492240DD58006D8D2B /* MDImageStickerViewController.h */,
-				83CF5F4A2240DD58006D8D2B /* MDParticleEffectViewController.m */,
-				83CF5F4B2240DD58006D8D2B /* MDShortVideoFilter.h */,
-				83CF5F4C2240DD58006D8D2B /* MDTrimView.m */,
+				83CF5F642240DD58006D8D2B /* MDEditorPreviewContainerView.h */,
+				83CF5F562240DD58006D8D2B /* MDEditorPreviewContainerView.m */,
 				83CF5F4D2240DD58006D8D2B /* MDEditorViewController.h */,
-				83CF5F4E2240DD58006D8D2B /* MDTimeLocationViewController.h */,
-				83CF5F4F2240DD58006D8D2B /* MSVEditor+MDExtentions.m */,
+				83CF5F5C2240DD58006D8D2B /* MDEditorViewController.m */,
+				83CF5F532240DD58006D8D2B /* MDEditPanelViewController.h */,
+				83CF5F672240DD58006D8D2B /* MDEditPanelViewController.m */,
+				8317056B224338D300304FFD /* MDGraffitiViewController.h */,
+				8317056C224338D300304FFD /* MDGraffitiViewController.m */,
+				83CF5F492240DD58006D8D2B /* MDImageStickerViewController.h */,
+				83CF5F592240DD58006D8D2B /* MDImageStickerViewController.m */,
+				83CF5F582240DD58006D8D2B /* MDParticleEffectViewController.h */,
+				83CF5F4A2240DD58006D8D2B /* MDParticleEffectViewController.m */,
+				83CF5F632240DD58006D8D2B /* MDSceneEffectViewController.h */,
+				83CF5F572240DD58006D8D2B /* MDSceneEffectViewController.m */,
+				83170566224337D000304FFD /* MDSharedCenter.h */,
+				83170567224337D000304FFD /* MDSharedCenter.m */,
+				83CF5F4B2240DD58006D8D2B /* MDShortVideoFilter.h */,
+				83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */,
+				83CF5F622240DD58006D8D2B /* MDSpecialEffectViewController.h */,
 				83CF5F502240DD58006D8D2B /* MDSpecialEffectViewController.m */,
 				83CF5F512240DD58006D8D2B /* MDSubtitlesViewController.h */,
-				83CF5F522240DD58006D8D2B /* MDVolumeViewController.m */,
-				83CF5F532240DD58006D8D2B /* MDEditPanelViewController.h */,
-				83CF5F542240DD58006D8D2B /* MDTimeEffectViewController.h */,
-				83CF5F552240DD58006D8D2B /* MDTitleViewController.h */,
-				83CF5F562240DD58006D8D2B /* MDEditorPreviewContainerView.m */,
-				83CF5F572240DD58006D8D2B /* MDSceneEffectViewController.m */,
-				83CF5F582240DD58006D8D2B /* MDParticleEffectViewController.h */,
-				83CF5F592240DD58006D8D2B /* MDImageStickerViewController.m */,
-				83CF5F5A2240DD58006D8D2B /* MDEditorMusicViewController.h */,
-				83CF5F5B2240DD58006D8D2B /* MDTimeLocationViewController.m */,
-				83CF5F5C2240DD58006D8D2B /* MDEditorViewController.m */,
-				83CF5F5D2240DD58006D8D2B /* MDTrimView.h */,
-				83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */,
-				83CF5F5F2240DD58006D8D2B /* MDVolumeViewController.h */,
 				83CF5F602240DD58006D8D2B /* MDSubtitlesViewController.m */,
-				83CF5F612240DD58006D8D2B /* MSVEditor+MDExtentions.h */,
-				83CF5F622240DD58006D8D2B /* MDSpecialEffectViewController.h */,
-				83CF5F632240DD58006D8D2B /* MDSceneEffectViewController.h */,
-				83CF5F642240DD58006D8D2B /* MDEditorPreviewContainerView.h */,
-				83CF5F652240DD58006D8D2B /* MDTitleViewController.m */,
+				83CF5F542240DD58006D8D2B /* MDTimeEffectViewController.h */,
 				83CF5F662240DD58006D8D2B /* MDTimeEffectViewController.m */,
-				83CF5F672240DD58006D8D2B /* MDEditPanelViewController.m */,
+				83CF5F4E2240DD58006D8D2B /* MDTimeLocationViewController.h */,
+				83CF5F5B2240DD58006D8D2B /* MDTimeLocationViewController.m */,
+				83CF5F552240DD58006D8D2B /* MDTitleViewController.h */,
+				83CF5F652240DD58006D8D2B /* MDTitleViewController.m */,
+				83CF5F5D2240DD58006D8D2B /* MDTrimView.h */,
+				83CF5F4C2240DD58006D8D2B /* MDTrimView.m */,
+				83CF5F5F2240DD58006D8D2B /* MDVolumeViewController.h */,
+				83CF5F522240DD58006D8D2B /* MDVolumeViewController.m */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -3611,6 +3618,7 @@
 				83CF62852240DD5A006D8D2B /* MDSceneEffectViewController.m in Sources */,
 				83CF64C32240DD5A006D8D2B /* TuSDKManager.m in Sources */,
 				83CF62AF2240DD5A006D8D2B /* STPlayerControlBar.m in Sources */,
+				8317056D224338D300304FFD /* MDGraffitiViewController.m in Sources */,
 				83CF62832240DD5A006D8D2B /* MDVolumeViewController.m in Sources */,
 				83CF629D2240DD5A006D8D2B /* STStickerView.m in Sources */,
 				83CF64F32240DD5A006D8D2B /* UITextView+Debug.m in Sources */,
@@ -3634,6 +3642,7 @@
 				83CF62842240DD5A006D8D2B /* MDEditorPreviewContainerView.m in Sources */,
 				83CF64D22240DD5A006D8D2B /* FilterParamItemView.m in Sources */,
 				83CF62AC2240DD5A006D8D2B /* STEffectsAudioPlayer.m in Sources */,
+				83170568224337D100304FFD /* MDSharedCenter.m in Sources */,
 				83CF62D42240DD5A006D8D2B /* FULightingSlider.m in Sources */,
 				83CF62A32240DD5A006D8D2B /* STCommonObjectContainerView.m in Sources */,
 				83CF62902240DD5A006D8D2B /* UIView+MDExtension.m in Sources */,
@@ -3684,7 +3693,6 @@
 				83CF64D52240DD5A006D8D2B /* CameraStickerManager.m in Sources */,
 				83CF64E02240DD5A006D8D2B /* CustomSlider.m in Sources */,
 				83CF62772240DD5A006D8D2B /* MDAVPlayerView.m in Sources */,
-				83CF62812240DD5A006D8D2B /* MSVEditor+MDExtentions.m in Sources */,
 				83CF628C2240DD5A006D8D2B /* MDTimeEffectViewController.m in Sources */,
 				83CF64DC2240DD5A006D8D2B /* CameraBeautyPanelView.m in Sources */,
 				83CF64D92240DD5A006D8D2B /* CameraNormalFilterListView.m in Sources */,

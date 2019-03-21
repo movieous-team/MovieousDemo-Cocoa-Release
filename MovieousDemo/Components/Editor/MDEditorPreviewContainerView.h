@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MovieousShortVideo/MovieousShortVideo.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

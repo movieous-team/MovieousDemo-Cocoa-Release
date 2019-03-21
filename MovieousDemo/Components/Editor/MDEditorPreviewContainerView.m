@@ -7,7 +7,7 @@
 //
 
 #import "MDEditorPreviewContainerView.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 #import "MDImageStickerViewController.h"
 #import "MDFrameView.h"
 
@@ -50,17 +50,24 @@ UIGestureRecognizerDelegate
     [_deleteStickerButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
     [_deleteStickerButton addTarget:self action:@selector(deleteStickerButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [_frameView addSubview:_deleteStickerButton];
+    MDSharedCenter.sharedCenter.graffitiView.brush = [MSVBrush brushWithLineWidth:10 lineColor:UIColor.whiteColor];
+    MDSharedCenter.sharedCenter.graffitiView.hidden = YES;
+    [self addSubview:MDSharedCenter.sharedCenter.graffitiView];
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     _tapGestureRecognizer.delegate = self;
+    _tapGestureRecognizer.cancelsTouchesInView = NO;
     [self addGestureRecognizer:_tapGestureRecognizer];
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
     _panGestureRecognizer.delegate = self;
+    _panGestureRecognizer.cancelsTouchesInView = NO;
     [self addGestureRecognizer:_panGestureRecognizer];
     _pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinched:)];
     _pinchGestureRecognizer.delegate = self;
+    _pinchGestureRecognizer.cancelsTouchesInView = NO;
     [self addGestureRecognizer:_pinchGestureRecognizer];
     _rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotated:)];
     _rotationGestureRecognizer.delegate = self;
+    _rotationGestureRecognizer.cancelsTouchesInView = NO;
     [self addGestureRecognizer:_rotationGestureRecognizer];
 }
 
@@ -70,16 +77,17 @@ UIGestureRecognizerDelegate
 
 - (void)layoutSubviews {
     _preview.frame = self.bounds;
+    MDSharedCenter.sharedCenter.graffitiView.frame = MDSharedCenter.sharedCenter.editor.contentFrame;
 }
 
 - (void)deleteStickerButtonPressed:(UIButton *)sender {
     if (!_selectedImageStickerEffect) {
         return;
     }
-    NSMutableArray *basicEffects = [NSMutableArray arrayWithArray:MSVEditor.sharedInstance.draft.basicEffects];
+    NSMutableArray *basicEffects = [NSMutableArray arrayWithArray:MDSharedCenter.sharedCenter.editor.draft.basicEffects];
     [basicEffects removeObject:_selectedImageStickerEffect];
     NSError *error;
-    if (![MSVEditor.sharedInstance.draft updateBasicEffects:basicEffects error:&error]) {
+    if (![MDSharedCenter.sharedCenter.editor.draft updateBasicEffects:basicEffects error:&error]) {
         SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
     }
     _frameView.hidden = YES;
@@ -87,19 +95,22 @@ UIGestureRecognizerDelegate
 
 - (void)tapped:(UITapGestureRecognizer *)sender {
     CGPoint location = [sender locationInView:self];
-    CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
+    if (CGRectContainsPoint([_frameView convertRect:_deleteStickerButton.frame toView:self], location)) {
+        return;
+    }
+    CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
     _stickerSelected = NO;
     _selectedImageStickerEffect = nil;
     _frameView.hidden = YES;
-    for (int i = (int)MSVEditor.sharedInstance.draft.basicEffects.count - 1; i >= 0; i--) {
-        id<MSVBasicEffect> effect = MSVEditor.sharedInstance.draft.basicEffects[i];
+    for (int i = (int)MDSharedCenter.sharedCenter.editor.draft.basicEffects.count - 1; i >= 0; i--) {
+        id<MSVBasicEffect> effect = MDSharedCenter.sharedCenter.editor.draft.basicEffects[i];
         // 只处理贴纸面板添加进去的贴纸，文字等由贴纸功能实现的特效不在这里处理
         if (![effect.ID isEqualToString:kImageStickerEffectID]) {
             continue;
         }
         if ([effect isKindOfClass:MSVImageStickerEffect.class]) {
             MSVImageStickerEffect *imageStickerEffect = (MSVImageStickerEffect *)effect;
-            CGSize videoSize = MSVEditor.sharedInstance.draft.videoSize;
+            CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
             CGRect imageStickerFrame = CGRectMake(contentFrame.origin.x + imageStickerEffect.destRect.origin.x / videoSize.width * contentFrame.size.width, contentFrame.origin.y + imageStickerEffect.destRect.origin.y / videoSize.width * contentFrame.size.width, imageStickerEffect.destRect.size.width / videoSize.width * contentFrame.size.width, imageStickerEffect.destRect.size.height / videoSize.height * contentFrame.size.height);
             if (CGRectContainsPoint(imageStickerFrame, location)) {
                 _stickerSelected = YES;
@@ -127,8 +138,8 @@ UIGestureRecognizerDelegate
             }
         } else {
             if (_stickerPanStarted) {
-                CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
-                CGSize videoSize = MSVEditor.sharedInstance.draft.videoSize;
+                CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
+                CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
                 CGPoint translation = [sender translationInView:self];
                 CGPoint translationDelta = CGPointMake(translation.x - _lastTranslation.x, translation.y - _lastTranslation.y);
                 _lastTranslation = translation;
@@ -147,8 +158,8 @@ UIGestureRecognizerDelegate
         CGFloat deltaScale = sender.scale / _lastScale;
         _lastScale = sender.scale;
         _selectedImageStickerEffect.destRect = CGRectMake(_selectedImageStickerEffect.destRect.origin.x - _selectedImageStickerEffect.destRect.size.width * (deltaScale - 1) / 2, _selectedImageStickerEffect.destRect.origin.y - _selectedImageStickerEffect.destRect.size.height * (deltaScale - 1) / 2, _selectedImageStickerEffect.destRect.size.width * deltaScale, _selectedImageStickerEffect.destRect.size.height * deltaScale);
-        CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
-        CGSize videoSize = MSVEditor.sharedInstance.draft.videoSize;
+        CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
+        CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
         CGRect imageStickerFrame = CGRectMake(contentFrame.origin.x + _selectedImageStickerEffect.destRect.origin.x / videoSize.width * contentFrame.size.width, contentFrame.origin.y + _selectedImageStickerEffect.destRect.origin.y / videoSize.width * contentFrame.size.width, _selectedImageStickerEffect.destRect.size.width / videoSize.width * contentFrame.size.width, _selectedImageStickerEffect.destRect.size.height / videoSize.height * contentFrame.size.height);
         _frameView.bounds = CGRectMake(0, 0, imageStickerFrame.size.width + 2 * FrameViewMargin + _frameView.margin, imageStickerFrame.size.height + 2 * FrameViewMargin + _frameView.margin);
         _deleteStickerButton.center = CGPointMake(_frameView.bounds.size.width - _frameView.margin - _frameView.frameWidth / 2, _frameView.margin + _frameView.frameWidth / 2);
@@ -169,7 +180,7 @@ UIGestureRecognizerDelegate
 // 粒子特效需要监控的手势
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     CGPoint location = [touches.objectEnumerator.nextObject locationInView:self];
-    CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
+    CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
     if (CGRectContainsPoint(contentFrame, location)) {
         location = CGPointMake((location.x - contentFrame.origin.x) / contentFrame.size.width, (location.y - contentFrame.origin.y) / contentFrame.size.height);
         [[NSNotificationCenter defaultCenter] postNotificationName:kPreviewTouchesBegan object:self userInfo:@{@"location": [NSValue valueWithCGPoint:location]}];
@@ -185,7 +196,7 @@ UIGestureRecognizerDelegate
 // 粒子特效相关的手势
 //- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    CGPoint location = [touches.objectEnumerator.nextObject locationInView:self];
-//    CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
+//    CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
 //    if (CGRectContainsPoint(contentFrame, location)) {
 //        location = CGPointMake((location.x - contentFrame.origin.x) / contentFrame.size.width, (location.y - contentFrame.origin.y) / contentFrame.size.height);
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kPreviewTouchesMoved object:self userInfo:@{@"location": [NSValue valueWithCGPoint:location]}];
@@ -194,7 +205,7 @@ UIGestureRecognizerDelegate
 //
 //- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    CGPoint location = [touches.objectEnumerator.nextObject locationInView:self];
-//    CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
+//    CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
 //    if (CGRectContainsPoint(contentFrame, location)) {
 //        location = CGPointMake((location.x - contentFrame.origin.x) / contentFrame.size.width, (location.y - contentFrame.origin.y) / contentFrame.size.height);
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kPreviewTouchesEnded object:self userInfo:@{@"location": [NSValue valueWithCGPoint:location]}];
@@ -203,7 +214,7 @@ UIGestureRecognizerDelegate
 //
 //- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 //    CGPoint location = [touches.objectEnumerator.nextObject locationInView:self];
-//    CGRect contentFrame = MSVEditor.sharedInstance.contentFrame;
+//    CGRect contentFrame = MDSharedCenter.sharedCenter.editor.contentFrame;
 //    if (CGRectContainsPoint(contentFrame, location)) {
 //        location = CGPointMake((location.x - contentFrame.origin.x) / contentFrame.size.width, (location.y - contentFrame.origin.y) / contentFrame.size.height);
 //        [[NSNotificationCenter defaultCenter] postNotificationName:kPreviewTouchesCancelled object:self userInfo:@{@"location": [NSValue valueWithCGPoint:location]}];

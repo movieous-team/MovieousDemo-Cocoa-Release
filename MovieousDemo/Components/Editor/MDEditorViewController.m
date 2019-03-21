@@ -9,10 +9,9 @@
 #import "MDEditorViewController.h"
 #import <MovieousShortVideo/MovieousShortVideo.h>
 #import "MDShortVideoFilter.h"
-#import "MSVEditor+MDExtentions.h"
+#import "MDSharedCenter.h"
 #import "FUManager.h"
 #import "STManager.h"
-#import "MSVEditor+MDExtentions.h"
 #import "MDUploaderViewController.h"
 #import "MDEditorPreviewContainerView.h"
 #import "MDImageStickerViewController.h"
@@ -32,12 +31,25 @@ MSVEditorDelegate
     MSVEditor *_editor;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [MDSharedCenter.sharedCenter instantiateProperties];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginEditingBottom:) name:kBeginEditingInBottomViewNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingBottom:) name:kEndEditingInBottomViewNotification object:nil];
+}
+
+- (void)dealloc {
+    [MDSharedCenter.sharedCenter clearProperties];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSError *error;
     // 如果不需要对之前采集的多短视频在编辑阶段进行分段处理，那么可以分离出允许继续在编辑阶段调整的部分，然后导出为一个完整的视频再进行处理，这样可以保证编辑操作都具有最高的处理效率，Demo 直接使用录制生成的草稿对象以便灵活调整
-    _editor = [MSVEditor createSharedInstanceWithDraft:_draft error:&error];
+    _editor = MDSharedCenter.sharedCenter.editor;
+    [_editor updateDraft:_draft error:&error];
     if (error) {
         SHOW_ERROR_ALERT;
         return;
@@ -53,21 +65,16 @@ MSVEditorDelegate
         SHOW_ERROR_ALERT;
         return;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginEditingBottom:) name:kBeginEditingInBottomViewNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingBottom:) name:kEndEditingInBottomViewNotification object:nil];
-}
-
-- (void)dealloc {
-    [MSVEditor clearSharedInstance];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [_editor play];
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [_editor pause];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)beginEditingBottom:(NSNotification *)notification {
