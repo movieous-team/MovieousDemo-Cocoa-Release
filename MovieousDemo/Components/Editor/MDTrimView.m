@@ -63,7 +63,7 @@ UICollectionViewDelegate
 @end
 
 @implementation MDTrimView {
-    NSMutableArray *_snapshots;
+    NSArray<MSVImageGeneratorResult *> *_generatorResults;
     MSVEditor *_editor;
     NSTimeInterval _duration;
     BOOL _seeking;
@@ -73,20 +73,19 @@ UICollectionViewDelegate
     [super awakeFromNib];
     _editor = MDSharedCenter.sharedCenter.editor;
     _duration = _editor.draft.duration;
-    _snapshots = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
-    [_editor.draft generateSnapshotsWithCount:SNAPSHOT_COUNT withinTimeRange:NO completionHanler:^(NSTimeInterval timestamp, UIImage *snapshot, NSError *error) {
-        __strong typeof(wSelf) strongSelf = wSelf;
-        if (!error) {
-            [strongSelf->_snapshots addObject:snapshot];
-            if (strongSelf->_snapshots.count == SNAPSHOT_COUNT) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [strongSelf.snapshotsView reloadData];
-                });
-            }
+    MovieousWeakSelf
+    [_editor.draft.imageGenerator generateImagesWithCompletionHandler:^(NSArray<MSVImageGeneratorResult *> * _Nullable results, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+        MovieousStrongSelf
+        if (result == AVAssetImageGeneratorSucceeded) {
+            strongSelf->_generatorResults = results;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.snapshotsView reloadData];
+            });
+        } else if (result == AVAssetImageGeneratorFailed) {
+            SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
         }
     }];
-    if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips.firstObject.type == MSVMainTrackClipTypeImage) {
+    if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips.firstObject.type == MSVClipTypeImage) {
         _speedSegmentControl.hidden = YES;
         _imageDurationContainer.hidden = NO;
         _durationTextField.text = [NSString stringWithFormat:@"%.1f", _editor.draft.duration];
@@ -100,6 +99,7 @@ UICollectionViewDelegate
 
 - (void)dealloc {
     [self removeObservers];
+    [_editor.draft.imageGenerator.innerImageGenerator cancelAllCGImageGeneration];
 }
 
 - (void)addObservers {
@@ -128,35 +128,39 @@ UICollectionViewDelegate
 }
 
 - (void)syncUIWithDraft {
-    if (_editor.draft.timeRange.duration > 0) {
-        CGFloat leftDistance = _snapshotsView.frame.size.width * _editor.draft.timeRange.startTime / _duration;
-        if (leftDistance > _snapshotsView.frame.size.width) {
-            leftDistance = _snapshotsView.frame.size.width;
-        } else if (leftDistance < 0) {
-            leftDistance = 0;
-        }
-        _leftDragviewPosition.constant = leftDistance;
-        CGFloat rightDistance = _snapshotsView.frame.size.width * (_duration - _editor.draft.timeRange.startTime - _editor.draft.timeRange.duration) / _duration;
-        if (rightDistance > _snapshotsView.frame.size.width) {
-            rightDistance = _snapshotsView.frame.size.width;
-        } else if (rightDistance < 0) {
-            rightDistance = 0;
-        }
-        _rightDragviewPosition.constant = rightDistance;
-    }
     _currentTimeLabel.text = [NSString stringWithFormat:@"已选取%.1f秒", _duration];
-    if (_editor.draft.mainTrackClips.count > 0) {
-        MSVMainTrackClip *clip = _editor.draft.mainTrackClips[0];
-        if (clip.speed <= 0.6) {
-            _speedSegmentControl.selectedSegmentIndex = 0;
-        } else if (clip.speed <= 0.8) {
-            _speedSegmentControl.selectedSegmentIndex = 1;
-        } else if (clip.speed <= 1.1) {
-            _speedSegmentControl.selectedSegmentIndex = 2;
-        } else if (clip.speed <= 1.6) {
-            _speedSegmentControl.selectedSegmentIndex = 3;
-        } else {
-            _speedSegmentControl.selectedSegmentIndex = 4;
+    if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips.firstObject.type == MSVClipTypeImage) {
+        _durationTextField.text = [NSString stringWithFormat:@"%.1f", _duration];
+    } else {
+        if (_editor.draft.timeRange.duration > 0) {
+            CGFloat leftDistance = _snapshotsView.frame.size.width * _editor.draft.timeRange.startTime / _duration;
+            if (leftDistance > _snapshotsView.frame.size.width) {
+                leftDistance = _snapshotsView.frame.size.width;
+            } else if (leftDistance < 0) {
+                leftDistance = 0;
+            }
+            _leftDragviewPosition.constant = leftDistance;
+            CGFloat rightDistance = _snapshotsView.frame.size.width * (_duration - _editor.draft.timeRange.startTime - _editor.draft.timeRange.duration) / _duration;
+            if (rightDistance > _snapshotsView.frame.size.width) {
+                rightDistance = _snapshotsView.frame.size.width;
+            } else if (rightDistance < 0) {
+                rightDistance = 0;
+            }
+            _rightDragviewPosition.constant = rightDistance;
+        }
+        if (_editor.draft.mainTrackClips.count > 0) {
+            MSVMainTrackClip *clip = _editor.draft.mainTrackClips[0];
+            if (clip.speed <= 0.6) {
+                _speedSegmentControl.selectedSegmentIndex = 0;
+            } else if (clip.speed <= 0.8) {
+                _speedSegmentControl.selectedSegmentIndex = 1;
+            } else if (clip.speed <= 1.1) {
+                _speedSegmentControl.selectedSegmentIndex = 2;
+            } else if (clip.speed <= 1.6) {
+                _speedSegmentControl.selectedSegmentIndex = 3;
+            } else {
+                _speedSegmentControl.selectedSegmentIndex = 4;
+            }
         }
     }
 }
@@ -231,7 +235,7 @@ UICollectionViewDelegate
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
         [self refreshTimeLabel];
-               [_editor seekToTime:_duration *  _leftDragviewPosition.constant / _snapshotsView.frame.size.width completionHandler:nil];
+        [_editor seekToTime:_duration *  _leftDragviewPosition.constant / _snapshotsView.frame.size.width accurate:YES];
     } else {
         _seekerView.hidden = NO;
         [self applyNewCut];
@@ -257,7 +261,7 @@ UICollectionViewDelegate
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
         [self refreshTimeLabel];
-        [_editor seekToTime:_duration * (_snapshotsView.frame.size.width - _rightDragviewPosition.constant) / _snapshotsView.frame.size.width completionHandler:nil];
+        [_editor seekToTime:_duration * (_snapshotsView.frame.size.width - _rightDragviewPosition.constant) / _snapshotsView.frame.size.width accurate:YES];
     } else {
         _seekerView.hidden = NO;
         [self applyNewCut];
@@ -285,13 +289,10 @@ UICollectionViewDelegate
             _seekerPosition.constant = destPosition;
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
-        [_editor seekToTime:_duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:nil];
+        [_editor seekToTime:_duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
     } else {
-        __weak typeof(self) wSelf = self;
-        [_editor seekToTime:_duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:^(BOOL finished) {
-            __strong typeof(wSelf) strongSelf = wSelf;
-            strongSelf->_seeking = NO;
-        }];
+        [_editor seekToTime:_duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
+        _seeking = NO;
     }
 }
 
@@ -305,12 +306,12 @@ UICollectionViewDelegate
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _snapshots.count;
+    return _generatorResults.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TrimCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TrimCell" forIndexPath:indexPath];
-    cell.imageView.image = _snapshots[indexPath.row];
+    cell.imageView.image = _generatorResults[indexPath.row].image;
     return cell;
 }
 

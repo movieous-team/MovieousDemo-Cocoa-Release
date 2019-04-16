@@ -19,14 +19,4 @@
     return instance;
 }
 
-- (void)instantiateProperties {
-    _editor = MSVEditor.new;
-    _graffitiView = MSVGraffitiView.new;
-}
-
-- (void)clearProperties {
-    _editor = nil;
-    _graffitiView = nil;
-}
-
 @end

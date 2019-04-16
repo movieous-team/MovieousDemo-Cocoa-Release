@@ -23,19 +23,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _fileClient = [UFFileClient instanceFileClientWithConfig:[UFConfig instanceConfigWithPrivateToken:@"b253bb25-3596-4372-9c19-c97d10bce448" publicToken:@"TOKEN_218481a2-1fb0-45d4-9905-fcbd999096de" bucket:@"twsy" fileOperateEncryptServer:nil fileAddressEncryptServer:nil proxySuffix:@"cn-bj.ufileos.com"]];
-    NSError *error;
-    _exporter = [[MSVVideoExporter alloc] initWithDraft:_draft error:&error];
-    if (error) {
-        SHOW_ERROR_ALERT
-    }
+    _exporter = [[MSVVideoExporter alloc] initWithDraft:_draft];
     _exporter.saveToPhotosAlbum = YES;
-    __weak typeof(self) wSelf = self;
+    MovieousWeakSelf
     _exporter.progressHandler = ^(float progress) {
         [SVProgressHUD showProgress:progress status:@"正在导出"];
     };
     _exporter.completionHandler = ^(NSURL * _Nonnull URL) {
         [SVProgressHUD showWithStatus:@"开始上传"];
-        __strong typeof(wSelf) strongSelf = wSelf;
+        MovieousStrongSelf
         [strongSelf->_fileClient uploadWithKeyName:URL.lastPathComponent filePath:URL.path mimeType:@"video/mpeg4" progress:^(NSProgress * _Nonnull progress) {
             [SVProgressHUD showProgress:(float)progress.completedUnitCount / (float)progress.totalUnitCount status:@"正在上传"];
         } uploadHandler:^(UFError * _Nullable ufError, UFUploadResponse * _Nullable ufUploadResponse) {

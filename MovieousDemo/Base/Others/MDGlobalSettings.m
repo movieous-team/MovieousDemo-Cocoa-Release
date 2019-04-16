@@ -30,9 +30,15 @@ NSString *getVendorName(VendorType vendorType) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [self new];
-        instance.vendorType = VendorTypeNone;
     });
     return instance;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        _vendorType = VendorTypeNone;
+    }
+    return self;
 }
 
 @end

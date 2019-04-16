@@ -36,7 +36,7 @@ UICollectionViewDelegate
 @end
 
 @implementation TimeEffectView {
-    NSMutableArray *_snapshots;
+    NSArray<MSVImageGeneratorResult *> *_generatorResults;
     MSVEditor *_editor;
     NSTimeInterval _duration;
     BOOL _seeking;
@@ -53,42 +53,41 @@ UICollectionViewDelegate
             _duration += clip.durationAtMainTrack;
         }
     }
-    _snapshots = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
-    [_editor.draft generateSnapshotsWithCount:SNAPSHOT_COUNT  withinTimeRange:YES completionHanler:^(NSTimeInterval timestamp, UIImage *snapshot, NSError *error) {
-        __strong typeof(wSelf) strongSelf = wSelf;
-        if (!error) {
-            [strongSelf->_snapshots addObject:snapshot];
-            if (strongSelf->_snapshots.count == SNAPSHOT_COUNT) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [strongSelf.snapshotsView reloadData];
-                });
-            }
+    MovieousWeakSelf
+    [_editor.draft.imageGenerator generateImagesWithCompletionHandler:^(NSArray<MSVImageGeneratorResult *> * _Nullable results, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+        MovieousStrongSelf
+        if (result == AVAssetImageGeneratorSucceeded) {
+            strongSelf->_generatorResults = results;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.snapshotsView reloadData];
+            });
+        } else if (result == AVAssetImageGeneratorFailed) {
+            SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
         }
     }];
     [self addObservers];
     [self syncUIWithEffect];
 }
 
+- (void)dealloc {
+    [self removeObservers];
+    [_editor.draft.imageGenerator.innerImageGenerator cancelAllCGImageGeneration];
+}
+
 - (void)syncUIWithEffect {
-    for (id obj in _editor.draft.timeEffects) {
-        if ([obj isKindOfClass:MSVSpeedEffect.class]) {
-            MSVSpeedEffect *effect = (MSVSpeedEffect *)obj;
+    if (_editor.draft.timeEffects.count > 0) {
+        id obj = _editor.draft.timeEffects[0];
+        if ([obj isKindOfClass:MSVSpeedEditorEffect.class]) {
+            MSVSpeedEditorEffect *effect = (MSVSpeedEditorEffect *)obj;
             _effectStartView.hidden = NO;
             _effectStartPosition.constant = _snapshotsView.frame.size.width * effect.timeRangeAtMainTrack.startTime / _duration;
-            return;
-        } else if ([obj isKindOfClass:MSVRepeatEffect.class]) {
-            MSVRepeatEffect *effect = (MSVRepeatEffect *)obj;
+        } else if ([obj isKindOfClass:MSVRepeatEditorEffect.class]) {
+            MSVRepeatEditorEffect *effect = (MSVRepeatEditorEffect *)obj;
             _effectStartView.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
             _effectStartView.hidden = NO;
             _effectStartPosition.constant = _snapshotsView.frame.size.width * effect.timeRangeAtMainTrack.startTime / _duration;
-            return;
         }
     }
-}
-
-- (void)dealloc {
-    [self removeObservers];
 }
 
 - (void)addObservers {
@@ -103,16 +102,16 @@ UICollectionViewDelegate
     if (_seeking) {
         return;
     }
-    _seekerPosition.constant = _snapshotsView.frame.size.width * ([_editor.draft removeEffectFromTime:_editor.currentTime] - _editor.draft.timeRange.startTime) / _duration;
+    _seekerPosition.constant = _snapshotsView.frame.size.width * ([_editor.draft getOriginalTimeFromEffectedTime:_editor.currentTime] - _editor.draft.timeRange.startTime) / _duration;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _snapshots.count;
+    return _generatorResults.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     TimeEffectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TimeEffectCell" forIndexPath:indexPath];
-    cell.imageView.image = _snapshots[indexPath.row];
+    cell.imageView.image = _generatorResults[indexPath.row].image;
     return cell;
 }
 
@@ -130,13 +129,10 @@ UICollectionViewDelegate
             _seekerPosition.constant = destPosition;
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
-        [_editor seekToTime:[_editor.draft applyEffectToTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width] completionHandler:nil];
+        [_editor seekToTime:[_editor.draft getEffectedTimeFromOriginalTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width] accurate:YES];
     } else {
-        __weak typeof(self) wSelf = self;
-        [_editor seekToTime:[_editor.draft applyEffectToTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width] completionHandler:^(BOOL finished) {
-            __strong typeof(wSelf) strongSelf = wSelf;
-            strongSelf->_seeking = NO;
-        }];
+        [_editor seekToTime:[_editor.draft getEffectedTimeFromOriginalTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width] accurate:YES];
+        _seeking = NO;
     }
 }
 
@@ -154,31 +150,30 @@ UICollectionViewDelegate
             _effectStartPosition.constant = destPosition;
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
-        [_editor seekToTime:[_editor.draft applyEffectToTime:_editor.draft.timeRange.startTime + _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width] completionHandler:nil];
+        [_editor seekToTime:[_editor.draft getEffectedTimeFromOriginalTime:_editor.draft.timeRange.startTime + _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width] accurate:YES];
     } else {
-        [_editor.draft beginChangeTransaction];
-        _editor.draft.timeRange = [_editor.draft removeEffectFromTimeRange:_editor.draft.timeRange];
-        for (id effect in _editor.draft.timeEffects) {
-            if ([effect isKindOfClass:MSVRepeatEffect.class]) {
+        if (_editor.draft.timeEffects.count > 0) {
+            [_editor.draft beginChangeTransaction];
+            _editor.draft.timeRange = [_editor.draft getOriginalTimeRangeFromEffectedTimeRange:_editor.draft.timeRange];
+            id effect = _editor.draft.timeEffects[0];
+            if ([effect isKindOfClass:MSVRepeatEditorEffect.class]) {
                 NSTimeInterval effectStartTime = _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width;
-                ((MSVRepeatEffect *)effect).timeRangeAtMainTrack = (MovieousTimeRange) {
+                ((MSVRepeatEditorEffect *)effect).timeRangeAtMainTrack = (MovieousTimeRange) {
                     effectStartTime,
                     1,
                 };
-                break;
-            } else if ([effect isKindOfClass:MSVSpeedEffect.class]) {
+            } else if ([effect isKindOfClass:MSVSpeedEditorEffect.class]) {
                 NSTimeInterval effectStartTime = _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width;
-                ((MSVSpeedEffect *)effect).timeRangeAtMainTrack = (MovieousTimeRange) {
+                ((MSVSpeedEditorEffect *)effect).timeRangeAtMainTrack = (MovieousTimeRange) {
                     effectStartTime,
                     1,
                 };
-                break;
             }
+            _editor.draft.timeRange = [_editor.draft getEffectedRangeTimeFromOriginalTimeRange:_editor.draft.timeRange];
+            [_editor.draft commitChangeWithError:nil];
+            _seekerView.hidden = NO;
+            [_editor play];
         }
-        _editor.draft.timeRange = [_editor.draft applyEffectToTimeRange:_editor.draft.timeRange];
-        [_editor.draft commitChangeWithError:nil];
-        _seekerView.hidden = NO;
-        [_editor play];
     }
 }
 
@@ -197,38 +192,23 @@ UICollectionViewDelegate
 }
 
 - (IBAction)noEffectButtonPressed:(UIButton *)sender {
-    [_editor.draft beginChangeTransaction];
-    _editor.draft.timeRange = [_editor.draft removeEffectFromTimeRange:_editor.draft.timeRange];
     _effectStartView.hidden = YES;
-    NSMutableArray *effects = [NSMutableArray array];
-    for (id obj in _editor.draft.timeEffects) {
-        if (![obj isKindOfClass:MSVRepeatEffect.class] && ![obj isKindOfClass:MSVSpeedEffect.class]) {
-            [effects addObject:obj];
-        }
-    }
     NSError *error;
-    [_editor.draft updateTimeEffects:effects error:&error];
-    if (error) {
-        SHOW_ERROR_ALERT_FOR(self.window.rootViewController);
-        return;
-    }
-    if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips[0].reverse == YES) {
-        NSMutableArray *clips = [NSMutableArray array];
-        for (MSVMainTrackClip *clip in _editor.draft.mainTrackClips) {
-            [clip setReverse:NO progressHandler:nil completionHandler:nil];
-            [clips insertObject:clip atIndex:0];
+    if (_editor.draft.timeEffects.count) {
+        [_editor.draft beginChangeTransaction];
+        _editor.draft.timeRange = [_editor.draft getOriginalTimeRangeFromEffectedTimeRange:_editor.draft.timeRange];
+        [_editor.draft updateTimeEffects:nil error:&error];
+        if (error) {
+            SHOW_ERROR_ALERT_FOR(self.window.rootViewController);
+            return;
         }
-        [_editor.draft updateMainTrackClips:clips error:&error];
+        [_editor.draft commitChangeWithError:&error];
         if (error) {
             SHOW_ERROR_ALERT_FOR(self.window.rootViewController);
             return;
         }
     }
-    [_editor.draft commitChangeWithError:&error];
-    if (error) {
-        SHOW_ERROR_ALERT_FOR(self.window.rootViewController);
-        return;
-    }
+    _editor.draft.reverseVideo = NO;
     [_editor play];
 }
 
@@ -242,79 +222,34 @@ UICollectionViewDelegate
 
 - (void)refreshRepeatEffect {
     [_editor.draft beginChangeTransaction];
-    _editor.draft.timeRange = [_editor.draft removeEffectFromTimeRange:_editor.draft.timeRange];
-    NSMutableArray *effects = [NSMutableArray array];
-    for (id obj in _editor.draft.timeEffects) {
-        if (![obj isKindOfClass:MSVRepeatEffect.class] && ![obj isKindOfClass:MSVSpeedEffect.class]) {
-            [effects addObject:obj];
-        }
-    }
+    _editor.draft.timeRange = [_editor.draft getOriginalTimeRangeFromEffectedTimeRange:_editor.draft.timeRange];
     NSTimeInterval effectStartTime = _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width;
-    MSVRepeatEffect *repeatEffect = [MSVRepeatEffect new];
+    MSVRepeatEditorEffect *repeatEffect = [MSVRepeatEditorEffect new];
     repeatEffect.timeRangeAtMainTrack = (MovieousTimeRange) {
         effectStartTime,
         1,
     };
     repeatEffect.count = 3;
-    [effects addObject:repeatEffect];
     NSError *error;
-    [_editor.draft updateTimeEffects:effects error:&error];
+    [_editor.draft updateTimeEffects:@[repeatEffect] error:&error];
     if (error) {
-        NSLog(@"error:%@", error.localizedDescription);
+        SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
     }
-    _editor.draft.timeRange = [_editor.draft applyEffectToTimeRange:_editor.draft.timeRange];
+    _editor.draft.reverseVideo = NO;
+    _editor.draft.timeRange = [_editor.draft getEffectedRangeTimeFromOriginalTimeRange:_editor.draft.timeRange];
     [_editor.draft commitChangeWithError:nil];
 }
 
 - (IBAction)reverseButtonPressed:(UIButton *)sender {
-    if (_editor.draft.mainTrackClips.count > 0 && _editor.draft.mainTrackClips[0].reverse == YES) {
-        return;
+    _effectStartView.hidden = YES;
+    _editor.draft.reverseVideo = YES;
+    if (_editor.draft.timeEffects.count > 0) {
+        NSError *error;
+        [_editor.draft updateTimeEffects:nil error:&error];
+        if (error) {
+            SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
+        }
     }
-    [SVProgressHUD showWithStatus:@"开始处理倒放"];
-    [_editor pause];
-    __weak typeof(self) wSelf = self;
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), ^{
-        __strong typeof(wSelf) strongSelf = wSelf;
-        [strongSelf->_editor.draft beginChangeTransaction];
-        int clipCount = (int)strongSelf->_editor.draft.mainTrackClips.count;
-        NSMutableArray *mainTrackClips = [NSMutableArray array];
-        __block NSError *error;
-        for (int i = clipCount - 1; i >= 0; i-- ) {
-            MSVMainTrackClip *clip = strongSelf->_editor.draft.mainTrackClips[i];
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-            [clip setReverse:YES progressHandler:^(float progress) {
-                [SVProgressHUD showProgress:(i + progress) / clipCount status:@"正在处理倒放"];
-            } completionHandler:^(NSError *reverseError) {
-                error = reverseError;
-                if (!error) {
-                    [mainTrackClips addObject:strongSelf->_editor.draft.mainTrackClips[i]];
-                } else {
-                    SHOW_ERROR_ALERT_FOR(strongSelf.window.rootViewController);
-                }
-                dispatch_semaphore_signal(semaphore);
-            }];
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-            if (error) {
-                break;
-            }
-        }
-        [SVProgressHUD dismiss];
-        if (error) {
-            SHOW_ERROR_ALERT_FOR(strongSelf.window.rootViewController);
-            return;
-        }
-        [strongSelf->_editor.draft updateMainTrackClips:mainTrackClips error:&error];
-        if (error) {
-            SHOW_ERROR_ALERT_FOR(strongSelf.window.rootViewController);
-            return;
-        }
-        [strongSelf->_editor.draft commitChangeWithError:&error];
-        if (error) {
-            SHOW_ERROR_ALERT_FOR(strongSelf.window.rootViewController);
-            return;
-        }
-        [strongSelf->_editor play];
-    });
 }
 
 - (IBAction)slowMotionButtonPressed:(id)sender {
@@ -326,27 +261,21 @@ UICollectionViewDelegate
 
 - (void)refreshMotionEffect {
     [_editor.draft beginChangeTransaction];
-    _editor.draft.timeRange = [_editor.draft removeEffectFromTimeRange:_editor.draft.timeRange];
-    NSMutableArray *effects = [NSMutableArray array];
-    for (id obj in _editor.draft.timeEffects) {
-        if (![obj isKindOfClass:MSVRepeatEffect.class] && ![obj isKindOfClass:MSVSpeedEffect.class]) {
-            [effects addObject:obj];
-        }
-    }
+    _editor.draft.timeRange = [_editor.draft getOriginalTimeRangeFromEffectedTimeRange:_editor.draft.timeRange];
     NSTimeInterval effectStartTime = _duration * _effectStartPosition.constant / _snapshotsView.frame.size.width;
-    MSVSpeedEffect *speedEffect = [MSVSpeedEffect new];
+    MSVSpeedEditorEffect *speedEffect = [MSVSpeedEditorEffect new];
     speedEffect.timeRangeAtMainTrack = (MovieousTimeRange) {
         effectStartTime,
         1,
     };
     speedEffect.speed = 0.5;
-    [effects addObject:speedEffect];
     NSError *error;
-    [_editor.draft updateTimeEffects:effects error:&error];
+    [_editor.draft updateTimeEffects:@[speedEffect] error:&error];
     if (error) {
         NSLog(@"error:%@", error.localizedDescription);
     }
-    _editor.draft.timeRange = [_editor.draft applyEffectToTimeRange:_editor.draft.timeRange];
+    _editor.draft.reverseVideo = NO;
+    _editor.draft.timeRange = [_editor.draft getEffectedRangeTimeFromOriginalTimeRange:_editor.draft.timeRange];
     [_editor.draft commitChangeWithError:nil];
 }
 

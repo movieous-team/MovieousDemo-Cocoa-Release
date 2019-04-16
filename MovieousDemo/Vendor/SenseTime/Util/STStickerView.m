@@ -34,12 +34,24 @@ STManagerDelegate
 
 @implementation STStickerView
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    STManager.sharedManager.delegate = self;
-    self.commonObjectContainerView = [[STCommonObjectContainerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    self.commonObjectContainerView.delegate = STManager.sharedManager;
-    [self addSubview:self.specialEffectsContainerView];
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        STManager.sharedManager.delegate = self;
+        self.commonObjectContainerView = [[STCommonObjectContainerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        self.commonObjectContainerView.delegate = STManager.sharedManager;
+        [self addSubview:self.specialEffectsContainerView];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        STManager.sharedManager.delegate = self;
+        self.commonObjectContainerView = [[STCommonObjectContainerView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        self.commonObjectContainerView.delegate = STManager.sharedManager;
+        [self addSubview:self.specialEffectsContainerView];
+    }
+    return self;
 }
 
 - (UIView *)specialEffectsContainerView {

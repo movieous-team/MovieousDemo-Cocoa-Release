@@ -50,10 +50,17 @@ UICollectionViewDataSource
     _editor = MDSharedCenter.sharedCenter.editor;
     _pageControl.numberOfPages = [_collectionView numberOfItemsInSection:0] / 6 + 1;
     _selectedRow = 0;
-    if (_editor.draft.audioClips.count > 0) {
+    MSVMixTrackClip *musicClip;
+    for (MSVMixTrackClip *mixTrackClip in _editor.draft.mixTrackClips) {
+        if ([mixTrackClip.ID isEqualToString:@"music"]) {
+            musicClip = mixTrackClip;
+            break;
+        }
+    }
+    if (musicClip) {
         for (int i = 0; i < _fileNames.count; i++) {
             NSString *fileName = _fileNames[i];
-            NSString *lastPathComponent = _editor.draft.audioClips[0].URL.lastPathComponent;
+            NSString *lastPathComponent = musicClip.URL.lastPathComponent;
             if ([lastPathComponent isEqualToString:fileName]) {
                 _selectedRow = i + 1;
                 break;
@@ -83,18 +90,36 @@ UICollectionViewDataSource
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSError *error;
-    NSArray *audioClips;
+    NSMutableArray<MSVMixTrackClip *> *mixTrackClips = [NSMutableArray array];
+    [_editor.draft beginChangeTransaction];
+    for (MSVMixTrackClip *clip in _editor.draft.mixTrackClips) {
+        if (![clip.ID isEqualToString:@"music"]) {
+            [mixTrackClips addObject:clip];
+            clip.volume = 0;
+        }
+    }
+    for (MSVMainTrackClip *clip in _editor.draft.mainTrackClips) {
+        clip.volume = 0;
+    }
     if (indexPath.row > 0) {
-        MSVAudioClip *audioClip = [MSVAudioClip audioClipWithURL:[NSURL fileURLWithPath:[_bundlePath stringByAppendingPathComponent:_fileNames[indexPath.row - 1]]] error:&error];
+        MSVMixTrackClip *mixTrackClip = [MSVMixTrackClip mixTrackClipWithType:MSVClipTypeAV URL:[NSURL fileURLWithPath:[_bundlePath stringByAppendingPathComponent:_fileNames[indexPath.row - 1]]] startTimeAtMainTrack:0 error:&error];
         if (error) {
+            [_editor.draft cancelChangeTransaction];
             SHOW_ERROR_ALERT;
             return;
         }
-        audioClip.ID = [NSString stringWithFormat:@"%ld", (long)indexPath.row];
-        audioClips = @[audioClip];
+        mixTrackClip.ID = @"music";
+        [mixTrackClips addObject:mixTrackClip];
     }
-    [_editor.draft updateAudioClips:audioClips error:&error];
+    [_editor.draft updateMixTrackClips:mixTrackClips error:&error];
     if (error) {
+        [_editor.draft cancelChangeTransaction];
+        SHOW_ERROR_ALERT;
+        return;
+    }
+    [_editor.draft commitChangeWithError:&error];
+    if (error) {
+        [_editor.draft cancelChangeTransaction];
         SHOW_ERROR_ALERT;
         return;
     }

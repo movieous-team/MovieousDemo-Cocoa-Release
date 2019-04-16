@@ -667,6 +667,10 @@ static FUManager *shareManager = NULL;
     
     /*Faceunity核心接口，将道具及美颜效果绘制到pixelBuffer中，执行完此函数后pixelBuffer即包含美颜及贴纸效果*/
     CVPixelBufferRef buffer = [[FURenderer shareRenderer] renderToInternalPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int)];//flipx 参数设为YES可以使道具做水平方向的镜像翻转
+    // 首次调用可能有问题，需要再次调用
+    if (buffer == pixelBuffer) {
+        buffer = [[FURenderer shareRenderer] renderToInternalPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int)];//flipx 参数设为YES可以使道具做水平方向的镜像翻转
+    }
     frameID += 1;
     [_renderLock unlock];
     return buffer;

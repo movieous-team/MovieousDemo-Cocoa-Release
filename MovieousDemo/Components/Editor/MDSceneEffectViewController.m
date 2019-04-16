@@ -8,7 +8,7 @@
 
 #import "MDSceneEffectViewController.h"
 #import "MDSharedCenter.h"
-#import "MDShortVideoFilter.h"
+#import "MDFilter.h"
 #import "MDGlobalSettings.h"
 
 #define SNAPSHOT_COUNT 10
@@ -110,7 +110,7 @@ UICollectionViewDataSource
 @end
 
 @implementation SceneEffectView {
-    NSMutableArray *_snapshots;
+    NSArray<MSVImageGeneratorResult *> *_generatorResults;
     MSVEditor *_editor;
     NSTimeInterval _duration;
     BOOL _seeking;
@@ -129,23 +129,27 @@ UICollectionViewDataSource
         _duration = _editor.draft.duration;
     }
     if (MDGlobalSettings.sharedInstance.vendorType != VendorTypeFaceunity && MDGlobalSettings.sharedInstance.vendorType != VendorTypeTuSDK) {
-        _tipsLabel.text = @"需要选择一个特效供应商才能使用滤镜特效";
+        _tipsLabel.text = @"当前只有 Faceunity 和 TuSDK 供应商支持滤镜特效，请在设置界面选择对应供应商";
     }
-    _snapshots = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
-    [_editor.draft generateSnapshotsWithCount:SNAPSHOT_COUNT  withinTimeRange:YES completionHanler:^(NSTimeInterval timestamp, UIImage *snapshot, NSError *error) {
-        __strong typeof(wSelf) strongSelf = wSelf;
-        if (!error) {
-            [strongSelf->_snapshots addObject:snapshot];
-            if (strongSelf->_snapshots.count == SNAPSHOT_COUNT) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [strongSelf.snapshotsView reloadData];
-                });
-            }
+    MovieousWeakSelf
+    [_editor.draft.imageGenerator generateImagesWithCompletionHandler:^(NSArray<MSVImageGeneratorResult *> * _Nullable results, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+        MovieousStrongSelf
+        if (result == AVAssetImageGeneratorSucceeded) {
+            strongSelf->_generatorResults = results;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.snapshotsView reloadData];
+            });
+        } else if (result == AVAssetImageGeneratorFailed) {
+            SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
         }
     }];
     [self syncUIWithEffect];
     [self addObservers];
+}
+
+- (void)dealloc {
+    [self removeObservers];
+    [_editor.draft.imageGenerator.innerImageGenerator cancelAllCGImageGeneration];
 }
 
 - (void)syncUIWithEffect {
@@ -153,7 +157,7 @@ UICollectionViewDataSource
         return;
     }
     _seekerPosition.constant = _snapshotsView.frame.size.width * (_editor.currentTime - _editor.draft.timeRange.startTime) / _duration;
-    for (MDSceneEffect *effect in MDShortVideoFilter.sharedInstance.sceneEffects) {
+    for (MDSceneEffect *effect in MDFilter.sharedInstance.sceneEffects) {
         UIColor *color;
         NSUInteger index = [kFUSceneEffectCodes indexOfObject:effect.sceneCode];
         if (index == NSNotFound) {
@@ -168,10 +172,6 @@ UICollectionViewDataSource
         [_coverView.lines addObject:line];
         [_coverView setNeedsDisplay];
     }
-}
-
-- (void)dealloc {
-    [self removeObservers];
 }
 
 - (void)currentTimeUpdated:(NSNotification *)notification {
@@ -206,7 +206,7 @@ UICollectionViewDataSource
 }
 
 - (void)setEffectStart:(id)effectCode color:(UIColor *)color {
-    MDShortVideoFilter *filter = [MDShortVideoFilter sharedInstance];
+    MDFilter *filter = [MDFilter sharedInstance];
     MDSceneEffect *effect = [MDSceneEffect new];
     effect.sceneCode = effectCode;
     _currentEffectStartTime = _editor.currentTime;
@@ -220,7 +220,7 @@ UICollectionViewDataSource
 }
 
 - (void)setEffectEnd {
-    MDShortVideoFilter *filter = [MDShortVideoFilter sharedInstance];
+    MDFilter *filter = [MDFilter sharedInstance];
     MDSceneEffect *effect = filter.sceneEffects.lastObject;
     NSTimeInterval effectDuration = _editor.currentTime - _currentEffectStartTime;
     if (effectDuration > 0) {
@@ -257,13 +257,10 @@ UICollectionViewDataSource
             _seekerPosition.constant = destPosition;
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
-        [_editor seekToTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:nil];
+        [_editor seekToTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
     } else {
-        __weak typeof(self) wSelf = self;
-        [_editor seekToTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:^(BOOL finished) {
-            __strong typeof(wSelf) strongSelf = wSelf;
-            strongSelf->_seeking = NO;
-        }];
+        [_editor seekToTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
+        _seeking = NO;
     }
 }
 
@@ -280,7 +277,7 @@ UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView.tag == 0) {
-        return _snapshots.count;
+        return _generatorResults.count;
     } else {
         if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
             return kFUSceneEffectCodes.count + 1;
@@ -296,7 +293,7 @@ UICollectionViewDataSource
     // 缩略图
     if (collectionView.tag == 0) {
         SceneEffectSnapshotCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SceneEffectSnapshotCell" forIndexPath:indexPath];
-        cell.imageView.image = _snapshots[indexPath.row];
+        cell.imageView.image = _generatorResults[indexPath.row].image;
         return cell;
     } else {
         SceneEffectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SceneEffectCell" forIndexPath:indexPath];

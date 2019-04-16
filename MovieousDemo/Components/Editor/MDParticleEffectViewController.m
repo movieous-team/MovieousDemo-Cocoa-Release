@@ -244,7 +244,7 @@ UICollectionViewDataSource
 @end
 
 @implementation MagicEffectSelectView {
-    NSMutableArray *_snapshots;
+    NSArray<MSVImageGeneratorResult *> *_generatorResults;
     MSVEditor *_editor;
     NSTimeInterval _duration;
     BOOL _seeking;
@@ -262,21 +262,27 @@ UICollectionViewDataSource
     } else {
         _duration = _editor.draft.duration;
     }
-    _snapshots = [NSMutableArray array];
-    __weak typeof(self) wSelf = self;
-    [_editor.draft generateSnapshotsWithCount:SNAPSHOT_COUNT  withinTimeRange:YES completionHanler:^(NSTimeInterval timestamp, UIImage *snapshot, NSError *error) {
-        __strong typeof(wSelf) strongSelf = wSelf;
-        if (!error) {
-            [strongSelf->_snapshots addObject:snapshot];
-            if (strongSelf->_snapshots.count == SNAPSHOT_COUNT) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [strongSelf.snapshotsView reloadData];
-                });
-            }
+    MovieousWeakSelf
+    [_editor.draft.imageGenerator generateImagesWithCompletionHandler:^(NSArray<MSVImageGeneratorResult *> * _Nullable results, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
+        MovieousStrongSelf
+        if (result == AVAssetImageGeneratorSucceeded) {
+            strongSelf->_generatorResults = results;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [strongSelf.snapshotsView reloadData];
+            });
+        } else if (result == AVAssetImageGeneratorFailed) {
+            SHOW_ERROR_ALERT_FOR(UIApplication.sharedApplication.keyWindow.rootViewController);
         }
     }];
     [self syncUIWithEffect];
     [self addObservers];
+}
+
+- (void)dealloc {
+    [self removeObservers];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMagicEffectEndEditNotification object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMagicEffectEndEditParamNotification object:self];
+    [_editor.draft.imageGenerator.innerImageGenerator cancelAllCGImageGeneration];
 }
 
 - (void)syncUIWithEffect {
@@ -290,12 +296,6 @@ UICollectionViewDataSource
         [_coverView.lines addObject:line];
         [_coverView setNeedsDisplay];
     }
-}
-
-- (void)dealloc {
-    [self removeObservers];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kMagicEffectEndEditNotification object:self];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kMagicEffectEndEditParamNotification object:self];
 }
 
 - (void)currentTimeUpdated:(NSNotification *)notification {
@@ -328,8 +328,8 @@ UICollectionViewDataSource
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previewTouchesMoved:) name:kPreviewTouchesMoved object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previewTouchesEnded:) name:kPreviewTouchesEnded object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(previewTouchesCancelled:) name:kPreviewTouchesCancelled object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(magicEffectSizeUpdated:) name:kMagicEffectSizeUpdatedNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(magicEffectColorUpdated:) name:kMagicEffectColorUpdatedNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(magicEffectSizeUpdated:) name:kMagicEffectSizeUpdatedNotification object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(magicEffectColorUpdated:) name:kMagicEffectColorUpdatedNotification object:nil];
 }
 
 - (void)endEditEffectParams:(NSNotification *)notification {
@@ -395,13 +395,10 @@ UICollectionViewDataSource
             _seekerPosition.constant = destPosition;
         }
         [sender setTranslation:CGPointZero inView:_snapshotsView];
-        [_editor seekToTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:nil];
+        [_editor seekToTime:_editor.draft.timeRange.startTime + _duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
     } else {
-        __weak typeof(self) wSelf = self;
-        [_editor seekToTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width completionHandler:^(BOOL finished) {
-            __strong typeof(wSelf) strongSelf = wSelf;
-            strongSelf->_seeking = NO;
-        }];
+        [_editor seekToTime:_editor.draft.timeRange.startTime +  _duration * _seekerPosition.constant / _snapshotsView.frame.size.width accurate:YES];
+        _seeking = NO;
     }
 }
 
@@ -418,7 +415,7 @@ UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (collectionView.tag == 0) {
-        return _snapshots.count;
+        return _generatorResults.count;
     } else {
         return kVideoParticleCodes.count;
     }
@@ -427,7 +424,7 @@ UICollectionViewDataSource
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (collectionView.tag == 0) {
         MagicEffectSnapshotCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MagicEffectSnapshotCell" forIndexPath:indexPath];
-        cell.imageView.image = _snapshots[indexPath.row];
+        cell.imageView.image = _generatorResults[indexPath.row].image;
         return cell;
     } else {
         MagicEffectCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MagicEffectCell" forIndexPath:indexPath];

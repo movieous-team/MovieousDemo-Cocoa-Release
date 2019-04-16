@@ -13,13 +13,12 @@
 #import "MDRecorderViewController.h"
 #import "MDProgressBar.h"
 #import "MDEditorViewController.h"
-#import "FUManager.h"
-#import "STManager.h"
-#import "TuSDKManager.h"
 #import "NSArray+MDExtension.h"
 #import "MDGlobalSettings.h"
 #import "MDDynamicStickerView.h"
 #import "MDAVPlayerView.h"
+#import "MDFilter.h"
+#import "MDSharedCenter.h"
 
 #define DefaultMaxRecordingDuration 10
 
@@ -85,26 +84,6 @@
 
 @end
 
-@interface MDRecorderFilterView : UIView
-<
-UICollectionViewDelegate,
-UICollectionViewDataSource
->
-
-@end
-
-@implementation MDRecorderFilterView
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 0;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
-}
-
-@end
-
 @interface MDRecorderViewController ()
 <
 MSVRecorderDelegate,
@@ -135,7 +114,6 @@ UINavigationControllerDelegate
 @implementation MDRecorderViewController {
     MSVRecorder *_recorder;
     float _speed;
-    int _FUParamsSaveIndex;
     STCommonObjectContainerView *_commonObjectContainerView;
     AVPlayer *_duetVideoPlayer;
     MDAVPlayerView *_duetPlayerView;
@@ -150,41 +128,37 @@ UINavigationControllerDelegate
     MSVRecorderAudioConfiguration *audioConfiguration = [MSVRecorderAudioConfiguration defaultConfiguration];
     MSVRecorderVideoConfiguration *videoConfiguration = [MSVRecorderVideoConfiguration defaultConfiguration];
     videoConfiguration.size = CGSizeMake(720, 1280);
-    videoConfiguration.cameraResolution = AVCaptureSessionPreset1280x720;
-    videoConfiguration.cameraPosition = AVCaptureDevicePositionFront;
     NSError *error;
     _recorder = [[MSVRecorder alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration error:&error];
     if (error) {
         SHOW_ERROR_ALERT;
         return;
     }
+    MDSharedCenter.sharedCenter.recorder = _recorder;
     // 设置录制事件回调
     _recorder.delegate = self;
     _recorder.previewScalingMode = MovieousScalingModeAspectFill;
+    _recorder.touchToFocusExposureEnabled = YES;
+    _recorder.innerFocusViewEnabled = YES;
+    MovieousExternalFilterCaptureEffect *externalFilterRecorderEffect = [MovieousExternalFilterCaptureEffect new];
+    externalFilterRecorderEffect.externalFilterClass = MDFilter.class;
+    MDSharedCenter.sharedCenter.LUTFilterCaptureEffect = [MovieousLUTFilterCaptureEffect new];
+    MDSharedCenter.sharedCenter.LUTFilterCaptureEffect.image = [UIImage imageNamed:@"filter_test1"];
+    MDSharedCenter.sharedCenter.faceBeautyCaptureEffect = [MovieousFaceBeautyCaptureEffect new];
+    _recorder.captureEffects = @[
+                                 externalFilterRecorderEffect,
+                                 MDSharedCenter.sharedCenter.faceBeautyCaptureEffect,
+                                  ];
+    _recorder.autoOrientationAdaption = YES;
     // 将预览视图插入视图栈中
     if (_duetVideoURL) {
         CGFloat videoHeight = self.view.frame.size.width / 2 / 720 * 1280;
         CGFloat heightEdge = (self.view.frame.size.height - videoHeight) / 2;
-        _recorder.preview.frame = CGRectMake(0, heightEdge, self.view.frame.size.width / 2, videoHeight);
+        _recorder.previewView.frame = CGRectMake(0, heightEdge, self.view.frame.size.width / 2, videoHeight);
         // 输出的视频也需要打开前置摄像头镜像，保证拍摄时的预览和编辑时的预览保持一致
         _recorder.mirrorFrontEncoded = YES;
-        [_recorder.draft beginChangeTransaction];
         _recorder.draft.videoSize = CGSizeMake(720, 640);
-        MSVVideoClip *videoClip = [MSVVideoClip videoClipWithType:MSVVideoClipTypeAV URL:_duetVideoURL error:nil];
-        videoClip.destDisplayFrame = CGRectMake(360, 0, 360, 640);
-        videoClip.scalingMode = MovieousScalingModeAspectFill;
-        [_recorder.draft updateVideoClips:@[videoClip] error:&error];
-        if (error) {
-            [_recorder.draft cancelChangeTransaction];
-            SHOW_ERROR_ALERT;
-            return;
-        }
-        [_recorder.draft commitChangeWithError:&error];
-        if (error) {
-            SHOW_ERROR_ALERT;
-            return;
-        }
-        [self.view insertSubview:_recorder.preview atIndex:0];
+        [self.view insertSubview:_recorder.previewView atIndex:0];
         _duetVideoPlayer = [AVPlayer playerWithURL:_duetVideoURL];
         _duetPlayerView = [MDAVPlayerView playerViewWithPlayer:_duetVideoPlayer];
         _duetPlayerView.frame = CGRectMake(self.view.frame.size.width / 2, heightEdge, self.view.frame.size.width / 2, videoHeight);
@@ -192,41 +166,28 @@ UINavigationControllerDelegate
         [self.view insertSubview:_duetPlayerView atIndex:0];
         _backgroundMusicCollection.hidden = YES;
     } else {
-        _recorder.preview.frame = self.view.frame;
-        [self.view insertSubview:_recorder.preview atIndex:0];
+        _recorder.previewView.frame = self.view.frame;
+        [self.view insertSubview:_recorder.previewView atIndex:0];
     }
     [self getFirstMovieFromPhotoAlbum];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHint:) name:kShowHintNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(shouldChangeToBack) name:kSTStickerViewShouldChangeToBackCameraNotification object:nil];
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        _FUParamsSaveIndex = -1;
-        [FUManager.shareManager initResources];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
-        [STManager.sharedManager initResources];
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
         _commonObjectContainerView = ((MDDynamicStickerView *)_stickerView.subviews[0]).STView.commonObjectContainerView;
         [self.view insertSubview:_commonObjectContainerView atIndex:1];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
-        [TuSDKManager.sharedManager setupResources];
-    }
-}
-
-- (void)shouldChangeToBack {
-    NSError *error;
-    [_recorder setCameraPosition:AVCaptureDevicePositionBack error:&error];
-    if (error) {
-        SHOW_ERROR_ALERT
     }
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        [FUManager.shareManager destoryItems];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
-        [STManager.sharedManager releaseResources];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
-        [TuSDKManager.sharedManager releaseResources];
-    }
+    MDSharedCenter.sharedCenter.recorder = nil;
+    MDSharedCenter.sharedCenter.faceBeautyCaptureEffect = nil;
+    MDSharedCenter.sharedCenter.LUTFilterCaptureEffect = nil;
+    [MDFilter.sharedInstance dispose];
+}
+
+- (void)shouldChangeToBack {
+    _recorder.preferredDevicePosition = AVCaptureDevicePositionBack;
 }
 
 - (void)showHint:(NSNotification *)notification {
@@ -234,12 +195,9 @@ UINavigationControllerDelegate
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        if (_FUParamsSaveIndex >= 0) {
-            [[FUManager shareManager] restoreParamsSet:_FUParamsSaveIndex];
-        }
-    }
     self.navigationController.navigationBarHidden = YES;
+    [MDFilter.sharedInstance dispose];
+    [MDFilter.sharedInstance setup];
     [_recorder startCapturingWithCompletion:^(BOOL audioGranted, NSError *audioError, BOOL videoGranted, NSError *videoError) {
         if (videoError) {
             SHOW_ALERT(@"error", videoError.localizedDescription, @"ok");
@@ -260,15 +218,10 @@ UINavigationControllerDelegate
     }];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [_recorder stopCapturing];
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        if (_FUParamsSaveIndex >= 0) {
-            [[FUManager shareManager] updateSavedParamsSet:_FUParamsSaveIndex];
-        } else {
-            _FUParamsSaveIndex = (int)[FUManager.shareManager saveParamsSet];
-        }
-    }
+    [MDFilter.sharedInstance dispose];
+    [MDFilter.sharedInstance setup];
 }
 
 - (IBAction)closeButtonPressed:(UIButton *)sender {
@@ -281,17 +234,6 @@ UINavigationControllerDelegate
     if (_duetVideoPlayer.rate > 0) {
         _duetVideoPlayer.rate = 1.0 / _speed;
     }
-}
-
-- (CVPixelBufferRef)recorder:(MSVRecorder *)recorder didGetPixelBuffer:(CVPixelBufferRef)pixelBuffer {
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        pixelBuffer = [FUManager.shareManager renderItemsToPixelBuffer:pixelBuffer];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
-        pixelBuffer = [STManager.sharedManager processPixelBuffer:pixelBuffer];
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
-        pixelBuffer = [TuSDKManager.sharedManager processPixelBuffer:pixelBuffer];
-    }
-    return pixelBuffer;
 }
 
 - (IBAction)startRecordingTouchDown:(UIButton *)sender {
@@ -336,7 +278,7 @@ UINavigationControllerDelegate
 - (void)stopRecordingWithCompletion:(void(^)(void))completion {
     [self turnToRecordingStoppedUI];
     [_duetVideoPlayer pause];
-    __weak typeof(self) wSelf = self;
+    MovieousWeakSelf
     [_recorder finishRecordingWithCompletionHandler:^(MSVMainTrackClip *clip, NSError *error) {
         if (error) {
             SHOW_ERROR_ALERT;
@@ -391,15 +333,8 @@ UINavigationControllerDelegate
 }
 
 - (IBAction)switchCameraButtonPressed:(UIButton *)sender {
-    NSError *error;
-    if (![_recorder switchCameraWithError:&error]) {
-        SHOW_ERROR_ALERT;
-        return;
-    }
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
-        /**切换摄像头要调用此函数来重置人脸检测状态*/
-        [[FUManager shareManager] onCameraChange];
-    }
+    [_recorder switchCamera];
+    [MDFilter.sharedInstance onCameraChanged];
 }
 
 - (IBAction)speedButtonPressed:(UIButton *)sender {
@@ -417,10 +352,7 @@ UINavigationControllerDelegate
 }
 
 - (IBAction)beautifyButtonPressed:(UIButton *)sender {
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeNone) {
-        SHOW_ALERT(@"提示", @"需要选择一个特效供应商才能使用美化功能", @"好的");
-        return;
-    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
         SHOW_ALERT(@"提示", @"此供应商暂不支持美化功能", @"好的");
         return;
     }
@@ -504,7 +436,7 @@ UINavigationControllerDelegate
         return;
     }
     if (recorder.recordedClipsRealDuration + currentClipDuration / _speed >= maxDuration) {
-        __weak typeof(self) wSelf = self;
+        MovieousWeakSelf
         [self stopRecordingWithCompletion:^{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [wSelf performSegueWithIdentifier:@"ShowMDEditorViewController" sender:wSelf];
@@ -523,15 +455,37 @@ UINavigationControllerDelegate
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ShowMDEditorViewController"]) {
+        MSVDraft *draft;
+        // 照片直接选择的
         if ([sender isKindOfClass:MSVDraft.class]) {
-            MDEditorViewController *destController = (MDEditorViewController *)segue.destinationViewController;
-            destController.draft = (MSVDraft *)sender;
+            draft = (MSVDraft *)sender;
         } else {
-            MDEditorViewController *destController = (MDEditorViewController *)segue.destinationViewController;
+        // recorder 中的
             // 复制一份，保证编辑操作不会影响到 recorder 的 draft
-            MSVDraft *draft = [_recorder.draft copy];
-            destController.draft = draft;
+            draft = [_recorder.draft copy];
         }
+        for (MSVMixTrackClip *mixTrackClip in draft.mixTrackClips) {
+            mixTrackClip.ID = @"music";
+        }
+        if (_duetVideoURL) {
+            NSError *error;
+            MSVMixTrackClip *mixTrackClip = [MSVMixTrackClip mixTrackClipWithType:MSVClipTypeAV URL:_duetVideoURL startTimeAtMainTrack:0 error:&error];
+            if (error) {
+                [draft cancelChangeTransaction];
+                SHOW_ERROR_ALERT;
+                return;
+            }
+            mixTrackClip.ID = @"duet";
+            mixTrackClip.destDisplayFrame = CGRectMake(360, 0, 360, 640);
+            mixTrackClip.scalingMode = MovieousScalingModeAspectFill;
+            [draft updateMixTrackClips:@[mixTrackClip] error:&error];
+            if (error) {
+                [draft cancelChangeTransaction];
+                SHOW_ERROR_ALERT;
+                return;
+            }
+        }
+        ((MDEditorViewController *)(segue.destinationViewController)).draft = draft;
     } else if ([segue.identifier isEqualToString:@"ShowMusicViewController"]) {
         MDRecorderMusicViewController *destController = (MDRecorderMusicViewController *)segue.destinationViewController;
         destController.delegate = self;
@@ -670,7 +624,7 @@ UINavigationControllerDelegate
         //获取视频url
         
         NSURL *mediaUrl = [info objectForKey:UIImagePickerControllerMediaURL];
-        clip = [MSVMainTrackClip mainTrackClipWithType:MSVMainTrackClipTypeAV URL:mediaUrl error:&error];
+        clip = [MSVMainTrackClip mainTrackClipWithType:MSVClipTypeAV URL:mediaUrl error:&error];
         if (error) {
             SHOW_ERROR_ALERT;
             return;
@@ -679,7 +633,9 @@ UINavigationControllerDelegate
     if (_duetVideoURL) {
         clip.scalingMode = MovieousScalingModeAspectFill;
         clip.destDisplayFrame = CGRectMake(0, 0, 360, 640);
-        clip.volume = 0;
+        if (clip.type == MSVClipTypeAV) {
+            clip.volume = 0;
+        }
     }
     [draft updateMainTrackClips:@[clip] error:&error];
     if (error) {

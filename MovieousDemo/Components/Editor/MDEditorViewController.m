@@ -8,7 +8,7 @@
 
 #import "MDEditorViewController.h"
 #import <MovieousShortVideo/MovieousShortVideo.h>
-#import "MDShortVideoFilter.h"
+#import "MDFilter.h"
 #import "MDSharedCenter.h"
 #import "FUManager.h"
 #import "STManager.h"
@@ -33,13 +33,16 @@ MSVEditorDelegate
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [MDSharedCenter.sharedCenter instantiateProperties];
+    MDSharedCenter.sharedCenter.editor = [MSVEditor editorWithDraft:nil error:nil];
+    MDSharedCenter.sharedCenter.graffitiView = [MSVGraffitiView new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginEditingBottom:) name:kBeginEditingInBottomViewNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingBottom:) name:kEndEditingInBottomViewNotification object:nil];
 }
 
 - (void)dealloc {
-    [MDSharedCenter.sharedCenter clearProperties];
+    MDSharedCenter.sharedCenter.graffitiView = nil;
+    MDSharedCenter.sharedCenter.editor = nil;
+    [MDFilter.sharedInstance.sceneEffects removeAllObjects];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -58,8 +61,8 @@ MSVEditorDelegate
     _previewContainer.preview = _editor.preview;
     _editor.loop = YES;
     // 添加外部滤镜来对视频进行自定义处理
-    MSVExternalFilterEffect *effect = [MSVExternalFilterEffect new];
-    effect.externalFilterClass = MDShortVideoFilter.class;
+    MSVExternalFilterEditorEffect *effect = [MSVExternalFilterEditorEffect new];
+    effect.externalFilterClass = MDFilter.class;
     [_editor.draft updateBasicEffects:@[effect] error:&error];
     if (error) {
         SHOW_ERROR_ALERT;
@@ -67,8 +70,9 @@ MSVEditorDelegate
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [_editor play];
+    self.navigationController.navigationBarHidden = NO;
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
@@ -83,10 +87,6 @@ MSVEditorDelegate
 
 - (void)endEditingBottom:(NSNotification *)notification {
     _bottomViewHeight.constant -= 50;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    self.navigationController.navigationBarHidden = NO;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

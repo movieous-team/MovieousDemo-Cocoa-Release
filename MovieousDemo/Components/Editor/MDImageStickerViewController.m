@@ -58,7 +58,8 @@ UICollectionViewDataSource
     NSMutableArray *effects = [NSMutableArray arrayWithArray:MDSharedCenter.sharedCenter.editor.draft.basicEffects];
     UIImage *image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", _bundlePath, _stickerNames[indexPath.row]]];
     CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
-    MSVImageStickerEffect *imageStickerEffect = [MSVImageStickerEffect imageStickerEffectWithImage:image];
+    MSVImageStickerEditorEffect *imageStickerEffect = [MSVImageStickerEditorEffect new];
+    imageStickerEffect.image = image;
     imageStickerEffect.ID = kImageStickerEffectID;
     imageStickerEffect.destRect = CGRectMake((videoSize.width - image.size.width) / 2, (videoSize.height - image.size.height) / 2, image.size.width, image.size.height);
     [effects addObject:imageStickerEffect];

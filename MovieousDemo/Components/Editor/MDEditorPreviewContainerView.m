@@ -35,7 +35,7 @@ UIGestureRecognizerDelegate
     CGPoint _lastTranslation;
     CGFloat _lastScale;
     CGFloat _lastRotation;
-    MSVImageStickerEffect *_selectedImageStickerEffect;
+    MSVImageStickerEditorEffect *_selectedImageStickerEffect;
 }
 
 - (void)awakeFromNib {
@@ -103,13 +103,13 @@ UIGestureRecognizerDelegate
     _selectedImageStickerEffect = nil;
     _frameView.hidden = YES;
     for (int i = (int)MDSharedCenter.sharedCenter.editor.draft.basicEffects.count - 1; i >= 0; i--) {
-        id<MSVBasicEffect> effect = MDSharedCenter.sharedCenter.editor.draft.basicEffects[i];
+        id<MSVBasicEditorEffect> effect = MDSharedCenter.sharedCenter.editor.draft.basicEffects[i];
         // 只处理贴纸面板添加进去的贴纸，文字等由贴纸功能实现的特效不在这里处理
         if (![effect.ID isEqualToString:kImageStickerEffectID]) {
             continue;
         }
-        if ([effect isKindOfClass:MSVImageStickerEffect.class]) {
-            MSVImageStickerEffect *imageStickerEffect = (MSVImageStickerEffect *)effect;
+        if ([effect isKindOfClass:MSVImageStickerEditorEffect.class]) {
+            MSVImageStickerEditorEffect *imageStickerEffect = (MSVImageStickerEditorEffect *)effect;
             CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
             CGRect imageStickerFrame = CGRectMake(contentFrame.origin.x + imageStickerEffect.destRect.origin.x / videoSize.width * contentFrame.size.width, contentFrame.origin.y + imageStickerEffect.destRect.origin.y / videoSize.width * contentFrame.size.width, imageStickerEffect.destRect.size.width / videoSize.width * contentFrame.size.width, imageStickerEffect.destRect.size.height / videoSize.height * contentFrame.size.height);
             if (CGRectContainsPoint(imageStickerFrame, location)) {

@@ -12,6 +12,10 @@
 		831705692243386600304FFD /* FUAPIDemoBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CF5FF62240DD59006D8D2B /* FUAPIDemoBar.framework */; };
 		8317056A2243386600304FFD /* FUAPIDemoBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83CF5FF62240DD59006D8D2B /* FUAPIDemoBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8317056D224338D300304FFD /* MDGraffitiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8317056C224338D300304FFD /* MDGraffitiViewController.m */; };
+		8345B7702265776400A69BC0 /* MDFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8345B76F2265776400A69BC0 /* MDFilter.m */; };
+		8345B7732265776E00A69BC0 /* MDInnerBeautyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8345B7712265776E00A69BC0 /* MDInnerBeautyFilterViewController.m */; };
+		8345B77522657EDE00A69BC0 /* filter_test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8345B77422657EDE00A69BC0 /* filter_test1.png */; };
+		8345B77722657F7B00A69BC0 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 8345B77622657F7B00A69BC0 /* SENSEME.lic */; };
 		8369CF8E21B50C7100F24AEF /* MovieousDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */; };
 		8369CF9921B50C7100F24AEF /* MovieousDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF9821B50C7100F24AEF /* MovieousDemoUITests.m */; };
 		8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D4ED21B514CA00F24AEF /* Accelerate.framework */; };
@@ -37,7 +41,6 @@
 		83CF62862240DD5A006D8D2B /* MDImageStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F592240DD58006D8D2B /* MDImageStickerViewController.m */; };
 		83CF62872240DD5A006D8D2B /* MDTimeLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F5B2240DD58006D8D2B /* MDTimeLocationViewController.m */; };
 		83CF62882240DD5A006D8D2B /* MDEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F5C2240DD58006D8D2B /* MDEditorViewController.m */; };
-		83CF62892240DD5A006D8D2B /* MDShortVideoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */; };
 		83CF628A2240DD5A006D8D2B /* MDSubtitlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F602240DD58006D8D2B /* MDSubtitlesViewController.m */; };
 		83CF628B2240DD5A006D8D2B /* MDTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F652240DD58006D8D2B /* MDTitleViewController.m */; };
 		83CF628C2240DD5A006D8D2B /* MDTimeEffectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F662240DD58006D8D2B /* MDTimeEffectViewController.m */; };
@@ -55,7 +58,6 @@
 		83CF62982240DD5A006D8D2B /* MDHorizontalPageFlowlayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F802240DD58006D8D2B /* MDHorizontalPageFlowlayout.m */; };
 		83CF62992240DD5A006D8D2B /* NSArray+MDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F832240DD58006D8D2B /* NSArray+MDExtension.m */; };
 		83CF629A2240DD5A006D8D2B /* MDGlobalSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F842240DD58006D8D2B /* MDGlobalSettings.m */; };
-		83CF629C2240DD5A006D8D2B /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 83CF5F8A2240DD59006D8D2B /* SENSEME.lic */; };
 		83CF629D2240DD5A006D8D2B /* STStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F8C2240DD59006D8D2B /* STStickerView.m */; };
 		83CF629E2240DD5A006D8D2B /* STViewButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83CF5F8E2240DD59006D8D2B /* STViewButton.xib */; };
 		83CF629F2240DD5A006D8D2B /* STLock.m in Sources */ = {isa = PBXBuildFile; fileRef = 83CF5F8F2240DD59006D8D2B /* STLock.m */; };
@@ -701,6 +703,12 @@
 		83170567224337D000304FFD /* MDSharedCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSharedCenter.m; sourceTree = "<group>"; };
 		8317056B224338D300304FFD /* MDGraffitiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDGraffitiViewController.h; sourceTree = "<group>"; };
 		8317056C224338D300304FFD /* MDGraffitiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGraffitiViewController.m; sourceTree = "<group>"; };
+		8345B76E2265776400A69BC0 /* MDFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDFilter.h; sourceTree = "<group>"; };
+		8345B76F2265776400A69BC0 /* MDFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDFilter.m; sourceTree = "<group>"; };
+		8345B7712265776E00A69BC0 /* MDInnerBeautyFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDInnerBeautyFilterViewController.m; sourceTree = "<group>"; };
+		8345B7722265776E00A69BC0 /* MDInnerBeautyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDInnerBeautyFilterViewController.h; sourceTree = "<group>"; };
+		8345B77422657EDE00A69BC0 /* filter_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_test1.png; sourceTree = "<group>"; };
+		8345B77622657F7B00A69BC0 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		8369CF7121B50C7000F24AEF /* MovieousDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieousDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8921B50C7100F24AEF /* MovieousDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieousDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieousDemoTests.m; sourceTree = "<group>"; };
@@ -737,7 +745,6 @@
 		83CF5F482240DD58006D8D2B /* MDEditorMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEditorMusicViewController.m; sourceTree = "<group>"; };
 		83CF5F492240DD58006D8D2B /* MDImageStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDImageStickerViewController.h; sourceTree = "<group>"; };
 		83CF5F4A2240DD58006D8D2B /* MDParticleEffectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDParticleEffectViewController.m; sourceTree = "<group>"; };
-		83CF5F4B2240DD58006D8D2B /* MDShortVideoFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDShortVideoFilter.h; sourceTree = "<group>"; };
 		83CF5F4C2240DD58006D8D2B /* MDTrimView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTrimView.m; sourceTree = "<group>"; };
 		83CF5F4D2240DD58006D8D2B /* MDEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDEditorViewController.h; sourceTree = "<group>"; };
 		83CF5F4E2240DD58006D8D2B /* MDTimeLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTimeLocationViewController.h; sourceTree = "<group>"; };
@@ -755,7 +762,6 @@
 		83CF5F5B2240DD58006D8D2B /* MDTimeLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTimeLocationViewController.m; sourceTree = "<group>"; };
 		83CF5F5C2240DD58006D8D2B /* MDEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDEditorViewController.m; sourceTree = "<group>"; };
 		83CF5F5D2240DD58006D8D2B /* MDTrimView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTrimView.h; sourceTree = "<group>"; };
-		83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDShortVideoFilter.m; sourceTree = "<group>"; };
 		83CF5F5F2240DD58006D8D2B /* MDVolumeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDVolumeViewController.h; sourceTree = "<group>"; };
 		83CF5F602240DD58006D8D2B /* MDSubtitlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSubtitlesViewController.m; sourceTree = "<group>"; };
 		83CF5F622240DD58006D8D2B /* MDSpecialEffectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSpecialEffectViewController.h; sourceTree = "<group>"; };
@@ -791,7 +797,6 @@
 		83CF5F842240DD58006D8D2B /* MDGlobalSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDGlobalSettings.m; sourceTree = "<group>"; };
 		83CF5F852240DD58006D8D2B /* NSArray+MDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MDExtension.h"; sourceTree = "<group>"; };
 		83CF5F862240DD58006D8D2B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		83CF5F8A2240DD59006D8D2B /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		83CF5F8C2240DD59006D8D2B /* STStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STStickerView.m; sourceTree = "<group>"; };
 		83CF5F8D2240DD59006D8D2B /* STPlayerControlBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayerControlBar.h; sourceTree = "<group>"; };
 		83CF5F8E2240DD59006D8D2B /* STViewButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = STViewButton.xib; sourceTree = "<group>"; };
@@ -1612,6 +1617,10 @@
 		83CF5F2F2240DD58006D8D2B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8345B7722265776E00A69BC0 /* MDInnerBeautyFilterViewController.h */,
+				8345B7712265776E00A69BC0 /* MDInnerBeautyFilterViewController.m */,
+				8345B76E2265776400A69BC0 /* MDFilter.h */,
+				8345B76F2265776400A69BC0 /* MDFilter.m */,
 				83CF5F332240DD58006D8D2B /* MDAVPlayerView.h */,
 				83CF5F362240DD58006D8D2B /* MDAVPlayerView.m */,
 				83CF5F352240DD58006D8D2B /* MDBeautifyFilterViewController.h */,
@@ -1678,8 +1687,6 @@
 				83CF5F572240DD58006D8D2B /* MDSceneEffectViewController.m */,
 				83170566224337D000304FFD /* MDSharedCenter.h */,
 				83170567224337D000304FFD /* MDSharedCenter.m */,
-				83CF5F4B2240DD58006D8D2B /* MDShortVideoFilter.h */,
-				83CF5F5E2240DD58006D8D2B /* MDShortVideoFilter.m */,
 				83CF5F622240DD58006D8D2B /* MDSpecialEffectViewController.h */,
 				83CF5F502240DD58006D8D2B /* MDSpecialEffectViewController.m */,
 				83CF5F512240DD58006D8D2B /* MDSubtitlesViewController.h */,
@@ -1782,7 +1789,7 @@
 		83CF5F892240DD59006D8D2B /* license */ = {
 			isa = PBXGroup;
 			children = (
-				83CF5F8A2240DD59006D8D2B /* SENSEME.lic */,
+				8345B77622657F7B00A69BC0 /* SENSEME.lic */,
 			);
 			path = license;
 			sourceTree = "<group>";
@@ -2817,6 +2824,7 @@
 		83CF626C2240DD59006D8D2B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8345B77422657EDE00A69BC0 /* filter_test1.png */,
 				83CF626D2240DD5A006D8D2B /* BackgroundMusics.bundle */,
 				83CF626E2240DD5A006D8D2B /* Stickers.bundle */,
 				83CF626F2240DD5A006D8D2B /* Assets.xcassets */,
@@ -3139,6 +3147,7 @@
 				83CF64B02240DD5A006D8D2B /* video_style_default_btn_switch@2x.png in Resources */,
 				83CF64322240DD5A006D8D2B /* video_style_default_btn_sticker@3x.png in Resources */,
 				83CF63F92240DD5A006D8D2B /* video_style_default_btn_sticker_online@3x.png in Resources */,
+				8345B77522657EDE00A69BC0 /* filter_test1.png in Resources */,
 				83CF64552240DD5A006D8D2B /* lsq_filter_thumb_SkinJelly011.jpg in Resources */,
 				83CF64512240DD5A006D8D2B /* lsq_edit_text_style_icon_nav_ic_close@3x.png in Resources */,
 				83CF635D2240DD5A006D8D2B /* 腮红01.bundle in Resources */,
@@ -3268,6 +3277,7 @@
 				83CF62DB2240DD5A006D8D2B /* touhua_ztt_fu.png in Resources */,
 				83CF64732240DD5A006D8D2B /* style_default_btn_back_w @2x.png in Resources */,
 				83CF63C12240DD5A006D8D2B /* lsq_filter_thumb_Bubbles.jpg in Resources */,
+				8345B77722657F7B00A69BC0 /* SENSEME.lic in Resources */,
 				83CF63B32240DD5A006D8D2B /* video_style_default_btn_sticker_off@3x.png in Resources */,
 				83CF64AD2240DD5A006D8D2B /* style_default_edit_icon_text_addText@2x.png in Resources */,
 				83CF64F62240DD5A006D8D2B /* Stickers.bundle in Resources */,
@@ -3357,7 +3367,6 @@
 				83CF64372240DD5A006D8D2B /* style_default_1.7.1_btn_beauty_selected@2x.png in Resources */,
 				83CF64832240DD5A006D8D2B /* style_default_1.7.1_btn_filter_w_1.11@3x.png in Resources */,
 				83CF63E02240DD5A006D8D2B /* style_default_1.6.0_homepage_next_icon@2x.png in Resources */,
-				83CF629C2240DD5A006D8D2B /* SENSEME.lic in Resources */,
 				83CF63FA2240DD5A006D8D2B /* style_default_1.7.1_btn_clearFilter@2x.png in Resources */,
 				83CF62DD2240DD5A006D8D2B /* yuguan.png in Resources */,
 				83CF63E62240DD5A006D8D2B /* tab_ic_text_normal@3x.png in Resources */,
@@ -3659,6 +3668,7 @@
 				83CF62B42240DD5A006D8D2B /* STCamera.m in Sources */,
 				83CF64C92240DD5A006D8D2B /* ViewSlider.m in Sources */,
 				83CF62922240DD5A006D8D2B /* UIButton+MDExtension.m in Sources */,
+				8345B7702265776400A69BC0 /* MDFilter.m in Sources */,
 				83CF639D2240DD5A006D8D2B /* FUImageHelper.m in Sources */,
 				83CF62D02240DD5A006D8D2B /* FULiveCell.m in Sources */,
 				83CF62B32240DD5A006D8D2B /* STManager.m in Sources */,
@@ -3671,7 +3681,6 @@
 				83CF62B22240DD5A006D8D2B /* STCommonObjectView.m in Sources */,
 				83CF64D12240DD5A006D8D2B /* ParticleEffectView.m in Sources */,
 				83CF64CF2240DD5A006D8D2B /* HorizontalListView.m in Sources */,
-				83CF62892240DD5A006D8D2B /* MDShortVideoFilter.m in Sources */,
 				83CF62792240DD5A006D8D2B /* MDRecorderViewController.m in Sources */,
 				83CF62732240DD5A006D8D2B /* MDMoreFunctionsViewController.m in Sources */,
 				83CF64DF2240DD5A006D8D2B /* CameraBeautyFaceListView.m in Sources */,
@@ -3697,6 +3706,7 @@
 				83CF64DC2240DD5A006D8D2B /* CameraBeautyPanelView.m in Sources */,
 				83CF64D92240DD5A006D8D2B /* CameraNormalFilterListView.m in Sources */,
 				83CF62CB2240DD5A006D8D2B /* FULightingView.m in Sources */,
+				8345B7732265776E00A69BC0 /* MDInnerBeautyFilterViewController.m in Sources */,
 				83CF64F22240DD5A006D8D2B /* UIImage+Demo.m in Sources */,
 				83CF62722240DD5A006D8D2B /* AppDelegate.m in Sources */,
 				83CF62742240DD5A006D8D2B /* MDFrameView.m in Sources */,

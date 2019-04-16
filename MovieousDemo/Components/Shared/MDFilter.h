@@ -1,5 +1,5 @@
 //
-//  MDShortVideoFilter.h
+//  MDFilter.h
 //  MovieousDemo
 //
 //  Created by Chris Wang on 2018/10/23.
@@ -15,11 +15,15 @@
 
 @end
 
-@interface MDShortVideoFilter : NSObject
+@interface MDFilter : NSObject
 <
-MSVExternalFilter
+MovieousExternalFilter
 >
 
 @property (nonatomic, strong) NSMutableArray<MDSceneEffect *> *sceneEffects;
+
+- (void)onCameraChanged;
+- (void)setup;
+- (void)dispose;
 
 @end

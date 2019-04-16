@@ -19,6 +19,7 @@
 FUAPIDemoBarDelegate
 >
 
+@property (strong, nonatomic) IBOutlet UIView *innerBeautyFilterPanel;
 @property (strong, nonatomic) IBOutlet FUAPIDemoBar *FUBeautyFilterPanel;
 @property (strong, nonatomic) IBOutlet MDSTBeautyFilterPanel *STBeautyFilterPanel;
 
@@ -29,7 +30,9 @@ FUAPIDemoBarDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeNone) {
+        _innerBeautyFilterPanel.hidden = NO;
+    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
         _FUBeautyFilterPanel.hidden = NO;
         _FUBeautyFilterPanel.delegate = self;
     } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {

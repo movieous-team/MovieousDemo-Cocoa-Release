@@ -42,23 +42,32 @@
         _originalMuteButton.enabled = YES;
         _originalSlider.value = _editor.draft.mainTrackClips[0].volume;
     }
-    if (_editor.draft.videoClips.count == 0) {
-        _mixLabel.enabled = NO;
-        _mixSlider.enabled = NO;
-        _mixMuteButton.enabled = NO;
-    } else {
+    MSVMixTrackClip *duetClip = nil;
+    MSVMixTrackClip *musicClip = nil;
+    for (MSVMixTrackClip *mixTrackClip in _editor.draft.mixTrackClips) {
+        if ([mixTrackClip.ID isEqualToString:@"music"]) {
+            musicClip = mixTrackClip;
+        } else if ([mixTrackClip.ID isEqualToString:@"duet"]) {
+            duetClip = mixTrackClip;
+        }
+    }
+    if (duetClip) {
         _mixLabel.enabled = YES;
         _mixSlider.enabled = YES;
         _mixMuteButton.enabled = YES;
-        _mixSlider.value = _editor.draft.videoClips[0].volume;
-    }
-    if (_editor.draft.audioClips.count == 0) {
-        _musicLabel.enabled = NO;
-        _musicSlider.enabled = NO;
+        _mixSlider.value = duetClip.volume;
     } else {
+        _mixLabel.enabled = NO;
+        _mixSlider.enabled = NO;
+        _mixMuteButton.enabled = NO;
+    }
+    if (musicClip) {
         _musicLabel.enabled = YES;
         _musicSlider.enabled = YES;
-        _musicSlider.value = _editor.draft.audioClips[0].volume;
+        _musicSlider.value = musicClip.volume;
+    } else {
+        _musicLabel.enabled = NO;
+        _musicSlider.enabled = NO;
     }
 }
 
@@ -77,8 +86,10 @@
 
 - (IBAction)mixVolumeChanged:(UISlider *)sender {
     [_editor.draft beginVolumeChangeTransaction];
-    for (MSVVideoClip *clip in _editor.draft.videoClips) {
-        clip.volume = sender.value;
+    for (MSVMixTrackClip *mixClip in _editor.draft.mixTrackClips) {
+        if ([mixClip.ID isEqualToString:@"duet"]) {
+            mixClip.volume = sender.value;
+        }
     }
     NSError *error;
     if (![_editor.draft commitVolumeChangeWithError:&error]) {
@@ -90,8 +101,10 @@
 // 背景音乐音量变化
 - (IBAction)backgroundVolumeChanged:(UISlider *)sender {
     [_editor.draft beginVolumeChangeTransaction];
-    for (MSVAudioClip *clip in _editor.draft.audioClips) {
-        clip.volume = sender.value;
+    for (MSVMixTrackClip *mixTrackClip in _editor.draft.mixTrackClips) {
+        if ([mixTrackClip.ID isEqualToString:@"music"]) {
+            mixTrackClip.volume = sender.value;
+        }
     }
     NSError *error;
     if (![_editor.draft commitVolumeChangeWithError:&error]) {

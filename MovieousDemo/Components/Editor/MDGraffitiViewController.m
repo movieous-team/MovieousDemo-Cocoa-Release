@@ -54,7 +54,7 @@ MSVGraffitiViewDelegate
     MDSharedCenter.sharedCenter.graffitiView.hidden = NO;
     NSMutableArray *basicEffects = [NSMutableArray array];
     for (int i = 0; i < MDSharedCenter.sharedCenter.editor.draft.basicEffects.count; i++) {
-        id<MSVBasicEffect> basicEffect = MDSharedCenter.sharedCenter.editor.draft.basicEffects[i];
+        id<MSVBasicEditorEffect> basicEffect = MDSharedCenter.sharedCenter.editor.draft.basicEffects[i];
         if ([basicEffect.ID isEqualToString:kGraffitiEffectID]) {
             _previeousIndex = i;
         } else {
@@ -81,8 +81,11 @@ MSVGraffitiViewDelegate
 - (void)dealloc {
     MDSharedCenter.sharedCenter.graffitiView.hidden = YES;
     UIImage *snapshot = [MDSharedCenter.sharedCenter.graffitiView takeSnapshot];
-    MSVImageStickerEffect *effect = [MSVImageStickerEffect imageStickerEffectWithImage:snapshot];
+    MSVImageStickerEditorEffect *effect = [MSVImageStickerEditorEffect new];
+    effect.image = snapshot;
     effect.ID = kGraffitiEffectID;
+    CGSize videoSize = MDSharedCenter.sharedCenter.editor.draft.videoSize;
+    effect.destRect = CGRectMake(0, 0, videoSize.width, videoSize.height);
     NSMutableArray *basicEffects = [NSMutableArray arrayWithArray:MDSharedCenter.sharedCenter.editor.draft.basicEffects];
     if (_previeousIndex >= 0) {
         [basicEffects insertObject:effect atIndex:_previeousIndex];
