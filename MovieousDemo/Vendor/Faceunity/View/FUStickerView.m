@@ -8,6 +8,7 @@
 
 #import "FUStickerView.h"
 #import "FUManager.h"
+#import "FULiveModel.h"
 
 @interface FUStickerView ()
 <

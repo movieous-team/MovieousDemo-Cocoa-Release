@@ -2,7 +2,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'MovieousDemo' do
-    pod 'Nama', '5.6.1'
+    pod 'Nama', '6.0.0'
     pod 'MovieousPlayer', '1.0.2'
     pod 'MovieousShortVideo', '2.1.0'
     pod 'SDWebImage/WebP', '4.4.5'
