@@ -16,14 +16,14 @@
 
 @implementation MDUploaderViewController {
     UFFileClient *_fileClient;
-    MSVVideoExporter *_exporter;
+    MSVExporter *_exporter;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _fileClient = [UFFileClient instanceFileClientWithConfig:[UFConfig instanceConfigWithPrivateToken:@"b253bb25-3596-4372-9c19-c97d10bce448" publicToken:@"TOKEN_218481a2-1fb0-45d4-9905-fcbd999096de" bucket:@"twsy" fileOperateEncryptServer:nil fileAddressEncryptServer:nil proxySuffix:@"cn-bj.ufileos.com"]];
-    _exporter = [[MSVVideoExporter alloc] initWithDraft:_draft];
+    _exporter = [[MSVExporter alloc] initWithDraft:_draft];
     _exporter.saveToPhotosAlbum = YES;
     MovieousWeakSelf
     _exporter.progressHandler = ^(float progress) {

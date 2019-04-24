@@ -157,7 +157,11 @@ UINavigationControllerDelegate
         _recorder.previewView.frame = CGRectMake(0, heightEdge, self.view.frame.size.width / 2, videoHeight);
         // 输出的视频也需要打开前置摄像头镜像，保证拍摄时的预览和编辑时的预览保持一致
         _recorder.mirrorFrontEncoded = YES;
-        _recorder.draft.videoSize = CGSizeMake(720, 640);
+        [_recorder.draft setVideoSize:CGSizeMake(720, 640) error:&error];
+        if (error) {
+            SHOW_ERROR_ALERT;
+            return;
+        }
         [self.view insertSubview:_recorder.previewView atIndex:0];
         _duetVideoPlayer = [AVPlayer playerWithURL:_duetVideoURL];
         _duetPlayerView = [MDAVPlayerView playerViewWithPlayer:_duetVideoPlayer];
