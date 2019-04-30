@@ -4,7 +4,7 @@
 
 *Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md).*
 
-## 功能
+## Functions
 
 - [x] Short video play
 - [x] Short video record
@@ -32,7 +32,7 @@ $ gem install cocoapods
 find directory where `Podfile` is in, run `pod install` in terminal and wait the command's completion
 
 ### add vendor licenses
-please contact [Sales](sales@movieous.video) to retrieve trial licenses
+please contact [Sales](mailto:sales@movieous.video) to retrieve trial licenses
 
 #### TuSDK license
 fill `[TuSDK initSdkWithAppKey:@""]` method in `AppDelegate.h` with TuSDK license。(if you don't need these functions, you can omit this step)

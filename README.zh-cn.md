@@ -41,7 +41,7 @@ sudo gem install cocoapods
 找到 `Podfile` 所在目录，在命令行中运行 `pod install` 命令，等待命令运行完成
 
 ### 添加三方 license
-请先联系 [销售](sales@movieous.video) 获取试用 license
+请先联系 [销售](mailto:sales@movieous.video) 获取试用 license
 #### TuSDK license
 在 `AppDelegate.h` 中 `[TuSDK initSdkWithAppKey:@""]` 方法中填写 TuSDK license。（如不需要相关功能可忽略）
 
