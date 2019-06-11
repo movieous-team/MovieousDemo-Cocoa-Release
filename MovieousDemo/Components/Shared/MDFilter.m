@@ -11,6 +11,7 @@
 #import "STManager.h"
 #import "TuSDKManager.h"
 #import "MDGlobalSettings.h"
+#import "MDSharedCenter.h"
 
 @implementation MDSceneEffect
 
@@ -49,7 +50,7 @@
         [[FUManager shareManager] destoryItems];
         [[FUManager shareManager] loadFilter];
         [[FUManager shareManager] setAsyncTrackFaceEnable:YES];
-        [[FUManager shareManager] setBeautyDefaultParameters];
+        [[FUManager shareManager] resetAllBeautyParams];
     } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
         [[STManager sharedManager] initResources];
     } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeTuSDK) {
@@ -133,6 +134,8 @@
         }
         pixelBuffer = [TuSDKManager.sharedManager syncProcessPixelBuffer:pixelBuffer frameTime:sampleTimingInfo.presentationTimeStamp];
         [TuSDKManager.sharedManager destroyFrameData];
+    } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeKiwi) {
+        [KWRenderManager processPixelBuffer:pixelBuffer];
     }
     [_lock unlock];
     return pixelBuffer;

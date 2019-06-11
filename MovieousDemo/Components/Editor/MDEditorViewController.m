@@ -42,7 +42,7 @@ MSVEditorDelegate
 - (void)dealloc {
     MDSharedCenter.sharedCenter.graffitiView = nil;
     MDSharedCenter.sharedCenter.editor = nil;
-    [MDFilter.sharedInstance.sceneEffects removeAllObjects];
+    [((MDFilter *)MDFilter.sharedInstance).sceneEffects removeAllObjects];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

@@ -1,34 +1,34 @@
 
-{"data1": 
+{"data1":
     [{"name":"卸妆",
-    "imageStr":"makeup_noitem",
-    "isSel":true,
-    "value":1.0,
-    "selectedFilter":"",
-    "selectedFilterLevel":1.0,
-    "makeups":[
-     {"namaTypeStr" : "makeup_lip_color","namaValueStr":"makeup_intensity_lip","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_blusher","namaValueStr":"makeup_intensity_blusher","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_brow","namaValueStr":"makeup_intensity_eyeBrow","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_eye","namaValueStr":"makeup_intensity_eye","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_eyeLiner","namaValueStr":"makeup_intensity_eyeLiner","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
-     {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
+        "imageStr":"makeup_noitem",
+        "isSel":true,
+        "value":1.0,
+        "selectedFilter":"",
+        "selectedFilterLevel":1.0,
+        "makeups":[
+            {"namaTypeStr" : "makeup_lip_color","namaValueStr":"makeup_intensity_lip","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_blusher","namaValueStr":"makeup_intensity_blusher","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_brow","namaValueStr":"makeup_intensity_eyeBrow","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_eye","namaValueStr":"makeup_intensity_eye","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_eyeLiner","namaValueStr":"makeup_intensity_eyeLiner","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
+        {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
     },
-
+    
     {"name":"桃花",
-    "imageStr":"demo_makeup_peachblossom",
-    "value":1.0,
-    "selectedFilter":"fennen3",
-    "selectedFilterLevel":1.0,
-    "isSel":false,
-    "makeups":[
-        {"namaTypeStr" : "makeup_lip_color","namaValueStr":"makeup_intensity_lip","namaImgStr":"mu_lip_01","value":0.9},
-        {"namaTypeStr" : "tex_blusher","namaValueStr":"makeup_intensity_blusher","namaImgStr":"mu_blush_01","value":0.9},
-        {"namaTypeStr" : "tex_brow","namaValueStr":"makeup_intensity_eyeBrow","namaImgStr":"mu_eyebrow_01","value":0.5},
-        {"namaTypeStr" : "tex_eye","namaValueStr":"makeup_intensity_eye","namaImgStr":"mu_eyeshadow_01","value":0.9},
-        {"namaTypeStr" : "tex_eyeLiner","namaValueStr":"makeup_intensity_eyeLiner","namaImgStr":"","value":0.0},
-        {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
+        "imageStr":"demo_makeup_peachblossom",
+        "value":1.0,
+        "selectedFilter":"fennen3",
+        "selectedFilterLevel":1.0,
+        "isSel":false,
+        "makeups":[
+            {"namaTypeStr" : "makeup_lip_color","namaValueStr":"makeup_intensity_lip","namaImgStr":"mu_lip_01","value":0.9},
+            {"namaTypeStr" : "tex_blusher","namaValueStr":"makeup_intensity_blusher","namaImgStr":"mu_blush_01","value":0.9},
+            {"namaTypeStr" : "tex_brow","namaValueStr":"makeup_intensity_eyeBrow","namaImgStr":"mu_eyebrow_01","value":0.5},
+            {"namaTypeStr" : "tex_eye","namaValueStr":"makeup_intensity_eye","namaImgStr":"mu_eyeshadow_01","value":0.9},
+            {"namaTypeStr" : "tex_eyeLiner","namaValueStr":"makeup_intensity_eyeLiner","namaImgStr":"","value":0.0},
+            {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
         {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
     },
     
@@ -47,7 +47,7 @@
             {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
         {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
     },
-
+    
     {"name":"男友",
         "imageStr":"demo_makeup_boyfriend",
         "value":1.0,
@@ -80,20 +80,20 @@
     }
     
     ],
-
+    
     "data2": [{"name":"卸妆",
-            "imageStr":"makeup_noitem",
-            "isSel":true,
-            "value":1.0,
-            "makeups":[
+        "imageStr":"makeup_noitem",
+        "isSel":true,
+        "value":1.0,
+        "makeups":[
             {"namaTypeStr" : "makeup_lip_color","namaValueStr":"makeup_intensity_lip","namaImgStr":"","value":0.0},
             {"namaTypeStr" : "tex_blusher","namaValueStr":"makeup_intensity_blusher","namaImgStr":"","value":0.0},
             {"namaTypeStr" : "tex_brow","namaValueStr":"makeup_intensity_eyeBrow","namaImgStr":"","value":0.0},
             {"namaTypeStr" : "tex_eye","namaValueStr":"makeup_intensity_eye","namaImgStr":"","value":0.0},
             {"namaTypeStr" : "tex_eyeLiner","namaValueStr":"makeup_intensity_eyeLiner","namaImgStr":"","value":0.0},
             {"namaTypeStr" : "tex_eyeLash","namaValueStr":"makeup_intensity_eyelash","namaImgStr":"","value":0.0},
-            {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
-              },
+        {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
+    },
     
     {"name":"赤茶妆",
         "imageStr":"demo_makeup_red_tea",
@@ -143,6 +143,6 @@
         {"namaTypeStr" : "tex_pupil","namaValueStr":"makeup_intensity_pupil","namaImgStr":"","value":0.0}]
     }
     
-
+    
     ]
 }

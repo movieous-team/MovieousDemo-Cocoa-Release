@@ -18,14 +18,22 @@
  为方便演示阅读，这里将
  */
 typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
-    FUMNamaHandleTypeBeauty = 0,   /* items[0] ------ 放置 美颜道具句柄 */
-    FUMNamaHandleTypeItem = 1,     /* items[1] ------ 放置 普通道具句柄（包含很多，如：贴纸，aoimoji...若不单一存在，可放句柄集其他位置） */
-    FUMNamaHandleTypeFxaa = 2,     /* items[2] ------ fxaa抗锯齿道具句柄 */
+    FUNamaHandleTypeBeauty = 0,   /* items[0] ------ 放置 美颜道具句柄 */
+    FUNamaHandleTypeItem = 1,     /* items[1] ------ 放置 普通道具句柄（包含很多，如：贴纸，aoimoji...若不单一存在，可放句柄集其他位置） */
+    FUNamaHandleTypeFxaa = 2,     /* items[2] ------ fxaa抗锯齿道具句柄 */
     FUNamaHandleTypeGesture = 3,    /* items[3] ------ 手势识别道具句柄 */
     FUNamaHandleTypeChangeface = 4, /* items[4] ------ 海报换脸道具句柄 */
     FUNamaHandleTypeComic = 5,      /* items[5] ------ 动漫道具句柄 */
     FUNamaHandleTypeMakeup = 6,     /* items[6] ------ 美妆道具句柄 */
     FUNamaHandleTypePhotolive = 7,  /* items[7] ------ 异图道具句柄 */
+    FUNamaHandleTypeAvtarHead = 8,  /* items[8] ------ Avtar头*/
+    FUNamaHandleTypeAvtarHiar = 9,  /* items[9] ------ Avtar头发 */
+    FUNamaHandleTypeAvtarbg = 10,  /* items[10] ------ Avtar背景 */
+};
+
+typedef NS_OPTIONS(NSUInteger, FUBeautyModuleType) {
+    FUBeautyModuleTypeSkin = 1 << 0,
+    FUBeautyModuleTypeShape = 1 << 1,
 };
 
 @interface FUManager : NSObject
@@ -41,11 +49,21 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
 @property (nonatomic, assign) double eyelightingLevel;  // 亮眼
 @property (nonatomic, assign) double beautyToothLevel;  // 美牙
 
+
 @property (nonatomic, assign) NSInteger faceShape;        //脸型 (0、1、2、3、4)女神：0，网红：1，自然：2，默认：3，自定义：4
+/* v脸 (0~1) */
+@property (nonatomic, assign) double vLevel;
+/* 鹅蛋 (0~1) */
+@property (nonatomic, assign) double eggLevel;
+/* 窄脸(0~1) */
+@property (nonatomic, assign) double narrowLevel;
+/* 小脸 (0~1) */
+@property (nonatomic, assign) double smallLevel;
+
 @property (nonatomic, assign) double enlargingLevel;      /**大眼 (0~1)*/
 @property (nonatomic, assign) double thinningLevel;       /**瘦脸 (0~1)*/
-@property (nonatomic, assign) double enlargingLevel_new;  /**大眼 (0~1) --  新版美颜*/
-@property (nonatomic, assign) double thinningLevel_new;   /**瘦脸 (0~1) --  新版美颜*/
+//@property (nonatomic, assign) double enlargingLevel_new;  /**大眼 (0~1) --  新版美颜*/
+//@property (nonatomic, assign) double thinningLevel_new;   /**瘦脸 (0~1) --  新版美颜*/
 
 @property (nonatomic, assign) double jewLevel;            /**下巴 (0~1)*/
 @property (nonatomic, assign) double foreheadLevel;       /**额头 (0~1)*/
@@ -62,25 +80,29 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
 @property (nonatomic, strong)               NSString *selectedItem;     /**选中的道具名称*/
 
 /****  美妆程度  ****/
-@property (nonatomic, assign) double lipstick;          // 口红
-@property (nonatomic, assign) double blush;             // 腮红
-@property (nonatomic, assign) double eyebrow;           // 眉毛
-@property (nonatomic, assign) double eyeShadow;         // 眼影
-@property (nonatomic, assign) double eyeLiner;          // 眼线
-@property (nonatomic, assign) double eyelash;           // 睫毛
-@property (nonatomic, assign) double contactLens;       // 美瞳
+//@property (nonatomic, assign) double lipstick;          // 口红
+//@property (nonatomic, assign) double blush;             // 腮红
+//@property (nonatomic, assign) double eyebrow;           // 眉毛
+//@property (nonatomic, assign) double eyeShadow;         // 眼影
+//@property (nonatomic, assign) double eyeLiner;          // 眼线
+//@property (nonatomic, assign) double eyelash;           // 睫毛
+//@property (nonatomic, assign) double contactLens;       // 美瞳
 
-// 是否性能优先
-@property (nonatomic, assign) BOOL performance ;
 // 当前页面的 model
 @property (nonatomic, strong) FULiveModel *currentModel ;
 
 + (FUManager *)shareManager;
 
 - (void)setAsyncTrackFaceEnable:(BOOL)enable;
-
+/* 默认滤镜 */
+-(void)setDefaultFilter;
 // 默认美颜参数
-- (void)setBeautyDefaultParameters;
+- (void)setBeautyDefaultParameters:(FUBeautyModuleType)type;
+
+/**
+ 判断是不是默认美型参数
+ */
+-(BOOL)isDefaultShapeValue;
 - (void)resetAllBeautyParams;
 /**初始化Faceunity,加载道具*/
 - (void)loadItems;
@@ -104,6 +126,8 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
 - (UIImage *)renderItemsToImage:(UIImage *)image;
 /**将道具绘制到pixelBuffer*/
 - (CVPixelBufferRef)renderItemsToPixelBuffer:(CVPixelBufferRef)pixelBuffer;
+
+- (CVPixelBufferRef)renderAvatarPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 
 /* 加载海报道具 */
 - (void)loadPoster;
@@ -146,13 +170,39 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
  */
 -(void)setEspeciallyItemParamImage:(UIImage *)image group_points:(NSArray *)g_points group_type:(NSArray *)g_type;
 
+
+#pragma  mark -  捏脸
+-(void)enterAvatar;
+-(void)recomputeAvatar;
+-(void)clearAvatar;
+-(void)quitAvatar;
+-(void)lazyAvatar;
+
+/* 暂时 */
+-(void)avatarBundleAddRender:(BOOL)isAdd;
+-(BOOL)avatarBundleIsload;
+
+/* 扭脸维度 */
+-(void)setAvatarParam:(NSString *)paramStr value:(float )value;
+/* 部位颜色 */
+-(void)setAvatarItemParam:(NSString *)paramStr colorWithRed:(float )r green:(int)g blue:(int)b;
+/* 捏脸模型缩放 */
+-(void)setAvatarItemScale:(float)scaleValue;
+/* 头平移 */
+-(void)setAvatarItemTranslateX:(int)x y:(int)y z:(int)z;
+
+-(void)avatarBindHairItem:(NSString *)bundleName;
+
+-(void)setAvatarHairColorParam:(NSString *)paramStr colorWithRed:(float )r green:(int)g blue:(int)b intensity:(int)i;
+
+-(void)loadBgAvatar;
+
+-(void)loadAvatarBundel;
+
 /* 销毁海报道具 */
 - (void)destroyItemPoster;
 
 - (void)loadAnimojiFaxxBundle;
-
-- (void)destoryAnimojiFaxxBundle;
-
 - (void)musicFilterSetMusicTime;
 
 /**设置美发参数**/
@@ -163,8 +213,6 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
 - (NSString *)hintForItem:(NSString *)item;
 
 - (void)set3DFlipH ;
-
-- (void)setLoc_xy_flip ;
 
 /**获取75个人脸特征点*/
 - (void)getLandmarks:(float *)landmarks index:(int)index;
@@ -195,12 +243,12 @@ typedef NS_ENUM(NSUInteger, FUNamaHandleType) {
 /* 是否夸张 */
 -(BOOL)isExaggeration:(int)index;
 
+-(void)setParamItemAboutType:(FUNamaHandleType)type name:(NSString *)paramName value:(float)value;
 
 // by movieous
-@property (nonnull, strong) NSString *selectedMusicFilter;
-// 加载抖音特效
-- (void)loadMusicItem:(NSString *)itemName;
 - (void)musicFilterSetMusicTime ;
+@property (nonnull, strong) NSString *selectedMusicFilter;
+- (void)loadMusicItem:(NSString *)itemName;
 - (void)setMusicTime:(NSTimeInterval)time;
 
 @end

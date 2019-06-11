@@ -13,6 +13,7 @@ typedef NS_ENUM(NSInteger, VendorType) {
     VendorTypeFaceunity,
     VendorTypeSenseTime,
     VendorTypeTuSDK,
+    VendorTypeKiwi,
 };
 
 NS_ASSUME_NONNULL_BEGIN

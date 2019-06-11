@@ -18,6 +18,8 @@ NSString *getVendorName(VendorType vendorType) {
             return @"商汤科技";
         case VendorTypeTuSDK:
             return @"涂图";
+        case VendorTypeKiwi:
+            return @"开为科技";
         default:
             return @"";
     }

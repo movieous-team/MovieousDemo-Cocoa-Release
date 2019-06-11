@@ -22,8 +22,9 @@ typedef NS_ENUM(NSUInteger, FULiveModelType) {
     FULiveModelTypeBGSegmentation,
     FULiveModelTypeGestureRecognition,
     FULiveModelTypeHahaMirror,
-//    FULiveModelTypePortraitLighting,
+    //    FULiveModelTypePortraitLighting,
     FULiveModelTypePortraitDrive,
+    FULiveModelTypeNieLian,
     FULiveModelTypeYiTu,
     FULiveModelTypeGan,
 };

@@ -11,6 +11,7 @@
 #import "FUManager.h"
 #import "TuSDKManager.h"
 #import "MDGlobalSettings.h"
+#import "MDSharedCenter.h"
 
 @interface MDDynamicStickerView ()
 <

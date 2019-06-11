@@ -19,4 +19,16 @@
     return instance;
 }
 
+- (instancetype)init {
+    if (self = [super init]) {
+        KWRenderManager *renderManager = [[KWRenderManager alloc] initWithModelPath:nil isCameraPositionBack:NO];
+        [renderManager loadRender];
+        renderManager.maxFaceNumber = 5;
+        _kwUIManager = [[KWUIManager alloc] initWithRenderManager:renderManager delegate:nil superView:nil];
+        [_kwUIManager enableBigEyeSlimChin:YES];
+        [_kwUIManager enableBeautyFilter:YES];
+    }
+    return self;
+}
+
 @end

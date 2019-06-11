@@ -157,7 +157,7 @@ UICollectionViewDataSource
         return;
     }
     _seekerPosition.constant = _snapshotsView.frame.size.width * (_editor.currentTime - _editor.draft.timeRange.startTime) / _duration;
-    for (MDSceneEffect *effect in MDFilter.sharedInstance.sceneEffects) {
+    for (MDSceneEffect *effect in ((MDFilter *)MDFilter.sharedInstance).sceneEffects) {
         UIColor *color;
         NSUInteger index = [kFUSceneEffectCodes indexOfObject:effect.sceneCode];
         if (index == NSNotFound) {

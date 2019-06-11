@@ -7,6 +7,7 @@
 //
 
 #import <MovieousShortVideo/MovieousShortVideo.h>
+#import "KWUIManager.h"
 
 @interface MDSharedCenter : NSObject
 
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) MSVRecorder *recorder;
 @property (nonatomic, strong) MovieousFaceBeautyCaptureEffect *faceBeautyCaptureEffect;
 @property (nonatomic, strong) MovieousLUTFilterCaptureEffect *LUTFilterCaptureEffect;
+@property (nonatomic, strong) KWUIManager *kwUIManager;
 
 + (instancetype)sharedCenter;
 

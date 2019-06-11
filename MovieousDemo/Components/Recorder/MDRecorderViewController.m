@@ -180,6 +180,25 @@ UINavigationControllerDelegate
         _commonObjectContainerView = ((MDDynamicStickerView *)_stickerView.subviews[0]).STView.commonObjectContainerView;
         [self.view insertSubview:_commonObjectContainerView atIndex:1];
     }
+    [self createKiwiView];
+}
+
+- (void)createKiwiView {
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.beautifyFilterView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.stickerMenuView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.distortionMenuView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.beautifyNewView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.slideBeautifyMenuView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.filterGlobalView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.mainMenuView];
+    
+    [self.view addSubview:MDSharedCenter.sharedCenter.kwUIManager.smiliesStateText];
 }
 
 - (void)dealloc {
@@ -187,7 +206,7 @@ UINavigationControllerDelegate
     MDSharedCenter.sharedCenter.recorder = nil;
     MDSharedCenter.sharedCenter.faceBeautyCaptureEffect = nil;
     MDSharedCenter.sharedCenter.LUTFilterCaptureEffect = nil;
-    [MDFilter.sharedInstance dispose];
+    [(MDFilter *)MDFilter.sharedInstance dispose];
 }
 
 - (void)shouldChangeToBack {
@@ -200,8 +219,8 @@ UINavigationControllerDelegate
 
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBarHidden = YES;
-    [MDFilter.sharedInstance dispose];
-    [MDFilter.sharedInstance setup];
+    [(MDFilter *)MDFilter.sharedInstance dispose];
+    [(MDFilter *)MDFilter.sharedInstance setup];
     [_recorder startCapturingWithCompletion:^(BOOL audioGranted, NSError *audioError, BOOL videoGranted, NSError *videoError) {
         if (videoError) {
             SHOW_ALERT(@"error", videoError.localizedDescription, @"ok");
@@ -224,8 +243,8 @@ UINavigationControllerDelegate
 
 - (void)viewWillDisappear:(BOOL)animated {
     [_recorder stopCapturing];
-    [MDFilter.sharedInstance dispose];
-    [MDFilter.sharedInstance setup];
+    [(MDFilter *)MDFilter.sharedInstance dispose];
+    [(MDFilter *)MDFilter.sharedInstance setup];
 }
 
 - (IBAction)closeButtonPressed:(UIButton *)sender {
@@ -309,7 +328,16 @@ UINavigationControllerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     if ([touch.view isDescendantOfView:_beautyFilterView] ||
-        [touch.view isDescendantOfView:_stickerView]) {
+        [touch.view isDescendantOfView:_stickerView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.beautifyFilterView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.stickerMenuView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.distortionMenuView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.beautifyNewView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.slideBeautifyMenuView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.filterGlobalView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.mainMenuView] ||
+        [touch.view isDescendantOfView:MDSharedCenter.sharedCenter.kwUIManager.smiliesStateText]
+        ) {
         return NO;
     }
     return YES;
@@ -338,7 +366,7 @@ UINavigationControllerDelegate
 
 - (IBAction)switchCameraButtonPressed:(UIButton *)sender {
     [_recorder switchCamera];
-    [MDFilter.sharedInstance onCameraChanged];
+    [(MDFilter *)MDFilter.sharedInstance onCameraChanged];
 }
 
 - (IBAction)speedButtonPressed:(UIButton *)sender {
@@ -360,16 +388,22 @@ UINavigationControllerDelegate
         SHOW_ALERT(@"提示", @"此供应商暂不支持美化功能", @"好的");
         return;
     }
-    _beautyFilterView.hidden = !_beautyFilterView.hidden;
-    _bottomCollection.hidden = !_beautyFilterView.hidden;
-    if (!_beautyFilterView.hidden) {
-        _stickerView.hidden = YES;
-        _speedSegment.hidden = YES;
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeKiwi) {
+        [MDSharedCenter.sharedCenter.kwUIManager popAllView];
+        [MDSharedCenter.sharedCenter.kwUIManager pushFilterGlobalView:YES];
+        _bottomCollection.hidden = YES;
     } else {
-        if (_recorder.draft.mainTrackClips.count == 0) {
-            _cancelDoneCollection.hidden = YES;
+        _bottomCollection.hidden = !_beautyFilterView.hidden;
+        _beautyFilterView.hidden = !_beautyFilterView.hidden;
+        if (!_beautyFilterView.hidden) {
+            _stickerView.hidden = YES;
+            _speedSegment.hidden = YES;
         } else {
-            _importMediaCollection.hidden = YES;
+            if (_recorder.draft.mainTrackClips.count == 0) {
+                _cancelDoneCollection.hidden = YES;
+            } else {
+                _importMediaCollection.hidden = YES;
+            }
         }
     }
 }
@@ -427,7 +461,14 @@ UINavigationControllerDelegate
             _importMediaCollection.hidden = YES;
         }
     }
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeKiwi) {
+        [MDSharedCenter.sharedCenter.kwUIManager popAllView];
+    }
     _stickerView.hidden = YES;
+}
+
+- (void)recorder:(MSVRecorder *)recorder didErrorOccurred:(NSError *)error {
+    SHOW_ERROR_ALERT;
 }
 
 - (void)recorder:(MSVRecorder *)recorder currentClipDurationDidUpdated:(NSTimeInterval)currentClipDuration {
@@ -586,7 +627,11 @@ UINavigationControllerDelegate
         SHOW_ALERT(@"提示", @"需要选择一个特效供应商才能使用贴纸特效", @"好的");
         return;
     }
-    _stickerView.hidden = NO;
+    if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeKiwi) {
+        [MDSharedCenter.sharedCenter.kwUIManager pushmainMenuView:YES];
+    } else {
+        _stickerView.hidden = NO;
+    }
     _bottomCollection.hidden = YES;
 }
 

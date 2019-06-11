@@ -7,7 +7,7 @@
 //
 
 #import "MDBeautifyFilterViewController.h"
-#import <FUAPIDemoBar/FUAPIDemoBar.h>
+#import "FUAPIDemoBar.h"
 #import "FUManager.h"
 #import "MDGlobalSettings.h"
 #import "MDSTBeautyFilterPanel.h"
@@ -54,52 +54,42 @@ FUAPIDemoBarDelegate
 }
 
 - (void)demoBarSetBeautyDefultParams {
-    _FUBeautyFilterPanel.delegate = nil ;
-    _FUBeautyFilterPanel.skinDetect = [FUManager shareManager].skinDetectEnable;
-    _FUBeautyFilterPanel.heavyBlur = [FUManager shareManager].blurShape ;
-    _FUBeautyFilterPanel.blurLevel = [FUManager shareManager].blurLevel ;
-    _FUBeautyFilterPanel.colorLevel = [FUManager shareManager].whiteLevel ;
-    _FUBeautyFilterPanel.redLevel = [FUManager shareManager].redLevel;
-    _FUBeautyFilterPanel.eyeBrightLevel = [FUManager shareManager].eyelightingLevel ;
-    _FUBeautyFilterPanel.toothWhitenLevel = [FUManager shareManager].beautyToothLevel ;
-    _FUBeautyFilterPanel.faceShape = [FUManager shareManager].faceShape ;
-    _FUBeautyFilterPanel.enlargingLevel = [FUManager shareManager].enlargingLevel ;
-    _FUBeautyFilterPanel.thinningLevel = [FUManager shareManager].thinningLevel ;
-    _FUBeautyFilterPanel.enlargingLevel_new = [FUManager shareManager].enlargingLevel_new ;
-    _FUBeautyFilterPanel.thinningLevel_new = [FUManager shareManager].thinningLevel_new ;
-    _FUBeautyFilterPanel.chinLevel = [FUManager shareManager].jewLevel ;
-    _FUBeautyFilterPanel.foreheadLevel = [FUManager shareManager].foreheadLevel ;
-    _FUBeautyFilterPanel.noseLevel = [FUManager shareManager].noseLevel ;
-    _FUBeautyFilterPanel.mouthLevel = [FUManager shareManager].mouthLevel ;
-    
-    _FUBeautyFilterPanel.filtersDataSource = [FUManager shareManager].filtersDataSource ;
-    _FUBeautyFilterPanel.beautyFiltersDataSource = [FUManager shareManager].beautyFiltersDataSource ;
-    _FUBeautyFilterPanel.filtersCHName = [FUManager shareManager].filtersCHName ;
-    _FUBeautyFilterPanel.selectedFilter = [FUManager shareManager].selectedFilter ;
-    _FUBeautyFilterPanel.selectedFilterLevel = [FUManager shareManager].selectedFilterLevel;
-    
     _FUBeautyFilterPanel.delegate = self;
+    _FUBeautyFilterPanel.skinDetect = [FUManager shareManager].skinDetectEnable;
+    _FUBeautyFilterPanel.heavyBlur = [FUManager shareManager].blurShape;
+    _FUBeautyFilterPanel.blurLevel = [FUManager shareManager].blurLevel;
+    _FUBeautyFilterPanel.colorLevel = [FUManager shareManager].whiteLevel;
+    _FUBeautyFilterPanel.redLevel = [FUManager shareManager].redLevel;
+    _FUBeautyFilterPanel.eyeBrightLevel = [FUManager shareManager].eyelightingLevel;
+    _FUBeautyFilterPanel.toothWhitenLevel = [FUManager shareManager].beautyToothLevel;
+    _FUBeautyFilterPanel.enlargingLevel = [FUManager shareManager].enlargingLevel;
+    _FUBeautyFilterPanel.thinningLevel = [FUManager shareManager].thinningLevel;
+    _FUBeautyFilterPanel.chinLevel = [FUManager shareManager].jewLevel;
+    _FUBeautyFilterPanel.foreheadLevel = [FUManager shareManager].foreheadLevel;
+    _FUBeautyFilterPanel.noseLevel = [FUManager shareManager].noseLevel;
+    _FUBeautyFilterPanel.mouthLevel = [FUManager shareManager].mouthLevel;
+    _FUBeautyFilterPanel.filtersDataSource = [FUManager shareManager].filtersDataSource;
+    _FUBeautyFilterPanel.beautyFiltersDataSource = [FUManager shareManager].beautyFiltersDataSource;
+    _FUBeautyFilterPanel.filtersCHName = [FUManager shareManager].filtersCHName;
+    _FUBeautyFilterPanel.selectedFilter = [FUManager shareManager].selectedFilter;
+    _FUBeautyFilterPanel.selectedFilterLevel = [FUManager shareManager].selectedFilterLevel;
 }
 
 - (void)syncBeautyParams {
     [FUManager shareManager].skinDetectEnable = _FUBeautyFilterPanel.skinDetect;
     [FUManager shareManager].blurShape = _FUBeautyFilterPanel.heavyBlur;
-    [FUManager shareManager].blurLevel = _FUBeautyFilterPanel.blurLevel ;
+    [FUManager shareManager].blurLevel = _FUBeautyFilterPanel.blurLevel;
     [FUManager shareManager].whiteLevel = _FUBeautyFilterPanel.colorLevel;
     [FUManager shareManager].redLevel = _FUBeautyFilterPanel.redLevel;
     [FUManager shareManager].eyelightingLevel = _FUBeautyFilterPanel.eyeBrightLevel;
     [FUManager shareManager].beautyToothLevel = _FUBeautyFilterPanel.toothWhitenLevel;
-    [FUManager shareManager].faceShape = _FUBeautyFilterPanel.faceShape;
     [FUManager shareManager].enlargingLevel = _FUBeautyFilterPanel.enlargingLevel;
     [FUManager shareManager].thinningLevel = _FUBeautyFilterPanel.thinningLevel;
-    [FUManager shareManager].enlargingLevel_new = _FUBeautyFilterPanel.enlargingLevel_new;
-    [FUManager shareManager].thinningLevel_new = _FUBeautyFilterPanel.thinningLevel_new;
     [FUManager shareManager].jewLevel = _FUBeautyFilterPanel.chinLevel;
     [FUManager shareManager].foreheadLevel = _FUBeautyFilterPanel.foreheadLevel;
     [FUManager shareManager].noseLevel = _FUBeautyFilterPanel.noseLevel;
     [FUManager shareManager].mouthLevel = _FUBeautyFilterPanel.mouthLevel;
-    
-    [FUManager shareManager].selectedFilter = _FUBeautyFilterPanel.selectedFilter ;
+    [FUManager shareManager].selectedFilter = _FUBeautyFilterPanel.selectedFilter;
     [FUManager shareManager].selectedFilterLevel = _FUBeautyFilterPanel.selectedFilterLevel;
 }
 

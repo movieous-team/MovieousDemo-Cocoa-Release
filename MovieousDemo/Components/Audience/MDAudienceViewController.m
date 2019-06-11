@@ -255,7 +255,7 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
             _scrollView.contentOffset = CGPointMake(0, offset - frame.size.height);
         }
         if (_currentIndex == _metadatas.count - 6) {
-            [self getMoreMetadatas];
+            [self getMoreMetadatas:0];
         }
         _authorNameLabel.text = [NSString stringWithFormat:@"@%@", self->_metadatas[_currentIndex].authorNickName];
         _descLabel.text = self->_metadatas[_currentIndex].title;
@@ -359,14 +359,17 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     }];
 }
 
-- (void)getMoreMetadatas {
+- (void)getMoreMetadatas:(NSUInteger)triedCount {
+    if (triedCount >= 3) {
+        return;
+    }
     [self getRandomListWithCompletionHanler:^(NSMutableArray *metas, NSError *error) {
         if (!error) {
             [self->_metadatas addObjectsFromArray:metas];
         } else {
             SHOW_ERROR_ALERT;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self getMoreMetadatas];
+                [self getMoreMetadatas:triedCount + 1];
             });
         }
     }];
