@@ -1,51 +1,58 @@
 # MovieousDemo-Cocoa
 
-`MovieousDemo` is an open source commercial level audio and video demo application developed by [Movieous](https://movieous.cn/) based on [MovieousPlayer](https://github.com/movieous-team/MovieousPlayer-Cocoa-Release)、[MovieousLive](https://github.com/movieous-team/MovieousLive-Cocoa-Release) and [MovieousShortVideo](https://github.com/movieous-team/MovieousShortVideo-Cocoa-Release). It provides various functions including live broadcast and short video play, live broadcast, short video creatiin and upload, and it is also a great resource to learn how to use these SDKs.
+`MovieousDemo-Cocoa` 是 [Movieous](https://movieous.cn/) 开源的基于 [MovieousPlayer](https://github.com/movieous-team/MovieousPlayer-Cocoa-Release)、[MovieousLive](https://github.com/movieous-team/MovieousLive-Cocoa-Release) 和 [MovieousShortVideo](https://github.com/movieous-team/MovieousShortVideo-Cocoa-Release) 的商业级别 iOS 音视频演示应用，它提供包括直播、短视频观看，直播推流，短视频制作，上传等丰富的功能，是学习前述多款 SDK 用法的有效素材。
 
-*Read this in other languages: [English](README.md), [简体中文](README.zh-cn.md).*
+*其他语言版本: [English](README.en-us.md), [简体中文](README.md).*
 
-## Functions
+## 功能
 
-- [x] Short video play
-- [x] Short video record
-- [x] Short video edit
-- [x] Short video upload
+- [x] 短视频播放
+- [x] 短视频录制
+- [x] 短视频编辑
+- [x] 短视频上传
 
-## SDK Requirements
+## 版本要求
 
-iOS 9.0 or later
+iOS 9.0 及其以上
 
-## how to use
-To run this demo, you must use CocoaPods to install dependencies, if you haven't installed CocoaPods, you can refer to the following steps to install
+## 使用方法
+运行 Demo 需要先使用 CocoaPods 来安装依赖库，如果你没有安装 CocoaPods，可以按照下列步骤安装
 
-### Installation CocoaPods
+### 安装 Cocoapods
+如果您已安装 Cocoapods，则请直接跳过该步骤，直接进入下一步骤。
+如果你未接触过 Cocoapods ，我们推荐您阅读 [唐巧的博客-用CocoaPods做iOS程序的依赖管理](https://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/ "用CocoaPods做iOS程序的依赖管理") ，了解我们为何使用 Cocoapods 。另外文章中提及的淘宝源已经不再维护，需要使用 [Ruby-China RubyGems 镜像](https://gems.ruby-china.com/)替换。
 
-[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries in your projects. You can install it with the following command:
+如果觉得上面两个文章比较繁琐，可以直接根据我们提供的简要步骤，进行安装。
+* 简要步骤：打开mac自带的 终端(terminal)，然后输入依次执行下述命令。
 
 ```bash
-$ gem install cocoapods
+# 注释：Ruby-China 推荐2.6.x，实际 mac 自带的 ruby 也能用了
+gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
+gem sources -l
+# 注释：上面的命令，应该会输出以下内容，>>> 代表此处为输出
+>>> https://gems.ruby-china.com
+# 注释：确保只有 gems.ruby-china.com
+
+sudo gem install cocoapods
+# 注释：由于我们不需要使用官方库，所以可以不执行 pod setup。
 ```
 
-> CocoaPods 0.39.0+ is required to build MovieousShortVideo.
+### 安装依赖
+找到 `Podfile` 所在目录，在命令行中运行 `pod install` 命令，等待命令运行完成
 
-### Install dependencies
-find directory where `Podfile` is in, run `pod install` in terminal and wait the command's completion
-
-### add vendor licenses
-please contact [Sales](mailto:sales@movieous.video) to retrieve trial licenses
-
+### 添加三方 license
+请先联系 [销售](mailto:sales@movieous.video) 获取试用 license
 #### TuSDK license
-fill `[TuSDK initSdkWithAppKey:@""]` method in `AppDelegate.h` with TuSDK license。(if you don't need these functions, you can omit this step)
+在 `AppDelegate.h` 中 `[TuSDK initSdkWithAppKey:@""]` 方法中填写 TuSDK license。（如不需要相关功能可忽略）
 
 #### SenseTime license
-drop `SENSEME.lic` to the project and check `MovieousDemo` in `Add to target`. (if you don't need these functions, you can omit this step)
+将 `SENSEME.lic` 文件拖拽到项目中，并勾选 `Add to target` 中的 `MovieousDemo`。（如不需要相关功能可忽略）
 
 #### FU license
-paste content in your FU license to `Vendor/Faceunity/authpack.h`. (if you don't need these functions, you can omit this step)
+在 `Vendor/Faceunity/authpack.h` 中将 license 中的内容粘贴进去。（如不需要相关功能可忽略）
 
-## Feedback and Suggestions
+## 反馈及意见
 
-Please feedback the problem by submitting issues on GitHub's repo if any problems you got, describe it as clearly as possible, It would be nice if an error message or screenshot also came together, and pointed out the type of bug or other issues in Labels.
+当你遇到任何问题时，可以向我们提交 issue 来反馈。
 
-[View existing issues and submit bugs here](https://github.com/movieous-team/MovieousDemo-Cocoa-Release/issues).
-[Submit issue](https://github.com/movieous-team/MovieousDemo-Cocoa-Release/issues/new)
+[提交 issue](https://github.com/movieous-team/MovieousDemo-Cocoa-Release/issues)。
