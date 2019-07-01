@@ -25,10 +25,10 @@ PODS:
     - libwebp/core
   - libwebp/webp (1.0.2)
   - MJExtension (3.0.17)
-  - MovieousBase (1.0.11)
+  - MovieousBase (1.1.0)
   - MovieousPlayer (1.0.3)
-  - MovieousShortVideo (2.2.9):
-    - MovieousBase (~> 1.0.8)
+  - MovieousShortVideo (2.2.10):
+    - MovieousBase (~> 1.1.0)
   - Nama (6.1.0)
   - SDWebImage/Core (4.4.7)
   - SDWebImage/WebP (4.4.7):
@@ -42,7 +42,7 @@ DEPENDENCIES:
   - GPUImage (= 0.1.7)
   - MJExtension (= 3.0.17)
   - MovieousPlayer (= 1.0.3)
-  - MovieousShortVideo (= 2.2.9)
+  - MovieousShortVideo (= 2.2.10)
   - Nama (= 6.1.0)
   - SDWebImage/WebP (= 4.4.7)
   - SSZipArchive (= 2.2.2)
@@ -67,15 +67,15 @@ SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
-  MovieousBase: cfd7242b81a5c631e5e0eb2fc3f842c7f6facb8b
+  MovieousBase: 1922f83361a206e7056d25d53364a1a201f776e7
   MovieousPlayer: 3533047632df207b179df9011eb752b7e82c64f0
-  MovieousShortVideo: f22bdcf70f6dc941d69dbdfe50b8dcaf34050a7f
+  MovieousShortVideo: c1ce50ded2c7e1496f8ac62a3138281d7baa203b
   Nama: a027345faa9652ead0ff402b0b95cbc1b6735910
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UFileSDK: e4f10dcf30bd8792194e49e4299670fa2b3ed731
 
-PODFILE CHECKSUM: 837c70518851149c36210c5bc2bed9a13b4f51bf
+PODFILE CHECKSUM: 5bc7dc18002cdfdb9237af988994ef34f80c47ce
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.2
