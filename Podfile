@@ -3,7 +3,7 @@ use_frameworks!
 
 target 'MovieousDemo' do
     pod 'MovieousPlayer', '1.0.3'
-    pod 'MovieousShortVideo', '2.2.10'
+    pod 'MovieousShortVideo', '2.2.12'
     pod 'SDWebImage/WebP', '4.4.7'
     pod 'Nama', '6.1.0'
     pod 'SVProgressHUD', '2.2.5'
