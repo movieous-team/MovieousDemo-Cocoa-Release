@@ -38,7 +38,7 @@ NSString *getVendorName(VendorType vendorType) {
 
 - (instancetype)init {
     if (self = [super init]) {
-        _vendorType = VendorTypeNone;
+        _vendorType = VendorTypeFaceunity;
     }
     return self;
 }

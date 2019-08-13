@@ -16,7 +16,8 @@
 
 @interface MDBeautifyFilterViewController ()
 <
-FUAPIDemoBarDelegate
+FUAPIDemoBarDelegate,
+FUMakeUpViewDelegate
 >
 
 @property (strong, nonatomic) IBOutlet UIView *innerBeautyFilterPanel;
@@ -35,6 +36,7 @@ FUAPIDemoBarDelegate
     } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeFaceunity) {
         _FUBeautyFilterPanel.hidden = NO;
         _FUBeautyFilterPanel.delegate = self;
+        _FUBeautyFilterPanel.demoBar.makeupView.delegate = self;
     } else if (MDGlobalSettings.sharedInstance.vendorType == VendorTypeSenseTime) {
         _STBeautyFilterPanel.hidden = NO;
     }
@@ -91,6 +93,29 @@ FUAPIDemoBarDelegate
     [FUManager shareManager].mouthLevel = _FUBeautyFilterPanel.mouthLevel;
     [FUManager shareManager].selectedFilter = _FUBeautyFilterPanel.selectedFilter;
     [FUManager shareManager].selectedFilterLevel = _FUBeautyFilterPanel.selectedFilterLevel;
+}
+
+-(void)makeupViewDidSelectedNamaStr:(NSString *)namaStr valueArr:(NSArray *)valueArr{
+    [[FUManager shareManager] setMakeupItemStr:namaStr valueArr:valueArr];
+}
+
+-(void)makeupViewDidSelectedNamaStr:(NSString *)namaStr imageName:(NSString *)imageName{
+    [[FUManager shareManager] setMakeupItemParamImage:[UIImage imageNamed:imageName]  param:namaStr];
+}
+
+-(void)makeupViewDidChangeValue:(float)value namaValueStr:(NSString *)namaStr{
+    
+    [[FUManager shareManager] setMakeupItemIntensity:value param:namaStr];
+}
+
+-(void)makeupFilter:(NSString *)filterStr value:(float)filterValue{
+    if(!filterStr || [filterStr isEqualToString:@""]){
+        return;
+    }
+    _FUBeautyFilterPanel.selectedFilter = filterStr;
+    _FUBeautyFilterPanel.selectedFilterLevel = filterValue;
+    [FUManager shareManager].selectedFilter = filterStr ;
+    [FUManager shareManager].selectedFilterLevel = filterValue;
 }
 
 @end

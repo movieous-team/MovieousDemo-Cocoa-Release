@@ -202,12 +202,12 @@
     
     UIImage *image = nil;
     
-    //    if(context == NULL) {
-    //        NSLog(@"Error context not created");
-    //        free(pixels);
-    //
-    //        return nil ;
-    //    }
+//    if(context == NULL) {
+//        NSLog(@"Error context not created");
+//        free(pixels);
+//        
+//        return nil ;
+//    }
     
     CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
     

@@ -127,7 +127,8 @@ UINavigationControllerDelegate
     // Do any additional setup after loading the view.
     MSVRecorderAudioConfiguration *audioConfiguration = [MSVRecorderAudioConfiguration defaultConfiguration];
     MSVRecorderVideoConfiguration *videoConfiguration = [MSVRecorderVideoConfiguration defaultConfiguration];
-    videoConfiguration.size = CGSizeMake(720, 1280);
+    videoConfiguration.preferredSessionPreset = AVCaptureSessionPresetiFrame960x540;
+    videoConfiguration.size = CGSizeMake(540, 960);
     NSError *error;
     _recorder = [[MSVRecorder alloc] initWithAudioConfiguration:audioConfiguration videoConfiguration:videoConfiguration error:&error];
     if (error) {
@@ -366,7 +367,7 @@ UINavigationControllerDelegate
 
 - (IBAction)switchCameraButtonPressed:(UIButton *)sender {
     [_recorder switchCamera];
-    [(MDFilter *)MDFilter.sharedInstance onCameraChanged];
+//    [(MDFilter *)MDFilter.sharedInstance onCameraChanged];
 }
 
 - (IBAction)speedButtonPressed:(UIButton *)sender {
