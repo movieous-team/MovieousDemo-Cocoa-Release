@@ -1,31 +1,16 @@
 PODS:
   - GPUImage (0.1.7)
-  - libwebp (1.0.2):
-    - libwebp/core (= 1.0.2)
-    - libwebp/dec (= 1.0.2)
-    - libwebp/demux (= 1.0.2)
-    - libwebp/dsp (= 1.0.2)
-    - libwebp/enc (= 1.0.2)
-    - libwebp/mux (= 1.0.2)
-    - libwebp/utils (= 1.0.2)
-    - libwebp/webp (= 1.0.2)
-  - libwebp/core (1.0.2):
+  - libwebp (1.0.3):
+    - libwebp/demux (= 1.0.3)
+    - libwebp/mux (= 1.0.3)
+    - libwebp/webp (= 1.0.3)
+  - libwebp/demux (1.0.3):
     - libwebp/webp
-  - libwebp/dec (1.0.2):
-    - libwebp/core
-  - libwebp/demux (1.0.2):
-    - libwebp/core
-  - libwebp/dsp (1.0.2):
-    - libwebp/core
-  - libwebp/enc (1.0.2):
-    - libwebp/core
-  - libwebp/mux (1.0.2):
-    - libwebp/core
-  - libwebp/utils (1.0.2):
-    - libwebp/core
-  - libwebp/webp (1.0.2)
+  - libwebp/mux (1.0.3):
+    - libwebp/demux
+  - libwebp/webp (1.0.3)
   - MJExtension (3.0.17)
-  - MovieousBase (1.1.4)
+  - MovieousBase (1.1.8)
   - MovieousPlayer (1.0.6)
   - MovieousShortVideo (2.2.15):
     - MovieousBase (~> 1.1.4)
@@ -50,7 +35,7 @@ DEPENDENCIES:
   - UFileSDK (= 3.0.5)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - GPUImage
     - libwebp
     - MJExtension
@@ -65,9 +50,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  libwebp: b068a3bd7c45f7460f6715be7bed1a18fd5d6b48
+  libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
-  MovieousBase: 7a090e19fda27f68ba82159e6d18ee2ac817b222
+  MovieousBase: 9afa6a114241e19ccb0bc2225b8ffdf803010313
   MovieousPlayer: ef4bbb32b8ab907f25720c93674abb4c347ef55e
   MovieousShortVideo: 0be7b390ba8f8ca0d46ae69d8d47a028091c40a9
   Nama: e4cb4740a4529fa9da10ed36a4fe250374b7c947
@@ -78,4 +63,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 0239b2f1cdd3688f501437b479afad622e86907e
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.3
