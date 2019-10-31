@@ -9,6 +9,6 @@ target 'MovieousDemo' do
     pod 'MJExtension', '3.0.17'
     pod 'SSZipArchive', '2.2.2'
     pod 'GPUImage', '0.1.7'
-    pod 'MovieousPlayer', '1.0.6'
-    pod 'MovieousShortVideo', '2.2.15'
+    pod 'MovieousPlayer-CN', '1.0.8'
+    pod 'MovieousShortVideo-CN', '2.2.21'
 end

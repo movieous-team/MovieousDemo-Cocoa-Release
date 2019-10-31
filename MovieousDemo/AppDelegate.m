@@ -20,9 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-#error 此 AppKey 仅用于试用，正式上线请先联系 UCloud/Movieous 销售获取正式上线的 AppKey
+#warning 此 AppKey 仅用于试用，正式上线请先联系 UCloud/Movieous 销售获取正式上线的 AppKey
     [TuSDK initSdkWithAppKey:@"69c0c4ac41e36fb9-03-yzh1s1"];
-#error 此 License 仅用于试用，正式上线请先联系 UCloud/Movieous 销售获取正式上线的 License
+#warning 此 License 仅用于试用，正式上线请先联系 UCloud/Movieous 销售获取正式上线的 License
     [MSVAuthentication registerWithLicense:@"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBpZCI6InZpZGVvLm1vdmllb3VzLk1vdmllb3VzRGVtbyJ9.r2JE2BO7UYllkOmAEjx6PyyyvE12OdgSFFkn6GtrD-k"];
     return YES;
 }

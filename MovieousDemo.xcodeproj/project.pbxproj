@@ -13,7 +13,6 @@
 		8345B7702265776400A69BC0 /* MDFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8345B76F2265776400A69BC0 /* MDFilter.m */; };
 		8345B7732265776E00A69BC0 /* MDInnerBeautyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8345B7712265776E00A69BC0 /* MDInnerBeautyFilterViewController.m */; };
 		8345B77522657EDE00A69BC0 /* filter_test1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8345B77422657EDE00A69BC0 /* filter_test1.png */; };
-		8345B77722657F7B00A69BC0 /* SENSEME.lic in Resources */ = {isa = PBXBuildFile; fileRef = 8345B77622657F7B00A69BC0 /* SENSEME.lic */; };
 		8369CF8E21B50C7100F24AEF /* MovieousDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */; };
 		8369CF9921B50C7100F24AEF /* MovieousDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8369CF9821B50C7100F24AEF /* MovieousDemoUITests.m */; };
 		8369D4EE21B514CA00F24AEF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8369D4ED21B514CA00F24AEF /* Accelerate.framework */; };
@@ -904,7 +903,6 @@
 		83EDA6C22302726B00986B14 /* FUSquareButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EDA5632302726A00986B14 /* FUSquareButton.m */; };
 		83EDA6C32302726B00986B14 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA5682302726A00986B14 /* Media.xcassets */; };
 		83EDA6C42302726B00986B14 /* FUDemoBar.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA5692302726A00986B14 /* FUDemoBar.strings */; };
-		83EDA6C52302726B00986B14 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA56B2302726A00986B14 /* Localizable.strings */; };
 		83EDA6C62302726B00986B14 /* FUDemoBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EDA5712302726A00986B14 /* FUDemoBar.m */; };
 		83EDA6C72302726B00986B14 /* FUSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EDA5732302726A00986B14 /* FUSlider.m */; };
 		83EDA6C82302726B00986B14 /* FUFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EDA5752302726A00986B14 /* FUFilterView.m */; };
@@ -973,7 +971,6 @@
 		8345B7712265776E00A69BC0 /* MDInnerBeautyFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDInnerBeautyFilterViewController.m; sourceTree = "<group>"; };
 		8345B7722265776E00A69BC0 /* MDInnerBeautyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDInnerBeautyFilterViewController.h; sourceTree = "<group>"; };
 		8345B77422657EDE00A69BC0 /* filter_test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_test1.png; sourceTree = "<group>"; };
-		8345B77622657F7B00A69BC0 /* SENSEME.lic */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SENSEME.lic; sourceTree = "<group>"; };
 		8369CF7121B50C7000F24AEF /* MovieousDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieousDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8921B50C7100F24AEF /* MovieousDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieousDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8369CF8D21B50C7100F24AEF /* MovieousDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieousDemoTests.m; sourceTree = "<group>"; };
@@ -2045,9 +2042,7 @@
 		83EDA5642302726A00986B14 /* FUSquareButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUSquareButton.h; sourceTree = "<group>"; };
 		83EDA5682302726A00986B14 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		83EDA56A2302726A00986B14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/FUDemoBar.strings"; sourceTree = "<group>"; };
-		83EDA56C2302726A00986B14 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		83EDA56D2302726A00986B14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FUDemoBar.strings; sourceTree = "<group>"; };
-		83EDA56E2302726A00986B14 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		83EDA56F2302726A00986B14 /* FUDemoBarDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUDemoBarDefine.h; sourceTree = "<group>"; };
 		83EDA5702302726A00986B14 /* UIColor+FUDemoBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FUDemoBar.h"; sourceTree = "<group>"; };
 		83EDA5712302726A00986B14 /* FUDemoBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUDemoBar.m; sourceTree = "<group>"; };
@@ -2719,7 +2714,6 @@
 		83CF5F882240DD59006D8D2B /* SenseTime */ = {
 			isa = PBXGroup;
 			children = (
-				83CF5F892240DD59006D8D2B /* license */,
 				83CF5F8B2240DD59006D8D2B /* Util */,
 				83CF5FBF2240DD59006D8D2B /* include */,
 				83CF5FCA2240DD59006D8D2B /* resources */,
@@ -2729,14 +2723,6 @@
 				83CF5FDF2240DD59006D8D2B /* lib */,
 			);
 			path = SenseTime;
-			sourceTree = "<group>";
-		};
-		83CF5F892240DD59006D8D2B /* license */ = {
-			isa = PBXGroup;
-			children = (
-				8345B77622657F7B00A69BC0 /* SENSEME.lic */,
-			);
-			path = license;
 			sourceTree = "<group>";
 		};
 		83CF5F8B2240DD59006D8D2B /* Util */ = {
@@ -4039,7 +4025,6 @@
 			children = (
 				83EDA5682302726A00986B14 /* Media.xcassets */,
 				83EDA5692302726A00986B14 /* FUDemoBar.strings */,
-				83EDA56B2302726A00986B14 /* Localizable.strings */,
 				83EDA56F2302726A00986B14 /* FUDemoBarDefine.h */,
 				83EDA5702302726A00986B14 /* UIColor+FUDemoBar.h */,
 				83EDA5712302726A00986B14 /* FUDemoBar.m */,
@@ -4502,7 +4487,6 @@
 				83CF64112240DD5A006D8D2B /* style_default_btn_finish_selected@3x.png in Resources */,
 				83EDA61F2302726B00986B14 /* mu_blush_09.png in Resources */,
 				838E346022AFEF3E00DF144B /* lomoMap.png in Resources */,
-				83EDA6C52302726B00986B14 /* Localizable.strings in Resources */,
 				838E347C22AFEF3E00DF144B /* kelvinMap.png in Resources */,
 				83CF63EC2240DD5A006D8D2B /* style_default_2.0_moviEditor_changeColor@3x.png in Resources */,
 				83CF64B02240DD5A006D8D2B /* video_style_default_btn_switch@2x.png in Resources */,
@@ -4709,7 +4693,6 @@
 				83EDA5FD2302726A00986B14 /* mu_style_highlight_02.png in Resources */,
 				83CF64732240DD5A006D8D2B /* style_default_btn_back_w @2x.png in Resources */,
 				83CF63C12240DD5A006D8D2B /* lsq_filter_thumb_Bubbles.jpg in Resources */,
-				8345B77722657F7B00A69BC0 /* SENSEME.lic in Resources */,
 				83CF63B32240DD5A006D8D2B /* video_style_default_btn_sticker_off@3x.png in Resources */,
 				83CF64AD2240DD5A006D8D2B /* style_default_edit_icon_text_addText@2x.png in Resources */,
 				83EDA6622302726B00986B14 /* tiger_bai.png in Resources */,
@@ -5325,15 +5308,6 @@
 			name = FUDemoBar.strings;
 			sourceTree = "<group>";
 		};
-		83EDA56B2302726A00986B14 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				83EDA56C2302726A00986B14 /* zh-Hans */,
-				83EDA56E2302726A00986B14 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		83EDA5792302726A00986B14 /* FUDemoBar.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -5464,7 +5438,8 @@
 			baseConfigurationReference = 3774D06A5185747E2A9828FB /* Pods-MovieousDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 32SCWS77Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5490,7 +5465,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = video.movieous.MovieousDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Wildcard;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MovieousDemo/MovieousDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
