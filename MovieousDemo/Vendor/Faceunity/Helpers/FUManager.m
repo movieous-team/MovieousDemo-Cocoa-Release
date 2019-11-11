@@ -89,6 +89,10 @@ static FUManager *shareManager = NULL;
         self.deviceOrientation = 0 ;
         fuSetDefaultOrientation(self.deviceOrientation);
         
+        /* 设置嘴巴灵活度 默认= 0*/
+        float flexible = 0.5;
+        fuSetFaceTrackParam((char *)[@"mouth_expression_more_flexible" UTF8String], &flexible);
+        
         NSLog(@"faceunitySDK version:%@",[FURenderer getVersion]);
     }
     
@@ -265,13 +269,16 @@ static FUManager *shareManager = NULL;
     
     if((type & FUBeautyModuleTypeSkin) == FUBeautyModuleTypeSkin){
         self.skinDetectEnable       = YES ;// 精准美肤
-        self.blurShape              =  0 ;   // 朦胧磨皮 1 ，清晰磨皮 0
-        self.blurLevel              = 0.7 ; // 磨皮， 实际设置的时候 x6
+        self.blurType              =  0 ;
+        //        self.blurLevel              = 0.7 ; // 磨皮， 实际设置的时候 x6
+        self.blurLevel_0            = 0.7;
+        self.blurLevel_1            = 0.7;
+        self.blurLevel_2            = 0.7;
         self.whiteLevel             = 0.3 ; // 美白
         self.redLevel               = 0.3 ; // 红润
         
-        self.eyelightingLevel       = 0.7 ; // 亮眼
-        self.beautyToothLevel       = 0.7 ; // 美牙
+        self.eyelightingLevel       = 0 ; // 亮眼
+        self.beautyToothLevel       = 0 ; // 美牙
     }
     
     if((type & FUBeautyModuleTypeShape) == FUBeautyModuleTypeShape){
@@ -289,8 +296,16 @@ static FUManager *shareManager = NULL;
     }
 }
 
+-(BOOL)isDefaultSkinValue{
+    if(self.skinDetectEnable == YES && self.blurType == 0 && self.blurLevel_0 == 0.7 && self.blurLevel_1 == 0.7 && self.blurLevel_2 == 0.7 && self.whiteLevel == 0.3
+       && self.redLevel == 0.3 && self.eyelightingLevel == 0 && self.beautyToothLevel == 0){
+        return YES;
+    }
+    return NO;
+}
+
 -(BOOL)isDefaultShapeValue{
-    if(self.vLevel == 0.5 && self.narrowLevel == 0 && self.smallLevel == 0 && self.enlargingLevel == 0.4
+    if(self.faceShape == 4 && self.vLevel == 0.5 && self.narrowLevel == 0 && self.smallLevel == 0 && self.enlargingLevel == 0.4
        &&self.jewLevel == 0.3 && self.foreheadLevel == 0.3 && self.noseLevel == 0.5 && self.mouthLevel == 0.4 && self.thinningLevel == 0){
         return YES;
     }
@@ -301,8 +316,16 @@ static FUManager *shareManager = NULL;
 - (void)resetAllBeautyParams {
     
     [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"skin_detect" value:@(self.skinDetectEnable)]; //是否开启皮肤检测
-    [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"heavy_blur" value:@(self.blurShape)]; // 美肤类型 (0、1、) 清晰：0，朦胧：1
-    [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"blur_level" value:@(self.blurLevel * 6.0 )]; //磨皮 (0.0 - 6.0)
+    [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"heavy_blur" value:@(0)];
+    [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"blur_type" value:@(self.blurType)];
+    if (self.blurType == 0) {
+        [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"blur_level" value:@(self.blurLevel_0 * 6.0 )]; //磨皮 (0.0 - 6.0)
+    }else if (self.blurType == 1){
+        [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"blur_level" value:@(self.blurLevel_1 * 6.0 )]; //磨皮 (0.0 - 6.0)
+    }else if (self.blurType == 2){
+        [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"blur_level" value:@(self.blurLevel_2 * 6.0 )]; //磨皮 (0.0 - 6.0)
+    }
+    
     [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"color_level" value:@(self.whiteLevel)]; //美白 (0~1)
     [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"red_level" value:@(self.redLevel)]; //红润 (0~1)
     [FURenderer itemSetParam:items[FUNamaHandleTypeBeauty] withName:@"eye_bright" value:@(self.eyelightingLevel)]; // 亮眼
@@ -531,7 +554,7 @@ static FUManager *shareManager = NULL;
     
     /*Faceunity核心接口，将道具及美颜效果绘制到pixelBuffer中，执行完此函数后pixelBuffer即包含美颜及贴纸效果*/
     
-    CVPixelBufferRef buffer = [[FURenderer shareRenderer] renderPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int) flipx:YES];//flipx 参数设为YES可以使道具做水平方向的镜像翻转
+    CVPixelBufferRef buffer = [[FURenderer shareRenderer] renderToInternalPixelBuffer:pixelBuffer withFrameId:frameID items:items itemCount:sizeof(items)/sizeof(int)];
     frameID += 1;
     
     return buffer;
@@ -544,13 +567,18 @@ static FUManager *shareManager = NULL;
     int postersHeight = (int)CGImageGetHeight(image.CGImage);
     CFDataRef dataFromImageDataProvider = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage));
     GLubyte *imageData = (GLubyte *)CFDataGetBytePtr(dataFromImageDataProvider);
+    void *outPtr = malloc(CFDataGetLength(dataFromImageDataProvider));
     
-    [[FURenderer shareRenderer] renderItems:imageData inFormat:FU_FORMAT_RGBA_BUFFER outPtr:imageData outFormat:FU_FORMAT_RGBA_BUFFER width:postersWidth height:postersHeight frameId:frameID items:items itemCount:sizeof(items)/sizeof(int) flipx:YES];
+    /**设置美颜参数*/
+    [self resetAllBeautyParams];
+    
+    [[FURenderer shareRenderer] renderItems:imageData inFormat:FU_FORMAT_BGRA_BUFFER outPtr:outPtr outFormat:FU_FORMAT_RGBA_BUFFER width:postersWidth height:postersHeight frameId:frameID items:items itemCount:sizeof(items)/sizeof(int) flipx:YES];
     
     frameID++;
     /* 转回image */
-    image = [FUImageHelper convertBitmapRGBA8ToUIImage:imageData withWidth:postersWidth withHeight:postersHeight];
+    image = [FUImageHelper convertBitmapRGBA8ToUIImage:outPtr withWidth:postersWidth withHeight:postersHeight];
     CFRelease(dataFromImageDataProvider);
+    free(outPtr);
     
     return image;
 }

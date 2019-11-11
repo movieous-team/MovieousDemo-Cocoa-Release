@@ -1,4 +1,4 @@
-﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
+#ifndef INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_COMMON_H_
 
 /// @defgroup st_common st common
@@ -85,6 +85,12 @@ typedef int   st_result_t;
 #define ST_E_UNSUPPORTED_ZIP                -32  ///< 当前sdk不支持的素材包
 #define ST_E_PACKAGE_EXIST_IN_MEMORY            -33  ///< 素材包已存在在内存中，不重复加载
 
+#define ST_E_NOT_CONNECT_TO_NETWORK         -34 ///< 设备没有联网
+#define ST_E_OTHER_LINK_ERRORS_IN_HTTPS     -35 ///< https中的其他链接错误
+#define ST_E_CERTIFICAT_NOT_BE_TRUSTED      -36 ///< windows系统有病毒或被黑导致证书不被信任
+
+#define ST_E_LICENSE_LIMIT_EXCEEDED         -37 ///< license激活次数已用完
+
 #ifndef CHECK_FLAG
 #define CHECK_FLAG(action,flag) (((action)&(flag)) == flag)
 #endif
@@ -114,6 +120,26 @@ typedef struct st_pointi_t {
     int x;      ///< 点的水平方向坐标,为整数
     int y;      ///< 点的竖直方向坐标,为整数
 } st_pointi_t;
+
+/// st hand dynamic gesture type definition
+typedef enum st_hand_dynamic_gesture_type_t {
+    ST_DYNAMIC_GESTURE_TYPE_INVALID = -1,
+    ST_DYNAMIC_GESTURE_TYPE_HOLD_ON,                           ///< 静止
+    ST_DYNAMIC_GESTURE_TYPE_FOREFINGER_CLICK,                  ///< 食指点击
+    ST_DYNAMIC_GESTURE_TYPE_FOREFINGER_ROTATION_CLOCKWISE,     ///< 食指顺时针旋转
+    ST_DYNAMIC_GESTURE_TYPE_FOREFINGER_ROTATION_ANTICLOCKWISE, ///< 食指逆时针旋转
+    ST_DYNAMIC_GESTURE_TYPE_PALM_FAN,                          ///< 手掌扇风（废弃）
+    ST_DYNAMIC_GESTURE_TYPE_PALM_MOVING_LEFT_AND_RIGHT,        ///< 手掌左右平移
+    ST_DYNAMIC_GESTURE_TYPE_PALM_MOVING_UP_AND_DOWN,           ///< 手掌上下平移
+    ST_DYNAMIC_GESTURE_TYPE_MAX_NUM
+} st_hand_dynamic_gesture_type_t;
+
+/// st hand dynamic gesture definition
+typedef struct st_hand_dynamic_gesture_t {
+    int has_dynamic_gesture;                        ///< 是否有动态手势：0表示没有，1表示有
+    st_hand_dynamic_gesture_type_t dynamic_gesture; ///< 动态手势类别
+    float score;                                    ///< 动态手势得分
+} st_hand_dynamic_gesture_t;
 
 /// st pixel format definition
 typedef enum {
@@ -158,6 +184,15 @@ typedef struct st_mobile_106_t {
     int ID;                 ///< faceID: 每个检测到的人脸拥有唯一的faceID.人脸跟踪丢失以后重新被检测到,会有一个新的faceID
 } st_mobile_106_t, *p_st_mobile_106_t;
 
+typedef struct
+{
+    unsigned char* planes[3];    /// Image Plane 只支持双通道NV12/NV12;三通道YUV420P/YV12
+    int strides[3];                 /// image stride(pixel unit),byte number per line
+    int width;                  /// image width
+    int height;                 /// image height
+    st_pixel_format format;     /// input image format 只支持NV12, NV2, 1
+} st_yuv_image_t;
+
 /// @brief track106配置选项,对应st_mobile_tracker_106_create和st_mobile_human_action_create中的config参数,具体配置如下：
 // 使用单线程或双线程track：处理图片必须使用单线程,处理视频建议使用多线程 (创建human_action handle建议使用ST_MOBILE_DETECT_MODE_VIDEO/ST_MOBILE_DETECT_MODE_IMAGE)
 #define ST_MOBILE_TRACKING_MULTI_THREAD         0x00000000  ///< 多线程,功耗较多,卡顿较少
@@ -176,16 +211,22 @@ typedef struct st_mobile_face_t {
     st_mobile_106_t face106;            ///< 人脸信息，包含矩形框、106点、head pose信息等
     st_pointf_t *p_extra_face_points;   ///< 眼睛、眉毛、嘴唇关键点. 没有检测到时为NULL
     int extra_face_points_count;        ///< 眼睛、眉毛、嘴唇关键点个数. 检测到时为ST_MOBILE_EXTRA_FACE_POINTS_COUNT, 没有检测到时为0
-	st_pointf_t * p_tongue_points;      ///< 舌头关键点数组
-	float * p_tongue_points_score;      ///< 舌头关键点对应的置信度
-	int tongue_points_count;            ///< 舌头关键点的数目
+    st_pointf_t * p_tongue_points;      ///< 舌头关键点数组
+    float * p_tongue_points_score;      ///< 舌头关键点对应的置信度
+    int tongue_points_count;            ///< 舌头关键点的数目
     st_pointf_t *p_eyeball_center;      ///< 眼球中心关键点. 没有检测到时为NULL
     int eyeball_center_points_count;    ///< 眼球中心关键点个数. 检测到时为ST_MOBILE_EYEBALL_CENTER_POINTS_COUNT, 没有检测到时为0
     st_pointf_t *p_eyeball_contour;     ///< 眼球轮廓关键点. 没有检测到时为NULL
     int eyeball_contour_points_count;   ///< 眼球轮廓关键点个数. 检测到时为ST_MOBILE_EYEBALL_CONTOUR_POINTS_COUNT, 没有检测到时为0
     float left_eyeball_score;           ///< 左眼球检测结果（中心点和轮廓点）置信度: [0.0, 1.0]
     float right_eyeball_score;          ///< 右眼球检测结果（中心点和轮廓点）置信度: [0.0, 1.0]
+    st_point3f_t *p_gaze_direction;     ///< 视线方向
+    float *p_gaze_score;                ///< 视线置信度: [0.0, 1.0], 建议阈值为0.5
     unsigned long long face_action;     ///< 脸部动作
+    unsigned char *p_avatar_help_info;  ///< avatar辅助信息,仅限内部使用，严禁修改
+    int avatar_help_info_length;        ///< avatar辅助信息字节长度
+    float *p_face_action_score;         ///< 脸部动作置信度, eye, mouth, pitch, yaw, brow
+    int face_action_score_count;        ///< 脸部动作数目
 } st_mobile_face_t, *p_st_mobile_face_t;
 
 /// @brief 设置眨眼动作的阈值,置信度为[0,1], 默认阈值为0.5
@@ -224,6 +265,12 @@ st_mobile_set_smooth_threshold(
 ST_SDK_API void
 st_mobile_set_headpose_threshold(
     float threshold
+);
+
+/// @brief 设置只使用SSE指令集
+ST_SDK_API void
+st_mobile_set_sse_only(
+bool sse_only
 );
 
 /// 支持的颜色转换格式

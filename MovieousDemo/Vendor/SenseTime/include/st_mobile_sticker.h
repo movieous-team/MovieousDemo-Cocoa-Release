@@ -3,6 +3,7 @@
 
 #include "st_mobile_common.h"
 #include "st_mobile_human_action.h"
+#include "st_mobile_animal.h"
 #include "st_mobile_sticker_module.h"
 
 /// 该文件中的API不保证线程安全.多线程调用时,需要确保安全调用.例如在 create handle 没有执行完就执行 process 可能造成crash;在 process 执行过程中调用 destroy 函数可能会造成crash.
@@ -197,6 +198,17 @@ st_mobile_sticker_get_trigger_action(
     unsigned long long *action
 );
 
+/// @brief 获取目前需要的动物检测类型
+/// @parma[in] handle 已初始化的贴纸句柄
+/// @param[out] action 返回的需要检测的类别，对应状态详见st_mobile_common.h中, 如ST_MOBILE_CAT_DETECT等
+/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_sticker_get_animal_detect_config(
+									 st_handle_t handle,
+									 unsigned long long *config
+									 );
+
+
 /// @brief 获取当前需要的自定义输入参数列表，应该在每次切换/添加素材包之后调用。该函数保证线程安全
 /// @param[in] handle 已初始化的sticker句柄
 /// @param[out] p_param_types 需要的自定义输入参数列表，打包为位图，通过st_mobile_input_param_type枚举值获取列表
@@ -206,6 +218,32 @@ st_mobile_sticker_get_needed_input_params(
     st_handle_t handle,
     int* p_param_types
 );
+
+/// @brief 对OpenGLES中的纹理进行贴纸处理, 必须在opengl环境中运行, 仅支持RGBA图像格式.
+/// @parma[in] handle 已初始化的贴纸句柄
+/// @param[in]texture_src 输入texture id
+/// @param[in] image_width 图像宽度
+/// @param[in] image_height 图像高度
+/// @param[in] rotate 人脸朝向
+/// @param[in] frontRotate 前景渲染朝向
+/// @param[in] human_action 动作, 包含106点、face动作
+/// @param[in] input_params 一些硬件参数和自定义事件
+/// @param[in] animal_face 检测到的猫脸结果数组
+/// @param[in] animal_face_count 检测到的猫脸数量
+/// @param[in]texture_dst 输出texture id
+/// @return 成功返回ST_OK, 失败返回其他错误码, 错误码定义在st_mobile_common.h中, 如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_sticker_process_texture_both(
+								  st_handle_t handle,
+								  unsigned int texture_src, int image_width, int image_height,
+								  st_rotate_type rotate, st_rotate_type frontRotate, bool need_mirror,
+								  st_mobile_human_action_t* human_action,
+								  st_mobile_input_params_t* input_params,
+								  st_mobile_animal_face_t* animal_face,
+								  int animal_face_count,
+								  unsigned int texture_dst
+								  );
+
 
 /// @brief 对OpenGLES中的纹理进行贴纸处理, 必须在opengl环境中运行, 仅支持RGBA图像格式.
 /// @parma[in] handle 已初始化的贴纸句柄
@@ -331,6 +369,16 @@ ST_SDK_API st_result_t
 st_mobile_sticker_remove_avatar_model(
     st_handle_t handle
 );
+
+/// @brief 调整最小帧处理间隔
+/// @parma[in] handle 已初始化的贴纸句柄
+/// @param[in] minFrameInterval 贴纸前后两个序列帧切换的最小时间间隔，单位为毫秒。当两个相机帧处理的间隔小于这个值的时候，当前显示的贴纸序列帧会继续显示，直到显示的时间大于该设定值贴纸才会切换到下一阵，相机帧不受影响。
+/// @return 成功返回ST_OK,失败返回其他错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_sticker_set_min_interval(
+								   st_handle_t handle,
+								   float minFrameInterval
+								   );
 
 /// @brief 设置int类型参数
 /// @parma[in] handle 已初始化的贴纸句柄

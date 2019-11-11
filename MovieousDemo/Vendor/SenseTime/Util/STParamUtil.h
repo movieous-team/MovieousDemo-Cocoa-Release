@@ -20,6 +20,8 @@
 
 #define STWeakSelf __weak __typeof(self) weakSelf = self;
 
+#define USE_ONLINE_ACTIVATION 0
+
 
 typedef NS_ENUM(NSInteger, STTitleViewStyle) {
     STTitleViewStyleOnlyImage = 0,
@@ -48,13 +50,25 @@ typedef NS_ENUM(NSInteger, STBeautyType) {
     STBeautyTypeEnlargeEyes,
     STBeautyTypeShrinkJaw,
     STBeautyTypeNarrowFace,
+    STBeautyTypeRoundEye,
     
+    STBeautyTypeThinFaceShape,
     STBeautyTypeChin,
     STBeautyTypeHairLine,
     STBeautyTypeNarrowNose,
     STBeautyTypeLengthNose,
     STBeautyTypeMouthSize,
     STBeautyTypeLengthPhiltrum,
+    
+    STBeautyTypeAppleMusle,
+    STBeautyTypeProfileRhinoplasty,
+    STBeautyTypeBrightEye,
+    STBeautyTypeRemoveDarkCircles,
+    STBeautyTypeWhiteTeeth,
+    STBeautyTypeEyeDistance,
+    STBeautyTypeEyeAngle,
+    STBeautyTypeOpenCanthus,
+    STBeautyTypeRemoveNasolabialFolds,
     
     STBeautyTypeContrast,
     STBeautyTypeSaturation
@@ -87,6 +101,7 @@ typedef NS_ENUM(NSInteger, STEffectsType) {
     STEffectsTypeStickerFaceDeformation,
     STEffectsTypeStickerParticle,
     STEffectsTypeStickerNew,
+    STEffectsTypeStickerMy,
     
     STEffectsTypeObjectTrack,
     
@@ -95,6 +110,7 @@ typedef NS_ENUM(NSInteger, STEffectsType) {
     STEffectsTypeBeautyShape,
     STEffectsTypeBeautyBody,
     STEffectsTypeBeautyMicroSurgery,
+    STEffectsTypeBeautyMakeUp,
     STEffectsTypeBeautyAdjust,
     
     STEffectsTypeFilterPortrait,

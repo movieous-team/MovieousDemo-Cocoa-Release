@@ -64,8 +64,10 @@
     
     STCollectionViewDisplayModel *model = self.arrModels[indexPath.row];
     cell.imageView.image = model.image;
-    cell.maskView.layer.borderColor = model.isSelected ? UIColorFromRGB(0x47c9ff).CGColor : [UIColor clearColor].CGColor;
-    cell.maskView.hidden = !(model.isSelected);
+//    cell.maskView.layer.borderColor = model.isSelected ? UIColorFromRGB(0xb036f5).CGColor : [UIColor clearColor].CGColor;
+    cell.layer.borderColor = model.isSelected ? UIColorFromRGB(0xb036f5).CGColor : [UIColor clearColor].CGColor;
+//    cell.maskView.hidden = !(model.isSelected);
+    cell.maskView.hidden = YES;
     return cell;
 }
 

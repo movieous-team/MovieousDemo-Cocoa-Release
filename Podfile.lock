@@ -9,28 +9,34 @@ PODS:
   - libwebp/mux (1.0.3):
     - libwebp/demux
   - libwebp/webp (1.0.3)
+  - M13ProgressSuite (1.2.9)
   - MJExtension (3.0.17)
-  - MovieousBase-CN (1.1.9)
+  - MovieousBase (2.0.0)
+  - MovieousCaptureBase-CN (2.0.0):
+    - MovieousBase (= 2.0.0)
   - MovieousPlayer-CN (1.0.8)
-  - MovieousShortVideo-CN (2.2.21):
-    - MovieousBase-CN (~> 1.1.9)
-  - Nama (6.2.0)
+  - MovieousShortVideo-CN (3.0.0):
+    - MovieousCaptureBase-CN (~> 2.0.0)
+  - Nama (6.3.0)
   - SDWebImage/Core (4.4.7)
   - SDWebImage/WebP (4.4.7):
     - libwebp (< 2.0, >= 0.5)
     - SDWebImage/Core
+  - SnapKit (4.2.0)
   - SSZipArchive (2.2.2)
   - SVProgressHUD (2.2.5)
   - UFileSDK (3.0.5)
 
 DEPENDENCIES:
   - GPUImage (= 0.1.7)
+  - M13ProgressSuite (= 1.2.9)
   - MJExtension (= 3.0.17)
   - MovieousPlayer-CN (= 1.0.8)
-  - MovieousShortVideo-CN (= 2.2.21)
-  - Nama (= 6.2.0)
+  - MovieousShortVideo-CN (= 3.0.0)
+  - Nama (= 6.3.0)
   - SDWebImage/WebP (= 4.4.7)
-  - SSZipArchive (= 2.2.2)
+  - SnapKit (= 4.2.0)
+  - SSZipArchive
   - SVProgressHUD (= 2.2.5)
   - UFileSDK (= 3.0.5)
 
@@ -38,12 +44,15 @@ SPEC REPOS:
   trunk:
     - GPUImage
     - libwebp
+    - M13ProgressSuite
     - MJExtension
-    - MovieousBase-CN
+    - MovieousBase
+    - MovieousCaptureBase-CN
     - MovieousPlayer-CN
     - MovieousShortVideo-CN
     - Nama
     - SDWebImage
+    - SnapKit
     - SSZipArchive
     - SVProgressHUD
     - UFileSDK
@@ -51,16 +60,19 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
   libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
+  M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
-  MovieousBase-CN: 338fd833c86d57ee4a3468ed83ea2cbd911079ff
+  MovieousBase: 53eca642581d2a2bfebf4e1ef6b0a698dfddf75b
+  MovieousCaptureBase-CN: 33dde1f43b1d48bc68a68e209cf99d07e2ea6bf6
   MovieousPlayer-CN: abda0ee298ddc0755e6f4e80a263191bca936349
-  MovieousShortVideo-CN: 3bf5781a728ae76f27b93e26f7b7ac7c5ae8ac0a
-  Nama: e4cb4740a4529fa9da10ed36a4fe250374b7c947
+  MovieousShortVideo-CN: e8979082c882bc3f53ba8f7aaf24f991c2942761
+  Nama: 4632d043c4752d85d784a1d421801ef0d77e87d5
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UFileSDK: e4f10dcf30bd8792194e49e4299670fa2b3ed731
 
-PODFILE CHECKSUM: d37eeef1328ecb9b09e7c4a8e389e35db0620e53
+PODFILE CHECKSUM: 83a344a59c9af8a1f80b849d60d69d33e6a8b26d
 
 COCOAPODS: 1.8.4

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1120"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "YES"
+      parallelizeBuildables = "NO"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8369CF7021B50C7000F24AEF"
+               BlueprintIdentifier = "83445DDC225CD51E00A635F2"
                BuildableName = "MovieousDemo.app"
                BlueprintName = "MovieousDemo"
                ReferencedContainer = "container:MovieousDemo.xcodeproj">
@@ -27,39 +27,27 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8369CF8821B50C7100F24AEF"
-               BuildableName = "MovieousDemoTests.xctest"
-               BlueprintName = "MovieousDemoTests"
-               ReferencedContainer = "container:MovieousDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8369CF9321B50C7100F24AEF"
-               BuildableName = "MovieousDemoUITests.xctest"
-               BlueprintName = "MovieousDemoUITests"
-               ReferencedContainer = "container:MovieousDemo.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8369CF7021B50C7000F24AEF"
+            BlueprintIdentifier = "83445DDC225CD51E00A635F2"
             BuildableName = "MovieousDemo.app"
             BlueprintName = "MovieousDemo"
             ReferencedContainer = "container:MovieousDemo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8377D948234D798E00DD2DBF"
+               BuildableName = "MovieousDemoTests.xctest"
+               BlueprintName = "MovieousDemoTests"
+               ReferencedContainer = "container:MovieousDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -76,14 +64,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8369CF7021B50C7000F24AEF"
+            BlueprintIdentifier = "83445DDC225CD51E00A635F2"
             BuildableName = "MovieousDemo.app"
             BlueprintName = "MovieousDemo"
             ReferencedContainer = "container:MovieousDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -95,7 +81,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8369CF7021B50C7000F24AEF"
+            BlueprintIdentifier = "83445DDC225CD51E00A635F2"
             BuildableName = "MovieousDemo.app"
             BlueprintName = "MovieousDemo"
             ReferencedContainer = "container:MovieousDemo.xcodeproj">

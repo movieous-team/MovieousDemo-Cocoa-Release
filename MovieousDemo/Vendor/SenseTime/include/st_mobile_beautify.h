@@ -1,4 +1,4 @@
-#ifndef INCLUDE_STMOBILE_ST_MOBILE_BEAUTIFY_H_
+﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_BEAUTIFY_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_BEAUTIFY_H_
 
 #include "st_mobile_common.h"
@@ -23,6 +23,7 @@ st_mobile_beautify_create(
 ///@brief 美化参数类型
 typedef enum {
     ST_BEAUTIFY_REDDEN_STRENGTH = 1,        /// 红润强度, [0,1.0], 默认值0.36, 0.0不做红润
+    ST_BEAUTIFY_SMOOTH_MODE     = 2,        /// 磨皮模式, 默认值1.0, 1.0表示对全图磨皮, 0.0表示只对人脸磨皮
     ST_BEAUTIFY_SMOOTH_STRENGTH = 3,        /// 磨皮强度, [0,1.0], 默认值0.74, 0.0不做磨皮
     ST_BEAUTIFY_WHITEN_STRENGTH = 4,        /// 美白强度, [0,1.0], 默认值0.30, 0.0不做美白
     ST_BEAUTIFY_ENLARGE_EYE_RATIO = 5,      /// 大眼比例, [0,1.0], 默认值0.13, 0.0不做大眼效果
@@ -30,15 +31,26 @@ typedef enum {
     ST_BEAUTIFY_SHRINK_JAW_RATIO = 7,       /// 小脸比例, [0,1.0], 默认值0.10, 0.0不做小脸效果
     ST_BEAUTIFY_CONTRAST_STRENGTH = 8,      /// 对比度强度, [0,1.0], 默认值0.05, 0.0不做对比度处理
     ST_BEAUTIFY_SATURATION_STRENGTH = 9,    /// 饱和度强度, [0,1.0], 默认值0.10, 0.0不做饱和度处理
-    ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光
+    ST_BEAUTIFY_DEHIGHLIGHT_STRENGTH = 10,  /// 去高光强度, [0,1.0], 默认值0.0, 0.0不做去高光，注意，此功能只用于图片处理，预览或视频处理均设为0.0
+	ST_BEAUTIFY_NARROW_FACE_STRENGTH = 11,  /// 窄脸强度, [0,1.0], 默认值0.0, 0.0不做窄脸
+    ST_BEAUTIFY_ROUND_EYE_RATIO = 12,       /// 圆眼比例, [0,1.0], 默认值0.0, 0.0不做圆眼
 
-    ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,     /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
-    ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,     /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
-    ST_BEAUTIFY_3D_CHIN_LENGTH_RATIO = 22,     /// 下巴长短比例，[-1, 1], 默认值为0.0，[-1, 0]为短下巴，[0, 1]为长下巴
-    ST_BEAUTIFY_3D_MOUTH_SIZE_RATIO = 23,      /// 嘴型比例，[-1, 1]，默认值为0.0，[-1, 0]为放大嘴巴，[0, 1]为缩小嘴巴
-    ST_BEAUTIFY_3D_PHILTRUM_LENGTH_RATIO = 24, /// 人中长短比例，[-1, 1], 默认值为0.0，[-1, 0]为长人中，[0, 1]为短人中
-    ST_BEAUTIFY_3D_HAIRLINE_HEIGHT_RATIO = 25, /// 发际线高低比例，[-1, 1], 默认值为0.0，[-1, 0]为低发际线，[0, 1]为高发际线
-    ST_BEAUTIFY_3D_THIN_FACE_SHAPE_RATIO = 26, /// 瘦脸型比例， [0,1.0], 默认值0.0, 0.0不做瘦脸型效果
+    ST_BEAUTIFY_3D_NARROW_NOSE_RATIO = 20,              /// 瘦鼻比例，[0, 1.0], 默认值为0.0，0.0不做瘦鼻
+    ST_BEAUTIFY_3D_NOSE_LENGTH_RATIO = 21,              /// 鼻子长短比例，[-1, 1], 默认值为0.0, [-1, 0]为短鼻，[0, 1]为长鼻
+    ST_BEAUTIFY_3D_CHIN_LENGTH_RATIO = 22,              /// 下巴长短比例，[-1, 1], 默认值为0.0，[-1, 0]为短下巴，[0, 1]为长下巴
+    ST_BEAUTIFY_3D_MOUTH_SIZE_RATIO = 23,               /// 嘴型比例，[-1, 1]，默认值为0.0，[-1, 0]为放大嘴巴，[0, 1]为缩小嘴巴
+    ST_BEAUTIFY_3D_PHILTRUM_LENGTH_RATIO = 24,          /// 人中长短比例，[-1, 1], 默认值为0.0，[-1, 0]为长人中，[0, 1]为短人中
+    ST_BEAUTIFY_3D_HAIRLINE_HEIGHT_RATIO = 25,          /// 发际线高低比例，[-1, 1], 默认值为0.0，[-1, 0]为低发际线，[0, 1]为高发际线
+    ST_BEAUTIFY_3D_THIN_FACE_SHAPE_RATIO = 26,          /// 瘦脸型比例， [0,1.0], 默认值0.0, 0.0不做瘦脸型效果
+    ST_BEAUTIFY_3D_EYE_DISTANCE_RATIO = 27,             /// 眼距比例，[-1, 1]，默认值为0.0，[-1, 0]为减小眼距，[0, 1]为增加眼距
+    ST_BEAUTIFY_3D_EYE_ANGLE_RATIO = 28,                /// 眼睛角度调整比例，[-1, 1]，默认值为0.0，[-1, 0]为左眼逆时针旋转，[0, 1]为左眼顺时针旋转，右眼与左眼相对
+    ST_BEAUTIFY_3D_OPEN_CANTHUS_RATIO = 29,             /// 开眼角比例，[0, 1.0]，默认值为0.0， 0.0不做开眼角
+    ST_BEAUTIFY_3D_PROFILE_RHINOPLASTY_RATIO = 30,      /// 侧脸隆鼻比例，[0, 1.0]，默认值为0.0，0.0不做侧脸隆鼻效果
+    ST_BEAUTIFY_3D_BRIGHT_EYE_RATIO = 31,               /// 亮眼比例，[0, 1.0]，默认值为0.0，0.0不做亮眼
+    ST_BEAUTIFY_3D_REMOVE_DARK_CIRCLES_RATIO = 32,      /// 去黑眼圈比例，[0, 1.0]，默认值为0.0，0.0不做去黑眼圈
+    ST_BEAUTIFY_3D_REMOVE_NASOLABIAL_FOLDS_RATIO = 33,  /// 去法令纹比例，[0, 1.0]，默认值为0.0，0.0不做去法令纹
+    ST_BEAUTIFY_3D_WHITE_TEETH_RATIO = 34,              /// 白牙比例，[0, 1.0]，默认值为0.0，0.0不做白牙
+    ST_BEAUTIFY_3D_APPLE_MUSLE_RATIO = 35,              /// 苹果肌比例，[0, 1.0]，默认值为0.0，0.0不做苹果肌
 
     /// 以下美体系数默认为0.0，ST_BEAUTIFY_BODY_REF_HEAD模式
     /// 身体整体美化系数
@@ -242,6 +254,19 @@ st_mobile_beautify_set_body_beautify_tex_format(st_handle_t handle, st_beautify_
 /// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
 ST_SDK_API st_result_t
 st_mobile_beautify_prepare_body_beautify_gl_resource(st_handle_t handle);
+
+/// @brief 配置是否在设置美体参数时启用平滑效果
+/// @param[in] handle 已初始化的美化句柄
+/// @param[in] enable_smooth 设置参数时启用/禁用平滑，默认行为是开启平滑
+/// @return 成功返回ST_OK, 错误则返回错误码,错误码定义在st_mobile_common.h中,如ST_E_FAIL等
+ST_SDK_API st_result_t
+st_mobile_beautify_enable_smooth_on_change_body_param(st_handle_t handle, bool enable_smooth);
+
+/// @brief 获取当前设置美体参数时是否启用平滑效果
+/// @param[in] handle 已初始化的美化句柄
+/// @return true - 设置参数时启用平滑，false - 设置参数时禁用平滑
+ST_SDK_API bool
+st_mobile_beautify_is_enable_smooth_on_change_body_param(st_handle_t handle);
 
 /// @}
 #endif // INCLUDE_STMOBILE_ST_MOBILE_BEAUTIFY_H_

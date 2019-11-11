@@ -18,7 +18,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.layer.cornerRadius = 5;
+        self.layer.cornerRadius = 5.0f;
+        self.layer.borderWidth = 2.0f;
+        self.layer.borderColor = [UIColor clearColor].CGColor;
         
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, self.frame.size.width - 10, self.frame.size.height - 10)];
         self.imageView.contentMode = UIViewContentModeScaleAspectFill;

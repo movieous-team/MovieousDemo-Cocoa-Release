@@ -1,4 +1,4 @@
-﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_HUMAN_ACTION_H_
+#ifndef INCLUDE_STMOBILE_ST_MOBILE_HUMAN_ACTION_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_HUMAN_ACTION_H_
 
 #include "st_mobile_common.h"
@@ -12,6 +12,8 @@
 #define ST_MOBILE_HEAD_YAW                  0x00000008  ///< 摇头
 #define ST_MOBILE_HEAD_PITCH                0x00000010  ///< 点头
 #define ST_MOBILE_BROW_JUMP                 0x00000020  ///< 眉毛挑动（该检测耗时较长，请在需要时开启）
+#define ST_MOBILE_FACE_LIPS_UPWARD          0x00000040  ///< 嘴角上扬
+#define ST_MOBILE_FACE_LIPS_POUTED          0x00000080  ///< 嘟嘴
 #define ST_MOBILE_HAND_DETECT               0x00000100  ///  检测手
 #define ST_MOBILE_HAND_OK                   0x00000200  ///< OK手势
 #define ST_MOBILE_HAND_SCISSOR              0x00000400  ///< 剪刀手
@@ -27,6 +29,7 @@
 #define ST_MOBILE_HAND_666                  0x00400000  ///< 666
 #define ST_MOBILE_HAND_BLESS                0x00800000  ///< 双手合十
 #define ST_MOBILE_HAND_ILOVEYOU         0x010000000000  ///< 手势ILoveYou
+#define ST_MOBILE_HAND_SSH              0x400000000000  ///< 手势嘘（依赖于手势检测和106点检测）
 #define ST_MOBILE_SEG_BACKGROUND            0x00010000  ///< 检测前景背景分割
 #define ST_MOBILE_FACE_240_DETECT           0x01000000  ///< 检测人脸240关键点 (deprecated)
 #define ST_MOBILE_DETECT_EXTRA_FACE_POINTS  0x01000000  ///< 检测人脸240关键点
@@ -44,24 +47,35 @@
 #define ST_MOBILE_DETECT_HAND_SKELETON_KEYPOINTS  0x20000000000    /// 检测单手关键点
 #define ST_MOBILE_DETECT_HAND_SKELETON_KEYPOINTS_3D  0x40000000000    /// 检测单手3d关键点
 #define ST_MOBILE_SEG_MULTI                 0x80000000000  ///< 检测多类分割
+#define ST_MOBILE_DETECT_GAZE               0x100000000000 ///< 检测视线方向
+#define ST_MOBILE_DETECT_DYNAMIC_GESTURE    0x200000000000 ///< 检测动态手势
+#define ST_MOBILE_DETECT_AVATAR_HELPINFO    0x800000000000 ///< 检测avatar辅助信息
+#define ST_MOBILE_BODY_KEYPOINTS_3D        0x2000000000000  ///< 检测肢体3d关键点
+#define ST_MOBILE_FACE_DETECT_FULL        0x000000FF      ///< 检测所有脸部动作
+#define ST_MOBILE_HAND_DETECT_FULL        0x410000FEFF00  ///< 检测所有手势
+#define ST_MOBILE_BODY_DETECT_FULL        0x018000000     ///< 检测肢体关键点和肢体轮廓点
 
-#define ST_MOBILE_FACE_DETECT_FULL        0x0000003F  ///< 检测所有脸部动作
-#define ST_MOBILE_HAND_DETECT_FULL      0x010000FEFF00  ///< 检测所有手势
-#define ST_MOBILE_BODY_DETECT_FULL        0x018000000 ///< 检测肢体关键点和肢体轮廓点
+/// 检测模式
+#define ST_MOBILE_DETECT_MODE_VIDEO             0x00020000  ///< 视频检测
+#define ST_MOBILE_DETECT_MODE_IMAGE             0x00040000  ///< 图片检测 与视频检测互斥，只能同时使用一个
+#define ST_MOBILE_ENABLE_INPUT_CUSTOM           0x00080000  ///< 使用用户自定义的结果作为输入，必须和视频/图片模式混用，目前使用人脸结果有效
 
 /// @brief 手势检测结果
 typedef struct st_mobile_hand_t {
-    int id;                     ///< 手的id
-    st_rect_t rect;             ///< 手部矩形框
-    int left_right;              ///< 0 unknown ,1 left, 2 right
-    st_pointf_t *p_key_points;  ///< 手部关键点
-    int key_points_count;       ///< 手部关键点个数
-    unsigned long long hand_action; ///< 手部动作
-    float score;                ///< 手部动作置信度
-    st_pointf_t *p_skeleton_keypoints; ///< 手部骨骼点
-    int skeleton_keypoints_count;      ///< 手部骨骼点个数 一般是0/20
-    st_point3f_t *p_skeleton_3d_keypoints;   ///< 手部3d骨骼点
-    int skeleton_3d_keypoints_count;   ///< 手部3d骨骼点的个数
+    int id;                                         ///< 手的id
+    st_rect_t rect;                                 ///< 手部矩形框
+    int left_right;                                 ///< 0 unknown ,1 left, 2 right
+    st_pointf_t *p_key_points;                      ///< 手部关键点
+    int key_points_count;                           ///< 手部关键点个数
+    unsigned long long hand_action;                 ///< 手部动作
+    float score;                                    ///< 手部动作置信度
+    st_pointf_t *p_skeleton_keypoints;              ///< 手部骨骼点
+    int skeleton_keypoints_count;                   ///< 手部骨骼点个数 一般是0/20
+    st_point3f_t *p_skeleton_3d_keypoints;          ///< 手部3d骨骼点
+    int skeleton_3d_keypoints_count;                ///< 手部3d骨骼点的个数
+    st_hand_dynamic_gesture_t hand_dynamic_gesture; ///< 动态手势
+    st_pointf_t *p_dynamic_gesture_keypoints;       ///< 动态手势关键点
+    int dynamic_gesture_keypoints_count;            ///< 动态手势关键点的个数
 } st_mobile_hand_t, *p_st_mobile_hand_t;
 
 /// @brief 肢体检测结果
@@ -72,6 +86,8 @@ typedef struct st_mobile_body_t {
     int key_points_count;       ///< 肢体关键点个数 目前为0/4/14
 	st_pointf_t *p_contour_points;  ///< 肢体轮廓点
 	float * p_contour_points_score; ///< 肢体轮廓点的置信度[0,1] 值越大，置信度越高.建议用户使用0.15作为置信度阈值.
+    st_point3f_t *p_key_points_3d;	///< 肢体3d点
+    int key_points_3d_count;		///< 肢体3d点个数(0或17）
 	int contour_points_count;       ///< 肢体轮廓点个数 目前为0/63
     unsigned long long body_action;   ///< 肢体动作，本版本无效
     float body_action_score;                ///< 肢体动作置信度,本版本无效
@@ -102,7 +118,7 @@ typedef struct st_mobile_human_action_t {
 /// @{
 
 /// @brief 创建人体行为检测句柄配置选项
-/// 支持的检测类型
+/// 支持的检测类型， 只用于添加模型和删除模型
 #define ST_MOBILE_ENABLE_FACE_DETECT            0x00000040  ///< 检测人脸
 #define ST_MOBILE_ENABLE_HAND_DETECT            0x00000080  ///< 检测手势
 #define ST_MOBILE_ENABLE_SEGMENT_DETECT         0x00000100  ///< 检测背景分割
@@ -117,8 +133,11 @@ typedef struct st_mobile_human_action_t {
 #define ST_MOBILE_ENABLE_TONGUE_DETECT          0x00010000  ///< 检测舌头关键点
 #define ST_MOBILE_ENABLE_HAND_SKELETON_KEYPOINTS   0X01000000  ///< 检测手势关节点
 #define ST_MOBILE_ENABLE_HAND_SKELETON_KEYPOINTS_3D    0X02000000  ///< 检测3d手势关节点
-#define ST_MOBILE_ENABLE_MULTI_SEGMENT         0x04000000  ///< 检测多类分割
-
+#define ST_MOBILE_ENABLE_MULTI_SEGMENT          0x04000000  ///< 检测多类分割
+#define ST_MOBILE_ENABLE_GAZE_DETECT            0x08000000  ///< 检测视线方向
+#define ST_MOBILE_ENABLE_DYNAMIC_GESTURE        0x10000000  ///< 检测动态手势
+#define ST_MOBILE_ENABLE_AVATAR_HELPER          0x20000000  ///< 检测avatar辅助信息开关
+#define ST_MOBILE_ENABLE_BODY_3D		        0x40000000  ///< 肢体3d点开关
 /// 检测模式
 #define ST_MOBILE_DETECT_MODE_VIDEO             0x00020000  ///< 视频检测
 #define ST_MOBILE_DETECT_MODE_IMAGE             0x00040000  ///< 图片检测 与视频检测互斥，只能同时使用一个
@@ -161,9 +180,6 @@ st_mobile_human_action_create_from_buffer(
     unsigned int config,
     st_handle_t *handle
 );
-
-ST_SDK_API st_result_t
-st_mobile_human_action_sethand(st_handle_t handle, int hand_id, bool is_left_hand);
 
 /// @brief 通过子模型创建人体行为检测句柄, st_mobile_human_action_create和st_mobile_human_action_create_with_sub_models只能调一个
 /// @param[in] model_path_arr 模型文件路径指针数组. 根据加载的子模型确定支持检测的类型. 如果包含相同的子模型, 后面的会覆盖前面的.
@@ -250,7 +266,7 @@ typedef enum {
     ST_HUMAN_ACTION_PARAM_BACKGROUND_MAX_SIZE = 1,
     /// 背景分割羽化程度[0,1](默认值0.35),0 完全不羽化,1羽化程度最高,在strenth较小时,羽化程度基本不变.值越大,前景与背景之间的过度边缘部分越宽.
     ST_HUMAN_ACTION_PARAM_BACKGROUND_BLUR_STRENGTH = 2,
-    /// 设置检测到的最大人脸数目N(默认值32, 最大值32),持续track已检测到的N个人脸直到人脸数小于N再继续做detect.值越大,检测到的人脸数目越多,但相应耗时越长.
+    /// 设置检测到的最大人脸数目N(默认值32, 最大值32),持续track已检测到的N个人脸直到人脸数小于N再继续做detect.值越大,检测到的人脸数目越多,但相应耗时越长. 如果当前人脸数目达到上限，检测线程将休息
     ST_HUMAN_ACTION_PARAM_FACELIMIT = 3,
     /// 设置tracker每多少帧进行一次detect(默认值有人脸时30,无人脸时30/3=10). 值越大,cpu占用率越低, 但检测出新人脸的时间越长.
     ST_HUMAN_ACTION_PARAM_FACE_DETECT_INTERVAL = 4,
@@ -262,7 +278,7 @@ typedef enum {
     ST_HUMAN_ACTION_PARAM_HAND_DETECT_INTERVAL = 7,
     /// 设置前后背景检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
     ST_HUMAN_ACTION_PARAM_BACKGROUND_RESULT_ROTATE = 8,
-    /// 设置检测到的最大肢体数目N(默认值1),持续track已检测到的N个肢体直到肢体数小于N再继续做detect.值越大,检测到的body数目越多,但相应耗时越长.
+    /// 设置检测到的最大肢体数目N(默认值1),持续track已检测到的N个肢体直到肢体数小于N再继续做detect.值越大,检测到的body数目越多,但相应耗时越长. 如果当前肢体数目达到上限，检测线程将休息
     ST_HUMAN_ACTION_PARAM_BODY_LIMIT = 9,
     /// 设置肢体关键点检测每多少帧进行一次 detect (默认有肢体时30帧detect一次, 无body时10(30/3)帧detect一次). 值越大,cpu占用率越低, 但检测出新body的时间越长.
     ST_HUMAN_ACTION_PARAM_BODY_DETECT_INTERVAL = 10,
@@ -274,7 +290,7 @@ typedef enum {
     ST_HUMAN_ACTION_PARAM_BACKGROUND_PROCESS_INTERVAL = 13,
 	/// 设置肢体隔帧检测（对上一帧结果做拷贝），目的是减少耗时。默认每帧检测一次. 最多每10帧检测一次. 开启隔帧检测后, 只能对拷贝出来的检测结果做后处理.
     ST_HUMAN_ACTION_PARAM_BODY_PROCESS_INTERVAL = 14,
-	/// 设置检测到的最大手数目N(默认值2, 最大值32),持续track已检测到的N个hand直到人脸数小于N再继续做detect.值越大,检测到的hand数目越多,但相应耗时越长.
+	/// 设置检测到的最大手数目N(默认值2, 最大值32),持续track已检测到的N个hand直到人脸数小于N再继续做detect.值越大,检测到的hand数目越多,但相应耗时越长. 如果当前手数目达到上限，检测线程将休息
 	ST_HUMAN_ACTION_PARAM_HAND_LIMIT = 15,
 	/// 头发结果中长边的长度[10,长边长度](默认长边240,短边=长边/原始图像长边*原始图像短边).值越大,头发分割的耗时越长,边缘部分效果越好.
 	ST_HUMAN_ACTION_PARAM_HAIR_MAX_SIZE = 16,
@@ -290,7 +306,9 @@ typedef enum {
 	/// 输出的multisegment结果中长边的长度.
 	ST_HUMAN_ACTION_PARAM_MULTI_SEGMENT_MAX_SIZE = 22,
 	/// 设置多类分割检测结果灰度图的方向是否需要旋转（0: 不旋转, 保持竖直; 1: 旋转, 方向和输入图片一致. 默认不旋转)
-	ST_HUMAN_ACTION_PARAM_MULTI_SEGMENT_RESULT_ROTATE = 23
+	ST_HUMAN_ACTION_PARAM_MULTI_SEGMENT_RESULT_ROTATE = 23,
+    /// 设置预处理后图像的最长边，最小320， 视频默认值320，图像默认值1000。 值越大，耗时越长，检测到的目标数目会多一些
+	ST_HUMAN_ACTION_PARAM_PREPROCESS_MAX_SIZE = 24
 } st_human_action_type;
 
 /// @brief 设置human_action参数
@@ -345,6 +363,20 @@ void st_mobile_human_action_resize(
 	float scale,
 	st_mobile_human_action_t* p_human_action
 );
+/// @brief 拷贝human_action检测结果.
+/// @param[in] p_human_action_src 需要拷贝的human_action检测结果
+/// @param[out] p_human_action_dst 需要拷贝的human_action检测结果.注意初始化成员,如果指针非空, 默认是已被分配过内存, 不会重新分配内存
+ST_SDK_API
+void st_mobile_human_action_copy(
+    const st_mobile_human_action_t * p_human_action_src,
+    st_mobile_human_action_t * p_human_action_dst
+);
+/// @brief 删除human_action 结果, 只能删除st_mobile_human_action_copy的输出结果
+/// @param[in] p_human_action 需要删除的human_action检测结果
+ST_SDK_API
+void st_mobile_human_action_delete(
+    st_mobile_human_action_t * p_human_action
+);
 
 typedef enum{
 	// 脸部动作
@@ -364,6 +396,11 @@ typedef enum{
 	ST_MOBILE_EXPRESSION_HAND_CONGRATULATE = 17,  ///< 恭贺（抱拳）
 	ST_MOBILE_EXPRESSION_HAND_FINGER_HEART = 18,  ///< 单手比爱心
 	ST_MOBILE_EXPRESSION_HAND_FINGER_INDEX = 20,  ///< 食指指尖
+	ST_MOBILE_EXPRESSION_HAND_FIST = 21,  ///< 拳头
+	ST_MOBILE_EXPRESSION_HAND_666 = 22,  ///< 666
+	ST_MOBILE_EXPRESSION_HAND_BLESS = 23,  ///< 双手合十
+	ST_MOBILE_EXPRESSION_HAND_ILOVEYOU = 24,  ///< 手势ILoveYou
+	ST_MOBILE_EXPRESSION_HAND_SSH = 25,  ///< 嘘
 	// 头状态
 	ST_MOBILE_EXPRESSION_HEAD_NORMAL = 65, ///< 头正向
 	ST_MOBILE_EXPRESSION_SIDE_FACE_LEFT = 66, ///< 头向左侧偏
@@ -413,4 +450,53 @@ st_mobile_set_expression_threshold(
 ST_MOBILE_EXPRESSION detect_expression,
 float threshold
 );
+
+/// @param[in] handle 已初始化的human_action句柄
+/// @param[in] p_face 输入检测结果中的一个人脸结构指针
+/// @param[in] orientation 人脸方向
+/// @param[in] width 宽度
+/// @param[in] height 高度
+/// @param[in] fov 垂直fov参数，相机的内参，单位角度。
+/// @param[out] p_distance 输出检测距离的结果,单位为米
+/// @return  成功返回ST_OK, 失败返回其他错误码
+ST_SDK_API st_result_t
+st_mobile_human_action_calc_face_distance(
+st_handle_t handle,
+const st_mobile_face_t *p_face,
+st_rotate_type orientation,
+int width, int height, float fov,
+float  *p_distance
+);
+
+/// @brief 设置Human action各个属性阈值
+/// handle [in] 已初始化的human action句柄
+/// config [in] 具体设置哪些阈值，为这几种：
+///             ST_MOBILE_EYE_BLINK 眨眼动作
+///             ST_MOBILE_MOUTH_AH 张嘴动作
+///             ST_MOBILE_HEAD_YAW 摇头动作
+///             ST_MOBILE_HEAD_PITCH 点头动作
+///             ST_MOBILE_BROW_JUMP 挑眉毛动作
+///             ST_MOBILE_FACE_LIPS_UPWARD 嘴角上扬动作
+///             ST_MOBILE_FACE_LIPS_POUTED 嘟嘴动作
+/// threshould [in] 设置config指定类型的阈值，置信度为[0,1], 默认阈值为0.5
+/// @return  成功返回ST_OK, 失败返回其他错误码
+ST_SDK_API st_result_t
+st_mobile_set_human_action_threshold(
+    st_handle_t handle,
+    unsigned long long config,
+    float threshold
+);
+
+/// @brief 获取已经设置的Human action各个属性阈值
+/// handle [in] 设置的human action句柄
+/// config [in] 与st_mobile_set_human_action_threshold中config一致
+/// threshould [out] 取得的阈值
+/// @return  成功返回ST_OK, 失败返回其他错误码
+ST_SDK_API st_result_t
+st_mobile_get_human_action_threshold(
+    st_handle_t handle,
+    unsigned long long config,
+    float* threshold
+);
+
 #endif  // INCLUDE_STMOBILE_ST_MOBILE_HUMAN_ACTION_H_

@@ -1,0 +1,147 @@
+/* 
+  Localizable.strings
+  MovieousDemo
+
+  Created by Chris Wang on 2019/6/16.
+  Copyright © 2019 Movieous Team. All rights reserved.
+*/
+
+"global.error" = "错误";
+"global.ok" = "好的";
+"global.slower" = "极慢";
+"global.slow" = "慢";
+"global.standard" = "标准";
+"global.fast" = "快";
+"global.faster" = "极快";
+"global.alert" = "提示";
+"global.vendornosticker" = "当前供应商不支持人脸贴纸";
+"global.vendornobeauty" = "当前供应商不支持美颜功能";
+
+"MDStickerLibrary.moveformat" = "移动 %@ 到 %@ 失败";
+"MDStickerLibrary.ok" = "好的";
+"MDStickerLibrary.list.status.error" = "获取贴纸列表错误，错误代码：";
+"MDStickerLibrary.list.nodata.error" = "获取贴纸列表错误，无数据返回";
+"MDStickerLibrary.list.invaliddata.error" = "获取贴纸列表错误，返回的数据无效";
+
+"MDMusicLibrary.list.status.error" = "获取音乐列表错误，错误代码：";
+"MDMusicLibrary.list.nodata.error" = "获取音乐列表错误，无数据返回";
+"MDMusicLibrary.list.invaliddata.error" = "获取音乐列表错误，返回的数据无效";
+
+"MDGlobalConfig.vendor.none" = "无供应商";
+"MDGlobalConfig.vendor.faceunity" = "相芯科技";
+"MDGlobalConfig.vendor.senseTime" = "商汤科技";
+"MDGlobalConfig.vendor.tusdk" = "凃图";
+"MDGlobalConfig.vendor.kiwi" = "开为科技";
+
+"MDCreationViewController.title" = "创建素材";
+"MDCreationViewController.single" = "单拍";
+"MDCreationViewController.duet" = "合拍";
+"MDCreationViewController.preparing" = "准备开始合拍";
+
+"MDVideoEditorViewController.volume" = "音量";
+"MDVideoEditorViewController.music" = "音乐";
+"MDVideoEditorViewController.sticker" = "贴纸";
+"MDVideoEditorViewController.beauty" = "美颜";
+"MDVideoEditorViewController.trim" = "截取";
+"MDVideoEditorViewController.effect" = "特效";
+"MDVideoEditorViewController.word" = "文字";
+"MDVideoEditorViewController.scrawl" = "涂鸦";
+"MDVideoEditorViewController.cover" = "封面";
+"MDVideoEditorViewController.composition" = "视频合成";
+"MDVideoEditorViewController.mv" = "MV 特效";
+"MDVideoEditorViewController.split" = "视频切割";
+"MDVideoEditorViewController.concat" = "视频拼接";
+"MDVideoEditorViewController.particle" = "粒子特效";
+"MDVideoEditorViewController.pause" = "暂停";
+"MDVideoEditorViewController.play" = "播放";
+"MDVideoEditorViewController.next" = "下一步";
+"MDVideoEditorViewController.edit" = "编辑";
+
+"MDVolumeViewController.error" = "错误";
+"MDVolumeViewController.nomain.error" = "未找到主轨";
+"MDVolumeViewController.ok" = "好的";
+"MDVolumeViewController.volume" = "音量";
+"MDVolumeViewController.original" = "原音频";
+"MDVolumeViewController.mute" = "静音";
+"MDVolumeViewController.music" = "音乐";
+
+"MDEditorMusicViewController.title" = "音乐";
+"MDEditorMusicViewController.cancel" = "取消";
+
+"MDStickerViewController.title" = "贴纸";
+
+"MDTrimViewController.title" = "截取";
+"MDTrimViewController.reset" = "重置";
+"MDTrimViewController.selected" = "已选择 %.1f 秒";
+"MDTrimViewController.invalidspeed" = "读取 speed 错误";
+
+"MDSpecialEffectViewController.filter" = "滤镜特效";
+"MDSpecialEffectViewController.time" = "时间特效";
+"MDSpecialEffectViewController.choose" = "选择一个特效，然后长按应用特效";
+"MDSpecialEffectViewController.none" = "无";
+"MDSpecialEffectViewController.move" = "移动滑块选择开始时间";
+"MDSpecialEffectViewController.repeate" = "反复";
+"MDSpecialEffectViewController.reverse" = "倒放";
+"MDSpecialEffectViewController.slowmotion" = "慢动作";
+
+"MDBeautyFilterViewController.title" = "美颜滤镜";
+
+"MDRecorderViewController.warning" = "警告";
+"MDRecorderViewController.vpermission" = "未获取到视频采集权限";
+"MDRecorderViewController.apermission" = "未获取到音频采集权限";
+"MDRecorderViewController.ok" = "好的";
+"MDRecorderViewController.clear" = "清除当前音乐";
+"MDRecorderViewController.change" = "更换当前音乐";
+"MDRecorderViewController.cancel" = "取消";
+"MDRecorderViewController.alert" = "提醒";
+"MDRecorderViewController.countdownmsg" = "倒计时即将开始";
+"MDRecorderViewController.countdown" = "倒计时";
+"MDRecorderViewController.cancel" = "取消";
+"MDRecorderViewController.confirm" = "确认";
+"MDRecorderViewController.switch" = "切换";
+"MDRecorderViewController.beauty" = "美颜";
+"MDRecorderViewController.speed" = "速度";
+"MDRecorderViewController.start" = "开始";
+"MDRecorderViewController.import" = "导入";
+"MDRecorderViewController.sticker" = "贴纸";
+"MDRecorderViewController.musics" = "音乐";
+"MDRecorderViewController.error" = "错误";
+"MDRecorderViewController.norecorder" = "未找到 recorder";
+"MDRecorderViewController.ok" = "好的";
+"MDRecorderViewController.noclip" = "未生成 clip";
+"MDRecorderViewController.loading" = "读取中";
+
+"MDRecordTypeSelectView.photo" = "拍照";
+"MDRecordTypeSelectView.video" = "录像";
+
+"MDRecorderMusicViewController.musics" = "音乐";
+"MDRecorderMusicViewController.save" = "保存";
+"MDRecorderMusicViewController.downloading" = "下载中";
+
+"MDAudienceViewController.error" = "错误";
+"MDAudienceViewController.invmeta" = "metadataArray 错误";
+"MDAudienceViewController.ok" = "好的";
+"MDAudienceViewController.empmeta" = "metadataArray 为空";
+"MDAudienceViewController.list.status.error" = "获取播放列表错误，错误代码：";
+"MDAudienceViewController.list.nodata.error" = "获取播放列表错误，无数据返回";
+"MDAudienceViewController.list.invaliddata.error" = "获取播放列表错误，返回的数据无效";
+
+"MDVendorSelectionViewController.vendor" = "供应商";
+"MDVendorSelectionViewController.save" = "保存";
+
+"MDGraffitiViewController.size" = "笔刷大小";
+"MDGraffitiViewController.color" = "笔刷颜色";
+"MDGraffitiViewController.undo" = "撤销";
+"MDGraffitiViewController.redo" = "重做";
+"MDGraffitiViewController.reset" = "重置";
+"MDGraffitiViewController.clearall" = "清除所有";
+
+"MDWordViewController.title" = "文字";
+
+"MDExporterViewController.export" = "导出到相册";
+"MDExporterViewController.exporting" = "正在导出";
+"MDExporterViewController.done" = "导出完成";
+
+"MDInnerBeautyView.beauty" = "美颜";
+"MDInnerBeautyView.bright" = "美白";
+"MDInnerBeautyView.tone" = "红润";

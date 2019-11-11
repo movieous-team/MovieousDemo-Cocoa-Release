@@ -197,7 +197,7 @@ typedef NS_ENUM(NSInteger, STMovieRecorderStatus) {
 			case STMovieRecorderStatusFinishingRecordingPart1:
 			case STMovieRecorderStatusFinishingRecordingPart2:
 			case STMovieRecorderStatusFinished:
-                @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Not recording" userInfo:nil];
+//                @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Not recording" userInfo:nil];
                 break;
 			case STMovieRecorderStatusFailed:
 				// From the client's perspective the STMovie recorder can asynchronously transition to an error state as the result of an append.

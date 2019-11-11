@@ -1,0 +1,147 @@
+/* 
+  Localizable.strings
+  MovieousDemo
+
+  Created by Chris Wang on 2019/6/16.
+  Copyright © 2019 Movieous Team. All rights reserved.
+*/
+
+"global.error" = "error";
+"global.ok" = "ok";
+"global.slower" = "slower";
+"global.slow" = "slow";
+"global.standard" = "standard";
+"global.fast" = "fast";
+"global.faster" = "faster";
+"global.alert" = "alert";
+"global.vendornosticker" = "sticker is not supported by the current selected vendor";
+"global.vendornobeauty" = "beauty function is not supported by the current selected vendor";
+
+"MDStickerLibrary.moveformat" = "move %@ to %@ failed";
+"MDStickerLibrary.ok" = "ok";
+"MDStickerLibrary.list.status.error" = "get stickers list error, status code: ";
+"MDStickerLibrary.list.nodata.error" = "get stickers list error, no data returned";
+"MDStickerLibrary.list.invaliddata.error" = "get stickers list error, data returned is invalid";
+
+"MDMusicLibrary.list.status.error" = "get musics list error, status code: ";
+"MDMusicLibrary.list.nodata.error" = "get musics list error, no data returned";
+"MDMusicLibrary.list.invaliddata.error" = "get musics list error, data returned is invalid";
+
+"MDGlobalConfig.vendor.none" = "None";
+"MDGlobalConfig.vendor.faceunity" = "FaceUnity";
+"MDGlobalConfig.vendor.senseTime" = "SenseTime";
+"MDGlobalConfig.vendor.tusdk" = "TuSDK";
+"MDGlobalConfig.vendor.kiwi" = "Kiwi";
+
+"MDCreationViewController.title" = "Creation type";
+"MDCreationViewController.single" = "Single Shot";
+"MDCreationViewController.duet" = "Duet Shot";
+"MDCreationViewController.preparing" = "Preparing for duet";
+
+"MDVideoEditorViewController.volume" = "Volume";
+"MDVideoEditorViewController.music" = "Music";
+"MDVideoEditorViewController.sticker" = "Sticker";
+"MDVideoEditorViewController.beauty" = "Beauty";
+"MDVideoEditorViewController.trim" = "Trim";
+"MDVideoEditorViewController.effect" = "Effect";
+"MDVideoEditorViewController.word" = "Word";
+"MDVideoEditorViewController.scrawl" = "Scrawl";
+"MDVideoEditorViewController.cover" = "Cover";
+"MDVideoEditorViewController.composition" = "Composition";
+"MDVideoEditorViewController.mv" = "MV";
+"MDVideoEditorViewController.split" = "Split";
+"MDVideoEditorViewController.concat" = "Concat";
+"MDVideoEditorViewController.particle" = "Particle";
+"MDVideoEditorViewController.pause" = "Pause";
+"MDVideoEditorViewController.play" = "Play";
+"MDVideoEditorViewController.next" = "Next";
+"MDVideoEditorViewController.edit" = "Edit";
+
+"MDVolumeViewController.error" = "Error";
+"MDVolumeViewController.nomain.error" = "No main track found";
+"MDVolumeViewController.ok" = "ok";
+"MDVolumeViewController.volume" = "volume";
+"MDVolumeViewController.original" = "original";
+"MDVolumeViewController.mute" = "mute";
+"MDVolumeViewController.music" = "music";
+
+"MDEditorMusicViewController.title" = "Musics";
+"MDEditorMusicViewController.cancel" = "Cancel";
+
+"MDStickerViewController.title" = "Stickers";
+
+"MDTrimViewController.title" = "Trim";
+"MDTrimViewController.reset" = "Reset";
+"MDTrimViewController.selected" = "Selected %.1f s";
+"MDTrimViewController.invalidspeed" = "invalid speed";
+
+"MDSpecialEffectViewController.filter" = "filter effects";
+"MDSpecialEffectViewController.time" = "time effects";
+"MDSpecialEffectViewController.choose" = "choose a effect, then press to apply efffect";
+"MDSpecialEffectViewController.none" = "none";
+"MDSpecialEffectViewController.move" = "move slider to choose effect start time";
+"MDSpecialEffectViewController.repeate" = "repeate";
+"MDSpecialEffectViewController.reverse" = "reverse";
+"MDSpecialEffectViewController.slowmotion" = "slow motion";
+
+"MDBeautyFilterViewController.title" = "beauty filter";
+
+"MDRecorderViewController.warning" = "warning";
+"MDRecorderViewController.vpermission" = "video permission not acquired";
+"MDRecorderViewController.apermission" = "audio permission not acquired";
+"MDRecorderViewController.ok" = "ok";
+"MDRecorderViewController.clear" = "clear the current music";
+"MDRecorderViewController.change" = "change the current music";
+"MDRecorderViewController.cancel" = "cancel";
+"MDRecorderViewController.alert" = "alert";
+"MDRecorderViewController.countdownmsg" = "count down will start";
+"MDRecorderViewController.countdown" = "countdown";
+"MDRecorderViewController.cancel" = "cancel";
+"MDRecorderViewController.confirm" = "confirm";
+"MDRecorderViewController.switch" = "switch";
+"MDRecorderViewController.beauty" = "beauty";
+"MDRecorderViewController.speed" = "speed";
+"MDRecorderViewController.start" = "start";
+"MDRecorderViewController.import" = "import";
+"MDRecorderViewController.sticker" = "sticker";
+"MDRecorderViewController.musics" = "musics";
+"MDRecorderViewController.error" = "error";
+"MDRecorderViewController.norecorder" = "no recorder found";
+"MDRecorderViewController.ok" = "ok";
+"MDRecorderViewController.noclip" = "no clip generated";
+"MDRecorderViewController.loading" = "loading";
+
+"MDRecordTypeSelectView.photo" = "photo";
+"MDRecordTypeSelectView.video" = "video";
+
+"MDRecorderMusicViewController.musics" = "musics";
+"MDRecorderMusicViewController.save" = "save";
+"MDRecorderMusicViewController.downloading" = "downloading";
+
+"MDAudienceViewController.error" = "error";
+"MDAudienceViewController.invmeta" = "invalid metadataArray";
+"MDAudienceViewController.ok" = "ok";
+"MDAudienceViewController.empmeta" = "empty metadataArray";
+"MDAudienceViewController.list.status.error" = "get play list error, status code: ";
+"MDAudienceViewController.list.nodata.error" = "get play list error, no data returned";
+"MDAudienceViewController.list.invaliddata.error" = "get play list error, data returned is invalid";
+
+"MDVendorSelectionViewController.vendor" = "vendor";
+"MDVendorSelectionViewController.save" = "save";
+
+"MDGraffitiViewController.size" = "brush size";
+"MDGraffitiViewController.color" = "brush color";
+"MDGraffitiViewController.undo" = "undo";
+"MDGraffitiViewController.redo" = "redo";
+"MDGraffitiViewController.reset" = "reset";
+"MDGraffitiViewController.clearall" = "clear all";
+
+"MDWordViewController.title" = "word";
+
+"MDExporterViewController.export" = "export to album";
+"MDExporterViewController.exporting" = "exporting";
+"MDExporterViewController.done" = "done";
+
+"MDInnerBeautyView.beauty" = "beauty";
+"MDInnerBeautyView.bright" = "bright";
+"MDInnerBeautyView.tone" = "tone";

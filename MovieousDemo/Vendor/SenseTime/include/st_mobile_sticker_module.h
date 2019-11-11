@@ -1,4 +1,4 @@
-#ifndef INCLUDE_STMOBILE_ST_MOBILE_STICKER_MODULE_H_
+﻿#ifndef INCLUDE_STMOBILE_ST_MOBILE_STICKER_MODULE_H_
 #define INCLUDE_STMOBILE_ST_MOBILE_STICKER_MODULE_H_
 
 #include "st_mobile_common.h"
@@ -18,8 +18,13 @@ typedef void(*st_mobile_sticker_play_sound_func) (void* handle, const char* soun
 
 /// @brief 声音暂停播放回调函数.
 /// @param[in] handle 贴纸句柄
-/// @param[in] sound_name the name of the sound.
+/// @param[in] sound_name 声音名字.
 typedef void(*st_mobile_sticker_pause_sound_func) (void* handle, const char* sound_name);
+
+/// @brief 声音恢复播放回调函数
+/// @param[in] handle 贴纸句柄
+/// @param[in] sound_name 声音名字.
+typedef void(*st_mobile_sticker_resume_sound_func) (void* handle, const char* sound_name);
 
 /// @brief 声音停止回调函数
 /// @param[in] handle 贴纸句柄
