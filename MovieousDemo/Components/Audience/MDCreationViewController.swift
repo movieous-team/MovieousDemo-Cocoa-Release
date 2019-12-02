@@ -93,7 +93,7 @@ class MDCreationViewController: UIViewController {
     
     @objc func settingsButtonPressed(sender: UIBarButtonItem) {
         let viewController = MDShotConfigViewController()
-        self.navigationController?.push(viewController, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -156,7 +156,7 @@ extension MDCreationViewController: URLSessionDownloadDelegate {
             controller.duetVideoPath = filePath
             self.view.isUserInteractionEnabled = true
             SVProgressHUD.dismiss {
-                self.navigationController?.push(controller, animated: true)
+                self.navigationController?.pushViewController(controller, animated: true)
             }
         } catch {
             self.view.isUserInteractionEnabled = true

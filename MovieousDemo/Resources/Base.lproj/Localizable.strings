@@ -28,10 +28,6 @@
 "MDMusicLibrary.list.invaliddata.error" = "get musics list error, data returned is invalid";
 
 "MDGlobalConfig.vendor.none" = "None";
-"MDGlobalConfig.vendor.faceunity" = "FaceUnity";
-"MDGlobalConfig.vendor.senseTime" = "SenseTime";
-"MDGlobalConfig.vendor.tusdk" = "TuSDK";
-"MDGlobalConfig.vendor.kiwi" = "Kiwi";
 
 "MDCreationViewController.title" = "Creation type";
 "MDCreationViewController.single" = "Single Shot";

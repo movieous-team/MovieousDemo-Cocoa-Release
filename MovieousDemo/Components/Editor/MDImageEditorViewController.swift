@@ -73,8 +73,6 @@ class MDImageEditorViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        MDFilter.shared.dispose()
-        MDFilter.shared.setup()
         self.buildUI()
     }
     
@@ -145,28 +143,11 @@ class MDImageEditorViewController: UIViewController {
         self.rotationGestureRecognizer.cancelsTouchesInView = false
         self.imageView.addGestureRecognizer(self.rotationGestureRecognizer)
         
-        switch vendorType {
-        case .faceunity:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(240)
-            }
-        case .sensetime:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(259)
-            }
-        default:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(240)
-            }
+        self.toolboxNavigationController.view.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(240)
         }
         
         self.imageView.snp.makeConstraints { (make) in
@@ -197,7 +178,7 @@ class MDImageEditorViewController: UIViewController {
             image = UIImage(cgImage: context.createCGImage(ciImage, from: .init(origin: .zero, size: self.image.size))!)
         }
         vc.image = image
-        self.navigationController?.push(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func tapped(sender: UITapGestureRecognizer) {
@@ -341,8 +322,7 @@ class MDImageEditorViewController: UIViewController {
     }
     
     func updateImageView() {
-        var uiImage = MDFilter.shared.processImage(self.image)
-        var ciImage = CIImage(cgImage: uiImage.cgImage!)
+        var ciImage = CIImage(cgImage: self.image.cgImage!)
         for imageSticker in self.imageStickers {
             var stickerImage = CIImage(cgImage: imageSticker.image.cgImage!)
             let destRect = CGRect(origin: .init(x: imageSticker.destRect.origin.x, y: self.image.size.height - imageSticker.destRect.origin.y - imageSticker.destRect.size.height), size: imageSticker.destRect.size)
@@ -354,7 +334,7 @@ class MDImageEditorViewController: UIViewController {
             ciImage = filter.outputImage!
         }
         ciImage = ciImage.cropped(to: .init(origin: .zero, size: self.image.size))
-        uiImage = UIImage(ciImage: ciImage)
+        let uiImage = UIImage(ciImage: ciImage)
         self.imageView.image = uiImage
     }
 }
@@ -368,14 +348,7 @@ extension MDImageEditorViewController: MDEditorToolboxViewControllerDelegate {
             viewController.stickerType = .image
             self.toolboxNavigationController.pushViewController(viewController, animated: true)
         case 1:
-            switch vendorType {
-            case .faceunity:
-                let vc = MDBeautyFilterViewController()
-                vc.delegate = self
-                self.toolboxNavigationController.pushViewController(vc, animated: true)
-            default:
-                ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornobeauty", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
-            }
+            ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornobeauty", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
         case 2:
             self.previeousGraffitiIndex = -1
             for i in 0 ..< self.imageStickers.count {

@@ -3,7 +3,6 @@ platform :ios, '9.0'
 
 target 'MovieousDemo' do
     pod 'SDWebImage/WebP', '4.4.7'
-    pod 'Nama', '6.3.0'
     pod 'SVProgressHUD', '2.2.5'
     pod 'UFileSDK', '3.0.5'
     pod 'MJExtension', '3.0.17'

@@ -174,7 +174,7 @@ class MDEditorViewController: UIViewController {
     @objc func nextButtonPressed(sender: UIButton) {
         let vc = MDExporterViewController()
         vc.draft = self.draft
-        self.navigationController?.push(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func pinched(sender: UIPinchGestureRecognizer) {

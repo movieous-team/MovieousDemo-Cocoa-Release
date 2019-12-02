@@ -11,11 +11,6 @@ import SnapKit
 import MovieousShortVideo
 import SVProgressHUD
 
-let FUSceneEffectCodes = ["douyin_01", "douyin_02", "music_filter_1", "music_filter_2", "music_filter_3", "music_filter_4", "music_filter_5", "music_filter_6", "music_filter_7"]
-let FUSceneEffectColors: [UIColor] = [.red, .blue, .cyan, .yellow, .magenta, .orange, .purple, .brown, .lightGray]
-let TuSDKSceneEffectCodes = ["LiveShake01", "LiveMegrim01", "EdgeMagic01", "LiveFancy01_1", "LiveSoulOut01", "LiveSignal01", "LiveLightning01", "LiveXRay01", "LiveHeartbeat01", "LiveMirrorImage01", "LiveSlosh01", "LiveOldTV01"]
-let TuSDKSceneEffectColors: [UIColor] = [.red, .blue, .cyan, .yellow, .magenta, .orange, .purple, .brown, .lightGray, .magenta, .black, .darkGray]
-
 class MDSpecialEffectViewController: UIViewController {
     var editor: MSVEditor!
     var thumbnailsCache: MDThumbnailsCache!
@@ -51,11 +46,6 @@ class MDSpecialEffectViewController: UIViewController {
         cover.alpha = 0.5
         return cover
     }()
-    let segmentControl: UISegmentedControl = {
-        let segmentControl = UISegmentedControl(items: [NSLocalizedString("MDSpecialEffectViewController.filter", comment: ""), NSLocalizedString("MDSpecialEffectViewController.time", comment: "")])
-        segmentControl.selectedSegmentIndex = 0
-        return segmentControl
-    }()
     let tipsLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white.withAlphaComponent(0.59)
@@ -71,37 +61,30 @@ class MDSpecialEffectViewController: UIViewController {
         view.addGestureRecognizer(panGestureRecognizer)
         return view
     }()
-    lazy var sceneEffectsCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.scrollDirection = .horizontal
-        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.register(MDSceneEffectCell.self, forCellWithReuseIdentifier: "cell")
-        view.delegate = self
-        view.dataSource = self
-        return view
-    }()
-    var sceneEffectAppling = false
     lazy var noEffectButton: UIButton = {
-        let button = UIButton(frame: .zero, imageName: "no_effect")!
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "no_effect"), for: .normal)
         button.addTarget(self, action: #selector(noneTimeEffectPressed(sender:)), for: .touchUpInside)
         return button
     }()
     
     lazy var repeateEffectButton: UIButton = {
-        let button = UIButton(frame: .zero, imageName: "reppeat")!
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "reppeat"), for: .normal)
         button.addTarget(self, action: #selector(repeateEffectPressed(sender:)), for: .touchUpInside)
         return button
     }()
     
     lazy var slowMotionEffectButton: UIButton = {
-        let button = UIButton(frame: .zero, imageName: "slow_motion")!
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "slow_motion"), for: .normal)
         button.addTarget(self, action: #selector(slowMotionEffectPressed(sender:)), for: .touchUpInside)
         return button
     }()
     
     lazy var reverseEffectButton: UIButton = {
-        let button = UIButton(frame: .zero, imageName: "reverse")!
+        let button = UIButton(frame: .zero)
+        button.setImage(UIImage(named: "reverse"), for: .normal)
         button.addTarget(self, action: #selector(reverseEffectPressed(sender:)), for: .touchUpInside)
         return button
     }()
@@ -208,28 +191,6 @@ class MDSpecialEffectViewController: UIViewController {
         
         self.view.addSubview(self.frameView)
         
-        if vendorType == .faceunity || vendorType == .tusdk {
-            self.segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(sender:)), for: .valueChanged)
-            self.navigationItem.titleView = self.segmentControl
-            self.segmentControlValueChanged(sender: self.segmentControl)
-            
-            self.view.addSubview(self.sceneEffectsCollectionView)
-            
-            self.view.insertSubview(self.cover, aboveSubview: self.thumbnailBar)
-            
-            self.cover.snp.makeConstraints { (make) in
-                make.size.equalTo(self.thumbnailBar)
-                make.center.equalTo(self.thumbnailBar)
-            }
-            
-            self.sceneEffectsCollectionView.snp.makeConstraints { (make) in
-                make.top.equalTo(self.tipsLabel.snp.bottom).offset(10)
-                make.bottom.equalTo(bottomLayoutGuide.snp.top)
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-            }
-        }
-        
         self.effectStartView.snp.makeConstraints { (make) in
             make.centerY.equalTo(self.thumbnailBar)
             make.height.equalTo(self.thumbnailBar)
@@ -265,34 +226,6 @@ class MDSpecialEffectViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.seekerViewPosition.update(offset: TimeInterval(self.thumbnailBar.frame.size.width) * self.getCurrentAssetTime() / self.originalMainTrackClip.timeRange.duration)
-            for effect in MDFilter.shared.sceneEffects {
-                var startTime = effect.timeRange.startTime
-                var duration = effect.timeRange.duration
-                // 在当前时间范围以外
-                if effect.timeRange.startTime + effect.timeRange.duration <= self.originalMainTrackClip.timeRange.startTime || effect.timeRange.startTime > self.originalMainTrackClip.timeRange.startTime + self.originalMainTrackClip.timeRange.duration {
-                    continue
-                }
-                if effect.timeRange.startTime <= self.originalMainTrackClip.timeRange.startTime {
-                    startTime = self.originalMainTrackClip.timeRange.startTime
-                }
-                if effect.timeRange.startTime + effect.timeRange.duration > self.originalMainTrackClip.timeRange.startTime + self.originalMainTrackClip.timeRange.duration {
-                    duration = self.originalMainTrackClip.timeRange.startTime + self.originalMainTrackClip.timeRange.duration - effect.timeRange.startTime
-                }
-                var color: UIColor!
-                if let sceneCode = effect.sceneCode {
-                    if vendorType == .faceunity {
-                        let index = FUSceneEffectCodes.firstIndex(of: sceneCode)!
-                        color = FUSceneEffectColors[index]
-                    } else if vendorType == .tusdk {
-                        let index = TuSDKSceneEffectCodes.firstIndex(of: sceneCode)!
-                        color = TuSDKSceneEffectColors[index]
-                    }
-                } else {
-                    color = .clear
-                }
-                let line = MDSceneEffectLine(start: CGFloat((startTime - self.originalMainTrackClip.timeRange.startTime) / self.originalMainTrackClip.timeRange.duration), length: CGFloat(duration / self.originalMainTrackClip.timeRange.duration), color: color)
-                self.cover.lines.append(line)
-            }
             if let speedEffect = self.speedEffect {
                 self.effectStartViewPosition.update(offset: Double(self.thumbnailBar.frame.size.width) * speedEffect.timeRangeAtMainTrack.startTime / self.originalMainTrackClip.durationAtMainTrack)
                 self.frameView.snp.makeConstraints { (make) in
@@ -330,9 +263,6 @@ class MDSpecialEffectViewController: UIViewController {
             assetTime = 0
         }
         self.seekerViewPosition.update(offset: TimeInterval(self.thumbnailBar.frame.size.width) * assetTime / self.originalMainTrackClip.timeRange.duration)
-        if !self.sceneEffectAppling {
-            return
-        }
         guard let line = self.cover.lines.last else { return }
         var startTime = TimeInterval(line.start) * self.originalMainTrackClip.timeRange.duration
         let endTime = startTime + TimeInterval(line.length) * self.originalMainTrackClip.timeRange.duration
@@ -345,28 +275,6 @@ class MDSpecialEffectViewController: UIViewController {
         }
         line.length = CGFloat(effectDuration / self.originalMainTrackClip.timeRange.duration)
         self.cover.setNeedsDisplay()
-    }
-    
-    @objc func segmentControlValueChanged(sender: UISegmentedControl) {
-        if sender.selectedSegmentIndex == 0 {
-            self.effectStartView.isHidden = true
-            self.timeEffectContainerView.isHidden = true
-            self.frameView.isHidden = true
-            self.cover.isHidden = false
-            self.sceneEffectsCollectionView.isHidden = false
-            self.tipsLabel.text = NSLocalizedString("MDSpecialEffectViewController.choose", comment: "")
-        } else {
-            if self.repeateEffect != nil || self.speedEffect != nil {
-                self.effectStartView.isHidden = false
-            } else {
-                self.effectStartView.isHidden = true
-            }
-            self.timeEffectContainerView.isHidden = false
-            self.frameView.isHidden = false
-            self.cover.isHidden = true
-            self.sceneEffectsCollectionView.isHidden = true
-            self.tipsLabel.text = NSLocalizedString("MDSpecialEffectViewController.move", comment: "")
-        }
     }
     
     @objc func seekerViewPan(sender: UIPanGestureRecognizer) {
@@ -424,28 +332,22 @@ class MDSpecialEffectViewController: UIViewController {
     }
     
     func removeEffectOnTime(time: TimeInterval) -> TimeInterval {
-        if !self.sceneEffectAppling {
-            if let speedEffect = self.speedEffect {
-                return speedEffect.removeFromTime(time: time)
-            } else if let repeateEffect = self.repeateEffect {
-                return repeateEffect.removeFromTime(time: time, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
-            }
-        }
-        if self.reversed {
+        if let speedEffect = self.speedEffect {
+            return speedEffect.removeFromTime(time: time)
+        } else if let repeateEffect = self.repeateEffect {
+            return repeateEffect.removeFromTime(time: time, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
+        } else if self.reversed {
             return self.editor.draft.duration - time
         }
         return time
     }
     
     func applyEffectOnTime(time: TimeInterval) -> TimeInterval {
-        if !self.sceneEffectAppling {
-            if let speedEffect = self.speedEffect {
-                return speedEffect.applyOnTime(time: time)
-            } else if let repeateEffect = self.repeateEffect {
-                return repeateEffect.applyOnTime(time: time, numberOfRepeate: 1, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
-            }
-        }
-        if self.reversed {
+        if let speedEffect = self.speedEffect {
+            return speedEffect.applyOnTime(time: time)
+        } else if let repeateEffect = self.repeateEffect {
+            return repeateEffect.applyOnTime(time: time, numberOfRepeate: 1, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
+        } else if self.reversed {
             return self.editor.draft.duration - time
         }
         return time
@@ -558,142 +460,6 @@ class MDSpecialEffectViewController: UIViewController {
         } catch {
             ShowErrorAlert(error: error, controller: self)
         }
-    }
-    
-    func startEffect(effectCode: String?, color: UIColor) {
-        self.sceneEffectAppling = true
-        if let repeateEffect = self.repeateEffect {
-            let time = repeateEffect.removeFromTime(time: self.editor.currentTime, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
-            do {
-                try self.editor.draft.update(mainTrackClips: [self.originalMainTrackClip])
-                self.editor.seek(toTime: time, accurate: true)
-            } catch {
-                ShowErrorAlert(error: error, controller: self)
-            }
-        } else if let speedEffect = self.speedEffect {
-            let time = speedEffect.removeFromTime(time: self.editor.currentTime)
-            do {
-                try self.editor.draft.update(mainTrackClips: [self.originalMainTrackClip])
-                self.editor.seek(toTime: time, accurate: true)
-            } catch {
-                ShowErrorAlert(error: error, controller: self)
-            }
-        }
-        
-        let effect = MDSceneEffect(sceneCode: effectCode, timeRange: kMovieousTimeRangeDefault)
-        MDFilter.shared.sceneEffects.append(effect)
-        let line = MDSceneEffectLine(start: CGFloat(self.getCurrentAssetTime() / self.originalMainTrackClip.timeRange.duration), length: 0, color: color)
-        self.cover.lines.append(line)
-        self.editor.loop = false
-        self.editor.play()
-    }
-    
-    func endEffect() {
-        if !self.sceneEffectAppling {
-            return
-        }
-        var currentTime = self.editor.currentTime
-        // 倒放时可能出现
-        if currentTime < 0 {
-            currentTime = 0
-        }
-        if let repeateEffect = self.repeateEffect {
-            let time = repeateEffect.applyOnTime(time: currentTime, numberOfRepeate: 1, totalDurationAtMainTrack: self.originalMainTrackClip.durationAtMainTrack)
-            do {
-                try self.editor.draft.update(mainTrackClips: repeateEffect.applyOnMainTrackClips(mainTrackClips: [self.originalMainTrackClip]))
-                self.editor.seek(toTime: time, accurate: true)
-            } catch {
-                ShowErrorAlert(error: error, controller: self)
-            }
-        } else if let speedEffect = self.speedEffect {
-            let time = speedEffect.applyOnTime(time: currentTime)
-            do {
-                try self.editor.draft.update(mainTrackClips: speedEffect.applyOnMainTrackClips(mainTrackClips: [self.originalMainTrackClip]))
-                self.editor.seek(toTime: time, accurate: true)
-            } catch {
-                ShowErrorAlert(error: error, controller: self)
-            }
-        }
-        self.sceneEffectAppling = false
-        guard let line = self.cover.lines.last else { return }
-        guard let effect = MDFilter.shared.sceneEffects.last else { return }
-        var assetTime = self.getCurrentAssetTime()
-        // 倒放时可能出现
-        if assetTime < 0 {
-            assetTime = 0
-        }
-        var startTime = TimeInterval(line.start) * self.originalMainTrackClip.timeRange.duration
-        let endTime = startTime + TimeInterval(line.length) * self.originalMainTrackClip.timeRange.duration
-        var effectDuration = assetTime - startTime
-        // 倒放时
-        if assetTime <= startTime {
-            effectDuration = endTime - assetTime
-            startTime = assetTime
-            line.start = CGFloat(startTime / self.originalMainTrackClip.timeRange.duration)
-        }
-        line.length = CGFloat(effectDuration / self.originalMainTrackClip.timeRange.duration)
-        effect.timeRange = .init(startTime: self.originalMainTrackClip.timeRange.startTime + startTime, duration: effectDuration)
-        self.editor.loop = true
-        self.editor.pause()
-        self.cover.setNeedsDisplay()
-    }
-}
-
-extension MDSpecialEffectViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if vendorType == .faceunity {
-            return FUSceneEffectCodes.count + 1
-        } else if vendorType == .tusdk {
-            return TuSDKSceneEffectCodes.count + 1
-        } else {
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MDSceneEffectCell
-        var title: String!
-        var image: UIImage!
-        if indexPath.item == 0 {
-            title = NSLocalizedString("MDSpecialEffectViewController.none", comment: "")
-            image =  UIImage(named: "noitem")!
-        } else {
-            if vendorType == .faceunity {
-                title = FUSceneEffectCodes[indexPath.item - 1]
-                image = UIImage(named: title)!
-            } else if vendorType == .tusdk {
-                title = NSLocalizedString("lsq_filter_\(TuSDKSceneEffectCodes[indexPath.item - 1])", comment: "")
-                image = UIImage(named: "lsq_filter_thumb_\(TuSDKSceneEffectCodes[indexPath.item - 1]).jpg")!
-            }
-        }
-        cell.setImage(image: image)
-        cell.setTitle(title: title)
-        cell.delegate = self
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 60, height: collectionView.frame.size.height)
-    }
-}
-
-extension MDSpecialEffectViewController: MDSceneEffectCellDelegate {
-    func cell(buttonTouchDown cell: MDSceneEffectCell) {
-        if let indexPath = self.sceneEffectsCollectionView.indexPath(for: cell) {
-            if indexPath.item == 0 {
-                self.startEffect(effectCode: nil, color: .clear)
-            } else {
-                if vendorType == .faceunity {
-                    self.startEffect(effectCode: FUSceneEffectCodes[indexPath.item - 1], color: FUSceneEffectColors[indexPath.item - 1])
-                } else if vendorType == .tusdk {
-                    self.startEffect(effectCode: TuSDKSceneEffectCodes[indexPath.item - 1], color: TuSDKSceneEffectColors[indexPath.item - 1])
-                }
-            }
-        }
-    }
-    
-    func cell(buttonTouchUp cell: MDSceneEffectCell) {
-        self.endEffect()
     }
 }
 

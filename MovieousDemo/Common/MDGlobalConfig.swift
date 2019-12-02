@@ -10,10 +10,6 @@ import Foundation
 
 enum MDVendorType: Int {
     case none
-    case faceunity
-    case sensetime
-    case tusdk
-//    case kiwi
 }
 
 let MDServerHost = "https://demo.movieous.cn"
@@ -42,13 +38,5 @@ func getVendorName(vendorType: MDVendorType) -> String {
     switch vendorType {
     case .none:
         return NSLocalizedString("MDGlobalConfig.vendor.none", comment: "")
-    case .faceunity:
-        return NSLocalizedString("MDGlobalConfig.vendor.faceunity", comment: "")
-    case .sensetime:
-        return NSLocalizedString("MDGlobalConfig.vendor.senseTime", comment: "")
-    case .tusdk:
-        return NSLocalizedString("MDGlobalConfig.vendor.tusdk", comment: "")
-//    case .kiwi:
-//        return NSLocalizedString("MDGlobalConfig.vendor.kiwi", comment: "")
     }
 }

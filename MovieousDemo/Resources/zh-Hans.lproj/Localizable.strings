@@ -28,10 +28,6 @@
 "MDMusicLibrary.list.invaliddata.error" = "获取音乐列表错误，返回的数据无效";
 
 "MDGlobalConfig.vendor.none" = "无供应商";
-"MDGlobalConfig.vendor.faceunity" = "相芯科技";
-"MDGlobalConfig.vendor.senseTime" = "商汤科技";
-"MDGlobalConfig.vendor.tusdk" = "凃图";
-"MDGlobalConfig.vendor.kiwi" = "开为科技";
 
 "MDCreationViewController.title" = "创建素材";
 "MDCreationViewController.single" = "单拍";

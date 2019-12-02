@@ -78,15 +78,8 @@ class MDVideoEditorViewController: UIViewController {
             self.draft.setAttachment(path, forKey: MDReversedVideoPathKey)
         }
         self.reverseVideoExporter.startExport()
-        MDFilter.shared.draft = self.draft
         do {
-            if vendorType == .none {
-                try self.draft.update(basicEffects: [self.faceBeautyCaptureEffect, self.filterCaptureEffect])
-            } else {
-                let externalEffect = MSVExternalFilterEditorEffect()
-                externalEffect.externalFilterClass = MDFilter.self
-                try self.draft.update(basicEffects: [externalEffect])
-            }
+            try self.draft.update(basicEffects: [self.faceBeautyCaptureEffect, self.filterCaptureEffect])
             try self.editor = MSVEditor(draft: self.draft)
         } catch {
             ShowErrorAlert(error: error, controller: self)
@@ -99,12 +92,6 @@ class MDVideoEditorViewController: UIViewController {
         self.editor.preview.clipsToBounds = true
         self.buildUI()
         self.thumbnailsCache.refreshThumbnails()
-        MDFilter.shared.dispose()
-        MDFilter.shared.setup()
-    }
-    
-    deinit {
-        MDFilter.shared.sceneEffects = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -179,28 +166,11 @@ class MDVideoEditorViewController: UIViewController {
         self.rotationGestureRecognizer.cancelsTouchesInView = false
         self.editor.preview.addGestureRecognizer(self.rotationGestureRecognizer)
         
-        switch vendorType {
-        case .faceunity:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(240)
-            }
-        case .sensetime:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(259)
-            }
-        default:
-            self.toolboxNavigationController.view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(240)
-            }
+        self.toolboxNavigationController.view.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(240)
         }
         
         self.editor.preview.snp.makeConstraints { (make) in
@@ -245,7 +215,7 @@ class MDVideoEditorViewController: UIViewController {
     @objc func nextButtonPressed(sender: UIButton) {
         let vc = MDExporterViewController()
         vc.draft = self.draft
-        self.navigationController?.push(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func syncWordEffect(videoSize: CGSize, contentFrame: CGRect) {
@@ -557,15 +527,10 @@ extension MDVideoEditorViewController: MDEditorToolboxViewControllerDelegate {
             viewController.delegate = self
             self.toolboxNavigationController.pushViewController(viewController, animated: true)
         case 3:
-            switch vendorType {
-            case .tusdk:
-                ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornobeauty", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
-            default:
-                let controller = MDBeautyFilterViewController()
-                controller.faceBeautyEditorEffect = self.faceBeautyCaptureEffect
-                controller.filterEditorEffect = self.filterCaptureEffect
-                self.toolboxNavigationController.pushViewController(controller, animated: true)
-            }
+            let controller = MDBeautyFilterViewController()
+            controller.faceBeautyEditorEffect = self.faceBeautyCaptureEffect
+            controller.filterEditorEffect = self.filterCaptureEffect
+            self.toolboxNavigationController.pushViewController(controller, animated: true)
         case 4:
             let viewController = MDTrimViewController()
             viewController.editor = self.editor

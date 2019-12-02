@@ -17,7 +17,6 @@ PODS:
   - MovieousPlayer-CN (1.0.8)
   - MovieousShortVideo-CN (3.0.1):
     - MovieousCaptureBase-CN (= 2.0.1)
-  - Nama (6.3.0)
   - SDWebImage/Core (4.4.7)
   - SDWebImage/WebP (4.4.7):
     - libwebp (< 2.0, >= 0.5)
@@ -33,7 +32,6 @@ DEPENDENCIES:
   - MJExtension (= 3.0.17)
   - MovieousPlayer-CN (= 1.0.8)
   - MovieousShortVideo-CN (= 3.0.1)
-  - Nama (= 6.3.0)
   - SDWebImage/WebP (= 4.4.7)
   - SnapKit (= 4.2.0)
   - SSZipArchive
@@ -50,7 +48,6 @@ SPEC REPOS:
     - MovieousCaptureBase-CN
     - MovieousPlayer-CN
     - MovieousShortVideo-CN
-    - Nama
     - SDWebImage
     - SnapKit
     - SSZipArchive
@@ -66,13 +63,12 @@ SPEC CHECKSUMS:
   MovieousCaptureBase-CN: a949241693102b2308ec2e007a5b16dad5097c5b
   MovieousPlayer-CN: abda0ee298ddc0755e6f4e80a263191bca936349
   MovieousShortVideo-CN: 6b80031c59624ee8413d90def15156ecb26f0f95
-  Nama: 4632d043c4752d85d784a1d421801ef0d77e87d5
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UFileSDK: e4f10dcf30bd8792194e49e4299670fa2b3ed731
 
-PODFILE CHECKSUM: bf00830632aa7c82143603dcffb25ef8e99fdef0
+PODFILE CHECKSUM: 5abcec8e1901059e148d7910361b8c0daff94b81
 
 COCOAPODS: 1.8.4

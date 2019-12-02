@@ -10,6 +10,7 @@ import UIKit
 import MovieousShortVideo
 import CoreServices
 import SVProgressHUD
+import Photos
 
 let MaxRecordDuration = 10.0
 let RecorderVideoHeight = CGFloat(960)
@@ -35,8 +36,6 @@ class MDRecorderViewController: UIViewController {
     let doneButton = UIButton()
     let importButton = UIButton()
     let importLabel = UILabel()
-    let stickerButton = UIButton()
-    let stickerLabel = UILabel()
     let duetVideoPlayer = AVPlayer()
     let duetPlayerView = MDAVPlayerView()
     let speedContainerView = UIView()
@@ -51,85 +50,29 @@ class MDRecorderViewController: UIViewController {
     lazy var filterCaptureEffect = MovieousLUTFilterCaptureEffect()
     lazy var stickerView: UIView = {
         var view: UIView!
-        switch vendorType {
-        case .faceunity:
-            view = FUStickerView()
-            self.view.addSubview(view)
-            view.snp.makeConstraints({ (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(230)
-            })
-        case .sensetime:
-            view = STStickerView()
-            self.view.addSubview(view)
-            view.snp.makeConstraints({ (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(181)
-            })
-        case .tusdk:
-            view = StickerPanelView()
-            self.view.addSubview(view)
-            view.snp.makeConstraints({ (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(230)
-            })
-        default:
-            view = UIView()
-            self.view.addSubview(view)
-            view.snp.makeConstraints({ (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(230)
-            })
-        }
+        view = UIView()
+        self.view.addSubview(view)
+        view.snp.makeConstraints({ (make) in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(230)
+        })
         view.isHidden = true
         return view
     }()
     
     lazy var beautifyView: UIView = {
         var view: UIView!
-        switch vendorType {
-        case .none:
-            view = MDInnerBeautyFilterView()
-            (view as! MDInnerBeautyFilterView).faceBeautyEffect = self.faceBeautyCaptureEffect
-            (view as! MDInnerBeautyFilterView).filterEffect = self.filterCaptureEffect
-            self.view.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(194)
-            }
-        case .faceunity:
-            view = FUAPIDemoBar()
-            (view as! FUAPIDemoBar).delegate = self
-            (view as! FUAPIDemoBar).demoBar.makeupView.delegate = self
-            self.view.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(194)
-            }
-        case .sensetime:
-            view = MDSTBeautyFilterView()
-            self.view.addSubview(view)
-            view.snp.makeConstraints { (make) in
-                make.bottom.equalToSuperview()
-                make.left.equalToSuperview()
-                make.right.equalToSuperview()
-                make.height.equalTo(215)
-            }
-        default:
-            view = UIView()
-            break
+        view = MDInnerBeautyFilterView()
+        (view as! MDInnerBeautyFilterView).faceBeautyEffect = self.faceBeautyCaptureEffect
+        (view as! MDInnerBeautyFilterView).filterEffect = self.filterCaptureEffect
+        self.view.addSubview(view)
+        view.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.height.equalTo(194)
         }
         view.isHidden = true
         return view
@@ -152,10 +95,6 @@ class MDRecorderViewController: UIViewController {
         if vendorType == .none {
             captureEffects.append(self.faceBeautyCaptureEffect)
             captureEffects.append(self.filterCaptureEffect)
-        } else {
-            let externalFilterCaptureEffect = MovieousExternalFilterCaptureEffect()
-            externalFilterCaptureEffect.externalFilterClass = MDFilter.self
-            captureEffects.append(externalFilterCaptureEffect)
         }
         videoConfiguration.captureEffects = captureEffects
         do {
@@ -177,8 +116,6 @@ class MDRecorderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true;
-        MDFilter.shared.dispose()
-        MDFilter.shared.setup()
         self.recorder?.startCapturing(completion: { (audioGranted, audioError, videoGranted, videoError) in
             if let error = videoError {
                 ShowErrorAlert(error: error, controller: self)
@@ -193,9 +130,6 @@ class MDRecorderViewController: UIViewController {
                 ShowAlert(title: NSLocalizedString("MDRecorderViewController.warning", comment: ""), message: NSLocalizedString("MDRecorderViewController.apermission", comment: ""), action: NSLocalizedString("MDRecorderViewController.ok", comment: ""), controller: self)
             }
         })
-        if vendorType == .faceunity {
-            self.demoBarSetBeautyDefultParams()
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -355,8 +289,6 @@ class MDRecorderViewController: UIViewController {
         } else {
             self.stickerView.isHidden = false
             self.beautifyView.isHidden = true
-            self.stickerButton.isHidden = true
-            self.stickerLabel.isHidden = true
             self.recordButton.isHidden = true
             self.recordTypeView.isHidden = true
             self.importButton.isHidden = true
@@ -368,29 +300,21 @@ class MDRecorderViewController: UIViewController {
     }
     
     @objc func beautyButtonPressed(sender: UIButton) {
-        if vendorType == .tusdk {
-            ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornobeauty", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
-        } else {
-            self.beautifyView.isHidden = false
-            self.stickerView.isHidden = true
-            self.stickerButton.isHidden = true
-            self.stickerLabel.isHidden = true
-            self.recordButton.isHidden = true
-            self.recordTypeView.isHidden = true
-            self.importButton.isHidden = true
-            self.importLabel.isHidden = true
-            self.speedContainerView.isHidden = true
-            self.discardButton.isHidden = true
-            self.doneButton.isHidden = true
-        }
+        self.beautifyView.isHidden = false
+        self.stickerView.isHidden = true
+        self.recordButton.isHidden = true
+        self.recordTypeView.isHidden = true
+        self.importButton.isHidden = true
+        self.importLabel.isHidden = true
+        self.speedContainerView.isHidden = true
+        self.discardButton.isHidden = true
+        self.doneButton.isHidden = true
     }
     
     @objc func viewTapped(sender: UITapGestureRecognizer) {
         guard let recorder = self.recorder else { return }
         self.stickerView.isHidden = true
         self.beautifyView.isHidden = true
-        self.stickerButton.isHidden = false
-        self.stickerLabel.isHidden = false
         self.recordButton.isHidden = false
         if !recorder.recording {
             if recorder.draft.mainTrackClips.count == 0 {
@@ -575,17 +499,6 @@ class MDRecorderViewController: UIViewController {
         self.importLabel.shadowOffset = CGSize(width: 1, height: 1)
         self.view.addSubview(self.importLabel)
         
-        self.stickerButton.setImage(UIImage(named: "sticker"), for: .normal)
-        self.stickerButton.addTarget(self, action: #selector(stickerButtonPressed(sender:)), for: .touchUpInside)
-        self.view.addSubview(self.stickerButton)
-        
-        self.stickerLabel.text = NSLocalizedString("MDRecorderViewController.sticker", comment: "")
-        self.stickerLabel.textColor = .white
-        self.stickerLabel.font = .systemFont(ofSize: 10)
-        self.stickerLabel.shadowColor = .black
-        self.stickerLabel.shadowOffset = CGSize(width: 1, height: 1)
-        self.view.addSubview(self.stickerLabel)
-        
         self.countDownLabel.isHidden = true
         self.countDownLabel.textColor = .white
         self.countDownLabel.font = .systemFont(ofSize: 150)
@@ -740,18 +653,6 @@ class MDRecorderViewController: UIViewController {
         self.importLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.importButton)
             make.top.equalTo(self.importButton.snp_bottom).offset(5)
-        }
-        
-        self.stickerButton.snp.makeConstraints { (make) in
-            make.centerY.equalTo(self.recordButton)
-            make.centerX.equalTo(self.recordButton).offset(-100)
-            make.width.equalTo(28)
-            make.height.equalTo(28)
-        }
-        
-        self.stickerLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.stickerButton)
-            make.top.equalTo(self.stickerButton.snp_bottom).offset(5)
         }
         
         self.countDownLabel.snp.makeConstraints { (make) in
@@ -1003,43 +904,6 @@ class MDRecorderViewController: UIViewController {
             }
         }
     }
-    
-    func demoBarSetBeautyDefultParams() {
-        let view = self.beautifyView as! FUAPIDemoBar
-        view.delegate = nil ;
-        view.skinDetect = FUManager.share().skinDetectEnable;
-        view.blurType = FUManager.share().blurType ;
-        view.blurLevel_0 = FUManager.share().blurLevel_0;
-        view.blurLevel_1 = FUManager.share().blurLevel_1;
-        view.blurLevel_2 = FUManager.share().blurLevel_2;
-        view.colorLevel = FUManager.share().whiteLevel ;
-        view.redLevel = FUManager.share().redLevel;
-        view.eyeBrightLevel = FUManager.share().eyelightingLevel ;
-        view.toothWhitenLevel = FUManager.share().beautyToothLevel ;
-        
-        view.vLevel =  FUManager.share().vLevel;
-        view.eggLevel = FUManager.share().eggLevel;
-        view.narrowLevel = FUManager.share().narrowLevel;
-        view.smallLevel = FUManager.share().smallLevel;
-        //    view.faceShape = FUManager.share().faceShape ;
-        view.enlargingLevel = FUManager.share().enlargingLevel ;
-        view.thinningLevel = FUManager.share().thinningLevel ;
-        //    view.enlargingLevel_new = FUManager.share().enlargingLevel_new ;
-        //    view.thinningLevel_new = FUManager.share().thinningLevel_new ;
-        view.chinLevel = FUManager.share().jewLevel ;
-        view.foreheadLevel = FUManager.share().foreheadLevel ;
-        view.noseLevel = FUManager.share().noseLevel ;
-        view.mouthLevel = FUManager.share().mouthLevel ;
-        
-        view.filtersDataSource = FUManager.share().filtersDataSource ;
-        view.beautyFiltersDataSource = FUManager.share().beautyFiltersDataSource ;
-        view.filtersCHName = FUManager.share().filtersCHName ;
-        view.selectedFilter = FUManager.share().selectedFilter ;
-        view.selectedFilterLevel = FUManager.share().selectedFilterLevel;
-        view.delegate = self;
-        view.demoBar.makeupView.delegate = self;
-        view.demoBar.selMakeupIndex = view.demoBar.makeupView.supIndex;
-    }
 }
 
 extension MDRecorderViewController: MDRecorderMusicViewControllerDelegate {
@@ -1119,79 +983,6 @@ extension MDRecorderViewController: MSVRecorderDelegate {
     
     func recorder(_ recorder: MSVRecorder, didErrorOccurred error: Error) {
         ShowErrorAlert(error: error, controller: self)
-    }
-}
-
-extension MDRecorderViewController: FUAPIDemoBarDelegate {
-    func demoBarBeautyParamChanged() {
-        let view = self.beautifyView as! FUAPIDemoBar
-        FUManager.share().skinDetectEnable = view.skinDetect;
-        FUManager.share().blurType = view.blurType;
-        FUManager.share().blurLevel_0 = view.blurLevel_0;
-        FUManager.share().blurLevel_1 = view.blurLevel_1;
-        FUManager.share().blurLevel_2 = view.blurLevel_2;
-        FUManager.share().whiteLevel = view.colorLevel;
-        FUManager.share().redLevel = view.redLevel;
-        FUManager.share().eyelightingLevel = view.eyeBrightLevel;
-        FUManager.share().beautyToothLevel = view.toothWhitenLevel;
-        FUManager.share().vLevel = view.vLevel;
-        FUManager.share().eggLevel = view.eggLevel;
-        FUManager.share().narrowLevel = view.narrowLevel;
-        FUManager.share().smallLevel = view.smallLevel;
-        FUManager.share().enlargingLevel = view.enlargingLevel;
-        FUManager.share().thinningLevel = view.thinningLevel;
-        //    FUManager.share().enlargingLevel_new = view.enlargingLevel_new;
-        //    FUManager.share().thinningLevel_new = view.thinningLevel_new;
-        
-        FUManager.share().jewLevel = view.chinLevel;
-        FUManager.share().foreheadLevel = view.foreheadLevel;
-        FUManager.share().noseLevel = view.noseLevel;
-        FUManager.share().mouthLevel = view.mouthLevel;
-        
-        /* 暂时解决展示表中，没有显示滤镜，引起bug */
-        if (!FUManager.share().beautyFiltersDataSource.contains(view.selectedFilter)) {
-            return;
-        }
-        FUManager.share().selectedFilter = view.selectedFilter ;
-        FUManager.share().selectedFilterLevel = view.selectedFilterLevel;
-    }
-    
-    func restDefaultValue(_ type: Int32) {
-        if (type == 1) {//美肤
-            FUManager.share()?.setBeautyDefaultParameters(.skin)
-        }
-        
-        if (type == 2) {
-            FUManager.share()?.setBeautyDefaultParameters(.shape)
-        }
-        self.demoBarSetBeautyDefultParams()
-    }
-}
-
-extension MDRecorderViewController: FUMakeUpViewDelegate {
-    func makeupViewDidSelectedNamaStr(_ namaStr: String?, valueArr: [Any]?) {
-        FUManager.share()?.setMakeupItemStr(namaStr, valueArr: valueArr)
-    }
-    
-    func makeupViewDidSelectedNamaStr(_ namaStr: String?, imageName: String?) {
-        guard let imageName = imageName else { return }
-        FUManager.share()?.setMakeupItemParamImage(UIImage(named: imageName), param: namaStr)
-    }
-    
-    func makeupViewDidChangeValue(_ value: Float, namaValueStr namaStr: String?) {
-        FUManager.share()?.setMakeupItemIntensity(value, param: namaStr)
-    }
-    
-    func makeupFilter(_ filterStr: String?, value filterValue: Float) {
-        guard let filterStr = filterStr else { return }
-        if filterStr == "" {
-            return
-        }
-        let view = self.beautifyView as! FUAPIDemoBar
-        view.selectedFilter = filterStr
-        view.selectedFilterLevel = Double(filterValue)
-        FUManager.share().selectedFilter = filterStr
-        FUManager.share()?.selectedFilterLevel = Double(filterValue)
     }
 }
 
