@@ -48,6 +48,7 @@ class MDRecorderViewController: UIViewController {
     var recordType = MDRecordTypeSelectView.RecordType.video
     var lastScale = CGFloat(1)
     lazy var faceBeautyCaptureEffect = MovieousFaceBeautyCaptureEffect()
+    lazy var filterCaptureEffect = MovieousLUTFilterCaptureEffect()
     lazy var stickerView: UIView = {
         var view: UIView!
         switch vendorType {
@@ -96,8 +97,9 @@ class MDRecorderViewController: UIViewController {
         var view: UIView!
         switch vendorType {
         case .none:
-            view = MDInnerBeautyView()
-            (view as! MDInnerBeautyView).faceBeautyCaptureEffect = self.faceBeautyCaptureEffect
+            view = MDInnerBeautyFilterView()
+            (view as! MDInnerBeautyFilterView).faceBeautyEffect = self.faceBeautyCaptureEffect
+            (view as! MDInnerBeautyFilterView).filterEffect = self.filterCaptureEffect
             self.view.addSubview(view)
             view.snp.makeConstraints { (make) in
                 make.bottom.equalToSuperview()
@@ -149,6 +151,7 @@ class MDRecorderViewController: UIViewController {
         var captureEffects: [MovieousCaptureEffect] = []
         if vendorType == .none {
             captureEffects.append(self.faceBeautyCaptureEffect)
+            captureEffects.append(self.filterCaptureEffect)
         } else {
             let externalFilterCaptureEffect = MovieousExternalFilterCaptureEffect()
             externalFilterCaptureEffect.externalFilterClass = MDFilter.self

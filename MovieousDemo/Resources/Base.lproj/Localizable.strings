@@ -142,6 +142,7 @@
 "MDExporterViewController.exporting" = "exporting";
 "MDExporterViewController.done" = "done";
 
-"MDInnerBeautyView.beauty" = "beauty";
-"MDInnerBeautyView.bright" = "bright";
-"MDInnerBeautyView.tone" = "tone";
+"MDInnerBeautyFilterView.beauty" = "beauty";
+"MDInnerBeautyFilterView.filter" = "filter";
+"MDInnerBeautyFilterView.bright" = "bright";
+"MDInnerBeautyFilterView.tone" = "tone";

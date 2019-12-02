@@ -71,9 +71,6 @@
 		835BF360232647F8008A21F9 /* STMovieRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BF33A232647F8008A21F9 /* STMovieRecorder.m */; };
 		835BF361232647F8008A21F9 /* STBMPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 835BF33C232647F8008A21F9 /* STBMPCollectionViewCell.m */; };
 		835BF373232648AC008A21F9 /* PortraitFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF364232648AC008A21F9 /* PortraitFilters.bundle */; };
-		835BF374232648AC008A21F9 /* SceneryFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF365232648AC008A21F9 /* SceneryFilters.bundle */; };
-		835BF375232648AC008A21F9 /* StillLifeFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF366232648AC008A21F9 /* StillLifeFilters.bundle */; };
-		835BF376232648AC008A21F9 /* DeliciousFoodFilters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF367232648AC008A21F9 /* DeliciousFoodFilters.bundle */; };
 		835BF377232648AC008A21F9 /* eyeliner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF369232648AC008A21F9 /* eyeliner.bundle */; };
 		835BF378232648AC008A21F9 /* eyelash.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF36A232648AC008A21F9 /* eyelash.bundle */; };
 		835BF379232648AC008A21F9 /* lips.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 835BF36B232648AC008A21F9 /* lips.bundle */; };
@@ -94,6 +91,9 @@
 		835BF39423264910008A21F9 /* M_SenseME_Attribute_1.0.1.model in Resources */ = {isa = PBXBuildFile; fileRef = 835BF38923264910008A21F9 /* M_SenseME_Attribute_1.0.1.model */; };
 		835BF39523264910008A21F9 /* M_SenseME_Avatar_Core_2.0.0.model in Resources */ = {isa = PBXBuildFile; fileRef = 835BF38A23264910008A21F9 /* M_SenseME_Avatar_Core_2.0.0.model */; };
 		835BF39623264910008A21F9 /* M_SenseME_Avatar_Help_new.model in Resources */ = {isa = PBXBuildFile; fileRef = 835BF38B23264910008A21F9 /* M_SenseME_Avatar_Help_new.model */; };
+		83611FDF239555CF00DFD342 /* MDInnerBeautyFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */; };
+		83611FE1239556AC00DFD342 /* Filters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE0239556AC00DFD342 /* Filters.bundle */; };
+		83611FE3239556B100DFD342 /* filter_template.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE2239556B100DFD342 /* filter_template.jpg */; };
 		83669A9E23169A7E00B1A38D /* MDWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E924A12302F7ED00034EC2 /* MDWordViewController.swift */; };
 		836DFC1122E8504400D43863 /* MDThumbnailBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DFC1022E8504400D43863 /* MDThumbnailBar.swift */; };
 		836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836FE5FC22C367320033A073 /* MDVolumeViewController.swift */; };
@@ -738,7 +738,6 @@
 		83DE9B9522B23E2400D06DE5 /* video_ic_delete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83DE985422B23E2300D06DE5 /* video_ic_delete@3x.png */; };
 		83DE9B9622B23E2400D06DE5 /* UIImage+Demo.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DE985622B23E2300D06DE5 /* UIImage+Demo.m */; };
 		83DE9B9722B23E2400D06DE5 /* UITextView+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = 83DE985922B23E2300D06DE5 /* UITextView+Debug.m */; };
-		83E72768232526EA0063FC7B /* MDInnerBeautyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E72767232526EA0063FC7B /* MDInnerBeautyView.swift */; };
 		83EDA8882302976300986B14 /* dataSource.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA6FF2302976300986B14 /* dataSource.plist */; };
 		83EDA8892302976300986B14 /* beautyMakeup.json in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA7002302976300986B14 /* beautyMakeup.json */; };
 		83EDA88A2302976300986B14 /* makeup.json in Resources */ = {isa = PBXBuildFile; fileRef = 83EDA7012302976300986B14 /* makeup.json */; };
@@ -892,9 +891,6 @@
 		835BF33B232647F8008A21F9 /* STAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STAudioManager.h; sourceTree = "<group>"; };
 		835BF33C232647F8008A21F9 /* STBMPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STBMPCollectionViewCell.m; sourceTree = "<group>"; };
 		835BF364232648AC008A21F9 /* PortraitFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PortraitFilters.bundle; sourceTree = "<group>"; };
-		835BF365232648AC008A21F9 /* SceneryFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SceneryFilters.bundle; sourceTree = "<group>"; };
-		835BF366232648AC008A21F9 /* StillLifeFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StillLifeFilters.bundle; sourceTree = "<group>"; };
-		835BF367232648AC008A21F9 /* DeliciousFoodFilters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DeliciousFoodFilters.bundle; sourceTree = "<group>"; };
 		835BF369232648AC008A21F9 /* eyeliner.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyeliner.bundle; sourceTree = "<group>"; };
 		835BF36A232648AC008A21F9 /* eyelash.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = eyelash.bundle; sourceTree = "<group>"; };
 		835BF36B232648AC008A21F9 /* lips.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = lips.bundle; sourceTree = "<group>"; };
@@ -929,6 +925,9 @@
 		835BF3A323264CCC008A21F9 /* st_mobile_avatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_avatar.h; sourceTree = "<group>"; };
 		835BF3A423264CCC008A21F9 /* st_mobile_sticker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker.h; sourceTree = "<group>"; };
 		835BF3A523264CCC008A21F9 /* st_mobile_sticker_transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = st_mobile_sticker_transition.h; sourceTree = "<group>"; };
+		83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDInnerBeautyFilterView.swift; sourceTree = "<group>"; };
+		83611FE0239556AC00DFD342 /* Filters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Filters.bundle; sourceTree = "<group>"; };
+		83611FE2239556B100DFD342 /* filter_template.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = filter_template.jpg; sourceTree = "<group>"; };
 		836DFC1022E8504400D43863 /* MDThumbnailBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDThumbnailBar.swift; sourceTree = "<group>"; };
 		836FE5FC22C367320033A073 /* MDVolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDVolumeViewController.swift; sourceTree = "<group>"; };
 		836FE60422C3B2060033A073 /* MDUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDUIComponents.swift; sourceTree = "<group>"; };
@@ -1618,7 +1617,6 @@
 		83DE985722B23E2300D06DE5 /* UITextView+Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Debug.h"; sourceTree = "<group>"; };
 		83DE985822B23E2300D06DE5 /* UIImage+Demo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Demo.h"; sourceTree = "<group>"; };
 		83DE985922B23E2300D06DE5 /* UITextView+Debug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Debug.m"; sourceTree = "<group>"; };
-		83E72767232526EA0063FC7B /* MDInnerBeautyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDInnerBeautyView.swift; sourceTree = "<group>"; };
 		83E924A12302F7ED00034EC2 /* MDWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDWordViewController.swift; sourceTree = "<group>"; };
 		83EDA6FD2302976300986B14 /* authpack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = authpack.h; sourceTree = "<group>"; };
 		83EDA6FF2302976300986B14 /* dataSource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = dataSource.plist; sourceTree = "<group>"; };
@@ -1815,7 +1813,7 @@
 				836DFC1022E8504400D43863 /* MDThumbnailBar.swift */,
 				83DAAFD522F92B6C0098041B /* MDSpeedEffect.swift */,
 				83DAAFDD22F92D790098041B /* MDRepeateEffect.swift */,
-				83E72767232526EA0063FC7B /* MDInnerBeautyView.swift */,
+				83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1913,9 +1911,6 @@
 			isa = PBXGroup;
 			children = (
 				835BF364232648AC008A21F9 /* PortraitFilters.bundle */,
-				835BF365232648AC008A21F9 /* SceneryFilters.bundle */,
-				835BF366232648AC008A21F9 /* StillLifeFilters.bundle */,
-				835BF367232648AC008A21F9 /* DeliciousFoodFilters.bundle */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -3325,6 +3320,8 @@
 		83F0A005233C911500170723 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				83611FE2239556B100DFD342 /* filter_template.jpg */,
+				83611FE0239556AC00DFD342 /* Filters.bundle */,
 				83A8183522B9E9AD003E4631 /* Assets.xcassets */,
 				83445DE9225CD51F00A635F2 /* LaunchScreen.storyboard */,
 				83A817CD22B5AE3C003E4631 /* Localizable.strings */,
@@ -3560,7 +3557,6 @@
 				83BC1D942322502F002404DE /* music_filter_4.bundle in Resources */,
 				83DE9A5922B23E2400D06DE5 /* lsq_filter_thumb_Music.jpg in Resources */,
 				83BC1CCE2322502F002404DE /* mu_eyebrow_12.png in Resources */,
-				835BF374232648AC008A21F9 /* SceneryFilters.bundle in Resources */,
 				83DE9B8922B23E2400D06DE5 /* video_ic_download@3x.png in Resources */,
 				83BC1D5E2322502F002404DE /* mask_linzhiling.bundle in Resources */,
 				83BC1CF52322502F002404DE /* mu_blush_12.png in Resources */,
@@ -3571,7 +3567,6 @@
 				83BC1CF12322502F002404DE /* zhuti04_eyepupil.png in Resources */,
 				83BC1CE52322502F002404DE /* mu_style_eyelash_06.png in Resources */,
 				83DE9A9A22B23E2400D06DE5 /* style_default_edit_button_text_clearColor@2x.png in Resources */,
-				835BF375232648AC008A21F9 /* StillLifeFilters.bundle in Resources */,
 				83BC1D412322502F002404DE /* ctrl_rain.bundle in Resources */,
 				83BC1CE62322502F002404DE /* mu_style_eyelash_03.png in Resources */,
 				83BC1D632322502F002404DE /* mask_huangxiaoming.bundle in Resources */,
@@ -3753,7 +3748,6 @@
 				83BC1CDD2322502F002404DE /* zhuti02_blush.png in Resources */,
 				835BF38E23264910008A21F9 /* M_SenseME_Tongue_1.0.0.model in Resources */,
 				83DE9B0422B23E2400D06DE5 /* style_default_btn_back_w@3x.png in Resources */,
-				835BF376232648AC008A21F9 /* DeliciousFoodFilters.bundle in Resources */,
 				83BC1DA52322502F002404DE /* hez_ztt_fu_mp.png in Resources */,
 				83DE9A8322B23E2400D06DE5 /* style_default_btn_finish_w@3x.png in Resources */,
 				83DE9A6222B23E2400D06DE5 /* lsq_filter_thumb_clear.jpg in Resources */,
@@ -3927,6 +3921,7 @@
 				83DE9B4E22B23E2400D06DE5 /* lsq_filter_thumb_Love.jpg in Resources */,
 				83BC1CA42322502F002404DE /* mu_style_eyeshadow2_02.png in Resources */,
 				83BC1D932322502F002404DE /* douyin_02.bundle in Resources */,
+				83611FE3239556B100DFD342 /* filter_template.jpg in Resources */,
 				83BC1D1F2322502F002404DE /* yuguan.png in Resources */,
 				83DE9A8422B23E2400D06DE5 /* lsq_filter_thumb_nature.jpg in Resources */,
 				83BC1CAC2322502F002404DE /* mu_style_eyeshadow2_03.png in Resources */,
@@ -3948,6 +3943,7 @@
 				83BC1D692322502F002404DE /* picasso_e2.png in Resources */,
 				83DE9B4922B23E2400D06DE5 /* video_style_default_btn_filter@2x.png in Resources */,
 				83BC1C9A2322502F002404DE /* zhuti5_contour.png in Resources */,
+				83611FE1239556AC00DFD342 /* Filters.bundle in Resources */,
 				83DE9B6322B23E2400D06DE5 /* lsq_filter_thumb_Money.jpg in Resources */,
 				83BC1D002322502F002404DE /* mu_blush_17.png in Resources */,
 				83BC1D4F2322502F002404DE /* tiger.png in Resources */,
@@ -4179,7 +4175,6 @@
 				836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */,
 				83DE9B7E22B23E2400D06DE5 /* CameraFilterPanelView.m in Sources */,
 				835BF34C232647F8008A21F9 /* STGLPreview2.m in Sources */,
-				83E72768232526EA0063FC7B /* MDInnerBeautyView.swift in Sources */,
 				83445DE3225CD51E00A635F2 /* MDAudienceViewController.swift in Sources */,
 				83EDA9BC2302976300986B14 /* FUMakeupBottomCell.m in Sources */,
 				83EDA9B12302976300986B14 /* NSString+DemoBar.m in Sources */,
@@ -4196,6 +4191,7 @@
 				8397C07D22E7060900B46CD2 /* MDShotConfigViewController.swift in Sources */,
 				8358448B22E5A6C20009AEA0 /* MDAudioTrimView.swift in Sources */,
 				835BF35E232647F8008A21F9 /* STCamera.m in Sources */,
+				83611FDF239555CF00DFD342 /* MDInnerBeautyFilterView.swift in Sources */,
 				8319E0B822D578FD00BA0809 /* MDBeautyFilterViewController.swift in Sources */,
 				839047AA230FC6E6003B40E1 /* MDExporterViewController.swift in Sources */,
 				835BF343232647F8008A21F9 /* STButton.m in Sources */,

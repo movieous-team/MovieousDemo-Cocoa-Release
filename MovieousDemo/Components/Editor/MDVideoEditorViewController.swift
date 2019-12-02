@@ -44,7 +44,8 @@ class MDVideoEditorViewController: UIViewController {
         }
         return thumbnailsCache
     }()
-    lazy var faceBeautyCaptureEffect = MovieousFaceBeautyCaptureEffect()
+    lazy var faceBeautyCaptureEffect = MSVFaceBeautyEditorEffect()
+    lazy var filterCaptureEffect = MSVLUTFilterEditorEffect()
     var previeousGraffitiIndex = -1
     var previeousWordIndex = -1
     let tools = [
@@ -79,9 +80,13 @@ class MDVideoEditorViewController: UIViewController {
         self.reverseVideoExporter.startExport()
         MDFilter.shared.draft = self.draft
         do {
-            let externalEffect = MSVExternalFilterEditorEffect()
-            externalEffect.externalFilterClass = MDFilter.self
-            try self.draft.update(basicEffects: [externalEffect])
+            if vendorType == .none {
+                try self.draft.update(basicEffects: [self.faceBeautyCaptureEffect, self.filterCaptureEffect])
+            } else {
+                let externalEffect = MSVExternalFilterEditorEffect()
+                externalEffect.externalFilterClass = MDFilter.self
+                try self.draft.update(basicEffects: [externalEffect])
+            }
             try self.editor = MSVEditor(draft: self.draft)
         } catch {
             ShowErrorAlert(error: error, controller: self)
@@ -553,12 +558,13 @@ extension MDVideoEditorViewController: MDEditorToolboxViewControllerDelegate {
             self.toolboxNavigationController.pushViewController(viewController, animated: true)
         case 3:
             switch vendorType {
-            case .none:
-                fallthrough
             case .tusdk:
                 ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornobeauty", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
             default:
-                self.toolboxNavigationController.pushViewController(MDBeautyFilterViewController(), animated: true)
+                let controller = MDBeautyFilterViewController()
+                controller.faceBeautyEditorEffect = self.faceBeautyCaptureEffect
+                controller.filterEditorEffect = self.filterCaptureEffect
+                self.toolboxNavigationController.pushViewController(controller, animated: true)
             }
         case 4:
             let viewController = MDTrimViewController()

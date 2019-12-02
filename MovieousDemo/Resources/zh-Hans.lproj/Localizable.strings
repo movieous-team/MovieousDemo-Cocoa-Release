@@ -142,6 +142,7 @@
 "MDExporterViewController.exporting" = "正在导出";
 "MDExporterViewController.done" = "导出完成";
 
-"MDInnerBeautyView.beauty" = "美颜";
-"MDInnerBeautyView.bright" = "美白";
-"MDInnerBeautyView.tone" = "红润";
+"MDInnerBeautyFilterView.beauty" = "美颜";
+"MDInnerBeautyFilterView.filter" = "滤镜";
+"MDInnerBeautyFilterView.bright" = "美白";
+"MDInnerBeautyFilterView.tone" = "红润";

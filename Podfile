@@ -11,7 +11,7 @@ target 'MovieousDemo' do
     pod 'SnapKit', '4.2.0'
     pod 'M13ProgressSuite', '1.2.9'
     pod 'SSZipArchive'
-    pod 'MovieousShortVideo-CN', '3.0.0'
+    pod 'MovieousShortVideo-CN', '3.0.1'
     pod 'MovieousPlayer-CN', '1.0.8'
     target 'MovieousDemoTests' do
       inherit! :search_paths

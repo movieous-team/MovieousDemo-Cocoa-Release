@@ -7,16 +7,23 @@
 //
 
 import UIKit
+import MovieousShortVideo
 
 protocol MDBeautyFilterViewControllerDelegate: NSObjectProtocol {
     func beautyFilterViewController(beautyParamDidChange beautyFilterViewController: MDBeautyFilterViewController)
 }
 
 class MDBeautyFilterViewController: UIViewController {
+    var faceBeautyEditorEffect: MSVFaceBeautyEditorEffect?
+    var filterEditorEffect: MSVLUTFilterEditorEffect?
     weak var delegate: MDBeautyFilterViewControllerDelegate?
     lazy var beautifyView: UIView = {
         var view: UIView!
         switch vendorType {
+        case .none:
+            view = MDInnerBeautyFilterView()
+            (view as! MDInnerBeautyFilterView).faceBeautyEffect = self.faceBeautyEditorEffect
+            (view as! MDInnerBeautyFilterView).filterEffect = self.filterEditorEffect
         case .faceunity:
             view = FUAPIDemoBar()
             (view as! FUAPIDemoBar).delegate = self
@@ -27,10 +34,10 @@ class MDBeautyFilterViewController: UIViewController {
         }
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.view.backgroundColor = .black
         self.title = NSLocalizedString("MDBeautyFilterViewController.title", comment: "")
@@ -48,21 +55,21 @@ class MDBeautyFilterViewController: UIViewController {
     
     func demoBarSetBeautyDefultParams() {
         let view = self.beautifyView as! FUAPIDemoBar
-       view.delegate = nil ;
-       view.skinDetect = FUManager.share().skinDetectEnable;
-       view.blurType = FUManager.share().blurType ;
-       view.blurLevel_0 = FUManager.share().blurLevel_0;
-       view.blurLevel_1 = FUManager.share().blurLevel_1;
-       view.blurLevel_2 = FUManager.share().blurLevel_2;
-       view.colorLevel = FUManager.share().whiteLevel ;
-       view.redLevel = FUManager.share().redLevel;
-       view.eyeBrightLevel = FUManager.share().eyelightingLevel ;
-       view.toothWhitenLevel = FUManager.share().beautyToothLevel ;
-       
-       view.vLevel =  FUManager.share().vLevel;
-       view.eggLevel = FUManager.share().eggLevel;
-       view.narrowLevel = FUManager.share().narrowLevel;
-       view.smallLevel = FUManager.share().smallLevel;
+        view.delegate = nil ;
+        view.skinDetect = FUManager.share().skinDetectEnable;
+        view.blurType = FUManager.share().blurType ;
+        view.blurLevel_0 = FUManager.share().blurLevel_0;
+        view.blurLevel_1 = FUManager.share().blurLevel_1;
+        view.blurLevel_2 = FUManager.share().blurLevel_2;
+        view.colorLevel = FUManager.share().whiteLevel ;
+        view.redLevel = FUManager.share().redLevel;
+        view.eyeBrightLevel = FUManager.share().eyelightingLevel ;
+        view.toothWhitenLevel = FUManager.share().beautyToothLevel ;
+        
+        view.vLevel =  FUManager.share().vLevel;
+        view.eggLevel = FUManager.share().eggLevel;
+        view.narrowLevel = FUManager.share().narrowLevel;
+        view.smallLevel = FUManager.share().smallLevel;
         //    view.faceShape = FUManager.share().faceShape ;
         view.enlargingLevel = FUManager.share().enlargingLevel ;
         view.thinningLevel = FUManager.share().thinningLevel ;
