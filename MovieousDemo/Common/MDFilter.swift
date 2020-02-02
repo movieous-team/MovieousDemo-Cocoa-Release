@@ -16,7 +16,22 @@ class MDFilter: NSObject, MovieousExternalFilter {
     }
     let lock = NSRecursiveLock()
     weak var draft: MSVDraft?
-    var beautyManager = MHBeautyManager()
+    var beautyManager: MHBeautyManager?
+    
+    func setup() {
+        self.lock.lock()
+        if beautyManager == nil {
+            beautyManager = MHBeautyManager()
+        }
+        self.lock.unlock()
+    }
+    
+    func unsetup() {
+        self.lock.lock()
+        beautyManager?.destroy()
+        beautyManager = nil
+        self.lock.unlock()
+    }
     
     func processImage(_ image: UIImage) -> UIImage {
         return image
@@ -24,7 +39,12 @@ class MDFilter: NSObject, MovieousExternalFilter {
     
     func processPixelBuffer(_ pixelBuffer: CVPixelBuffer, sampleTimingInfo: CMSampleTimingInfo) -> Unmanaged<CVPixelBuffer> {
         self.lock.lock()
-        let retPixelBuffer = beautyManager.processPixelBuffer(pixelBuffer, sampleTimingInfo: sampleTimingInfo)
+        var retPixelBuffer: Unmanaged<CVPixelBuffer>!
+        if let beautyManager = self.beautyManager {
+            retPixelBuffer = beautyManager.processPixelBuffer(pixelBuffer, sampleTimingInfo: sampleTimingInfo)
+        } else {
+            retPixelBuffer = Unmanaged.passUnretained(pixelBuffer)
+        }
         self.lock.unlock()
         return retPixelBuffer
     }

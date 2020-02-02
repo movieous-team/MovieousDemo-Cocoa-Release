@@ -11,6 +11,7 @@
 #import "MHBeautyAssembleView.h"
 #import "MHSpecificAssembleView.h"
 #import "MHBeautiesModel.h"
+#import "MHFilterModel.h"
 
 #define kBasicStickerURL @"aHR0cHM6Ly9kYXRhLmZhY2VnbC5jb20vYXBwYXBpL1N0aWNrZXIvaW5kZXg="
 static NSString *StickerImg = @"stickerFace";
@@ -277,9 +278,21 @@ static NSString *HahaImg = @"haha";
     }
 }
 //滤镜
-- (void)handleFiltersEffectWithType:(NSInteger)filter {
-    [_beautyManager setFilterType:filter];
+- (void)handleFiltersEffectWithType:(NSInteger)filter  withFilterName:(nonnull NSString *)filterName{
+    MHFilterModel *model = [MHFilterModel unzipFiltersFile:filterName];
+    if (model) {
+        NSDictionary *dic = @{@"kUniformList":model.uniformList,
+              @"kUniformData":model.uniformData,
+              @"kUnzipDesPath":model.unzipDesPath,
+              @"kName":model.name,
+              @"kFragmentShader":model.fragmentShader
+        };
+        [_beautyManager setFilterType:filter newFilterInfo:dic];
+    } else {
+        [_beautyManager setFilterType:filter newFilterInfo:[NSDictionary dictionary]];
+    }
 }
+
 //水印
 - (void)handleWatermarkWithModel:(MHBeautiesModel *)model {
     [self.beautyManager setWatermark:model.imgName alignment:model.aliment];

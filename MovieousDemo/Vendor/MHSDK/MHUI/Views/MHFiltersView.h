@@ -7,7 +7,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol MHFiltersViewDelegate <NSObject>
 @required
-- (void)handleFiltersEffect:(NSInteger)filterType;
+- (void)handleFiltersEffect:(NSInteger)filterType filterName:(NSString *)filtetName;
 
 @end
 @interface MHFiltersView : UIView

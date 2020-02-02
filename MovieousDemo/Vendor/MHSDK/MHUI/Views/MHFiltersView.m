@@ -49,9 +49,10 @@
     MHBeautiesModel *model = self.array[indexPath.row];
     model.isSelected = !model.isSelected;
     
-    if ([self.delegate respondsToSelector:@selector(handleFiltersEffect:)]) {
-        [self.delegate handleFiltersEffect:indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(handleFiltersEffect: filterName:)]) {
+        [self.delegate handleFiltersEffect:indexPath.row filterName:model.imgName];
     }
+        
         
     MHBeautiesModel *lastModel = self.array[self.lastIndex];
     lastModel.isSelected = !lastModel.isSelected;

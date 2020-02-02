@@ -232,9 +232,9 @@
 }
 
 //滤镜
-- (void)handleFiltersEffect:(NSInteger)filterType {
-    if ([self.delegate respondsToSelector:@selector(handleFiltersEffectWithType:)]) {
-        [self.delegate handleFiltersEffectWithType:filterType];
+- (void)handleFiltersEffect:(NSInteger)filterType filterName:(nonnull NSString *)filtetName {
+    if ([self.delegate respondsToSelector:@selector(handleFiltersEffectWithType: withFilterName:)]) {
+        [self.delegate handleFiltersEffectWithType:filterType withFilterName:filtetName];
     }
 }
 

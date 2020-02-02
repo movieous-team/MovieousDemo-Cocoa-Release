@@ -28,6 +28,7 @@
 		83446DF5225D0BBC00A635F2 /* MDAVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83446DF4225D0BBC00A635F2 /* MDAVPlayerView.swift */; };
 		83477A20231937AC0084A5FB /* MDEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83477A1F231937AC0084A5FB /* MDEditorViewController.swift */; };
 		8349D24422BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8349D24322BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift */; };
+		8354193A23E6C15B00E77F60 /* MHFilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8354193923E6C15B00E77F60 /* MHFilterModel.m */; };
 		835661CB22D0D7770046DA6F /* MDStickerLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835661C422D0D7770046DA6F /* MDStickerLibrary.swift */; };
 		8358448B22E5A6C20009AEA0 /* MDAudioTrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358448A22E5A6C20009AEA0 /* MDAudioTrimView.swift */; };
 		83611FDF239555CF00DFD342 /* MDInnerBeautyFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */; };
@@ -143,6 +144,8 @@
 		83446DF4225D0BBC00A635F2 /* MDAVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAVPlayerView.swift; sourceTree = "<group>"; };
 		83477A1F231937AC0084A5FB /* MDEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDEditorViewController.swift; sourceTree = "<group>"; };
 		8349D24322BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDHorizontalPageFlowlayout.swift; sourceTree = "<group>"; };
+		8354193823E6C15B00E77F60 /* MHFilterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFilterModel.h; sourceTree = "<group>"; };
+		8354193923E6C15B00E77F60 /* MHFilterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFilterModel.m; sourceTree = "<group>"; };
 		835661C422D0D7770046DA6F /* MDStickerLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDStickerLibrary.swift; sourceTree = "<group>"; };
 		8358448A22E5A6C20009AEA0 /* MDAudioTrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAudioTrimView.swift; sourceTree = "<group>"; };
 		83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDInnerBeautyFilterView.swift; sourceTree = "<group>"; };
@@ -368,9 +371,9 @@
 		83677E3923E69CBB00433BD1 /* MHUI */ = {
 			isa = PBXGroup;
 			children = (
+				83677E4423E69CBB00433BD1 /* MHMeiyanMenusView.h */,
 				83677E3A23E69CBB00433BD1 /* MHMeiyanMenusView.m */,
 				83677E3B23E69CBB00433BD1 /* Model */,
-				83677E4423E69CBB00433BD1 /* MHMeiyanMenusView.h */,
 				83677E4523E69CBB00433BD1 /* Views */,
 			);
 			path = MHUI;
@@ -379,14 +382,16 @@
 		83677E3B23E69CBB00433BD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				83677E3C23E69CBB00433BD1 /* MHQuickBeautyParams.plist */,
 				83677E3D23E69CBB00433BD1 /* MHBeautiesModel.h */,
-				83677E3E23E69CBB00433BD1 /* StickerDataListModel.h */,
-				83677E3F23E69CBB00433BD1 /* StickerManager.m */,
-				83677E4023E69CBB00433BD1 /* MHBeautyParams.h */,
 				83677E4123E69CBB00433BD1 /* MHBeautiesModel.m */,
+				83677E4023E69CBB00433BD1 /* MHBeautyParams.h */,
+				8354193823E6C15B00E77F60 /* MHFilterModel.h */,
+				8354193923E6C15B00E77F60 /* MHFilterModel.m */,
+				83677E3C23E69CBB00433BD1 /* MHQuickBeautyParams.plist */,
+				83677E3E23E69CBB00433BD1 /* StickerDataListModel.h */,
 				83677E4223E69CBB00433BD1 /* StickerDataListModel.m */,
 				83677E4323E69CBB00433BD1 /* StickerManager.h */,
+				83677E3F23E69CBB00433BD1 /* StickerManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,42 +399,42 @@
 		83677E4523E69CBB00433BD1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				83677E4623E69CBB00433BD1 /* MHPrintView.m */,
-				83677E4723E69CBB00433BD1 /* MHBeautyMenuCell.m */,
-				83677E4823E69CBB00433BD1 /* MHCompleteBeautyView.h */,
-				83677E4923E69CBB00433BD1 /* MHBeautySlider.h */,
-				83677E4A23E69CBB00433BD1 /* MHBeautyView.m */,
-				83677E4B23E69CBB00433BD1 /* MHMagnifiedEffectCell.h */,
-				83677E4C23E69CBB00433BD1 /* MHFiltersView.h */,
-				83677E4D23E69CBB00433BD1 /* UIView+Additions.m */,
-				83677E4E23E69CBB00433BD1 /* MHSpecificEffectView.m */,
-				83677E4F23E69CBB00433BD1 /* MHMagnifiedView.m */,
-				83677E5023E69CBB00433BD1 /* MHSectionStickersView.m */,
-				83677E5123E69CBB00433BD1 /* MHStickerCell.m */,
-				83677E5223E69CBB00433BD1 /* WNSegmentControl.h */,
-				83677E5323E69CBB00433BD1 /* MHBeautyAssembleView.m */,
-				83677E5423E69CBB00433BD1 /* WNSegmentItem.h */,
-				83677E5523E69CBB00433BD1 /* MHBeautyFaceView.h */,
-				83677E5623E69CBB00433BD1 /* MHSpecificAssembleView.h */,
-				83677E5723E69CBB00433BD1 /* MHStickersView.h */,
-				83677E5823E69CBB00433BD1 /* MHBeautyMenuCell.h */,
-				83677E5923E69CBB00433BD1 /* MHPrintView.h */,
-				83677E5A23E69CBB00433BD1 /* MHMagnifiedEffectCell.m */,
-				83677E5B23E69CBB00433BD1 /* MHBeautyView.h */,
-				83677E5C23E69CBB00433BD1 /* MHBeautySlider.m */,
-				83677E5D23E69CBB00433BD1 /* MHCompleteBeautyView.m */,
-				83677E5E23E69CBB00433BD1 /* MHSectionStickersView.h */,
-				83677E5F23E69CBB00433BD1 /* MHMagnifiedView.h */,
-				83677E6023E69CBB00433BD1 /* MHSpecificEffectView.h */,
-				83677E6123E69CBB00433BD1 /* UIView+Additions.h */,
-				83677E6223E69CBB00433BD1 /* MHFiltersView.m */,
-				83677E6323E69CBB00433BD1 /* MHStickersView.m */,
-				83677E6423E69CBB00433BD1 /* MHSpecificAssembleView.m */,
-				83677E6523E69CBB00433BD1 /* MHBeautyFaceView.m */,
-				83677E6623E69CBB00433BD1 /* WNSegmentItem.m */,
 				83677E6723E69CBB00433BD1 /* MHBeautyAssembleView.h */,
+				83677E5323E69CBB00433BD1 /* MHBeautyAssembleView.m */,
+				83677E5523E69CBB00433BD1 /* MHBeautyFaceView.h */,
+				83677E6523E69CBB00433BD1 /* MHBeautyFaceView.m */,
+				83677E5823E69CBB00433BD1 /* MHBeautyMenuCell.h */,
+				83677E4723E69CBB00433BD1 /* MHBeautyMenuCell.m */,
+				83677E4923E69CBB00433BD1 /* MHBeautySlider.h */,
+				83677E5C23E69CBB00433BD1 /* MHBeautySlider.m */,
+				83677E5B23E69CBB00433BD1 /* MHBeautyView.h */,
+				83677E4A23E69CBB00433BD1 /* MHBeautyView.m */,
+				83677E4823E69CBB00433BD1 /* MHCompleteBeautyView.h */,
+				83677E5D23E69CBB00433BD1 /* MHCompleteBeautyView.m */,
+				83677E4C23E69CBB00433BD1 /* MHFiltersView.h */,
+				83677E6223E69CBB00433BD1 /* MHFiltersView.m */,
+				83677E4B23E69CBB00433BD1 /* MHMagnifiedEffectCell.h */,
+				83677E5A23E69CBB00433BD1 /* MHMagnifiedEffectCell.m */,
+				83677E5F23E69CBB00433BD1 /* MHMagnifiedView.h */,
+				83677E4F23E69CBB00433BD1 /* MHMagnifiedView.m */,
+				83677E5923E69CBB00433BD1 /* MHPrintView.h */,
+				83677E4623E69CBB00433BD1 /* MHPrintView.m */,
+				83677E5E23E69CBB00433BD1 /* MHSectionStickersView.h */,
+				83677E5023E69CBB00433BD1 /* MHSectionStickersView.m */,
+				83677E5623E69CBB00433BD1 /* MHSpecificAssembleView.h */,
+				83677E6423E69CBB00433BD1 /* MHSpecificAssembleView.m */,
+				83677E6023E69CBB00433BD1 /* MHSpecificEffectView.h */,
+				83677E4E23E69CBB00433BD1 /* MHSpecificEffectView.m */,
 				83677E6823E69CBB00433BD1 /* MHStickerCell.h */,
+				83677E5123E69CBB00433BD1 /* MHStickerCell.m */,
+				83677E5723E69CBB00433BD1 /* MHStickersView.h */,
+				83677E6323E69CBB00433BD1 /* MHStickersView.m */,
+				83677E6123E69CBB00433BD1 /* UIView+Additions.h */,
+				83677E4D23E69CBB00433BD1 /* UIView+Additions.m */,
+				83677E5223E69CBB00433BD1 /* WNSegmentControl.h */,
 				83677E6923E69CBB00433BD1 /* WNSegmentControl.m */,
+				83677E5423E69CBB00433BD1 /* WNSegmentItem.h */,
+				83677E6623E69CBB00433BD1 /* WNSegmentItem.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 				8338680C22C3D26C006656D9 /* MDTrimViewController.swift in Sources */,
 				8338680822C3D1FD006656D9 /* MDVideoGraffitiViewController.swift in Sources */,
 				830A6E3A22BCDCC80002FB5A /* MDVideoEditorViewController.swift in Sources */,
+				8354193A23E6C15B00E77F60 /* MHFilterModel.m in Sources */,
 				83677E7A23E69CBB00433BD1 /* MHCompleteBeautyView.m in Sources */,
 				83677E6F23E69CBB00433BD1 /* MHPrintView.m in Sources */,
 				83677E7323E69CBB00433BD1 /* MHSpecificEffectView.m in Sources */,

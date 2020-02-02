@@ -41,13 +41,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)handleFaceBeautyWithType:(NSInteger)type sliderValue:(NSInteger)value;
 
 /**
- 滤镜
+滤镜
 
- @param filter 滤镜
- */
-- (void)handleFiltersEffectWithType:(NSInteger)filter;
+@param filter 滤镜索引
+@param filterName 滤镜名称
+*/
 
-
+- (void)handleFiltersEffectWithType:(NSInteger)filter withFilterName:(NSString *)filterName;
 @end
 
 @interface MHBeautyAssembleView : UIView

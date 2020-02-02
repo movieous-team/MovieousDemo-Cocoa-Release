@@ -161,8 +161,9 @@ NS_ASSUME_NONNULL_BEGIN
  滤镜
 
  @param filterType MHFilterType，详情参见MHFiltersContants.h
+ newFilterInfo 新滤镜信息
  */
-- (void)setFilterType:(NSInteger)filterType;
+- (void)setFilterType:(NSInteger)filterType newFilterInfo:(NSDictionary *)info;
 
 
 /**
