@@ -78,7 +78,7 @@ class MDRecorderViewController: UIViewController, MHMeiyanMenusViewDelegate {
         return view
     }()
     
-    lazy var menusView = MHMeiyanMenusView(frame: .init(x: 0, y: self.view.frame.height - MHMeiyanMenuHeight, width: self.view.frame.width, height: MHMeiyanMenuHeight), superView: self.view, delegate: self, showNow: false, beautyManager: MDFilter.shared.beautyManager, isTXSDK: false)
+    lazy var menusView = MHMeiyanMenusView(frame: .init(x: 0, y: self.view.frame.height - MHMeiyanMenuHeight, width: self.view.frame.width, height: MHMeiyanMenuHeight), superView: self.view, delegate: self, beautyManager: MDFilter.shared.beautyManager, isTXSDK: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +90,7 @@ class MDRecorderViewController: UIViewController, MHMeiyanMenusViewDelegate {
         let videoConfiguration = MSVRecorderVideoConfiguration.default()
         // 因为美狐 SDK 在处理的时候会加镜像，所以这里先改一下以适配美狐 SDK。
         videoConfiguration.mirrorFrontPreview = false;
-        videoConfiguration.mirrorFrontPreview = true;
+        videoConfiguration.mirrorFrontEncoded = true;
         videoConfiguration.preferredSessionPreset = .hd1280x720
         videoConfiguration.previewScalingMode = .aspectFill
         videoConfiguration.preferredTorchMode = .off

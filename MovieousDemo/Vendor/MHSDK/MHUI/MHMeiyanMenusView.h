@@ -25,11 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param frame frame
 /// @param superView 所要添加到的视图
 /// @param delegate 代理
-/// @param show 是否在初始化完成后显示,YES:显示，NO：隐藏
 /// @param manager  美颜管理器，完成初始化后传入
 /// @param isTx 是否是腾讯直播SDK，YES：是，NO：其他直播SDK
 
-- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView delegate:(id<MHMeiyanMenusViewDelegate>)delegate showNow:(BOOL)show beautyManager:(MHBeautyManager *)manager isTXSDK:(BOOL)isTx;
+- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView delegate:(id<MHMeiyanMenusViewDelegate>)delegate beautyManager:(MHBeautyManager *)manager isTXSDK:(BOOL)isTx;
 
 @property (nonatomic, weak) id<MHMeiyanMenusViewDelegate> delegate;
 
@@ -50,6 +49,11 @@ NS_ASSUME_NONNULL_BEGIN
 */
 
 @property (nonatomic, assign) BOOL isTX;
+
+///设置默认美型或者美颜数据，供外部调用，需要在m文件的该方法中完善数据
+/// @param isTX 是否是腾讯SDK
+- (void)setupDefaultBeautyAndFaceValueWithIsTX:(BOOL)isTX;
+
 @end
 
 NS_ASSUME_NONNULL_END

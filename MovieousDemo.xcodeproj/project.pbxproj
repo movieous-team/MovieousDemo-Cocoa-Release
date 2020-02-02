@@ -34,8 +34,44 @@
 		83611FE1239556AC00DFD342 /* Filters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE0239556AC00DFD342 /* Filters.bundle */; };
 		83611FE3239556B100DFD342 /* filter_template.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE2239556B100DFD342 /* filter_template.jpg */; };
 		83669A9E23169A7E00B1A38D /* MDWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E924A12302F7ED00034EC2 /* MDWordViewController.swift */; };
-		83677E3323E5B1D000433BD1 /* tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE74A223E5598E000E4F1D /* tracking.framework */; };
-		83677E3423E5B1D000433BD1 /* tracking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE74A223E5598E000E4F1D /* tracking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83677E6A23E69CBB00433BD1 /* MHMeiyanMenusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E3A23E69CBB00433BD1 /* MHMeiyanMenusView.m */; };
+		83677E6B23E69CBB00433BD1 /* MHQuickBeautyParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83677E3C23E69CBB00433BD1 /* MHQuickBeautyParams.plist */; };
+		83677E6C23E69CBB00433BD1 /* StickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E3F23E69CBB00433BD1 /* StickerManager.m */; };
+		83677E6D23E69CBB00433BD1 /* MHBeautiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4123E69CBB00433BD1 /* MHBeautiesModel.m */; };
+		83677E6E23E69CBB00433BD1 /* StickerDataListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4223E69CBB00433BD1 /* StickerDataListModel.m */; };
+		83677E6F23E69CBB00433BD1 /* MHPrintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4623E69CBB00433BD1 /* MHPrintView.m */; };
+		83677E7023E69CBB00433BD1 /* MHBeautyMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4723E69CBB00433BD1 /* MHBeautyMenuCell.m */; };
+		83677E7123E69CBB00433BD1 /* MHBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4A23E69CBB00433BD1 /* MHBeautyView.m */; };
+		83677E7223E69CBB00433BD1 /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4D23E69CBB00433BD1 /* UIView+Additions.m */; };
+		83677E7323E69CBB00433BD1 /* MHSpecificEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4E23E69CBB00433BD1 /* MHSpecificEffectView.m */; };
+		83677E7423E69CBB00433BD1 /* MHMagnifiedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E4F23E69CBB00433BD1 /* MHMagnifiedView.m */; };
+		83677E7523E69CBB00433BD1 /* MHSectionStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5023E69CBB00433BD1 /* MHSectionStickersView.m */; };
+		83677E7623E69CBB00433BD1 /* MHStickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5123E69CBB00433BD1 /* MHStickerCell.m */; };
+		83677E7723E69CBB00433BD1 /* MHBeautyAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5323E69CBB00433BD1 /* MHBeautyAssembleView.m */; };
+		83677E7823E69CBB00433BD1 /* MHMagnifiedEffectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5A23E69CBB00433BD1 /* MHMagnifiedEffectCell.m */; };
+		83677E7923E69CBB00433BD1 /* MHBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5C23E69CBB00433BD1 /* MHBeautySlider.m */; };
+		83677E7A23E69CBB00433BD1 /* MHCompleteBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E5D23E69CBB00433BD1 /* MHCompleteBeautyView.m */; };
+		83677E7B23E69CBB00433BD1 /* MHFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6223E69CBB00433BD1 /* MHFiltersView.m */; };
+		83677E7C23E69CBB00433BD1 /* MHStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6323E69CBB00433BD1 /* MHStickersView.m */; };
+		83677E7D23E69CBB00433BD1 /* MHSpecificAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6423E69CBB00433BD1 /* MHSpecificAssembleView.m */; };
+		83677E7E23E69CBB00433BD1 /* MHBeautyFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6523E69CBB00433BD1 /* MHBeautyFaceView.m */; };
+		83677E7F23E69CBB00433BD1 /* WNSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6623E69CBB00433BD1 /* WNSegmentItem.m */; };
+		83677E8023E69CBB00433BD1 /* WNSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 83677E6923E69CBB00433BD1 /* WNSegmentControl.m */; };
+		83677E9123E69D5C00433BD1 /* MHBeautySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83677E8223E69D5C00433BD1 /* MHBeautySDK.framework */; };
+		83677E9223E69D5C00433BD1 /* server.cer in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8323E69D5C00433BD1 /* server.cer */; };
+		83677E9323E69D5C00433BD1 /* print_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8523E69D5C00433BD1 /* print_cancel@2x.png */; };
+		83677E9423E69D5C00433BD1 /* top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8623E69D5C00433BD1 /* top_right@2x.png */; };
+		83677E9523E69D5C00433BD1 /* top_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8723E69D5C00433BD1 /* top_right_selected.png */; };
+		83677E9623E69D5C00433BD1 /* bottom_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8823E69D5C00433BD1 /* bottom_right@2x.png */; };
+		83677E9723E69D5C00433BD1 /* top_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8923E69D5C00433BD1 /* top_left@2x.png */; };
+		83677E9823E69D5C00433BD1 /* bottom_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8A23E69D5C00433BD1 /* bottom_left_selected.png */; };
+		83677E9923E69D5C00433BD1 /* WatermarkImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8B23E69D5C00433BD1 /* WatermarkImages.plist */; };
+		83677E9A23E69D5C00433BD1 /* bottom_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8C23E69D5C00433BD1 /* bottom_right_selected.png */; };
+		83677E9B23E69D5C00433BD1 /* top_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8D23E69D5C00433BD1 /* top_left_selected.png */; };
+		83677E9C23E69D5C00433BD1 /* bottom_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8E23E69D5C00433BD1 /* bottom_left@2x.png */; };
+		83677E9D23E69D5C00433BD1 /* MHSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83677E8F23E69D5C00433BD1 /* MHSDK.bundle */; };
+		83677E9F23E69DA800433BD1 /* tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83677E9023E69D5C00433BD1 /* tracking.framework */; };
+		83677EA023E69DA800433BD1 /* tracking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83677E9023E69D5C00433BD1 /* tracking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		836DFC1122E8504400D43863 /* MDThumbnailBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DFC1022E8504400D43863 /* MDThumbnailBar.swift */; };
 		836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836FE5FC22C367320033A073 /* MDVolumeViewController.swift */; };
 		836FE60522C3B2060033A073 /* MDUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836FE60422C3B2060033A073 /* MDUIComponents.swift */; };
@@ -51,44 +87,6 @@
 		83B6C125231142EC00510BE8 /* MDEditorToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6C124231142EC00510BE8 /* MDEditorToolboxViewController.swift */; };
 		83DAAFD622F92B6C0098041B /* MDSpeedEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DAAFD522F92B6C0098041B /* MDSpeedEffect.swift */; };
 		83DAAFDE22F92D790098041B /* MDRepeateEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DAAFDD22F92D790098041B /* MDRepeateEffect.swift */; };
-		83EE74EA23E5598E000E4F1D /* MHBeautySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE749423E5598E000E4F1D /* MHBeautySDK.framework */; };
-		83EE74EB23E5598E000E4F1D /* server.cer in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749523E5598E000E4F1D /* server.cer */; };
-		83EE74EC23E5598E000E4F1D /* print_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749723E5598E000E4F1D /* print_cancel@2x.png */; };
-		83EE74ED23E5598E000E4F1D /* top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749823E5598E000E4F1D /* top_right@2x.png */; };
-		83EE74EE23E5598E000E4F1D /* top_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749923E5598E000E4F1D /* top_right_selected.png */; };
-		83EE74EF23E5598E000E4F1D /* bottom_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749A23E5598E000E4F1D /* bottom_right@2x.png */; };
-		83EE74F023E5598E000E4F1D /* top_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749B23E5598E000E4F1D /* top_left@2x.png */; };
-		83EE74F123E5598E000E4F1D /* bottom_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749C23E5598E000E4F1D /* bottom_left_selected.png */; };
-		83EE74F223E5598E000E4F1D /* WatermarkImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749D23E5598E000E4F1D /* WatermarkImages.plist */; };
-		83EE74F323E5598E000E4F1D /* bottom_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749E23E5598E000E4F1D /* bottom_right_selected.png */; };
-		83EE74F423E5598E000E4F1D /* top_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749F23E5598E000E4F1D /* top_left_selected.png */; };
-		83EE74F523E5598E000E4F1D /* bottom_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A023E5598E000E4F1D /* bottom_left@2x.png */; };
-		83EE74F623E5598E000E4F1D /* MHSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A123E5598E000E4F1D /* MHSDK.bundle */; };
-		83EE74F823E5598E000E4F1D /* MHMeiyanMenusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */; };
-		83EE74F923E5598E000E4F1D /* MHQuickBeautyParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */; };
-		83EE74FA23E5598E000E4F1D /* StickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AA23E5598E000E4F1D /* StickerManager.m */; };
-		83EE74FB23E5598E000E4F1D /* MHBeautiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */; };
-		83EE74FC23E5598E000E4F1D /* StickerDataListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */; };
-		83EE74FD23E5598E000E4F1D /* MHQuickBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */; };
-		83EE74FE23E5598E000E4F1D /* MHPrintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B123E5598E000E4F1D /* MHPrintView.m */; };
-		83EE74FF23E5598E000E4F1D /* MHBeautyMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */; };
-		83EE750023E5598E000E4F1D /* MHBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B523E5598E000E4F1D /* MHBeautyView.m */; };
-		83EE750123E5598E000E4F1D /* MHSpecificEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */; };
-		83EE750223E5598E000E4F1D /* MHMagnifiedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */; };
-		83EE750323E5598E000E4F1D /* MHSectionStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */; };
-		83EE750423E5598E000E4F1D /* MHStickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BB23E5598E000E4F1D /* MHStickerCell.m */; };
-		83EE750523E5598E000E4F1D /* MHBeautyAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */; };
-		83EE750623E5598E000E4F1D /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C223E5598E000E4F1D /* UIView+Additions.m */; };
-		83EE750723E5598E000E4F1D /* WNSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C623E5598E000E4F1D /* WNSegmentItem.m */; };
-		83EE750823E5598E000E4F1D /* WNSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C723E5598E000E4F1D /* WNSegmentControl.m */; };
-		83EE750923E5598E000E4F1D /* MHMagnifiedEffectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */; };
-		83EE750A23E5598E000E4F1D /* MHBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */; };
-		83EE750B23E5598E000E4F1D /* MHCompleteBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */; };
-		83EE750C23E5598E000E4F1D /* MHFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D123E5598E000E4F1D /* MHFiltersView.m */; };
-		83EE750D23E5598E000E4F1D /* MHStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D223E5598E000E4F1D /* MHStickersView.m */; };
-		83EE750E23E5598E000E4F1D /* MHSpecificAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */; };
-		83EE750F23E5598E000E4F1D /* MHBeautyFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */; };
-		83EE751023E5598E000E4F1D /* MHFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D623E5598E000E4F1D /* MHFilterCell.m */; };
 		83EE751523E55CD2000E4F1D /* MDFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EE751423E55CD2000E4F1D /* MDFilter.swift */; };
 		83FDF66F2338627100A9BC9A /* MDImageGraffitiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDF66E2338627100A9BC9A /* MDImageGraffitiViewController.swift */; };
 		F991A18BFB8AA3F7D2D121BA /* Pods_MovieousDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0412DE0A8E0804D65F578E71 /* Pods_MovieousDemoTests.framework */; };
@@ -111,7 +109,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				83677E3423E5B1D000433BD1 /* tracking.framework in Embed Frameworks */,
+				83677EA023E69DA800433BD1 /* tracking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +148,66 @@
 		83611FDE239555CF00DFD342 /* MDInnerBeautyFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDInnerBeautyFilterView.swift; sourceTree = "<group>"; };
 		83611FE0239556AC00DFD342 /* Filters.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Filters.bundle; sourceTree = "<group>"; };
 		83611FE2239556B100DFD342 /* filter_template.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = filter_template.jpg; sourceTree = "<group>"; };
+		83677E3A23E69CBB00433BD1 /* MHMeiyanMenusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMeiyanMenusView.m; sourceTree = "<group>"; };
+		83677E3C23E69CBB00433BD1 /* MHQuickBeautyParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MHQuickBeautyParams.plist; sourceTree = "<group>"; };
+		83677E3D23E69CBB00433BD1 /* MHBeautiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautiesModel.h; sourceTree = "<group>"; };
+		83677E3E23E69CBB00433BD1 /* StickerDataListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDataListModel.h; sourceTree = "<group>"; };
+		83677E3F23E69CBB00433BD1 /* StickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerManager.m; sourceTree = "<group>"; };
+		83677E4023E69CBB00433BD1 /* MHBeautyParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyParams.h; sourceTree = "<group>"; };
+		83677E4123E69CBB00433BD1 /* MHBeautiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautiesModel.m; sourceTree = "<group>"; };
+		83677E4223E69CBB00433BD1 /* StickerDataListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDataListModel.m; sourceTree = "<group>"; };
+		83677E4323E69CBB00433BD1 /* StickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerManager.h; sourceTree = "<group>"; };
+		83677E4423E69CBB00433BD1 /* MHMeiyanMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMeiyanMenusView.h; sourceTree = "<group>"; };
+		83677E4623E69CBB00433BD1 /* MHPrintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPrintView.m; sourceTree = "<group>"; };
+		83677E4723E69CBB00433BD1 /* MHBeautyMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyMenuCell.m; sourceTree = "<group>"; };
+		83677E4823E69CBB00433BD1 /* MHCompleteBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCompleteBeautyView.h; sourceTree = "<group>"; };
+		83677E4923E69CBB00433BD1 /* MHBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautySlider.h; sourceTree = "<group>"; };
+		83677E4A23E69CBB00433BD1 /* MHBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyView.m; sourceTree = "<group>"; };
+		83677E4B23E69CBB00433BD1 /* MHMagnifiedEffectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedEffectCell.h; sourceTree = "<group>"; };
+		83677E4C23E69CBB00433BD1 /* MHFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFiltersView.h; sourceTree = "<group>"; };
+		83677E4D23E69CBB00433BD1 /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		83677E4E23E69CBB00433BD1 /* MHSpecificEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificEffectView.m; sourceTree = "<group>"; };
+		83677E4F23E69CBB00433BD1 /* MHMagnifiedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedView.m; sourceTree = "<group>"; };
+		83677E5023E69CBB00433BD1 /* MHSectionStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSectionStickersView.m; sourceTree = "<group>"; };
+		83677E5123E69CBB00433BD1 /* MHStickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickerCell.m; sourceTree = "<group>"; };
+		83677E5223E69CBB00433BD1 /* WNSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentControl.h; sourceTree = "<group>"; };
+		83677E5323E69CBB00433BD1 /* MHBeautyAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyAssembleView.m; sourceTree = "<group>"; };
+		83677E5423E69CBB00433BD1 /* WNSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentItem.h; sourceTree = "<group>"; };
+		83677E5523E69CBB00433BD1 /* MHBeautyFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyFaceView.h; sourceTree = "<group>"; };
+		83677E5623E69CBB00433BD1 /* MHSpecificAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificAssembleView.h; sourceTree = "<group>"; };
+		83677E5723E69CBB00433BD1 /* MHStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickersView.h; sourceTree = "<group>"; };
+		83677E5823E69CBB00433BD1 /* MHBeautyMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyMenuCell.h; sourceTree = "<group>"; };
+		83677E5923E69CBB00433BD1 /* MHPrintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPrintView.h; sourceTree = "<group>"; };
+		83677E5A23E69CBB00433BD1 /* MHMagnifiedEffectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedEffectCell.m; sourceTree = "<group>"; };
+		83677E5B23E69CBB00433BD1 /* MHBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyView.h; sourceTree = "<group>"; };
+		83677E5C23E69CBB00433BD1 /* MHBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautySlider.m; sourceTree = "<group>"; };
+		83677E5D23E69CBB00433BD1 /* MHCompleteBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCompleteBeautyView.m; sourceTree = "<group>"; };
+		83677E5E23E69CBB00433BD1 /* MHSectionStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSectionStickersView.h; sourceTree = "<group>"; };
+		83677E5F23E69CBB00433BD1 /* MHMagnifiedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedView.h; sourceTree = "<group>"; };
+		83677E6023E69CBB00433BD1 /* MHSpecificEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificEffectView.h; sourceTree = "<group>"; };
+		83677E6123E69CBB00433BD1 /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		83677E6223E69CBB00433BD1 /* MHFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFiltersView.m; sourceTree = "<group>"; };
+		83677E6323E69CBB00433BD1 /* MHStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickersView.m; sourceTree = "<group>"; };
+		83677E6423E69CBB00433BD1 /* MHSpecificAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificAssembleView.m; sourceTree = "<group>"; };
+		83677E6523E69CBB00433BD1 /* MHBeautyFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyFaceView.m; sourceTree = "<group>"; };
+		83677E6623E69CBB00433BD1 /* WNSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentItem.m; sourceTree = "<group>"; };
+		83677E6723E69CBB00433BD1 /* MHBeautyAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyAssembleView.h; sourceTree = "<group>"; };
+		83677E6823E69CBB00433BD1 /* MHStickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickerCell.h; sourceTree = "<group>"; };
+		83677E6923E69CBB00433BD1 /* WNSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentControl.m; sourceTree = "<group>"; };
+		83677E8223E69D5C00433BD1 /* MHBeautySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MHBeautySDK.framework; sourceTree = "<group>"; };
+		83677E8323E69D5C00433BD1 /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = "<group>"; };
+		83677E8523E69D5C00433BD1 /* print_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "print_cancel@2x.png"; sourceTree = "<group>"; };
+		83677E8623E69D5C00433BD1 /* top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_right@2x.png"; sourceTree = "<group>"; };
+		83677E8723E69D5C00433BD1 /* top_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_right_selected.png; sourceTree = "<group>"; };
+		83677E8823E69D5C00433BD1 /* bottom_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_right@2x.png"; sourceTree = "<group>"; };
+		83677E8923E69D5C00433BD1 /* top_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_left@2x.png"; sourceTree = "<group>"; };
+		83677E8A23E69D5C00433BD1 /* bottom_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_left_selected.png; sourceTree = "<group>"; };
+		83677E8B23E69D5C00433BD1 /* WatermarkImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WatermarkImages.plist; sourceTree = "<group>"; };
+		83677E8C23E69D5C00433BD1 /* bottom_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_right_selected.png; sourceTree = "<group>"; };
+		83677E8D23E69D5C00433BD1 /* top_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_left_selected.png; sourceTree = "<group>"; };
+		83677E8E23E69D5C00433BD1 /* bottom_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_left@2x.png"; sourceTree = "<group>"; };
+		83677E8F23E69D5C00433BD1 /* MHSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MHSDK.bundle; sourceTree = "<group>"; };
+		83677E9023E69D5C00433BD1 /* tracking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tracking.framework; sourceTree = "<group>"; };
 		836DFC1022E8504400D43863 /* MDThumbnailBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDThumbnailBar.swift; sourceTree = "<group>"; };
 		836FE5FC22C367320033A073 /* MDVolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDVolumeViewController.swift; sourceTree = "<group>"; };
 		836FE60422C3B2060033A073 /* MDUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDUIComponents.swift; sourceTree = "<group>"; };
@@ -171,70 +229,6 @@
 		83DAAFD522F92B6C0098041B /* MDSpeedEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSpeedEffect.swift; sourceTree = "<group>"; };
 		83DAAFDD22F92D790098041B /* MDRepeateEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDRepeateEffect.swift; sourceTree = "<group>"; };
 		83E924A12302F7ED00034EC2 /* MDWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDWordViewController.swift; sourceTree = "<group>"; };
-		83EE749423E5598E000E4F1D /* MHBeautySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MHBeautySDK.framework; sourceTree = "<group>"; };
-		83EE749523E5598E000E4F1D /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = "<group>"; };
-		83EE749723E5598E000E4F1D /* print_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "print_cancel@2x.png"; sourceTree = "<group>"; };
-		83EE749823E5598E000E4F1D /* top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_right@2x.png"; sourceTree = "<group>"; };
-		83EE749923E5598E000E4F1D /* top_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_right_selected.png; sourceTree = "<group>"; };
-		83EE749A23E5598E000E4F1D /* bottom_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_right@2x.png"; sourceTree = "<group>"; };
-		83EE749B23E5598E000E4F1D /* top_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_left@2x.png"; sourceTree = "<group>"; };
-		83EE749C23E5598E000E4F1D /* bottom_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_left_selected.png; sourceTree = "<group>"; };
-		83EE749D23E5598E000E4F1D /* WatermarkImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WatermarkImages.plist; sourceTree = "<group>"; };
-		83EE749E23E5598E000E4F1D /* bottom_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_right_selected.png; sourceTree = "<group>"; };
-		83EE749F23E5598E000E4F1D /* top_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_left_selected.png; sourceTree = "<group>"; };
-		83EE74A023E5598E000E4F1D /* bottom_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_left@2x.png"; sourceTree = "<group>"; };
-		83EE74A123E5598E000E4F1D /* MHSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MHSDK.bundle; sourceTree = "<group>"; };
-		83EE74A223E5598E000E4F1D /* tracking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tracking.framework; sourceTree = "<group>"; };
-		83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMeiyanMenusView.m; sourceTree = "<group>"; };
-		83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MHQuickBeautyParams.plist; sourceTree = "<group>"; };
-		83EE74A723E5598E000E4F1D /* MHBeautiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautiesModel.h; sourceTree = "<group>"; };
-		83EE74A823E5598E000E4F1D /* MHQuickBeautyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHQuickBeautyModel.h; sourceTree = "<group>"; };
-		83EE74A923E5598E000E4F1D /* StickerDataListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDataListModel.h; sourceTree = "<group>"; };
-		83EE74AA23E5598E000E4F1D /* StickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerManager.m; sourceTree = "<group>"; };
-		83EE74AB23E5598E000E4F1D /* MHBeautyParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyParams.h; sourceTree = "<group>"; };
-		83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautiesModel.m; sourceTree = "<group>"; };
-		83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDataListModel.m; sourceTree = "<group>"; };
-		83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHQuickBeautyModel.m; sourceTree = "<group>"; };
-		83EE74AF23E5598E000E4F1D /* StickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerManager.h; sourceTree = "<group>"; };
-		83EE74B123E5598E000E4F1D /* MHPrintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPrintView.m; sourceTree = "<group>"; };
-		83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyMenuCell.m; sourceTree = "<group>"; };
-		83EE74B323E5598E000E4F1D /* MHCompleteBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCompleteBeautyView.h; sourceTree = "<group>"; };
-		83EE74B423E5598E000E4F1D /* MHBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautySlider.h; sourceTree = "<group>"; };
-		83EE74B523E5598E000E4F1D /* MHBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyView.m; sourceTree = "<group>"; };
-		83EE74B623E5598E000E4F1D /* MHMagnifiedEffectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedEffectCell.h; sourceTree = "<group>"; };
-		83EE74B723E5598E000E4F1D /* MHFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFiltersView.h; sourceTree = "<group>"; };
-		83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificEffectView.m; sourceTree = "<group>"; };
-		83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedView.m; sourceTree = "<group>"; };
-		83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSectionStickersView.m; sourceTree = "<group>"; };
-		83EE74BB23E5598E000E4F1D /* MHStickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickerCell.m; sourceTree = "<group>"; };
-		83EE74BC23E5598E000E4F1D /* MHFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFilterCell.h; sourceTree = "<group>"; };
-		83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyAssembleView.m; sourceTree = "<group>"; };
-		83EE74BE23E5598E000E4F1D /* MHBeautyFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyFaceView.h; sourceTree = "<group>"; };
-		83EE74BF23E5598E000E4F1D /* MHSpecificAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificAssembleView.h; sourceTree = "<group>"; };
-		83EE74C023E5598E000E4F1D /* MHStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickersView.h; sourceTree = "<group>"; };
-		83EE74C223E5598E000E4F1D /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
-		83EE74C323E5598E000E4F1D /* WNSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentControl.h; sourceTree = "<group>"; };
-		83EE74C423E5598E000E4F1D /* WNSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentItem.h; sourceTree = "<group>"; };
-		83EE74C523E5598E000E4F1D /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
-		83EE74C623E5598E000E4F1D /* WNSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentItem.m; sourceTree = "<group>"; };
-		83EE74C723E5598E000E4F1D /* WNSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentControl.m; sourceTree = "<group>"; };
-		83EE74C823E5598E000E4F1D /* MHBeautyMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyMenuCell.h; sourceTree = "<group>"; };
-		83EE74C923E5598E000E4F1D /* MHPrintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPrintView.h; sourceTree = "<group>"; };
-		83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedEffectCell.m; sourceTree = "<group>"; };
-		83EE74CB23E5598E000E4F1D /* MHBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyView.h; sourceTree = "<group>"; };
-		83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautySlider.m; sourceTree = "<group>"; };
-		83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCompleteBeautyView.m; sourceTree = "<group>"; };
-		83EE74CE23E5598E000E4F1D /* MHSectionStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSectionStickersView.h; sourceTree = "<group>"; };
-		83EE74CF23E5598E000E4F1D /* MHMagnifiedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedView.h; sourceTree = "<group>"; };
-		83EE74D023E5598E000E4F1D /* MHSpecificEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificEffectView.h; sourceTree = "<group>"; };
-		83EE74D123E5598E000E4F1D /* MHFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFiltersView.m; sourceTree = "<group>"; };
-		83EE74D223E5598E000E4F1D /* MHStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickersView.m; sourceTree = "<group>"; };
-		83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificAssembleView.m; sourceTree = "<group>"; };
-		83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyFaceView.m; sourceTree = "<group>"; };
-		83EE74D523E5598E000E4F1D /* MHBeautyAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyAssembleView.h; sourceTree = "<group>"; };
-		83EE74D623E5598E000E4F1D /* MHFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFilterCell.m; sourceTree = "<group>"; };
-		83EE74D723E5598E000E4F1D /* MHStickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickerCell.h; sourceTree = "<group>"; };
-		83EE74D823E5598E000E4F1D /* MHMeiyanMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMeiyanMenusView.h; sourceTree = "<group>"; };
 		83EE751423E55CD2000E4F1D /* MDFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDFilter.swift; sourceTree = "<group>"; };
 		83FDF66E2338627100A9BC9A /* MDImageGraffitiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDImageGraffitiViewController.swift; sourceTree = "<group>"; };
 		D25BFA71F0C963D311D209A0 /* Pods-MovieousDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieousDemo.release.xcconfig"; path = "Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,9 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				838A373422D5F70300CB8BF7 /* libsqlite3.tbd in Frameworks */,
-				83677E3323E5B1D000433BD1 /* tracking.framework in Frameworks */,
+				83677E9F23E69DA800433BD1 /* tracking.framework in Frameworks */,
 				778A145393E435754AB23DA7 /* Pods_MovieousDemo.framework in Frameworks */,
-				83EE74EA23E5598E000E4F1D /* MHBeautySDK.framework in Frameworks */,
+				83677E9123E69D5C00433BD1 /* MHBeautySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +365,104 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		83677E3923E69CBB00433BD1 /* MHUI */ = {
+			isa = PBXGroup;
+			children = (
+				83677E3A23E69CBB00433BD1 /* MHMeiyanMenusView.m */,
+				83677E3B23E69CBB00433BD1 /* Model */,
+				83677E4423E69CBB00433BD1 /* MHMeiyanMenusView.h */,
+				83677E4523E69CBB00433BD1 /* Views */,
+			);
+			path = MHUI;
+			sourceTree = "<group>";
+		};
+		83677E3B23E69CBB00433BD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83677E3C23E69CBB00433BD1 /* MHQuickBeautyParams.plist */,
+				83677E3D23E69CBB00433BD1 /* MHBeautiesModel.h */,
+				83677E3E23E69CBB00433BD1 /* StickerDataListModel.h */,
+				83677E3F23E69CBB00433BD1 /* StickerManager.m */,
+				83677E4023E69CBB00433BD1 /* MHBeautyParams.h */,
+				83677E4123E69CBB00433BD1 /* MHBeautiesModel.m */,
+				83677E4223E69CBB00433BD1 /* StickerDataListModel.m */,
+				83677E4323E69CBB00433BD1 /* StickerManager.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83677E4523E69CBB00433BD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83677E4623E69CBB00433BD1 /* MHPrintView.m */,
+				83677E4723E69CBB00433BD1 /* MHBeautyMenuCell.m */,
+				83677E4823E69CBB00433BD1 /* MHCompleteBeautyView.h */,
+				83677E4923E69CBB00433BD1 /* MHBeautySlider.h */,
+				83677E4A23E69CBB00433BD1 /* MHBeautyView.m */,
+				83677E4B23E69CBB00433BD1 /* MHMagnifiedEffectCell.h */,
+				83677E4C23E69CBB00433BD1 /* MHFiltersView.h */,
+				83677E4D23E69CBB00433BD1 /* UIView+Additions.m */,
+				83677E4E23E69CBB00433BD1 /* MHSpecificEffectView.m */,
+				83677E4F23E69CBB00433BD1 /* MHMagnifiedView.m */,
+				83677E5023E69CBB00433BD1 /* MHSectionStickersView.m */,
+				83677E5123E69CBB00433BD1 /* MHStickerCell.m */,
+				83677E5223E69CBB00433BD1 /* WNSegmentControl.h */,
+				83677E5323E69CBB00433BD1 /* MHBeautyAssembleView.m */,
+				83677E5423E69CBB00433BD1 /* WNSegmentItem.h */,
+				83677E5523E69CBB00433BD1 /* MHBeautyFaceView.h */,
+				83677E5623E69CBB00433BD1 /* MHSpecificAssembleView.h */,
+				83677E5723E69CBB00433BD1 /* MHStickersView.h */,
+				83677E5823E69CBB00433BD1 /* MHBeautyMenuCell.h */,
+				83677E5923E69CBB00433BD1 /* MHPrintView.h */,
+				83677E5A23E69CBB00433BD1 /* MHMagnifiedEffectCell.m */,
+				83677E5B23E69CBB00433BD1 /* MHBeautyView.h */,
+				83677E5C23E69CBB00433BD1 /* MHBeautySlider.m */,
+				83677E5D23E69CBB00433BD1 /* MHCompleteBeautyView.m */,
+				83677E5E23E69CBB00433BD1 /* MHSectionStickersView.h */,
+				83677E5F23E69CBB00433BD1 /* MHMagnifiedView.h */,
+				83677E6023E69CBB00433BD1 /* MHSpecificEffectView.h */,
+				83677E6123E69CBB00433BD1 /* UIView+Additions.h */,
+				83677E6223E69CBB00433BD1 /* MHFiltersView.m */,
+				83677E6323E69CBB00433BD1 /* MHStickersView.m */,
+				83677E6423E69CBB00433BD1 /* MHSpecificAssembleView.m */,
+				83677E6523E69CBB00433BD1 /* MHBeautyFaceView.m */,
+				83677E6623E69CBB00433BD1 /* WNSegmentItem.m */,
+				83677E6723E69CBB00433BD1 /* MHBeautyAssembleView.h */,
+				83677E6823E69CBB00433BD1 /* MHStickerCell.h */,
+				83677E6923E69CBB00433BD1 /* WNSegmentControl.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		83677E8123E69D5C00433BD1 /* MHResources */ = {
+			isa = PBXGroup;
+			children = (
+				83677E8223E69D5C00433BD1 /* MHBeautySDK.framework */,
+				83677E8323E69D5C00433BD1 /* server.cer */,
+				83677E8423E69D5C00433BD1 /* 水印 */,
+				83677E8F23E69D5C00433BD1 /* MHSDK.bundle */,
+				83677E9023E69D5C00433BD1 /* tracking.framework */,
+			);
+			path = MHResources;
+			sourceTree = "<group>";
+		};
+		83677E8423E69D5C00433BD1 /* 水印 */ = {
+			isa = PBXGroup;
+			children = (
+				83677E8523E69D5C00433BD1 /* print_cancel@2x.png */,
+				83677E8623E69D5C00433BD1 /* top_right@2x.png */,
+				83677E8723E69D5C00433BD1 /* top_right_selected.png */,
+				83677E8823E69D5C00433BD1 /* bottom_right@2x.png */,
+				83677E8923E69D5C00433BD1 /* top_left@2x.png */,
+				83677E8A23E69D5C00433BD1 /* bottom_left_selected.png */,
+				83677E8B23E69D5C00433BD1 /* WatermarkImages.plist */,
+				83677E8C23E69D5C00433BD1 /* bottom_right_selected.png */,
+				83677E8D23E69D5C00433BD1 /* top_left_selected.png */,
+				83677E8E23E69D5C00433BD1 /* bottom_left@2x.png */,
+			);
+			path = "水印";
+			sourceTree = "<group>";
+		};
 		8377D94A234D798E00DD2DBF /* MovieousDemoTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,120 +491,10 @@
 		83EE746A23E5598E000E4F1D /* MHSDK */ = {
 			isa = PBXGroup;
 			children = (
-				83EE749323E5598E000E4F1D /* MHResources */,
-				83EE74A323E5598E000E4F1D /* MHUI */,
+				83677E8123E69D5C00433BD1 /* MHResources */,
+				83677E3923E69CBB00433BD1 /* MHUI */,
 			);
 			path = MHSDK;
-			sourceTree = "<group>";
-		};
-		83EE749323E5598E000E4F1D /* MHResources */ = {
-			isa = PBXGroup;
-			children = (
-				83EE749423E5598E000E4F1D /* MHBeautySDK.framework */,
-				83EE749523E5598E000E4F1D /* server.cer */,
-				83EE749623E5598E000E4F1D /* 水印 */,
-				83EE74A123E5598E000E4F1D /* MHSDK.bundle */,
-				83EE74A223E5598E000E4F1D /* tracking.framework */,
-			);
-			path = MHResources;
-			sourceTree = "<group>";
-		};
-		83EE749623E5598E000E4F1D /* 水印 */ = {
-			isa = PBXGroup;
-			children = (
-				83EE749723E5598E000E4F1D /* print_cancel@2x.png */,
-				83EE749823E5598E000E4F1D /* top_right@2x.png */,
-				83EE749923E5598E000E4F1D /* top_right_selected.png */,
-				83EE749A23E5598E000E4F1D /* bottom_right@2x.png */,
-				83EE749B23E5598E000E4F1D /* top_left@2x.png */,
-				83EE749C23E5598E000E4F1D /* bottom_left_selected.png */,
-				83EE749D23E5598E000E4F1D /* WatermarkImages.plist */,
-				83EE749E23E5598E000E4F1D /* bottom_right_selected.png */,
-				83EE749F23E5598E000E4F1D /* top_left_selected.png */,
-				83EE74A023E5598E000E4F1D /* bottom_left@2x.png */,
-			);
-			path = "水印";
-			sourceTree = "<group>";
-		};
-		83EE74A323E5598E000E4F1D /* MHUI */ = {
-			isa = PBXGroup;
-			children = (
-				83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */,
-				83EE74A523E5598E000E4F1D /* Model */,
-				83EE74B023E5598E000E4F1D /* View */,
-				83EE74D823E5598E000E4F1D /* MHMeiyanMenusView.h */,
-			);
-			path = MHUI;
-			sourceTree = "<group>";
-		};
-		83EE74A523E5598E000E4F1D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */,
-				83EE74A723E5598E000E4F1D /* MHBeautiesModel.h */,
-				83EE74A823E5598E000E4F1D /* MHQuickBeautyModel.h */,
-				83EE74A923E5598E000E4F1D /* StickerDataListModel.h */,
-				83EE74AA23E5598E000E4F1D /* StickerManager.m */,
-				83EE74AB23E5598E000E4F1D /* MHBeautyParams.h */,
-				83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */,
-				83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */,
-				83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */,
-				83EE74AF23E5598E000E4F1D /* StickerManager.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		83EE74B023E5598E000E4F1D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				83EE74B123E5598E000E4F1D /* MHPrintView.m */,
-				83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */,
-				83EE74B323E5598E000E4F1D /* MHCompleteBeautyView.h */,
-				83EE74B423E5598E000E4F1D /* MHBeautySlider.h */,
-				83EE74B523E5598E000E4F1D /* MHBeautyView.m */,
-				83EE74B623E5598E000E4F1D /* MHMagnifiedEffectCell.h */,
-				83EE74B723E5598E000E4F1D /* MHFiltersView.h */,
-				83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */,
-				83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */,
-				83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */,
-				83EE74BB23E5598E000E4F1D /* MHStickerCell.m */,
-				83EE74BC23E5598E000E4F1D /* MHFilterCell.h */,
-				83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */,
-				83EE74BE23E5598E000E4F1D /* MHBeautyFaceView.h */,
-				83EE74BF23E5598E000E4F1D /* MHSpecificAssembleView.h */,
-				83EE74C023E5598E000E4F1D /* MHStickersView.h */,
-				83EE74C123E5598E000E4F1D /* customTool */,
-				83EE74C823E5598E000E4F1D /* MHBeautyMenuCell.h */,
-				83EE74C923E5598E000E4F1D /* MHPrintView.h */,
-				83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */,
-				83EE74CB23E5598E000E4F1D /* MHBeautyView.h */,
-				83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */,
-				83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */,
-				83EE74CE23E5598E000E4F1D /* MHSectionStickersView.h */,
-				83EE74CF23E5598E000E4F1D /* MHMagnifiedView.h */,
-				83EE74D023E5598E000E4F1D /* MHSpecificEffectView.h */,
-				83EE74D123E5598E000E4F1D /* MHFiltersView.m */,
-				83EE74D223E5598E000E4F1D /* MHStickersView.m */,
-				83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */,
-				83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */,
-				83EE74D523E5598E000E4F1D /* MHBeautyAssembleView.h */,
-				83EE74D623E5598E000E4F1D /* MHFilterCell.m */,
-				83EE74D723E5598E000E4F1D /* MHStickerCell.h */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		83EE74C123E5598E000E4F1D /* customTool */ = {
-			isa = PBXGroup;
-			children = (
-				83EE74C223E5598E000E4F1D /* UIView+Additions.m */,
-				83EE74C323E5598E000E4F1D /* WNSegmentControl.h */,
-				83EE74C423E5598E000E4F1D /* WNSegmentItem.h */,
-				83EE74C523E5598E000E4F1D /* UIView+Additions.h */,
-				83EE74C623E5598E000E4F1D /* WNSegmentItem.m */,
-				83EE74C723E5598E000E4F1D /* WNSegmentControl.m */,
-			);
-			path = customTool;
 			sourceTree = "<group>";
 		};
 		83F0A005233C911500170723 /* Resources */ = {
@@ -635,24 +617,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EE74F323E5598E000E4F1D /* bottom_right_selected.png in Resources */,
-				83EE74F923E5598E000E4F1D /* MHQuickBeautyParams.plist in Resources */,
+				83677E9223E69D5C00433BD1 /* server.cer in Resources */,
+				83677E9923E69D5C00433BD1 /* WatermarkImages.plist in Resources */,
+				83677E9623E69D5C00433BD1 /* bottom_right@2x.png in Resources */,
+				83677E6B23E69CBB00433BD1 /* MHQuickBeautyParams.plist in Resources */,
+				83677E9323E69D5C00433BD1 /* print_cancel@2x.png in Resources */,
+				83677E9523E69D5C00433BD1 /* top_right_selected.png in Resources */,
 				83A817CF22B5AE3C003E4631 /* Localizable.strings in Resources */,
-				83EE74EC23E5598E000E4F1D /* print_cancel@2x.png in Resources */,
-				83EE74F123E5598E000E4F1D /* bottom_left_selected.png in Resources */,
+				83677E9423E69D5C00433BD1 /* top_right@2x.png in Resources */,
 				83445DEB225CD51F00A635F2 /* LaunchScreen.storyboard in Resources */,
-				83EE74EE23E5598E000E4F1D /* top_right_selected.png in Resources */,
-				83EE74F023E5598E000E4F1D /* top_left@2x.png in Resources */,
-				83EE74EF23E5598E000E4F1D /* bottom_right@2x.png in Resources */,
-				83EE74F223E5598E000E4F1D /* WatermarkImages.plist in Resources */,
+				83677E9C23E69D5C00433BD1 /* bottom_left@2x.png in Resources */,
 				83A8183622B9E9AD003E4631 /* Assets.xcassets in Resources */,
+				83677E9723E69D5C00433BD1 /* top_left@2x.png in Resources */,
+				83677E9823E69D5C00433BD1 /* bottom_left_selected.png in Resources */,
 				83611FE3239556B100DFD342 /* filter_template.jpg in Resources */,
-				83EE74ED23E5598E000E4F1D /* top_right@2x.png in Resources */,
+				83677E9B23E69D5C00433BD1 /* top_left_selected.png in Resources */,
 				83611FE1239556AC00DFD342 /* Filters.bundle in Resources */,
-				83EE74F623E5598E000E4F1D /* MHSDK.bundle in Resources */,
-				83EE74F423E5598E000E4F1D /* top_left_selected.png in Resources */,
-				83EE74F523E5598E000E4F1D /* bottom_left@2x.png in Resources */,
-				83EE74EB23E5598E000E4F1D /* server.cer in Resources */,
+				83677E9A23E69D5C00433BD1 /* bottom_right_selected.png in Resources */,
+				83677E9D23E69D5C00433BD1 /* MHSDK.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,65 +716,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EE751023E5598E000E4F1D /* MHFilterCell.m in Sources */,
 				836DFC1122E8504400D43863 /* MDThumbnailBar.swift in Sources */,
 				836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */,
 				83445DE3225CD51E00A635F2 /* MDAudienceViewController.swift in Sources */,
 				836FE60522C3B2060033A073 /* MDUIComponents.swift in Sources */,
-				83EE750D23E5598E000E4F1D /* MHStickersView.m in Sources */,
-				83EE750323E5598E000E4F1D /* MHSectionStickersView.m in Sources */,
-				83EE750023E5598E000E4F1D /* MHBeautyView.m in Sources */,
 				8397C07D22E7060900B46CD2 /* MDShotConfigViewController.swift in Sources */,
+				83677E6E23E69CBB00433BD1 /* StickerDataListModel.m in Sources */,
 				8358448B22E5A6C20009AEA0 /* MDAudioTrimView.swift in Sources */,
-				83EE750A23E5598E000E4F1D /* MHBeautySlider.m in Sources */,
+				83677E7C23E69CBB00433BD1 /* MHStickersView.m in Sources */,
 				83611FDF239555CF00DFD342 /* MDInnerBeautyFilterView.swift in Sources */,
+				83677E7923E69CBB00433BD1 /* MHBeautySlider.m in Sources */,
 				8319E0B822D578FD00BA0809 /* MDBeautyFilterViewController.swift in Sources */,
-				83EE750923E5598E000E4F1D /* MHMagnifiedEffectCell.m in Sources */,
 				839047AA230FC6E6003B40E1 /* MDExporterViewController.swift in Sources */,
 				83445DE1225CD51E00A635F2 /* AppDelegate.swift in Sources */,
-				83EE750823E5598E000E4F1D /* WNSegmentControl.m in Sources */,
 				8338680E22C3D27D006656D9 /* MDSpecialEffectViewController.swift in Sources */,
-				83EE750223E5598E000E4F1D /* MHMagnifiedView.m in Sources */,
-				83EE750423E5598E000E4F1D /* MHStickerCell.m in Sources */,
 				83DAAFDE22F92D790098041B /* MDRepeateEffect.swift in Sources */,
 				8338680A22C3D25A006656D9 /* MDCoverViewController.swift in Sources */,
-				83EE750E23E5598E000E4F1D /* MHSpecificAssembleView.m in Sources */,
 				83B6C125231142EC00510BE8 /* MDEditorToolboxViewController.swift in Sources */,
 				83359D5D22E6C62900E28254 /* MDCreationViewController.swift in Sources */,
 				833867FE22C3D171006656D9 /* MDEditorMusicViewController.swift in Sources */,
+				83677E6A23E69CBB00433BD1 /* MHMeiyanMenusView.m in Sources */,
 				8338680622C3D1E1006656D9 /* MDStickerViewController.swift in Sources */,
-				83EE750723E5598E000E4F1D /* WNSegmentItem.m in Sources */,
+				83677E6D23E69CBB00433BD1 /* MHBeautiesModel.m in Sources */,
 				83446DEB225CE74C00A635F2 /* MDRecorderViewController.swift in Sources */,
-				83EE74FE23E5598E000E4F1D /* MHPrintView.m in Sources */,
 				83446DF5225D0BBC00A635F2 /* MDAVPlayerView.swift in Sources */,
-				83EE750F23E5598E000E4F1D /* MHBeautyFaceView.m in Sources */,
 				83477A20231937AC0084A5FB /* MDEditorViewController.swift in Sources */,
-				83EE74FC23E5598E000E4F1D /* StickerDataListModel.m in Sources */,
+				83677E6C23E69CBB00433BD1 /* StickerManager.m in Sources */,
+				83677E7423E69CBB00433BD1 /* MHMagnifiedView.m in Sources */,
+				83677E7D23E69CBB00433BD1 /* MHSpecificAssembleView.m in Sources */,
 				83DAAFD622F92B6C0098041B /* MDSpeedEffect.swift in Sources */,
-				83EE74FF23E5598E000E4F1D /* MHBeautyMenuCell.m in Sources */,
+				83677E7823E69CBB00433BD1 /* MHMagnifiedEffectCell.m in Sources */,
 				835661CB22D0D7770046DA6F /* MDStickerLibrary.swift in Sources */,
-				83EE750C23E5598E000E4F1D /* MHFiltersView.m in Sources */,
 				833805B922CF611400C1AB48 /* MDMusicLibrary.swift in Sources */,
 				83B6C11D23113C8E00510BE8 /* MDImageEditorViewController.swift in Sources */,
+				83677E7723E69CBB00433BD1 /* MHBeautyAssembleView.m in Sources */,
+				83677E8023E69CBB00433BD1 /* WNSegmentControl.m in Sources */,
 				83446DF0225D06AF00A635F2 /* MDRecorderMusicViewController.swift in Sources */,
 				83B3F38622D1C75B005A76B5 /* MDFrameView.swift in Sources */,
-				83EE74FA23E5598E000E4F1D /* StickerManager.m in Sources */,
+				83677E7523E69CBB00433BD1 /* MHSectionStickersView.m in Sources */,
 				83FDF66F2338627100A9BC9A /* MDImageGraffitiViewController.swift in Sources */,
+				83677E7F23E69CBB00433BD1 /* WNSegmentItem.m in Sources */,
+				83677E7023E69CBB00433BD1 /* MHBeautyMenuCell.m in Sources */,
+				83677E7223E69CBB00433BD1 /* UIView+Additions.m in Sources */,
+				83677E7123E69CBB00433BD1 /* MHBeautyView.m in Sources */,
+				83677E7623E69CBB00433BD1 /* MHStickerCell.m in Sources */,
 				83446DEE225CF80300A635F2 /* MDUtils.swift in Sources */,
 				830A6E3C22BD0B670002FB5A /* MDGlobalConfig.swift in Sources */,
 				8349D24422BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift in Sources */,
-				83EE750B23E5598E000E4F1D /* MHCompleteBeautyView.m in Sources */,
-				83EE750123E5598E000E4F1D /* MHSpecificEffectView.m in Sources */,
-				83EE750623E5598E000E4F1D /* UIView+Additions.m in Sources */,
-				83EE74FD23E5598E000E4F1D /* MHQuickBeautyModel.m in Sources */,
 				83A8184422BB463D003E4631 /* MDProgressBar.swift in Sources */,
+				83677E7B23E69CBB00433BD1 /* MHFiltersView.m in Sources */,
 				83EE751523E55CD2000E4F1D /* MDFilter.swift in Sources */,
 				8338680C22C3D26C006656D9 /* MDTrimViewController.swift in Sources */,
 				8338680822C3D1FD006656D9 /* MDVideoGraffitiViewController.swift in Sources */,
-				83EE74FB23E5598E000E4F1D /* MHBeautiesModel.m in Sources */,
-				83EE750523E5598E000E4F1D /* MHBeautyAssembleView.m in Sources */,
-				83EE74F823E5598E000E4F1D /* MHMeiyanMenusView.m in Sources */,
 				830A6E3A22BCDCC80002FB5A /* MDVideoEditorViewController.swift in Sources */,
+				83677E7A23E69CBB00433BD1 /* MHCompleteBeautyView.m in Sources */,
+				83677E6F23E69CBB00433BD1 /* MHPrintView.m in Sources */,
+				83677E7323E69CBB00433BD1 /* MHSpecificEffectView.m in Sources */,
+				83677E7E23E69CBB00433BD1 /* MHBeautyFaceView.m in Sources */,
 				83669A9E23169A7E00B1A38D /* MDWordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

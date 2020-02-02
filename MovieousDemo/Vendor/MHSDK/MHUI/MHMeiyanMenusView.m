@@ -10,7 +10,6 @@
 #import "MHMagnifiedView.h"
 #import "MHBeautyAssembleView.h"
 #import "MHSpecificAssembleView.h"
-#import "MHQuickBeautyModel.h"
 #import "MHBeautiesModel.h"
 
 #define kBasicStickerURL @"aHR0cHM6Ly9kYXRhLmZhY2VnbC5jb20vYXBwYXBpL1N0aWNrZXIvaW5kZXg="
@@ -39,15 +38,41 @@ static NSString *HahaImg = @"haha";
 @end
 @implementation MHMeiyanMenusView
 
-
-- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView delegate:(id<MHMeiyanMenusViewDelegate>)delegate showNow:(BOOL)show beautyManager:(MHBeautyManager *)manager isTXSDK:(BOOL)isTx {
+- (void)setupDefaultBeautyAndFaceValueWithIsTX:(BOOL)isTX{
+    //设置美型默认数据，按照数组的名称设置初始值，不要换顺序
+    /*
+    NSArray *originalValuesArr = @[@"0",@"大眼",@"瘦脸",
+    @"嘴型",
+    @"瘦鼻",
+    @"下巴",
+    @"额头",
+    @"眉毛",
+    @"眼角",
+    @"眼距",
+    @"开眼角",
+    @"削脸",
+    @"长鼻"];
+    for (int i = 0; i<originalValuesArr.count; i++) {
+        if (i != 0) {
+            NSInteger value = (NSInteger)originalValuesArr[i];
+            [self handleFaceBeautyWithType:i sliderValue:value];
+        }
+    }
+    //设置美颜参数
+    NSArray *beautyArr = @[@"磨皮数值",@"美白数值",@"红润数值"];
+    if (isTX) {
+        [self beautyLevel:(NSInteger)[beautyArr objectAtIndex:0] whitenessLevel:(NSInteger)[beautyArr objectAtIndex:1] ruddinessLevel:(NSInteger)[beautyArr objectAtIndex:2] brightnessLevel:50];
+    } else {
+        [_beautyManager setBuffing:(int)[beautyArr objectAtIndex:0]];
+        [_beautyManager setSkinWhiting:(int)[beautyArr objectAtIndex:1]];
+        [_beautyManager setRuddiness:(int)[beautyArr objectAtIndex:2]];
+    }
+     */
+}
+- (instancetype)initWithFrame:(CGRect)frame superView:(UIView *)superView delegate:(id<MHMeiyanMenusViewDelegate>)delegate beautyManager:(MHBeautyManager *)manager isTXSDK:(BOOL)isTx {
     if (self = [super initWithFrame:frame]) {
         self.superView = superView;
         self.delegate = delegate;
-        if (show) {
-            [superView addSubview:self];
-        }
-        self.show = show;
         self.isTX = isTx;
         self.beautyManager = manager;
         [self addSubview:self.collectionView];
@@ -60,10 +85,14 @@ static NSString *HahaImg = @"haha";
 - (void)showMenuView:(BOOL)show {
     if (self.currentView) {
         [self.currentView removeFromSuperview];
+        self.show = YES;
+        self.currentView = nil;
+        return;
     }
     if (show) {
-        [self.superView addSubview:self];
-       
+        if (![self isDescendantOfView:self.superView]) {
+               [self.superView addSubview:self];
+        }
     } else {
         [self removeFromSuperview];
     }
@@ -173,7 +202,7 @@ static NSString *HahaImg = @"haha";
 }
 
 //一键美颜
-- (void)handleQuickBeautyValue:(MHQuickBeautyModel *)model {
+- (void)handleQuickBeautyValue:(MHBeautiesModel *)model {
     [self.beautyManager setFaceLift:model.face_defaultValue.intValue];
     [self.beautyManager setBigEye:model.bigEye_defaultValue.intValue];
     [self.beautyManager setMouthLift:model.mouth_defaultValue.intValue];
@@ -199,7 +228,7 @@ static NSString *HahaImg = @"haha";
 }
 
 
-- (void)handleQuickBeautyWithSliderValue:(NSInteger)value quickBeautyModel:(nonnull MHQuickBeautyModel *)model{
+- (void)handleQuickBeautyWithSliderValue:(NSInteger)value quickBeautyModel:(nonnull MHBeautiesModel *)model{
     if (!model) {
         return;
     }
@@ -387,10 +416,8 @@ static NSString *HahaImg = @"haha";
 #pragma mark - 切换美颜效果分类
 - (void)showBeautyViews:(UIView *)currentView {
     [self.superView addSubview:currentView];
-    [self removeFromSuperview];
     [currentView setY:window_height - currentView.frame.size.height - BottomIndicatorHeight];
     self.currentView = currentView;
-    self.show = NO;
 }
 
 #pragma mark - lazy

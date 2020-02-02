@@ -23,7 +23,7 @@
 #define IsDictionaryWithAnyKeyValue(__dict) (IsDictionary(__dict) && ([[((NSDictionary *)__dict) allKeys] count] > 0))
 
 
-@interface MHStickerDownloader : NSObject < NSURLSessionDelegate>
+@interface MHStickerDownloader : NSObject <MHZipArchiveDelegate, NSURLSessionDelegate>
 @property(nonatomic, strong) NSURLSession *session;
 
 @property(nonatomic, strong) StickerDataListModel *sticker;
@@ -157,7 +157,7 @@
 
 @end
 
-@interface StickerManager()<NSURLSessionDelegate>
+@interface StickerManager()<NSURLSessionDelegate,MHZipArchiveDelegate>
 @property(nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSMutableDictionary *downloadCache;
 @property (nonatomic, assign) NSInteger index;
