@@ -6,7 +6,6 @@ target 'MovieousDemo' do
     pod 'SVProgressHUD', '2.2.5'
     pod 'UFileSDK', '3.0.5'
     pod 'MJExtension', '3.0.17'
-    pod 'GPUImage', '0.1.7'
     pod 'SnapKit', '4.2.0'
     pod 'M13ProgressSuite', '1.2.9'
     pod 'SSZipArchive'

@@ -3,7 +3,8 @@
 
 
 #import "StickerManager.h"
-#import <MHBeautySDK/MHZipArchive.h>
+//#import <MHBeautySDK/MHZipArchive.h>
+#import <SSZipArchive/SSZipArchive.h>
 #import "StickerDataListModel.h"
 #import "MHBeautyParams.h"
 #import <MHBeautySDK/MHSDK.h>
@@ -23,7 +24,7 @@
 #define IsDictionaryWithAnyKeyValue(__dict) (IsDictionary(__dict) && ([[((NSDictionary *)__dict) allKeys] count] > 0))
 
 
-@interface MHStickerDownloader : NSObject <MHZipArchiveDelegate, NSURLSessionDelegate>
+@interface MHStickerDownloader : NSObject <SSZipArchiveDelegate, NSURLSessionDelegate>
 @property(nonatomic, strong) NSURLSession *session;
 
 @property(nonatomic, strong) StickerDataListModel *sticker;
@@ -69,7 +70,7 @@
         } else {
             // unzip
             NSString *path = [[StickerManager sharedManager] unzipPath];
-            BOOL unZipSuccess = [MHZipArchive unzipFileAtPath:location.path toDestination:path delegate:self];
+            BOOL unZipSuccess = [SSZipArchive unzipFileAtPath:location.path toDestination:path delegate:self];
             if (unZipSuccess) {
                 NSString *stickerPath = [NSString stringWithFormat:@"%@/%@/config.json",path,self->_sticker.name];
                // NSLog(@"stickerPath--%@",stickerPath);
@@ -157,7 +158,7 @@
 
 @end
 
-@interface StickerManager()<NSURLSessionDelegate,MHZipArchiveDelegate>
+@interface StickerManager()<NSURLSessionDelegate,SSZipArchiveDelegate>
 @property(nonatomic, strong) NSURLSession *session;
 @property (nonatomic, strong) NSMutableDictionary *downloadCache;
 @property (nonatomic, assign) NSInteger index;

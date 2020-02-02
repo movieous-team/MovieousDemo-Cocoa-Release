@@ -87,7 +87,6 @@ static NSString *HahaImg = @"haha";
         [self.currentView removeFromSuperview];
         self.show = YES;
         self.currentView = nil;
-        return;
     }
     if (show) {
         if (![self isDescendantOfView:self.superView]) {
