@@ -3,3 +3,6 @@
 //
 
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "MHMeiyanMenusView.h"
+#import "MHBeautyParams.h"
+#import <MHBeautySDK/MHBeautySDK.h>

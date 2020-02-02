@@ -34,6 +34,8 @@
 		83611FE1239556AC00DFD342 /* Filters.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE0239556AC00DFD342 /* Filters.bundle */; };
 		83611FE3239556B100DFD342 /* filter_template.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 83611FE2239556B100DFD342 /* filter_template.jpg */; };
 		83669A9E23169A7E00B1A38D /* MDWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E924A12302F7ED00034EC2 /* MDWordViewController.swift */; };
+		83677E3323E5B1D000433BD1 /* tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE74A223E5598E000E4F1D /* tracking.framework */; };
+		83677E3423E5B1D000433BD1 /* tracking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE74A223E5598E000E4F1D /* tracking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		836DFC1122E8504400D43863 /* MDThumbnailBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836DFC1022E8504400D43863 /* MDThumbnailBar.swift */; };
 		836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836FE5FC22C367320033A073 /* MDVolumeViewController.swift */; };
 		836FE60522C3B2060033A073 /* MDUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836FE60422C3B2060033A073 /* MDUIComponents.swift */; };
@@ -49,6 +51,45 @@
 		83B6C125231142EC00510BE8 /* MDEditorToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6C124231142EC00510BE8 /* MDEditorToolboxViewController.swift */; };
 		83DAAFD622F92B6C0098041B /* MDSpeedEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DAAFD522F92B6C0098041B /* MDSpeedEffect.swift */; };
 		83DAAFDE22F92D790098041B /* MDRepeateEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DAAFDD22F92D790098041B /* MDRepeateEffect.swift */; };
+		83EE74EA23E5598E000E4F1D /* MHBeautySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EE749423E5598E000E4F1D /* MHBeautySDK.framework */; };
+		83EE74EB23E5598E000E4F1D /* server.cer in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749523E5598E000E4F1D /* server.cer */; };
+		83EE74EC23E5598E000E4F1D /* print_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749723E5598E000E4F1D /* print_cancel@2x.png */; };
+		83EE74ED23E5598E000E4F1D /* top_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749823E5598E000E4F1D /* top_right@2x.png */; };
+		83EE74EE23E5598E000E4F1D /* top_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749923E5598E000E4F1D /* top_right_selected.png */; };
+		83EE74EF23E5598E000E4F1D /* bottom_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749A23E5598E000E4F1D /* bottom_right@2x.png */; };
+		83EE74F023E5598E000E4F1D /* top_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749B23E5598E000E4F1D /* top_left@2x.png */; };
+		83EE74F123E5598E000E4F1D /* bottom_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749C23E5598E000E4F1D /* bottom_left_selected.png */; };
+		83EE74F223E5598E000E4F1D /* WatermarkImages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749D23E5598E000E4F1D /* WatermarkImages.plist */; };
+		83EE74F323E5598E000E4F1D /* bottom_right_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749E23E5598E000E4F1D /* bottom_right_selected.png */; };
+		83EE74F423E5598E000E4F1D /* top_left_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE749F23E5598E000E4F1D /* top_left_selected.png */; };
+		83EE74F523E5598E000E4F1D /* bottom_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A023E5598E000E4F1D /* bottom_left@2x.png */; };
+		83EE74F623E5598E000E4F1D /* MHSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A123E5598E000E4F1D /* MHSDK.bundle */; };
+		83EE74F823E5598E000E4F1D /* MHMeiyanMenusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */; };
+		83EE74F923E5598E000E4F1D /* MHQuickBeautyParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */; };
+		83EE74FA23E5598E000E4F1D /* StickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AA23E5598E000E4F1D /* StickerManager.m */; };
+		83EE74FB23E5598E000E4F1D /* MHBeautiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */; };
+		83EE74FC23E5598E000E4F1D /* StickerDataListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */; };
+		83EE74FD23E5598E000E4F1D /* MHQuickBeautyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */; };
+		83EE74FE23E5598E000E4F1D /* MHPrintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B123E5598E000E4F1D /* MHPrintView.m */; };
+		83EE74FF23E5598E000E4F1D /* MHBeautyMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */; };
+		83EE750023E5598E000E4F1D /* MHBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B523E5598E000E4F1D /* MHBeautyView.m */; };
+		83EE750123E5598E000E4F1D /* MHSpecificEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */; };
+		83EE750223E5598E000E4F1D /* MHMagnifiedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */; };
+		83EE750323E5598E000E4F1D /* MHSectionStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */; };
+		83EE750423E5598E000E4F1D /* MHStickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BB23E5598E000E4F1D /* MHStickerCell.m */; };
+		83EE750523E5598E000E4F1D /* MHBeautyAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */; };
+		83EE750623E5598E000E4F1D /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C223E5598E000E4F1D /* UIView+Additions.m */; };
+		83EE750723E5598E000E4F1D /* WNSegmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C623E5598E000E4F1D /* WNSegmentItem.m */; };
+		83EE750823E5598E000E4F1D /* WNSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74C723E5598E000E4F1D /* WNSegmentControl.m */; };
+		83EE750923E5598E000E4F1D /* MHMagnifiedEffectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */; };
+		83EE750A23E5598E000E4F1D /* MHBeautySlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */; };
+		83EE750B23E5598E000E4F1D /* MHCompleteBeautyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */; };
+		83EE750C23E5598E000E4F1D /* MHFiltersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D123E5598E000E4F1D /* MHFiltersView.m */; };
+		83EE750D23E5598E000E4F1D /* MHStickersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D223E5598E000E4F1D /* MHStickersView.m */; };
+		83EE750E23E5598E000E4F1D /* MHSpecificAssembleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */; };
+		83EE750F23E5598E000E4F1D /* MHBeautyFaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */; };
+		83EE751023E5598E000E4F1D /* MHFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EE74D623E5598E000E4F1D /* MHFilterCell.m */; };
+		83EE751523E55CD2000E4F1D /* MDFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EE751423E55CD2000E4F1D /* MDFilter.swift */; };
 		83FDF66F2338627100A9BC9A /* MDImageGraffitiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDF66E2338627100A9BC9A /* MDImageGraffitiViewController.swift */; };
 		F991A18BFB8AA3F7D2D121BA /* Pods_MovieousDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0412DE0A8E0804D65F578E71 /* Pods_MovieousDemoTests.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +103,20 @@
 			remoteInfo = MovieousDemo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83677E3523E5B1D000433BD1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83677E3423E5B1D000433BD1 /* tracking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0412DE0A8E0804D65F578E71 /* Pods_MovieousDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieousDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +171,71 @@
 		83DAAFD522F92B6C0098041B /* MDSpeedEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDSpeedEffect.swift; sourceTree = "<group>"; };
 		83DAAFDD22F92D790098041B /* MDRepeateEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDRepeateEffect.swift; sourceTree = "<group>"; };
 		83E924A12302F7ED00034EC2 /* MDWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDWordViewController.swift; sourceTree = "<group>"; };
+		83EE749423E5598E000E4F1D /* MHBeautySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MHBeautySDK.framework; sourceTree = "<group>"; };
+		83EE749523E5598E000E4F1D /* server.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = server.cer; sourceTree = "<group>"; };
+		83EE749723E5598E000E4F1D /* print_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "print_cancel@2x.png"; sourceTree = "<group>"; };
+		83EE749823E5598E000E4F1D /* top_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_right@2x.png"; sourceTree = "<group>"; };
+		83EE749923E5598E000E4F1D /* top_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_right_selected.png; sourceTree = "<group>"; };
+		83EE749A23E5598E000E4F1D /* bottom_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_right@2x.png"; sourceTree = "<group>"; };
+		83EE749B23E5598E000E4F1D /* top_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top_left@2x.png"; sourceTree = "<group>"; };
+		83EE749C23E5598E000E4F1D /* bottom_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_left_selected.png; sourceTree = "<group>"; };
+		83EE749D23E5598E000E4F1D /* WatermarkImages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WatermarkImages.plist; sourceTree = "<group>"; };
+		83EE749E23E5598E000E4F1D /* bottom_right_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_right_selected.png; sourceTree = "<group>"; };
+		83EE749F23E5598E000E4F1D /* top_left_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_left_selected.png; sourceTree = "<group>"; };
+		83EE74A023E5598E000E4F1D /* bottom_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_left@2x.png"; sourceTree = "<group>"; };
+		83EE74A123E5598E000E4F1D /* MHSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MHSDK.bundle; sourceTree = "<group>"; };
+		83EE74A223E5598E000E4F1D /* tracking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tracking.framework; sourceTree = "<group>"; };
+		83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMeiyanMenusView.m; sourceTree = "<group>"; };
+		83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MHQuickBeautyParams.plist; sourceTree = "<group>"; };
+		83EE74A723E5598E000E4F1D /* MHBeautiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautiesModel.h; sourceTree = "<group>"; };
+		83EE74A823E5598E000E4F1D /* MHQuickBeautyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHQuickBeautyModel.h; sourceTree = "<group>"; };
+		83EE74A923E5598E000E4F1D /* StickerDataListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerDataListModel.h; sourceTree = "<group>"; };
+		83EE74AA23E5598E000E4F1D /* StickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerManager.m; sourceTree = "<group>"; };
+		83EE74AB23E5598E000E4F1D /* MHBeautyParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyParams.h; sourceTree = "<group>"; };
+		83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautiesModel.m; sourceTree = "<group>"; };
+		83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerDataListModel.m; sourceTree = "<group>"; };
+		83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHQuickBeautyModel.m; sourceTree = "<group>"; };
+		83EE74AF23E5598E000E4F1D /* StickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerManager.h; sourceTree = "<group>"; };
+		83EE74B123E5598E000E4F1D /* MHPrintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHPrintView.m; sourceTree = "<group>"; };
+		83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyMenuCell.m; sourceTree = "<group>"; };
+		83EE74B323E5598E000E4F1D /* MHCompleteBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHCompleteBeautyView.h; sourceTree = "<group>"; };
+		83EE74B423E5598E000E4F1D /* MHBeautySlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautySlider.h; sourceTree = "<group>"; };
+		83EE74B523E5598E000E4F1D /* MHBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyView.m; sourceTree = "<group>"; };
+		83EE74B623E5598E000E4F1D /* MHMagnifiedEffectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedEffectCell.h; sourceTree = "<group>"; };
+		83EE74B723E5598E000E4F1D /* MHFiltersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFiltersView.h; sourceTree = "<group>"; };
+		83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificEffectView.m; sourceTree = "<group>"; };
+		83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedView.m; sourceTree = "<group>"; };
+		83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSectionStickersView.m; sourceTree = "<group>"; };
+		83EE74BB23E5598E000E4F1D /* MHStickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickerCell.m; sourceTree = "<group>"; };
+		83EE74BC23E5598E000E4F1D /* MHFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHFilterCell.h; sourceTree = "<group>"; };
+		83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyAssembleView.m; sourceTree = "<group>"; };
+		83EE74BE23E5598E000E4F1D /* MHBeautyFaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyFaceView.h; sourceTree = "<group>"; };
+		83EE74BF23E5598E000E4F1D /* MHSpecificAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificAssembleView.h; sourceTree = "<group>"; };
+		83EE74C023E5598E000E4F1D /* MHStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickersView.h; sourceTree = "<group>"; };
+		83EE74C223E5598E000E4F1D /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		83EE74C323E5598E000E4F1D /* WNSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentControl.h; sourceTree = "<group>"; };
+		83EE74C423E5598E000E4F1D /* WNSegmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WNSegmentItem.h; sourceTree = "<group>"; };
+		83EE74C523E5598E000E4F1D /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		83EE74C623E5598E000E4F1D /* WNSegmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentItem.m; sourceTree = "<group>"; };
+		83EE74C723E5598E000E4F1D /* WNSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WNSegmentControl.m; sourceTree = "<group>"; };
+		83EE74C823E5598E000E4F1D /* MHBeautyMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyMenuCell.h; sourceTree = "<group>"; };
+		83EE74C923E5598E000E4F1D /* MHPrintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHPrintView.h; sourceTree = "<group>"; };
+		83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHMagnifiedEffectCell.m; sourceTree = "<group>"; };
+		83EE74CB23E5598E000E4F1D /* MHBeautyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyView.h; sourceTree = "<group>"; };
+		83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautySlider.m; sourceTree = "<group>"; };
+		83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHCompleteBeautyView.m; sourceTree = "<group>"; };
+		83EE74CE23E5598E000E4F1D /* MHSectionStickersView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSectionStickersView.h; sourceTree = "<group>"; };
+		83EE74CF23E5598E000E4F1D /* MHMagnifiedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMagnifiedView.h; sourceTree = "<group>"; };
+		83EE74D023E5598E000E4F1D /* MHSpecificEffectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHSpecificEffectView.h; sourceTree = "<group>"; };
+		83EE74D123E5598E000E4F1D /* MHFiltersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFiltersView.m; sourceTree = "<group>"; };
+		83EE74D223E5598E000E4F1D /* MHStickersView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHStickersView.m; sourceTree = "<group>"; };
+		83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHSpecificAssembleView.m; sourceTree = "<group>"; };
+		83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHBeautyFaceView.m; sourceTree = "<group>"; };
+		83EE74D523E5598E000E4F1D /* MHBeautyAssembleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHBeautyAssembleView.h; sourceTree = "<group>"; };
+		83EE74D623E5598E000E4F1D /* MHFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHFilterCell.m; sourceTree = "<group>"; };
+		83EE74D723E5598E000E4F1D /* MHStickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHStickerCell.h; sourceTree = "<group>"; };
+		83EE74D823E5598E000E4F1D /* MHMeiyanMenusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHMeiyanMenusView.h; sourceTree = "<group>"; };
+		83EE751423E55CD2000E4F1D /* MDFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDFilter.swift; sourceTree = "<group>"; };
 		83FDF66E2338627100A9BC9A /* MDImageGraffitiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDImageGraffitiViewController.swift; sourceTree = "<group>"; };
 		D25BFA71F0C963D311D209A0 /* Pods-MovieousDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieousDemo.release.xcconfig"; path = "Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E8B44E7B92AE3A0A3234B3AC /* Pods-MovieousDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieousDemo.debug.xcconfig"; path = "Target Support Files/Pods-MovieousDemo/Pods-MovieousDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,7 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				838A373422D5F70300CB8BF7 /* libsqlite3.tbd in Frameworks */,
+				83677E3323E5B1D000433BD1 /* tracking.framework in Frameworks */,
 				778A145393E435754AB23DA7 /* Pods_MovieousDemo.framework in Frameworks */,
+				83EE74EA23E5598E000E4F1D /* MHBeautySDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +308,7 @@
 		83445DDF225CD51E00A635F2 /* MovieousDemo */ = {
 			isa = PBXGroup;
 			children = (
+				83EE73BF23E5447A000E4F1D /* Vendor */,
 				83F0A005233C911500170723 /* Resources */,
 				83446DF3225D0BAA00A635F2 /* Common */,
 				83446DE5225CD93200A635F2 /* Components */,
@@ -231,6 +354,7 @@
 		83446DF3225D0BAA00A635F2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				83EE751423E55CD2000E4F1D /* MDFilter.swift */,
 				8349D24322BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift */,
 				83446DED225CF80300A635F2 /* MDUtils.swift */,
 				835661C422D0D7770046DA6F /* MDStickerLibrary.swift */,
@@ -262,6 +386,133 @@
 				839047A9230FC6E6003B40E1 /* MDExporterViewController.swift */,
 			);
 			path = Exporter;
+			sourceTree = "<group>";
+		};
+		83EE73BF23E5447A000E4F1D /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				83EE746A23E5598E000E4F1D /* MHSDK */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		83EE746A23E5598E000E4F1D /* MHSDK */ = {
+			isa = PBXGroup;
+			children = (
+				83EE749323E5598E000E4F1D /* MHResources */,
+				83EE74A323E5598E000E4F1D /* MHUI */,
+			);
+			path = MHSDK;
+			sourceTree = "<group>";
+		};
+		83EE749323E5598E000E4F1D /* MHResources */ = {
+			isa = PBXGroup;
+			children = (
+				83EE749423E5598E000E4F1D /* MHBeautySDK.framework */,
+				83EE749523E5598E000E4F1D /* server.cer */,
+				83EE749623E5598E000E4F1D /* 水印 */,
+				83EE74A123E5598E000E4F1D /* MHSDK.bundle */,
+				83EE74A223E5598E000E4F1D /* tracking.framework */,
+			);
+			path = MHResources;
+			sourceTree = "<group>";
+		};
+		83EE749623E5598E000E4F1D /* 水印 */ = {
+			isa = PBXGroup;
+			children = (
+				83EE749723E5598E000E4F1D /* print_cancel@2x.png */,
+				83EE749823E5598E000E4F1D /* top_right@2x.png */,
+				83EE749923E5598E000E4F1D /* top_right_selected.png */,
+				83EE749A23E5598E000E4F1D /* bottom_right@2x.png */,
+				83EE749B23E5598E000E4F1D /* top_left@2x.png */,
+				83EE749C23E5598E000E4F1D /* bottom_left_selected.png */,
+				83EE749D23E5598E000E4F1D /* WatermarkImages.plist */,
+				83EE749E23E5598E000E4F1D /* bottom_right_selected.png */,
+				83EE749F23E5598E000E4F1D /* top_left_selected.png */,
+				83EE74A023E5598E000E4F1D /* bottom_left@2x.png */,
+			);
+			path = "水印";
+			sourceTree = "<group>";
+		};
+		83EE74A323E5598E000E4F1D /* MHUI */ = {
+			isa = PBXGroup;
+			children = (
+				83EE74A423E5598E000E4F1D /* MHMeiyanMenusView.m */,
+				83EE74A523E5598E000E4F1D /* Model */,
+				83EE74B023E5598E000E4F1D /* View */,
+				83EE74D823E5598E000E4F1D /* MHMeiyanMenusView.h */,
+			);
+			path = MHUI;
+			sourceTree = "<group>";
+		};
+		83EE74A523E5598E000E4F1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				83EE74A623E5598E000E4F1D /* MHQuickBeautyParams.plist */,
+				83EE74A723E5598E000E4F1D /* MHBeautiesModel.h */,
+				83EE74A823E5598E000E4F1D /* MHQuickBeautyModel.h */,
+				83EE74A923E5598E000E4F1D /* StickerDataListModel.h */,
+				83EE74AA23E5598E000E4F1D /* StickerManager.m */,
+				83EE74AB23E5598E000E4F1D /* MHBeautyParams.h */,
+				83EE74AC23E5598E000E4F1D /* MHBeautiesModel.m */,
+				83EE74AD23E5598E000E4F1D /* StickerDataListModel.m */,
+				83EE74AE23E5598E000E4F1D /* MHQuickBeautyModel.m */,
+				83EE74AF23E5598E000E4F1D /* StickerManager.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83EE74B023E5598E000E4F1D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				83EE74B123E5598E000E4F1D /* MHPrintView.m */,
+				83EE74B223E5598E000E4F1D /* MHBeautyMenuCell.m */,
+				83EE74B323E5598E000E4F1D /* MHCompleteBeautyView.h */,
+				83EE74B423E5598E000E4F1D /* MHBeautySlider.h */,
+				83EE74B523E5598E000E4F1D /* MHBeautyView.m */,
+				83EE74B623E5598E000E4F1D /* MHMagnifiedEffectCell.h */,
+				83EE74B723E5598E000E4F1D /* MHFiltersView.h */,
+				83EE74B823E5598E000E4F1D /* MHSpecificEffectView.m */,
+				83EE74B923E5598E000E4F1D /* MHMagnifiedView.m */,
+				83EE74BA23E5598E000E4F1D /* MHSectionStickersView.m */,
+				83EE74BB23E5598E000E4F1D /* MHStickerCell.m */,
+				83EE74BC23E5598E000E4F1D /* MHFilterCell.h */,
+				83EE74BD23E5598E000E4F1D /* MHBeautyAssembleView.m */,
+				83EE74BE23E5598E000E4F1D /* MHBeautyFaceView.h */,
+				83EE74BF23E5598E000E4F1D /* MHSpecificAssembleView.h */,
+				83EE74C023E5598E000E4F1D /* MHStickersView.h */,
+				83EE74C123E5598E000E4F1D /* customTool */,
+				83EE74C823E5598E000E4F1D /* MHBeautyMenuCell.h */,
+				83EE74C923E5598E000E4F1D /* MHPrintView.h */,
+				83EE74CA23E5598E000E4F1D /* MHMagnifiedEffectCell.m */,
+				83EE74CB23E5598E000E4F1D /* MHBeautyView.h */,
+				83EE74CC23E5598E000E4F1D /* MHBeautySlider.m */,
+				83EE74CD23E5598E000E4F1D /* MHCompleteBeautyView.m */,
+				83EE74CE23E5598E000E4F1D /* MHSectionStickersView.h */,
+				83EE74CF23E5598E000E4F1D /* MHMagnifiedView.h */,
+				83EE74D023E5598E000E4F1D /* MHSpecificEffectView.h */,
+				83EE74D123E5598E000E4F1D /* MHFiltersView.m */,
+				83EE74D223E5598E000E4F1D /* MHStickersView.m */,
+				83EE74D323E5598E000E4F1D /* MHSpecificAssembleView.m */,
+				83EE74D423E5598E000E4F1D /* MHBeautyFaceView.m */,
+				83EE74D523E5598E000E4F1D /* MHBeautyAssembleView.h */,
+				83EE74D623E5598E000E4F1D /* MHFilterCell.m */,
+				83EE74D723E5598E000E4F1D /* MHStickerCell.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		83EE74C123E5598E000E4F1D /* customTool */ = {
+			isa = PBXGroup;
+			children = (
+				83EE74C223E5598E000E4F1D /* UIView+Additions.m */,
+				83EE74C323E5598E000E4F1D /* WNSegmentControl.h */,
+				83EE74C423E5598E000E4F1D /* WNSegmentItem.h */,
+				83EE74C523E5598E000E4F1D /* UIView+Additions.h */,
+				83EE74C623E5598E000E4F1D /* WNSegmentItem.m */,
+				83EE74C723E5598E000E4F1D /* WNSegmentControl.m */,
+			);
+			path = customTool;
 			sourceTree = "<group>";
 		};
 		83F0A005233C911500170723 /* Resources */ = {
@@ -309,6 +560,7 @@
 				83445DDA225CD51E00A635F2 /* Frameworks */,
 				83445DDB225CD51E00A635F2 /* Resources */,
 				83CC8C39A003A2D2444E560D /* [CP] Embed Pods Frameworks */,
+				83677E3523E5B1D000433BD1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -383,11 +635,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EE74F323E5598E000E4F1D /* bottom_right_selected.png in Resources */,
+				83EE74F923E5598E000E4F1D /* MHQuickBeautyParams.plist in Resources */,
 				83A817CF22B5AE3C003E4631 /* Localizable.strings in Resources */,
+				83EE74EC23E5598E000E4F1D /* print_cancel@2x.png in Resources */,
+				83EE74F123E5598E000E4F1D /* bottom_left_selected.png in Resources */,
 				83445DEB225CD51F00A635F2 /* LaunchScreen.storyboard in Resources */,
+				83EE74EE23E5598E000E4F1D /* top_right_selected.png in Resources */,
+				83EE74F023E5598E000E4F1D /* top_left@2x.png in Resources */,
+				83EE74EF23E5598E000E4F1D /* bottom_right@2x.png in Resources */,
+				83EE74F223E5598E000E4F1D /* WatermarkImages.plist in Resources */,
 				83A8183622B9E9AD003E4631 /* Assets.xcassets in Resources */,
 				83611FE3239556B100DFD342 /* filter_template.jpg in Resources */,
+				83EE74ED23E5598E000E4F1D /* top_right@2x.png in Resources */,
 				83611FE1239556AC00DFD342 /* Filters.bundle in Resources */,
+				83EE74F623E5598E000E4F1D /* MHSDK.bundle in Resources */,
+				83EE74F423E5598E000E4F1D /* top_left_selected.png in Resources */,
+				83EE74F523E5598E000E4F1D /* bottom_left@2x.png in Resources */,
+				83EE74EB23E5598E000E4F1D /* server.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,39 +734,64 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83EE751023E5598E000E4F1D /* MHFilterCell.m in Sources */,
 				836DFC1122E8504400D43863 /* MDThumbnailBar.swift in Sources */,
 				836FE5FD22C367320033A073 /* MDVolumeViewController.swift in Sources */,
 				83445DE3225CD51E00A635F2 /* MDAudienceViewController.swift in Sources */,
 				836FE60522C3B2060033A073 /* MDUIComponents.swift in Sources */,
+				83EE750D23E5598E000E4F1D /* MHStickersView.m in Sources */,
+				83EE750323E5598E000E4F1D /* MHSectionStickersView.m in Sources */,
+				83EE750023E5598E000E4F1D /* MHBeautyView.m in Sources */,
 				8397C07D22E7060900B46CD2 /* MDShotConfigViewController.swift in Sources */,
 				8358448B22E5A6C20009AEA0 /* MDAudioTrimView.swift in Sources */,
+				83EE750A23E5598E000E4F1D /* MHBeautySlider.m in Sources */,
 				83611FDF239555CF00DFD342 /* MDInnerBeautyFilterView.swift in Sources */,
 				8319E0B822D578FD00BA0809 /* MDBeautyFilterViewController.swift in Sources */,
+				83EE750923E5598E000E4F1D /* MHMagnifiedEffectCell.m in Sources */,
 				839047AA230FC6E6003B40E1 /* MDExporterViewController.swift in Sources */,
 				83445DE1225CD51E00A635F2 /* AppDelegate.swift in Sources */,
+				83EE750823E5598E000E4F1D /* WNSegmentControl.m in Sources */,
 				8338680E22C3D27D006656D9 /* MDSpecialEffectViewController.swift in Sources */,
+				83EE750223E5598E000E4F1D /* MHMagnifiedView.m in Sources */,
+				83EE750423E5598E000E4F1D /* MHStickerCell.m in Sources */,
 				83DAAFDE22F92D790098041B /* MDRepeateEffect.swift in Sources */,
 				8338680A22C3D25A006656D9 /* MDCoverViewController.swift in Sources */,
+				83EE750E23E5598E000E4F1D /* MHSpecificAssembleView.m in Sources */,
 				83B6C125231142EC00510BE8 /* MDEditorToolboxViewController.swift in Sources */,
 				83359D5D22E6C62900E28254 /* MDCreationViewController.swift in Sources */,
 				833867FE22C3D171006656D9 /* MDEditorMusicViewController.swift in Sources */,
 				8338680622C3D1E1006656D9 /* MDStickerViewController.swift in Sources */,
+				83EE750723E5598E000E4F1D /* WNSegmentItem.m in Sources */,
 				83446DEB225CE74C00A635F2 /* MDRecorderViewController.swift in Sources */,
+				83EE74FE23E5598E000E4F1D /* MHPrintView.m in Sources */,
 				83446DF5225D0BBC00A635F2 /* MDAVPlayerView.swift in Sources */,
+				83EE750F23E5598E000E4F1D /* MHBeautyFaceView.m in Sources */,
 				83477A20231937AC0084A5FB /* MDEditorViewController.swift in Sources */,
+				83EE74FC23E5598E000E4F1D /* StickerDataListModel.m in Sources */,
 				83DAAFD622F92B6C0098041B /* MDSpeedEffect.swift in Sources */,
+				83EE74FF23E5598E000E4F1D /* MHBeautyMenuCell.m in Sources */,
 				835661CB22D0D7770046DA6F /* MDStickerLibrary.swift in Sources */,
+				83EE750C23E5598E000E4F1D /* MHFiltersView.m in Sources */,
 				833805B922CF611400C1AB48 /* MDMusicLibrary.swift in Sources */,
 				83B6C11D23113C8E00510BE8 /* MDImageEditorViewController.swift in Sources */,
 				83446DF0225D06AF00A635F2 /* MDRecorderMusicViewController.swift in Sources */,
 				83B3F38622D1C75B005A76B5 /* MDFrameView.swift in Sources */,
+				83EE74FA23E5598E000E4F1D /* StickerManager.m in Sources */,
 				83FDF66F2338627100A9BC9A /* MDImageGraffitiViewController.swift in Sources */,
 				83446DEE225CF80300A635F2 /* MDUtils.swift in Sources */,
 				830A6E3C22BD0B670002FB5A /* MDGlobalConfig.swift in Sources */,
 				8349D24422BDD45D0063C62E /* MDHorizontalPageFlowlayout.swift in Sources */,
+				83EE750B23E5598E000E4F1D /* MHCompleteBeautyView.m in Sources */,
+				83EE750123E5598E000E4F1D /* MHSpecificEffectView.m in Sources */,
+				83EE750623E5598E000E4F1D /* UIView+Additions.m in Sources */,
+				83EE74FD23E5598E000E4F1D /* MHQuickBeautyModel.m in Sources */,
 				83A8184422BB463D003E4631 /* MDProgressBar.swift in Sources */,
+				83EE751523E55CD2000E4F1D /* MDFilter.swift in Sources */,
 				8338680C22C3D26C006656D9 /* MDTrimViewController.swift in Sources */,
 				8338680822C3D1FD006656D9 /* MDVideoGraffitiViewController.swift in Sources */,
+				83EE74FB23E5598E000E4F1D /* MHBeautiesModel.m in Sources */,
+				83EE750523E5598E000E4F1D /* MHBeautyAssembleView.m in Sources */,
+				83EE74F823E5598E000E4F1D /* MHMeiyanMenusView.m in Sources */,
 				830A6E3A22BCDCC80002FB5A /* MDVideoEditorViewController.swift in Sources */,
 				83669A9E23169A7E00B1A38D /* MDWordViewController.swift in Sources */,
 			);
@@ -674,12 +964,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 32SCWS77Q5;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MovieousDemo/Vendor/TuSDK/TuSDK",
 					"$(PROJECT_DIR)/MovieousDemo/Vendor/KiwiFaceSDK",
+					"$(PROJECT_DIR)/MovieousDemo/Vendor/MHSDK/MHResources",
 				);
 				INFOPLIST_FILE = MovieousDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -749,12 +1041,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = CFP9KY4MGC;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MovieousDemo/Vendor/TuSDK/TuSDK",
 					"$(PROJECT_DIR)/MovieousDemo/Vendor/KiwiFaceSDK",
+					"$(PROJECT_DIR)/MovieousDemo/Vendor/MHSDK/MHResources",
 				);
 				INFOPLIST_FILE = MovieousDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

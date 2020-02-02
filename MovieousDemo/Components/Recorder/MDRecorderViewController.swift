@@ -16,7 +16,7 @@ let MaxRecordDuration = 10.0
 let RecorderVideoHeight = CGFloat(960)
 let RecorderVideoWidth = CGFloat(544)
 
-class MDRecorderViewController: UIViewController {
+class MDRecorderViewController: UIViewController, MHMeiyanMenusViewDelegate {
     let recordButton = UIButton()
     lazy var recordTypeView = MDRecordTypeSelectView()
     var duetVideoPath: String?
@@ -78,6 +78,8 @@ class MDRecorderViewController: UIViewController {
         return view
     }()
     
+    lazy var menusView = MHMeiyanMenusView(frame: .init(x: 0, y: self.view.frame.height - MHMeiyanMenuHeight, width: self.view.frame.width, height: MHMeiyanMenuHeight), superView: self.view, delegate: self, showNow: false, beautyManager: MDFilter.shared.beautyManager, isTXSDK: false)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -86,17 +88,17 @@ class MDRecorderViewController: UIViewController {
         self.view.backgroundColor = .black
         let audioConfiguration = MSVRecorderAudioConfiguration.default()
         let videoConfiguration = MSVRecorderVideoConfiguration.default()
+        // 因为美狐 SDK 在处理的时候会加镜像，所以这里先改一下以适配美狐 SDK。
+        videoConfiguration.mirrorFrontPreview = false;
+        videoConfiguration.mirrorFrontPreview = true;
         videoConfiguration.preferredSessionPreset = .hd1280x720
         videoConfiguration.previewScalingMode = .aspectFill
         videoConfiguration.preferredTorchMode = .off
         videoConfiguration.preferredFlashMode = .off
         videoConfiguration.size = CGSize(width: RecorderVideoWidth, height: RecorderVideoHeight)
-        var captureEffects: [MovieousCaptureEffect] = []
-        if vendorType == .none {
-            captureEffects.append(self.faceBeautyCaptureEffect)
-            captureEffects.append(self.filterCaptureEffect)
-        }
-        videoConfiguration.captureEffects = captureEffects
+        let externalFilterRecorderEffect = MovieousExternalFilterCaptureEffect()
+        externalFilterRecorderEffect.externalFilterClass = MDFilter.self
+        videoConfiguration.captureEffects = [externalFilterRecorderEffect]
         do {
             self.recorder = try MSVRecorder(audioConfiguration: audioConfiguration, videoConfiguration: videoConfiguration)
         } catch {
@@ -288,7 +290,8 @@ class MDRecorderViewController: UIViewController {
             ShowAlert(title: NSLocalizedString("global.alert", comment: ""), message: NSLocalizedString("global.vendornosticker", comment: ""), action: NSLocalizedString("global.ok", comment: ""), controller: self)
         } else {
             self.stickerView.isHidden = false
-            self.beautifyView.isHidden = true
+            self.menusView.showMenuView(false)
+//            self.beautifyView.isHidden = true
             self.recordButton.isHidden = true
             self.recordTypeView.isHidden = true
             self.importButton.isHidden = true
@@ -300,7 +303,8 @@ class MDRecorderViewController: UIViewController {
     }
     
     @objc func beautyButtonPressed(sender: UIButton) {
-        self.beautifyView.isHidden = false
+        self.menusView.showMenuView(true)
+//        self.beautifyView.isHidden = false
         self.stickerView.isHidden = true
         self.recordButton.isHidden = true
         self.recordTypeView.isHidden = true
@@ -314,7 +318,8 @@ class MDRecorderViewController: UIViewController {
     @objc func viewTapped(sender: UITapGestureRecognizer) {
         guard let recorder = self.recorder else { return }
         self.stickerView.isHidden = true
-        self.beautifyView.isHidden = true
+        self.menusView.showMenuView(false)
+//        self.beautifyView.isHidden = true
         self.recordButton.isHidden = false
         if !recorder.recording {
             if recorder.draft.mainTrackClips.count == 0 {
@@ -904,6 +909,9 @@ class MDRecorderViewController: UIViewController {
             }
         }
     }
+    
+    func beautyEffect(withLevel beauty: Int, whitenessLevel white: Int, ruddinessLevel ruddiness: Int) {
+    }
 }
 
 extension MDRecorderViewController: MDRecorderMusicViewControllerDelegate {
@@ -924,10 +932,10 @@ extension MDRecorderViewController: UIGestureRecognizerDelegate {
         guard let view = touch.view else {
             return true
         }
-        if view.isDescendant(of: self.stickerView) || view.isDescendant(of: self.beautifyView) {
-            return false
+        if view == self.recorder?.previewView {
+            return true
         }
-        return true
+        return false
     }
 }
 

@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         #warning("此 License 仅用于试用，正式上线请先联系 UCloud/Movieous 销售获取正式上线的 License")
         MSVAuthentication.register(withLicense: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhcHBpZCI6InZpZGVvLm1vdmllb3VzLk1vdmllb3VzRGVtbyJ9.r2JE2BO7UYllkOmAEjx6PyyyvE12OdgSFFkn6GtrD-k")
+        MHSDK.shareInstance().`init`("ea8f8d147244de552398184c90c2b8da")
         SVProgressHUD.setDefaultMaskType(.black)
         self.window = UIWindow()
         self.window?.makeKeyAndVisible()
