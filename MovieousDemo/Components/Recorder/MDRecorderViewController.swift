@@ -901,7 +901,7 @@ class MDRecorderViewController: UIViewController {
     
     func ShowEditorViewController(draft: MSVDraft) {
         self.duetVideoPlayer.pause()
-        SVProgressHUD.show(withStatus: NSLocalizedString("MDRecorderViewController.loading", comment: ""))
+//        SVProgressHUD.show(withStatus: NSLocalizedString("MDRecorderViewController.loading", comment: ""))
         if self.currentSelectedMusic != nil {
             for clip in draft.mainTrackClips {
                 if clip.type == .AV {
@@ -927,29 +927,12 @@ class MDRecorderViewController: UIViewController {
                 ShowErrorAlert(error: error, controller: self)
             }
         }
-        let exporter = MSVExporter(draft: draft)
-        exporter.progressHandler = { progress in
-            SVProgressHUD.showProgress(progress, status: NSLocalizedString("MDRecorderViewController.loading", comment: ""))
+        DispatchQueue.main.async {
+            let editorViewController = MDVideoEditorViewController()
+            editorViewController.draft = draft
+            editorViewController.recorderMusic = self.currentSelectedMusic
+            self.navigationController?.pushViewController(editorViewController, animated: true)
         }
-        exporter.failureHandler = { error in
-            ShowErrorAlert(error: error, controller: self)
-        }
-        exporter.completionHandler = { path in
-            SVProgressHUD.dismiss(completion: {
-                do {
-                    let draft = try MSVDraft(avPath: path)
-                    DispatchQueue.main.async {
-                        let editorViewController = MDVideoEditorViewController()
-                        editorViewController.draft = draft
-                        editorViewController.recorderMusic = self.currentSelectedMusic
-                        self.navigationController?.pushViewController(editorViewController, animated: true)
-                    }
-                } catch {
-                    ShowErrorAlert(error: error, controller: self)
-                }
-            })
-        }
-        exporter.startExport()
     }
     
     func animateCountDown(remaining: Int) {

@@ -36,7 +36,7 @@ let MDDefaultDurationPerThumbnail = TimeInterval(2)
 let MDMaxDurationPerThumbnail = TimeInterval(10)
 let MDThumbnailBarHeight = TimeInterval(50)
 
-var vendorType: MDVendorType = .none
+var vendorType: MDVendorType = .faceunity
 
 func getVendorName(vendorType: MDVendorType) -> String {
     switch vendorType {

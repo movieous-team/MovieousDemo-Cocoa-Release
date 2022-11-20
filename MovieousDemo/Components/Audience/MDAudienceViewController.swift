@@ -39,6 +39,10 @@ class MDAudienceViewController: UIViewController {
     let descLabel = UILabel()
     let playImageView = UIImageView(image: UIImage(named: "media_play"))
     let createButton = UIButton()
+    lazy var videoPath = Bundle.main.path(forResource: "Videos", ofType: "bundle")!
+    lazy var videoFilePaths = try! FileManager.default.contentsOfDirectory(atPath: self.videoPath)
+    lazy var coverPath = Bundle.main.path(forResource: "VideoCover", ofType: "jpg")!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,55 +170,11 @@ extension MDAudienceViewController {
     }
     
     func getPlayList(completionHandler: @escaping([MDShortVideoMetadata]?, Error?) -> Void) {
-        let serverURL = URL(string: "\(MDServerHost)/api/demo/videos")!
-        URLSession.shared.dataTask(with: serverURL) { (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
-                completionHandler(nil, error)
-                return
-            }
-            if (response as! HTTPURLResponse).statusCode != 200 {
-                completionHandler(nil, MDAudienceError.serverResponseError(desc: "\(NSLocalizedString("MDAudienceViewController.list.status.error", comment: ""))\((response as! HTTPURLResponse).statusCode)"))
-                return
-            }
-            guard let data = data else {
-                completionHandler(nil, MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.nodata.error", comment: "")))
-                return
-            }
-            
-            var metadataArray: [MDShortVideoMetadata] = []
-            do {
-                let obj = try JSONSerialization.jsonObject(with: data) as? Array<Dictionary<String, String>>
-                guard let array = obj else {
-                    throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                }
-                for element in array {
-                    guard let videoURLString = element["videoURL"] else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    guard let videoURL = URL(string: videoURLString) else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    guard let coverURLString = element["coverURL"] else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    guard let coverURL = URL(string: coverURLString) else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    guard let descriptions = element["descriptions"] else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    guard let nickname = element["nickname"] else {
-                        throw MDAudienceError.serverResponseError(desc: NSLocalizedString("MDAudienceViewController.list.invaliddata.error", comment: ""))
-                    }
-                    let metadata = MDShortVideoMetadata(videoURL: videoURL, coverURL: coverURL, descriptions: descriptions, nickname: nickname)
-                    metadataArray.append(metadata)
-                }
-            } catch {
-                completionHandler(nil, error)
-                return
-            }
-            completionHandler(metadataArray, nil)
-            }.resume()
+        var metadataArray: [MDShortVideoMetadata] = []
+        for element in videoFilePaths {
+            metadataArray.append(.init(videoURL: NSURL(fileURLWithPath: "\(self.videoPath)/\(element)") as URL, coverURL: NSURL(fileURLWithPath: coverPath) as URL, descriptions: "test", nickname: "test"))
+        }
+        completionHandler(metadataArray, nil)
     }
     
     func generatePlayer(URL: URL, frame: CGRect) -> MovieousPlayerController {

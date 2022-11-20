@@ -1,19 +1,19 @@
 PODS:
   - GPUImage (0.1.7)
-  - libwebp (1.0.3):
-    - libwebp/demux (= 1.0.3)
-    - libwebp/mux (= 1.0.3)
-    - libwebp/webp (= 1.0.3)
-  - libwebp/demux (1.0.3):
+  - libwebp (1.2.4):
+    - libwebp/demux (= 1.2.4)
+    - libwebp/mux (= 1.2.4)
+    - libwebp/webp (= 1.2.4)
+  - libwebp/demux (1.2.4):
     - libwebp/webp
-  - libwebp/mux (1.0.3):
+  - libwebp/mux (1.2.4):
     - libwebp/demux
-  - libwebp/webp (1.0.3)
+  - libwebp/webp (1.2.4)
   - M13ProgressSuite (1.2.9)
   - MJExtension (3.0.17)
-  - MovieousBase-CN (2.0.0)
+  - MovieousBase-CN (2.0.1)
   - MovieousCaptureBase-CN (2.0.1):
-    - MovieousBase-CN (= 2.0.0)
+    - MovieousBase-CN (= 2.0.1)
   - MovieousPlayer-CN (1.0.8)
   - MovieousShortVideo-CN (3.0.1):
     - MovieousCaptureBase-CN (= 2.0.1)
@@ -23,7 +23,7 @@ PODS:
     - libwebp (< 2.0, >= 0.5)
     - SDWebImage/Core
   - SnapKit (4.2.0)
-  - SSZipArchive (2.2.2)
+  - SSZipArchive (2.4.3)
   - SVProgressHUD (2.2.5)
   - UFileSDK (3.0.5)
 
@@ -59,20 +59,20 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
-  libwebp: 057912d6d0abfb6357d8bb05c0ea470301f5d61e
+  libwebp: f62cb61d0a484ba548448a4bd52aabf150ff6eef
   M13ProgressSuite: ea9f7263e73e9215e6849dfa54e29ee0ad6a145c
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
-  MovieousBase-CN: 813cb105b211d9bc9cd8145a6a8c8d4e85e5ee68
-  MovieousCaptureBase-CN: a949241693102b2308ec2e007a5b16dad5097c5b
+  MovieousBase-CN: df9a0dd8eb27086c4ba00e9938baf8cc5db74e05
+  MovieousCaptureBase-CN: 671d15040a6d3b2eb384d6d540e66fe05f73bd30
   MovieousPlayer-CN: abda0ee298ddc0755e6f4e80a263191bca936349
   MovieousShortVideo-CN: 6b80031c59624ee8413d90def15156ecb26f0f95
   Nama: 4632d043c4752d85d784a1d421801ef0d77e87d5
   SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   UFileSDK: e4f10dcf30bd8792194e49e4299670fa2b3ed731
 
 PODFILE CHECKSUM: bf00830632aa7c82143603dcffb25ef8e99fdef0
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.3

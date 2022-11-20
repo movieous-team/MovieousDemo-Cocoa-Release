@@ -32,41 +32,50 @@ class MDStickerViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.buildUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(stickerLibraryRefreshDone(sender:)), name: .MDStickerLibraryRefreshDone, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(stickerLibraryRefreshError(sender:)), name: .MDStickerLibraryRefreshError, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(stickerDidUpdated(sender:)), name: .MDStickerDidUpdated, object: nil)
-        MDStickerLibrary.refreshStickers()
+//        NotificationCenter.default.addObserver(self, selector: #selector(stickerLibraryRefreshDone(sender:)), name: .MDStickerLibraryRefreshDone, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(stickerLibraryRefreshError(sender:)), name: .MDStickerLibraryRefreshError, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(stickerDidUpdated(sender:)), name: .MDStickerDidUpdated, object: nil)
+//        MDStickerLibrary.refreshStickers()
     }
     
     func buildUI() {
         self.title = NSLocalizedString("MDStickerViewController.title", comment: "")
         self.view.backgroundColor = .black
         
-        self.collectionView.isPagingEnabled = true
-        self.collectionView.register(MDStickerCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.showsHorizontalScrollIndicator = false
-        self.view.addSubview(self.collectionView)
-        // 只能异步执行才能保证 contentInset 被清空
-        DispatchQueue.main.async {
-            self.collectionView.contentInset = .zero
-        }
-        
-        self.pageControl.addTarget(self, action: #selector(pageControlValueChanged(sender:)), for: .valueChanged)
-        self.view.addSubview(self.pageControl)
-        
-        self.pageControl.snp.makeConstraints { (make) in
+        let view = FUStickerView()
+        self.view.addSubview(view)
+        view.snp.makeConstraints({ (make) in
+            make.top.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-        
-        self.collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(topLayoutGuide.snp.bottom)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalTo(self.pageControl.snp.top)
-        }
+        })
+        
+//        self.collectionView.isPagingEnabled = true
+//        self.collectionView.register(MDStickerCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+//        self.collectionView.delegate = self
+//        self.collectionView.dataSource = self
+//        self.collectionView.showsHorizontalScrollIndicator = false
+//        self.view.addSubview(self.collectionView)
+//        // 只能异步执行才能保证 contentInset 被清空
+//        DispatchQueue.main.async {
+//            self.collectionView.contentInset = .zero
+//        }
+//
+//        self.pageControl.addTarget(self, action: #selector(pageControlValueChanged(sender:)), for: .valueChanged)
+//        self.view.addSubview(self.pageControl)
+//
+//        self.pageControl.snp.makeConstraints { (make) in
+//            make.bottom.equalToSuperview()
+//            make.centerX.equalToSuperview()
+//        }
+//
+//        self.collectionView.snp.makeConstraints { (make) in
+//            make.top.equalTo(topLayoutGuide.snp.bottom)
+//            make.left.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.bottom.equalTo(self.pageControl.snp.top)
+//        }
     }
     
     func updateValidStickers() {
